@@ -1,0 +1,697 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		59DBAE656258FC0986932945 /* Pods_dogeTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26910516B8FE6E0B0C9D258 /* Pods_dogeTV.framework */; };
+		7916EF132266BA1400FB6721 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF112266BA1400FB6721 /* SearchViewController.swift */; };
+		7916EF142266BA1400FB6721 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7916EF122266BA1400FB6721 /* SearchViewController.xib */; };
+		7916EF172266C0EF00FB6721 /* ChannelCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF152266C0EF00FB6721 /* ChannelCardView.swift */; };
+		7916EF182266C0EF00FB6721 /* ChannelCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7916EF162266C0EF00FB6721 /* ChannelCardView.xib */; };
+		7916EF1B2266C1AD00FB6721 /* ChannelGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF192266C1AD00FB6721 /* ChannelGridViewController.swift */; };
+		7916EF1C2266C1AD00FB6721 /* ChannelGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7916EF1A2266C1AD00FB6721 /* ChannelGridViewController.xib */; };
+		7916EF1E2266EF3600FB6721 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF1D2266EF3600FB6721 /* NSColorExtension.swift */; };
+		7916EF202267012000FB6721 /* QueryLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF1F2267012000FB6721 /* QueryLineView.swift */; };
+		7916EF24226704AB00FB6721 /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF23226704AB00FB6721 /* NSViewExtension.swift */; };
+		7939584222674F90001FE58A /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939584122674F90001FE58A /* SearchBarView.swift */; };
+		7939584422675F06001FE58A /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939584322675F06001FE58A /* NSViewControllerExtension.swift */; };
+		79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79395845226764D8001FE58A /* LivePlayerViewController.swift */; };
+		79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79395846226764D8001FE58A /* LivePlayerViewController.xib */; };
+		7988F6B822689824002B5B9D /* AspectFitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7988F6B722689824002B5B9D /* AspectFitImageView.swift */; };
+		799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96022264AB54002C8FFA /* GridSectionHeader.swift */; };
+		799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799B96042264AB61002C8FFA /* GridSectionHeader.xib */; };
+		799B96072264AD8A002C8FFA /* LatestGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799B96062264AD8A002C8FFA /* LatestGridViewController.xib */; };
+		799B960E2264AF61002C8FFA /* ENV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B960B2264AF61002C8FFA /* ENV.swift */; };
+		799B96122264AF78002C8FFA /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96112264AF78002C8FFA /* Helpers.swift */; };
+		799B96202264AF7F002C8FFA /* Hot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96142264AF7E002C8FFA /* Hot.swift */; };
+		799B96212264AF7F002C8FFA /* CloudParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96152264AF7E002C8FFA /* CloudParse.swift */; };
+		799B96222264AF7F002C8FFA /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96162264AF7E002C8FFA /* Channel.swift */; };
+		799B96232264AF7F002C8FFA /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96172264AF7E002C8FFA /* Episode.swift */; };
+		799B96242264AF7F002C8FFA /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96182264AF7E002C8FFA /* Response.swift */; };
+		799B96252264AF7F002C8FFA /* OptionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96192264AF7E002C8FFA /* OptionSet.swift */; };
+		799B96262264AF7F002C8FFA /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B961A2264AF7E002C8FFA /* Ranking.swift */; };
+		799B96272264AF7F002C8FFA /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B961B2264AF7E002C8FFA /* Video.swift */; };
+		799B96282264AF7F002C8FFA /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B961C2264AF7E002C8FFA /* Topic.swift */; };
+		799B96292264AF7F002C8FFA /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B961E2264AF7F002C8FFA /* APIClient.swift */; };
+		799B962A2264AF7F002C8FFA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B961F2264AF7F002C8FFA /* Router.swift */; };
+		799B962D2264B080002C8FFA /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B962C2264B080002C8FFA /* StringExtension.swift */; };
+		799B962F2264B357002C8FFA /* NSImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B962E2264B357002C8FFA /* NSImageViewExtension.swift */; };
+		799FED7822655A8800BD5900 /* VideoGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799FED7622655A8800BD5900 /* VideoGridViewController.swift */; };
+		799FED7922655A8800BD5900 /* VideoGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799FED7722655A8800BD5900 /* VideoGridViewController.xib */; };
+		799FED7B2265685200BD5900 /* PPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799FED7A2265685200BD5900 /* PPButton.swift */; };
+		79D927A422657854009C446E /* QueryOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927A222657854009C446E /* QueryOptionView.swift */; };
+		79D927A522657854009C446E /* QueryOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927A322657854009C446E /* QueryOptionView.xib */; };
+		79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927A62265931A009C446E /* NSButtonExtension.swift */; };
+		79D927AF22659890009C446E /* AppWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927AD22659890009C446E /* AppWindowController.swift */; };
+		79D927B022659890009C446E /* AppWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927AE22659890009C446E /* AppWindowController.xib */; };
+		79D927B3226598AD009C446E /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927B1226598AD009C446E /* PlayerViewController.swift */; };
+		79D927B4226598AD009C446E /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927B2226598AD009C446E /* PlayerViewController.xib */; };
+		79D927B72265A73B009C446E /* EpisodeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927B52265A73B009C446E /* EpisodeItemView.swift */; };
+		79D927B82265A73B009C446E /* EpisodeItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927B62265A73B009C446E /* EpisodeItemView.xib */; };
+		79D927BB2265B97F009C446E /* VideoIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927B92265B97F009C446E /* VideoIntroView.swift */; };
+		79D927BC2265B97F009C446E /* VideoIntroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927BA2265B97F009C446E /* VideoIntroView.xib */; };
+		79E091042268013000219C87 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E091032268013000219C87 /* ContainerView.swift */; };
+		79E09107226835B000219C87 /* TopRatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E09105226835B000219C87 /* TopRatedViewController.swift */; };
+		79E09108226835B000219C87 /* TopRatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E09106226835B000219C87 /* TopRatedViewController.xib */; };
+		79E091122268474900219C87 /* SearchBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E091112268474900219C87 /* SearchBarView.xib */; };
+		79E0911922686AB200219C87 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0911722686AB200219C87 /* TopicsViewController.swift */; };
+		79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E0911822686AB200219C87 /* TopicsViewController.xib */; };
+		79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0911B226873A000219C87 /* DisablableScrollView.swift */; };
+		79FD5BF722647AC3009EDB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD5BF622647AC3009EDB9C /* AppDelegate.swift */; };
+		79FD5BF922647AC3009EDB9C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD5BF822647AC3009EDB9C /* RootViewController.swift */; };
+		79FD5BFB22647AC4009EDB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FD5BFA22647AC4009EDB9C /* Assets.xcassets */; };
+		79FD5BFE22647AC4009EDB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FD5BFC22647AC4009EDB9C /* Main.storyboard */; };
+		79FD5C0722648353009EDB9C /* LatestGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD5C0622648353009EDB9C /* LatestGridViewController.swift */; };
+		79FD5C0E22648A27009EDB9C /* VideoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD5C0C22648A27009EDB9C /* VideoCardView.swift */; };
+		79FD5C0F22648A27009EDB9C /* VideoCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FD5C0D22648A27009EDB9C /* VideoCardView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0762FFF90A53923C70174323 /* Pods-dogeTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dogeTV.debug.xcconfig"; path = "Target Support Files/Pods-dogeTV/Pods-dogeTV.debug.xcconfig"; sourceTree = "<group>"; };
+		7916EF112266BA1400FB6721 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		7916EF122266BA1400FB6721 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		7916EF152266C0EF00FB6721 /* ChannelCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCardView.swift; sourceTree = "<group>"; };
+		7916EF162266C0EF00FB6721 /* ChannelCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCardView.xib; sourceTree = "<group>"; };
+		7916EF192266C1AD00FB6721 /* ChannelGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelGridViewController.swift; sourceTree = "<group>"; };
+		7916EF1A2266C1AD00FB6721 /* ChannelGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelGridViewController.xib; sourceTree = "<group>"; };
+		7916EF1D2266EF3600FB6721 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
+		7916EF1F2267012000FB6721 /* QueryLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryLineView.swift; sourceTree = "<group>"; };
+		7916EF23226704AB00FB6721 /* NSViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewExtension.swift; sourceTree = "<group>"; };
+		7939584122674F90001FE58A /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		7939584322675F06001FE58A /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
+		79395845226764D8001FE58A /* LivePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePlayerViewController.swift; sourceTree = "<group>"; };
+		79395846226764D8001FE58A /* LivePlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LivePlayerViewController.xib; sourceTree = "<group>"; };
+		7988F6B722689824002B5B9D /* AspectFitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFitImageView.swift; sourceTree = "<group>"; };
+		799B96022264AB54002C8FFA /* GridSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSectionHeader.swift; sourceTree = "<group>"; };
+		799B96042264AB61002C8FFA /* GridSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridSectionHeader.xib; sourceTree = "<group>"; };
+		799B96062264AD8A002C8FFA /* LatestGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LatestGridViewController.xib; sourceTree = "<group>"; };
+		799B960B2264AF61002C8FFA /* ENV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENV.swift; sourceTree = "<group>"; };
+		799B96112264AF78002C8FFA /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		799B96142264AF7E002C8FFA /* Hot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hot.swift; sourceTree = "<group>"; };
+		799B96152264AF7E002C8FFA /* CloudParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudParse.swift; sourceTree = "<group>"; };
+		799B96162264AF7E002C8FFA /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		799B96172264AF7E002C8FFA /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		799B96182264AF7E002C8FFA /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		799B96192264AF7E002C8FFA /* OptionSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionSet.swift; sourceTree = "<group>"; };
+		799B961A2264AF7E002C8FFA /* Ranking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
+		799B961B2264AF7E002C8FFA /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		799B961C2264AF7E002C8FFA /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		799B961E2264AF7F002C8FFA /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		799B961F2264AF7F002C8FFA /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		799B962C2264B080002C8FFA /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		799B962E2264B357002C8FFA /* NSImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageViewExtension.swift; sourceTree = "<group>"; };
+		799FED7622655A8800BD5900 /* VideoGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGridViewController.swift; sourceTree = "<group>"; };
+		799FED7722655A8800BD5900 /* VideoGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoGridViewController.xib; sourceTree = "<group>"; };
+		799FED7A2265685200BD5900 /* PPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPButton.swift; sourceTree = "<group>"; };
+		79D927A222657854009C446E /* QueryOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionView.swift; sourceTree = "<group>"; };
+		79D927A322657854009C446E /* QueryOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryOptionView.xib; sourceTree = "<group>"; };
+		79D927A62265931A009C446E /* NSButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSButtonExtension.swift; sourceTree = "<group>"; };
+		79D927AD22659890009C446E /* AppWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWindowController.swift; sourceTree = "<group>"; };
+		79D927AE22659890009C446E /* AppWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppWindowController.xib; sourceTree = "<group>"; };
+		79D927B1226598AD009C446E /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		79D927B2226598AD009C446E /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		79D927B52265A73B009C446E /* EpisodeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeItemView.swift; sourceTree = "<group>"; };
+		79D927B62265A73B009C446E /* EpisodeItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeItemView.xib; sourceTree = "<group>"; };
+		79D927B92265B97F009C446E /* VideoIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoIntroView.swift; sourceTree = "<group>"; };
+		79D927BA2265B97F009C446E /* VideoIntroView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoIntroView.xib; sourceTree = "<group>"; };
+		79E091032268013000219C87 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		79E09105226835B000219C87 /* TopRatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedViewController.swift; sourceTree = "<group>"; };
+		79E09106226835B000219C87 /* TopRatedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopRatedViewController.xib; sourceTree = "<group>"; };
+		79E091112268474900219C87 /* SearchBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarView.xib; sourceTree = "<group>"; };
+		79E0911722686AB200219C87 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
+		79E0911822686AB200219C87 /* TopicsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicsViewController.xib; sourceTree = "<group>"; };
+		79E0911B226873A000219C87 /* DisablableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisablableScrollView.swift; sourceTree = "<group>"; };
+		79FD5BF322647AC3009EDB9C /* dogeTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dogeTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79FD5BF622647AC3009EDB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		79FD5BF822647AC3009EDB9C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		79FD5BFA22647AC4009EDB9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		79FD5BFD22647AC4009EDB9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		79FD5BFF22647AC4009EDB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79FD5C0022647AC4009EDB9C /* dogeTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dogeTV.entitlements; sourceTree = "<group>"; };
+		79FD5C0622648353009EDB9C /* LatestGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestGridViewController.swift; sourceTree = "<group>"; };
+		79FD5C0C22648A27009EDB9C /* VideoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCardView.swift; sourceTree = "<group>"; };
+		79FD5C0D22648A27009EDB9C /* VideoCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoCardView.xib; sourceTree = "<group>"; };
+		F26910516B8FE6E0B0C9D258 /* Pods_dogeTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dogeTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F418D3F66A0802301579C722 /* Pods-dogeTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dogeTV.release.xcconfig"; path = "Target Support Files/Pods-dogeTV/Pods-dogeTV.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		79FD5BF022647AC3009EDB9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59DBAE656258FC0986932945 /* Pods_dogeTV.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		799B96082264AE4A002C8FFA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				79FD5C0622648353009EDB9C /* LatestGridViewController.swift */,
+				799B96062264AD8A002C8FFA /* LatestGridViewController.xib */,
+				799FED7622655A8800BD5900 /* VideoGridViewController.swift */,
+				799FED7722655A8800BD5900 /* VideoGridViewController.xib */,
+				79D927B1226598AD009C446E /* PlayerViewController.swift */,
+				79D927B2226598AD009C446E /* PlayerViewController.xib */,
+				7916EF112266BA1400FB6721 /* SearchViewController.swift */,
+				7916EF122266BA1400FB6721 /* SearchViewController.xib */,
+				7916EF192266C1AD00FB6721 /* ChannelGridViewController.swift */,
+				7916EF1A2266C1AD00FB6721 /* ChannelGridViewController.xib */,
+				79395845226764D8001FE58A /* LivePlayerViewController.swift */,
+				79395846226764D8001FE58A /* LivePlayerViewController.xib */,
+				79E09105226835B000219C87 /* TopRatedViewController.swift */,
+				79E09106226835B000219C87 /* TopRatedViewController.xib */,
+				79E0911722686AB200219C87 /* TopicsViewController.swift */,
+				79E0911822686AB200219C87 /* TopicsViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		799B96092264AE53002C8FFA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				79FD5C0C22648A27009EDB9C /* VideoCardView.swift */,
+				79FD5C0D22648A27009EDB9C /* VideoCardView.xib */,
+				799B96022264AB54002C8FFA /* GridSectionHeader.swift */,
+				799B96042264AB61002C8FFA /* GridSectionHeader.xib */,
+				799FED7A2265685200BD5900 /* PPButton.swift */,
+				79D927A222657854009C446E /* QueryOptionView.swift */,
+				79D927A322657854009C446E /* QueryOptionView.xib */,
+				79D927B52265A73B009C446E /* EpisodeItemView.swift */,
+				79D927B62265A73B009C446E /* EpisodeItemView.xib */,
+				79D927B92265B97F009C446E /* VideoIntroView.swift */,
+				79D927BA2265B97F009C446E /* VideoIntroView.xib */,
+				7916EF152266C0EF00FB6721 /* ChannelCardView.swift */,
+				7916EF162266C0EF00FB6721 /* ChannelCardView.xib */,
+				7916EF1F2267012000FB6721 /* QueryLineView.swift */,
+				7939584122674F90001FE58A /* SearchBarView.swift */,
+				79E091032268013000219C87 /* ContainerView.swift */,
+				79E091112268474900219C87 /* SearchBarView.xib */,
+				79E0911B226873A000219C87 /* DisablableScrollView.swift */,
+				7988F6B722689824002B5B9D /* AspectFitImageView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		799B960A2264AF61002C8FFA /* ENV */ = {
+			isa = PBXGroup;
+			children = (
+				799B960B2264AF61002C8FFA /* ENV.swift */,
+			);
+			path = ENV;
+			sourceTree = "<group>";
+		};
+		799B96102264AF78002C8FFA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				799B96112264AF78002C8FFA /* Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		799B96132264AF7E002C8FFA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				799B96142264AF7E002C8FFA /* Hot.swift */,
+				799B96152264AF7E002C8FFA /* CloudParse.swift */,
+				799B96162264AF7E002C8FFA /* Channel.swift */,
+				799B96172264AF7E002C8FFA /* Episode.swift */,
+				799B96182264AF7E002C8FFA /* Response.swift */,
+				799B96192264AF7E002C8FFA /* OptionSet.swift */,
+				799B961A2264AF7E002C8FFA /* Ranking.swift */,
+				799B961B2264AF7E002C8FFA /* Video.swift */,
+				799B961C2264AF7E002C8FFA /* Topic.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		799B961D2264AF7F002C8FFA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				799B961E2264AF7F002C8FFA /* APIClient.swift */,
+				799B961F2264AF7F002C8FFA /* Router.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		799B962B2264B076002C8FFA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				799B962C2264B080002C8FFA /* StringExtension.swift */,
+				799B962E2264B357002C8FFA /* NSImageViewExtension.swift */,
+				79D927A62265931A009C446E /* NSButtonExtension.swift */,
+				7916EF1D2266EF3600FB6721 /* NSColorExtension.swift */,
+				7916EF23226704AB00FB6721 /* NSViewExtension.swift */,
+				7939584322675F06001FE58A /* NSViewControllerExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		79D927A8226597F5009C446E /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				79D927AD22659890009C446E /* AppWindowController.swift */,
+				79D927AE22659890009C446E /* AppWindowController.xib */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		79FD5BEA22647AC3009EDB9C = {
+			isa = PBXGroup;
+			children = (
+				79FD5BF522647AC3009EDB9C /* dogeTV */,
+				79FD5BF422647AC3009EDB9C /* Products */,
+				FFA148131426C1C531A20EFC /* Pods */,
+				E0CC786C672A53CA64E3B4E2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		79FD5BF422647AC3009EDB9C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				79FD5BF322647AC3009EDB9C /* dogeTV.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		79FD5BF522647AC3009EDB9C /* dogeTV */ = {
+			isa = PBXGroup;
+			children = (
+				79D927A8226597F5009C446E /* Window */,
+				799B962B2264B076002C8FFA /* Extension */,
+				799B96132264AF7E002C8FFA /* Models */,
+				799B961D2264AF7F002C8FFA /* Network */,
+				799B96102264AF78002C8FFA /* Helpers */,
+				799B960A2264AF61002C8FFA /* ENV */,
+				799B96092264AE53002C8FFA /* Components */,
+				799B96082264AE4A002C8FFA /* Controllers */,
+				79FD5BF622647AC3009EDB9C /* AppDelegate.swift */,
+				79FD5BF822647AC3009EDB9C /* RootViewController.swift */,
+				79FD5BFA22647AC4009EDB9C /* Assets.xcassets */,
+				79FD5BFC22647AC4009EDB9C /* Main.storyboard */,
+				79FD5BFF22647AC4009EDB9C /* Info.plist */,
+				79FD5C0022647AC4009EDB9C /* dogeTV.entitlements */,
+			);
+			path = dogeTV;
+			sourceTree = "<group>";
+		};
+		E0CC786C672A53CA64E3B4E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F26910516B8FE6E0B0C9D258 /* Pods_dogeTV.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFA148131426C1C531A20EFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0762FFF90A53923C70174323 /* Pods-dogeTV.debug.xcconfig */,
+				F418D3F66A0802301579C722 /* Pods-dogeTV.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		79FD5BF222647AC3009EDB9C /* dogeTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79FD5C0322647AC4009EDB9C /* Build configuration list for PBXNativeTarget "dogeTV" */;
+			buildPhases = (
+				7C11BF48DDB1849C9CA5952A /* [CP] Check Pods Manifest.lock */,
+				79FD5BEF22647AC3009EDB9C /* Sources */,
+				79FD5BF022647AC3009EDB9C /* Frameworks */,
+				79FD5BF122647AC3009EDB9C /* Resources */,
+				21629770B55EFCE27BCCA014 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = dogeTV;
+			productName = dogeTV;
+			productReference = 79FD5BF322647AC3009EDB9C /* dogeTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		79FD5BEB22647AC3009EDB9C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Popeye Lau";
+				TargetAttributes = {
+					79FD5BF222647AC3009EDB9C = {
+						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 79FD5BEE22647AC3009EDB9C /* Build configuration list for PBXProject "dogeTV" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 79FD5BEA22647AC3009EDB9C;
+			productRefGroup = 79FD5BF422647AC3009EDB9C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				79FD5BF222647AC3009EDB9C /* dogeTV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		79FD5BF122647AC3009EDB9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79FD5C0F22648A27009EDB9C /* VideoCardView.xib in Resources */,
+				7916EF182266C0EF00FB6721 /* ChannelCardView.xib in Resources */,
+				79FD5BFB22647AC4009EDB9C /* Assets.xcassets in Resources */,
+				7916EF142266BA1400FB6721 /* SearchViewController.xib in Resources */,
+				7916EF1C2266C1AD00FB6721 /* ChannelGridViewController.xib in Resources */,
+				79D927B4226598AD009C446E /* PlayerViewController.xib in Resources */,
+				799FED7922655A8800BD5900 /* VideoGridViewController.xib in Resources */,
+				79D927A522657854009C446E /* QueryOptionView.xib in Resources */,
+				79D927B022659890009C446E /* AppWindowController.xib in Resources */,
+				799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */,
+				79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */,
+				79FD5BFE22647AC4009EDB9C /* Main.storyboard in Resources */,
+				799B96072264AD8A002C8FFA /* LatestGridViewController.xib in Resources */,
+				79E091122268474900219C87 /* SearchBarView.xib in Resources */,
+				79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */,
+				79E09108226835B000219C87 /* TopRatedViewController.xib in Resources */,
+				79D927BC2265B97F009C446E /* VideoIntroView.xib in Resources */,
+				79D927B82265A73B009C446E /* EpisodeItemView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21629770B55EFCE27BCCA014 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dogeTV/Pods-dogeTV-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dogeTV/Pods-dogeTV-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dogeTV/Pods-dogeTV-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C11BF48DDB1849C9CA5952A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dogeTV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		79FD5BEF22647AC3009EDB9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				799B96232264AF7F002C8FFA /* Episode.swift in Sources */,
+				799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */,
+				799B96222264AF7F002C8FFA /* Channel.swift in Sources */,
+				799B96262264AF7F002C8FFA /* Ranking.swift in Sources */,
+				79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */,
+				79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */,
+				799B960E2264AF61002C8FFA /* ENV.swift in Sources */,
+				79D927B72265A73B009C446E /* EpisodeItemView.swift in Sources */,
+				7939584422675F06001FE58A /* NSViewControllerExtension.swift in Sources */,
+				799B962A2264AF7F002C8FFA /* Router.swift in Sources */,
+				79D927B3226598AD009C446E /* PlayerViewController.swift in Sources */,
+				799B96122264AF78002C8FFA /* Helpers.swift in Sources */,
+				7939584222674F90001FE58A /* SearchBarView.swift in Sources */,
+				799FED7B2265685200BD5900 /* PPButton.swift in Sources */,
+				799B96242264AF7F002C8FFA /* Response.swift in Sources */,
+				79D927AF22659890009C446E /* AppWindowController.swift in Sources */,
+				79D927BB2265B97F009C446E /* VideoIntroView.swift in Sources */,
+				7916EF1E2266EF3600FB6721 /* NSColorExtension.swift in Sources */,
+				7988F6B822689824002B5B9D /* AspectFitImageView.swift in Sources */,
+				7916EF24226704AB00FB6721 /* NSViewExtension.swift in Sources */,
+				79FD5C0722648353009EDB9C /* LatestGridViewController.swift in Sources */,
+				79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */,
+				799B96212264AF7F002C8FFA /* CloudParse.swift in Sources */,
+				79E0911922686AB200219C87 /* TopicsViewController.swift in Sources */,
+				799B96252264AF7F002C8FFA /* OptionSet.swift in Sources */,
+				79FD5BF922647AC3009EDB9C /* RootViewController.swift in Sources */,
+				79E09107226835B000219C87 /* TopRatedViewController.swift in Sources */,
+				7916EF172266C0EF00FB6721 /* ChannelCardView.swift in Sources */,
+				79FD5C0E22648A27009EDB9C /* VideoCardView.swift in Sources */,
+				799B96272264AF7F002C8FFA /* Video.swift in Sources */,
+				79FD5BF722647AC3009EDB9C /* AppDelegate.swift in Sources */,
+				799FED7822655A8800BD5900 /* VideoGridViewController.swift in Sources */,
+				79D927A422657854009C446E /* QueryOptionView.swift in Sources */,
+				799B96202264AF7F002C8FFA /* Hot.swift in Sources */,
+				7916EF1B2266C1AD00FB6721 /* ChannelGridViewController.swift in Sources */,
+				799B962D2264B080002C8FFA /* StringExtension.swift in Sources */,
+				79E091042268013000219C87 /* ContainerView.swift in Sources */,
+				799B962F2264B357002C8FFA /* NSImageViewExtension.swift in Sources */,
+				799B96282264AF7F002C8FFA /* Topic.swift in Sources */,
+				799B96292264AF7F002C8FFA /* APIClient.swift in Sources */,
+				7916EF132266BA1400FB6721 /* SearchViewController.swift in Sources */,
+				7916EF202267012000FB6721 /* QueryLineView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		79FD5BFC22647AC4009EDB9C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79FD5BFD22647AC4009EDB9C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		79FD5C0122647AC4009EDB9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		79FD5C0222647AC4009EDB9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		79FD5C0422647AC4009EDB9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0762FFF90A53923C70174323 /* Pods-dogeTV.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = dogeTV/dogeTV.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 983GE8X6R9;
+				INFOPLIST_FILE = dogeTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.popeye.dogeTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		79FD5C0522647AC4009EDB9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F418D3F66A0802301579C722 /* Pods-dogeTV.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = dogeTV/dogeTV.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 983GE8X6R9;
+				INFOPLIST_FILE = dogeTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.popeye.dogeTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		79FD5BEE22647AC3009EDB9C /* Build configuration list for PBXProject "dogeTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79FD5C0122647AC4009EDB9C /* Debug */,
+				79FD5C0222647AC4009EDB9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79FD5C0322647AC4009EDB9C /* Build configuration list for PBXNativeTarget "dogeTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79FD5C0422647AC4009EDB9C /* Debug */,
+				79FD5C0522647AC4009EDB9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 79FD5BEB22647AC3009EDB9C /* Project object */;
+}

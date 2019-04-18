@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PlayerViewController" customModule="dogeTV" customModuleProvider="target">
+            <connections>
+                <outlet property="avPlayer" destination="XwL-ZG-e8o" id="HYf-pq-TI5"/>
+                <outlet property="collectionView" destination="Ezh-Ky-S76" id="fBv-EW-Mbg"/>
+                <outlet property="episodePanel" destination="S3x-IG-NhB" id="lY6-at-xMQ"/>
+                <outlet property="episodePanelWidth" destination="8Fd-HT-nZ0" id="rDO-4O-u7A"/>
+                <outlet property="incdicatorView" destination="h6a-Wb-6gi" id="euo-Ou-AUJ"/>
+                <outlet property="titleLabel" destination="coZ-Av-RIg" id="s4u-3Y-0Mc"/>
+                <outlet property="toggleBtn" destination="rLP-zM-XID" id="aSO-KI-HFF"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="722" height="533"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <avPlayerView controlsStyle="inline" showsFrameSteppingButtons="YES" showsFullScreenToggleButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwL-ZG-e8o">
+                    <rect key="frame" x="0.0" y="0.0" width="322" height="498"/>
+                </avPlayerView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="bUp-vx-1e3">
+                    <rect key="frame" x="0.0" y="498" width="722" height="35"/>
+                    <subviews>
+                        <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="MT3-oh-qBR">
+                            <rect key="frame" x="0.0" y="0.0" width="722" height="35"/>
+                        </visualEffectView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="coZ-Av-RIg">
+                            <rect key="frame" x="339" y="8" width="44" height="19"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="4dQ-pq-1Fr">
+                                <font key="font" metaFont="system" size="16"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="coZ-Av-RIg" secondAttribute="bottom" constant="8" id="792-Rj-MvB"/>
+                        <constraint firstItem="coZ-Av-RIg" firstAttribute="top" secondItem="bUp-vx-1e3" secondAttribute="top" constant="8" id="AXV-cd-2HY"/>
+                        <constraint firstAttribute="right" secondItem="MT3-oh-qBR" secondAttribute="right" id="LJ9-9i-hQo"/>
+                        <constraint firstAttribute="bottom" secondItem="MT3-oh-qBR" secondAttribute="bottom" id="ShF-lW-ud5"/>
+                        <constraint firstItem="MT3-oh-qBR" firstAttribute="top" secondItem="bUp-vx-1e3" secondAttribute="top" id="SuC-jF-GXn"/>
+                        <constraint firstItem="MT3-oh-qBR" firstAttribute="leading" secondItem="bUp-vx-1e3" secondAttribute="leading" id="kCY-CM-8jQ"/>
+                        <constraint firstItem="coZ-Av-RIg" firstAttribute="centerX" secondItem="bUp-vx-1e3" secondAttribute="centerX" id="u8m-jd-5mo"/>
+                    </constraints>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="ort-Os-Zud">
+                    <rect key="frame" x="322" y="0.0" width="400" height="498"/>
+                    <subviews>
+                        <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3x-IG-NhB">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="498"/>
+                            <clipView key="contentView" copiesOnScroll="NO" id="cGh-GF-g8C">
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="498"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <collectionView selectable="YES" id="Ezh-Ky-S76">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="498"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="5" minimumLineSpacing="5" sectionHeadersPinToVisibleBounds="YES" id="GjE-i1-Ebv">
+                                            <size key="itemSize" width="90" height="30"/>
+                                            <size key="headerReferenceSize" width="0.0" height="40"/>
+                                            <edgeInsets key="sectionInset" left="5" right="5" top="5" bottom="5"/>
+                                        </collectionViewFlowLayout>
+                                        <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="-2" id="wQh-Bc-0Ww"/>
+                                            <outlet property="delegate" destination="-2" id="8Jp-mI-Htl"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="0.22187063547486033" colorSpace="custom" customColorSpace="sRGB"/>
+                            </clipView>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="400" id="8Fd-HT-nZ0"/>
+                            </constraints>
+                            <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="9Mh-lV-34F">
+                                <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                            <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="cgn-dK-Ttz">
+                                <rect key="frame" x="384" y="0.0" width="16" height="487"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                        </scrollView>
+                        <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="h6a-Wb-6gi">
+                            <rect key="frame" x="184" y="233" width="32" height="32"/>
+                        </progressIndicator>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="h6a-Wb-6gi" firstAttribute="centerX" secondItem="S3x-IG-NhB" secondAttribute="centerX" id="Jwf-tD-JgV"/>
+                        <constraint firstItem="S3x-IG-NhB" firstAttribute="leading" secondItem="ort-Os-Zud" secondAttribute="leading" id="Kte-9G-Vyn"/>
+                        <constraint firstAttribute="bottom" secondItem="S3x-IG-NhB" secondAttribute="bottom" id="XLM-bK-W5c"/>
+                        <constraint firstAttribute="trailing" secondItem="S3x-IG-NhB" secondAttribute="trailing" id="ZSb-cq-VGz"/>
+                        <constraint firstItem="h6a-Wb-6gi" firstAttribute="centerY" secondItem="S3x-IG-NhB" secondAttribute="centerY" id="oeO-N1-AOk"/>
+                    </constraints>
+                </customView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rLP-zM-XID">
+                    <rect key="frame" x="305" y="199" width="17" height="100"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toggle_off" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="YSn-eS-s77">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggleEpisodePanel:" target="-2" id="Y49-1p-BBn"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="bUp-vx-1e3" secondAttribute="trailing" id="37k-8K-ft7"/>
+                <constraint firstAttribute="bottom" secondItem="XwL-ZG-e8o" secondAttribute="bottom" id="7GU-we-FGY"/>
+                <constraint firstItem="rLP-zM-XID" firstAttribute="centerY" secondItem="Ezh-Ky-S76" secondAttribute="centerY" id="Br6-hc-ufM"/>
+                <constraint firstAttribute="bottom" secondItem="ort-Os-Zud" secondAttribute="bottom" id="JCC-o1-RCu"/>
+                <constraint firstItem="XwL-ZG-e8o" firstAttribute="top" secondItem="bUp-vx-1e3" secondAttribute="bottom" id="USQ-g2-1CZ"/>
+                <constraint firstItem="S3x-IG-NhB" firstAttribute="top" secondItem="bUp-vx-1e3" secondAttribute="bottom" id="Vea-YQ-0L5"/>
+                <constraint firstItem="bUp-vx-1e3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="WTu-fP-Iyo"/>
+                <constraint firstItem="ort-Os-Zud" firstAttribute="leading" secondItem="XwL-ZG-e8o" secondAttribute="trailing" id="Yrb-3B-QtG"/>
+                <constraint firstAttribute="trailing" secondItem="ort-Os-Zud" secondAttribute="trailing" id="aYk-QP-nq5"/>
+                <constraint firstItem="bUp-vx-1e3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="bE7-ED-54q"/>
+                <constraint firstItem="XwL-ZG-e8o" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="hEm-sb-NwN"/>
+                <constraint firstItem="Ezh-Ky-S76" firstAttribute="leading" secondItem="rLP-zM-XID" secondAttribute="trailing" id="rnl-II-FPy"/>
+                <constraint firstItem="ort-Os-Zud" firstAttribute="top" secondItem="bUp-vx-1e3" secondAttribute="bottom" id="rr5-Lt-j3g"/>
+            </constraints>
+            <point key="canvasLocation" x="260" y="284.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="toggle_off" width="17" height="100"/>
+    </resources>
+</document>
