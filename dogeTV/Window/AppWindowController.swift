@@ -10,8 +10,6 @@ import Cocoa
 
 class AppWindowController: NSWindowController {
 
-    var videDetail: VideoDetail?
-    var episodes: [Episode]?
 
     var content: NSViewController?
     
@@ -20,7 +18,6 @@ class AppWindowController: NSWindowController {
     }
 
     func show(from: NSWindow? = nil) {
-        //window?.backgroundColor = NSColor.black
         window?.isMovableByWindowBackground = true
         contentViewController = content
         if let from = from {
