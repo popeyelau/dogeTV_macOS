@@ -34,8 +34,7 @@ class SearchViewController: NSViewController {
         pageIndex = 1
         self.keywords = keywords
         if !isViewLoaded { return }
-        if let url = URL(string: keywords) {
-            isCloudParse = true
+        if keywords.hasPrefix("http"), let url = URL(string: keywords) {
             parse(url: url)
             return
         }
@@ -105,9 +104,7 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
 
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         if isCloudParse {
-            guard let title = parseResult?.episodes[indexPath.item].title else { return .zero }
-            let width = title.widthOfString(usingFont: .systemFont(ofSize: 14)) + 20
-            return NSSize(width: width, height: 30)
+            return NSSize(width: 120, height: 30)
         }
         return VideoCardView.itemSize
     }
@@ -125,6 +122,7 @@ extension SearchViewController {
                 print(error)
                 self.showError(error)
             }).finally {
+                self.isCloudParse = false
                 self.pageIndex = 1
                 self.collectionView.reloadData()
                 self.indicatorView.isHidden = true
@@ -142,6 +140,7 @@ extension SearchViewController {
                 self.results.append(contentsOf: items)
             }.catch({ (error) in
                 self.pageIndex = max(1, self.pageIndex-1)
+                self.isNoMoreData = true
                 print(error)
                 self.showError(error)
             }).finally {
@@ -159,6 +158,7 @@ extension SearchViewController {
                 print(error)
                 self.showError(error)
             }).finally {
+                self.isCloudParse = true
                 self.collectionView.reloadData()
                 self.indicatorView.isHidden = true
                 self.indicatorView.stopAnimation(nil)

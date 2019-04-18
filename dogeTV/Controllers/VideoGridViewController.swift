@@ -34,8 +34,6 @@ class VideoGridViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        queryPanel.wantsLayer = true
-        queryPanel.layer?.backgroundColor = NSColor(srgbRed:0.31, green:0.31, blue:0.33, alpha:1.00).cgColor
 
         if let clipView = collectionView.superview, let scrollView = clipView.superview as? NSScrollView{
             let contentView = scrollView.contentView

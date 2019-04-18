@@ -33,11 +33,12 @@ extension NSViewController {
     }
 
     func showError(_ error: Error) {
+        /*
         let alert: NSAlert = NSAlert()
         alert.messageText = "出错啦"
         alert.informativeText = error.localizedDescription
         alert.alertStyle = .warning
         alert.addButton(withTitle: "OK")
-        alert.runModal()
+        alert.runModal()*/
     }
 }

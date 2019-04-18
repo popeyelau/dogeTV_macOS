@@ -51,13 +51,13 @@
                     </scroller>
                 </scrollView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="O3B-hc-3yh" userLabel="Query Panel">
-                    <rect key="frame" x="0.0" y="397" width="480" height="0.0"/>
+                    <rect key="frame" x="20" y="397" width="440" height="0.0"/>
                     <subviews>
                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ukb-bH-Kap">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="0.0"/>
+                            <rect key="frame" x="0.0" y="0.0" width="440" height="0.0"/>
                         </stackView>
                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OUs-67-usV">
-                            <rect key="frame" x="280" y="-32" width="180" height="24"/>
+                            <rect key="frame" x="240" y="-32" width="180" height="24"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ez0-NS-P8R">
                                     <rect key="frame" x="0.0" y="0.0" width="85" height="24"/>
@@ -109,11 +109,11 @@
                 <constraint firstItem="HIk-PW-2de" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Fjb-5g-ouY"/>
                 <constraint firstItem="O3B-hc-3yh" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="SvH-hy-qv0"/>
                 <constraint firstItem="wCy-Nr-iz4" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Zi3-V5-ZLs"/>
-                <constraint firstAttribute="trailing" secondItem="O3B-hc-3yh" secondAttribute="trailing" id="coR-gF-vY9"/>
+                <constraint firstAttribute="trailing" secondItem="O3B-hc-3yh" secondAttribute="trailing" constant="20" id="coR-gF-vY9"/>
                 <constraint firstAttribute="trailing" secondItem="HIk-PW-2de" secondAttribute="trailing" id="hsg-c4-i49"/>
                 <constraint firstItem="HIk-PW-2de" firstAttribute="top" secondItem="O3B-hc-3yh" secondAttribute="bottom" id="m5n-Zg-hLs"/>
                 <constraint firstAttribute="bottom" secondItem="HIk-PW-2de" secondAttribute="bottom" id="oVG-XE-UDa"/>
-                <constraint firstItem="O3B-hc-3yh" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="p07-5q-XSO"/>
+                <constraint firstItem="O3B-hc-3yh" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="p07-5q-XSO"/>
             </constraints>
             <point key="canvasLocation" x="139" y="153.5"/>
         </customView>

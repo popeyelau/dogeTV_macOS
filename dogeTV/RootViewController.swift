@@ -23,7 +23,8 @@ class RootViewController: NSViewController {
     @IBOutlet weak var cartoonBtn: PPButton!
     @IBOutlet weak var documentaryBtn: PPButton!
     @IBOutlet weak var liveBtn: PPButton!
-    
+    @IBOutlet weak var homeBtn: NSButton!
+
     var mapping: [String: Initializable] = [:]
     var activiedController: NSViewController?
     
@@ -48,6 +49,9 @@ class RootViewController: NSViewController {
         searchBarView.onSearchAction = { [weak self] keywords in
             self?.onSearch(keywords: keywords)
         }
+
+        let trackingArea = NSTrackingArea(rect: homeBtn.bounds, options: [.mouseEnteredAndExited, .activeAlways], owner: self, userInfo: nil)
+        homeBtn.addTrackingArea(trackingArea)
     }
     
     @objc func handleMoreNotification(_ notify: Notification) {
@@ -61,6 +65,14 @@ class RootViewController: NSViewController {
         case .cartoon: menuBtnClicked(cartoonBtn)
         case .documentary: menuBtnClicked(documentaryBtn)
         }
+    }
+
+    override func mouseEntered(with event: NSEvent) {
+        homeBtn.rotate360Degrees()
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        homeBtn.rotate360Degrees()
     }
     
     func showTopRated() {

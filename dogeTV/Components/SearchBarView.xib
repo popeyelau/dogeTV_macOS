@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SearchBarView" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="c22-O7-iKe" id="UAA-ox-8au"/>
+                <outlet property="searchBtn" destination="CWk-Wv-vxl" id="mLA-eg-LLr"/>
                 <outlet property="textField" destination="oQ9-G3-Qg8" id="gHL-Bc-PDl"/>
             </connections>
         </customObject>
@@ -34,7 +35,7 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <color key="contentTintColor" red="0.99898093938827515" green="0.60007971525192261" blue="0.0029565517324954271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                     <connections>
                         <action selector="searchAction:" target="-2" id="XI9-kR-CBJ"/>
                     </connections>

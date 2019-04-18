@@ -34,3 +34,19 @@ extension LoadableNib where Self: NSView {
     }
 }
 
+
+
+extension NSView {
+    func rotate360Degrees(duration: CFTimeInterval = 1.0, completionDelegate: CAAnimationDelegate? = nil) {
+        let rotate = CABasicAnimation(keyPath: "transform.rotation")
+        if let delegate = completionDelegate {
+            rotate.delegate = delegate
+        }
+        rotate.fromValue = 0.0
+        rotate.toValue = CGFloat(.pi * 2.0)
+        rotate.duration = duration
+        self.layer?.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        self.layer?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.layer?.add(rotate, forKey: nil)
+    }
+}

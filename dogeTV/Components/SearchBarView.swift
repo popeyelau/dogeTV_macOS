@@ -13,6 +13,7 @@ class SearchBarView: NSView, LoadableNib {
     @IBOutlet var contentView: NSView!
     @IBOutlet weak var textField: NSTextField!
 
+    @IBOutlet weak var searchBtn: NSButton!
     var onSearchAction: ((String) -> Void)?
     var onTopRatedAction: (() -> Void)?
 
@@ -55,5 +56,6 @@ class SearchBarView: NSView, LoadableNib {
         textField.backgroundColor = .clear
         let attr = NSAttributedString(string: "搜索电影/演员/导演/视频云解析", attributes: [.foregroundColor: NSColor.lightGray, .font: textField.font!])
         textField.placeholderAttributedString = attr
+        searchBtn.contentTintColor = .primaryColor
     }
 }
