@@ -7,7 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TopRatedViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
-                <outlet property="incdicatorView" destination="lad-xK-rwz" id="smZ-gt-1Bm"/>
+                <outlet property="indicatorView" destination="lad-xK-rwz" id="smZ-gt-1Bm"/>
                 <outlet property="segmentCtrl" destination="PWQ-Oi-K0W" id="Lfn-P1-Pjp"/>
                 <outlet property="tableView" destination="lA3-yv-gp5" id="ZDT-Bp-MwC"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -79,7 +79,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="RQQ-oL-9uO">
-                                                <rect key="frame" x="80.5" y="1" width="210" height="17"/>
+                                                <rect key="frame" x="81" y="1" width="210" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nk3-lB-maP">
@@ -238,7 +238,7 @@
                             </tableView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="lKc-Ad-Txn">
+                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.99011857707509876" horizontal="YES" id="lKc-Ad-Txn">
                         <rect key="frame" x="1" y="243" width="626" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -251,7 +251,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lad-xK-rwz" userLabel="incdicatorView">
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lad-xK-rwz" userLabel="indicatorView">
                     <rect key="frame" x="314" y="149" width="32" height="32"/>
                 </progressIndicator>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PWQ-Oi-K0W">

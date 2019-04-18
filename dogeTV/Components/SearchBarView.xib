@@ -41,7 +41,7 @@
                 </button>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oQ9-G3-Qg8">
                     <rect key="frame" x="12" y="11" width="379" height="18"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" alignment="left" placeholderString="搜索电影/演员/导演" drawsBackground="YES" id="dxw-RC-gf1">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" placeholderString="搜索电影/演员/导演" drawsBackground="YES" id="dxw-RC-gf1">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

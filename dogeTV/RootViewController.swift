@@ -7,16 +7,7 @@
 //
 
 import Cocoa
-protocol Initializable where Self: NSViewController {
-//    var view: NSView { get set }
-//    init()
-}
-
-extension ChannelGridViewController: Initializable {}
-extension VideoGridViewController: Initializable {}
-extension LatestGridViewController: Initializable {}
-extension SearchViewController: Initializable {}
-
+protocol Initializable where Self: NSViewController {}
 
 class RootViewController: NSViewController {
     

@@ -12,7 +12,7 @@
                 <outlet property="collectionView" destination="Ezh-Ky-S76" id="fBv-EW-Mbg"/>
                 <outlet property="episodePanel" destination="S3x-IG-NhB" id="lY6-at-xMQ"/>
                 <outlet property="episodePanelWidth" destination="8Fd-HT-nZ0" id="rDO-4O-u7A"/>
-                <outlet property="incdicatorView" destination="h6a-Wb-6gi" id="euo-Ou-AUJ"/>
+                <outlet property="indicatorView" destination="h6a-Wb-6gi" id="euo-Ou-AUJ"/>
                 <outlet property="titleLabel" destination="coZ-Av-RIg" id="s4u-3Y-0Mc"/>
                 <outlet property="toggleBtn" destination="rLP-zM-XID" id="aSO-KI-HFF"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -67,7 +67,7 @@
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="5" minimumLineSpacing="5" sectionHeadersPinToVisibleBounds="YES" id="GjE-i1-Ebv">
                                             <size key="itemSize" width="90" height="30"/>
                                             <size key="headerReferenceSize" width="0.0" height="40"/>
-                                            <edgeInsets key="sectionInset" left="5" right="5" top="5" bottom="5"/>
+                                            <edgeInsets key="sectionInset" left="20" right="20" top="5" bottom="5"/>
                                         </collectionViewFlowLayout>
                                         <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         <connections>

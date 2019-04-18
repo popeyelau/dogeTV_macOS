@@ -12,40 +12,17 @@ import PromiseKit
 class TopicsViewController: NSViewController, Initializable {
 
     var topics: [TopicDetail] = []
-    @IBOutlet weak var incdicatorView: NSProgressIndicator!
+    @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var collectionView: NSCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         refresh()
         // Do view setup here.
     }
-    
-    func showVideo(id: String) {
-        incdicatorView.isHidden = false
-        incdicatorView.startAnimation(nil)
-        attempt(maximumRetryCount: 3) {
-            when(fulfilled: APIClient.fetchVideo(id: id),
-                 APIClient.fetchEpisodes(id: id))
-            }.done { detail, episodes in
-                let window = AppWindowController(windowNibName: "AppWindowController")
-                let content = PlayerViewController()
-                content.videDetail = detail
-                content.episodes = episodes
-                window.content = content
-                window.show(from:self.view.window)
-            }.catch{ error in
-                print(error)
-            }.finally {
-                self.incdicatorView.stopAnimation(nil)
-                self.incdicatorView.isHidden = true
-        }
-    }
-    
 }
 
 
 extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataSource {
-    
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return topics.count
     }
@@ -72,7 +49,7 @@ extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataS
         guard let indexPath = indexPaths.first else { return }
         collectionView.deselectItems(at: indexPaths)
         let video = topics[indexPath.section].items[indexPath.item]
-        showVideo(id: video.id)
+        showVideo(id: video.id, indicatorView: indicatorView)
     }
 }
 
@@ -85,6 +62,7 @@ extension TopicsViewController {
             }
             }.catch({ (error) in
                 print(error)
+                self.showError(error)
             }).finally {
         }
     }

@@ -11,7 +11,7 @@ import PromiseKit
 
 class ChannelGridViewController: NSViewController{
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet weak var incdicatorView: NSProgressIndicator!
+    @IBOutlet weak var indicatorView: NSProgressIndicator!
     var channelGroups: [ChannelGroup] = []
     var location: TV = .hwtv
 
@@ -66,17 +66,20 @@ extension ChannelGridViewController: NSCollectionViewDelegate, NSCollectionViewD
 
 extension ChannelGridViewController {
     func refresh() {
-        incdicatorView.isHidden = true
-        incdicatorView.stopAnimation(nil)
+        indicatorView.isHidden = true
+        indicatorView.stopAnimation(nil)
         _ = APIClient.fetchTV(location).done { (groups) in
             self.channelGroups = groups
             }.catch({ (error) in
                 print(error)
+                self.showError(error)
             }).finally {
                 self.collectionView.reloadData()
-                self.incdicatorView.isHidden = true
-                self.incdicatorView.stopAnimation(nil)
+                self.indicatorView.isHidden = true
+                self.indicatorView.stopAnimation(nil)
         }
     }
   
 }
+
+extension ChannelGridViewController: Initializable {}

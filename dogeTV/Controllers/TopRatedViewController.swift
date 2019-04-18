@@ -24,7 +24,7 @@ class TopRatedViewController: NSViewController {
     var list: [Ranking] = []
     var category: Category = .film
     @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet weak var incdicatorView: NSProgressIndicator!
+    @IBOutlet weak var indicatorView: NSProgressIndicator!
     override func viewDidLoad() {
         super.viewDidLoad()
         refresh()
@@ -41,7 +41,7 @@ class TopRatedViewController: NSViewController {
     @objc func tableViewDoubleAction(_ sender: NSTableView) {
         guard tableView.clickedRow != -1 else { return }
         let selected = list[tableView.clickedRow]
-        showVideo(id: selected.id)
+        showVideo(id: selected.id, indicatorView: indicatorView)
     }
     @IBAction func segmentIndexChanged(_ sender: NSSegmentedControl) {
         category = Category(rawValue: sender.selectedSegment) ?? .film
@@ -78,43 +78,23 @@ extension TopRatedViewController: NSTableViewDataSource, NSTableViewDelegate {
         cell.textField?.textColor = textColor
         return cell
     }
-
-    func showVideo(id: String) {
-        incdicatorView.isHidden = false
-        incdicatorView.startAnimation(nil)
-        attempt(maximumRetryCount: 3) {
-            when(fulfilled: APIClient.fetchVideo(id: id),
-                 APIClient.fetchEpisodes(id: id))
-            }.done { detail, episodes in
-                let window = AppWindowController(windowNibName: "AppWindowController")
-                let content = PlayerViewController()
-                content.videDetail = detail
-                content.episodes = episodes
-                window.content = content
-                window.show(from:self.view.window)
-            }.catch{ error in
-                print(error)
-            }.finally {
-                self.incdicatorView.stopAnimation(nil)
-                self.incdicatorView.isHidden = true
-        }
-    }
 }
 
 extension TopRatedViewController {
     func refresh() {
-        incdicatorView.isHidden = false
-        incdicatorView.startAnimation(nil)
+        indicatorView.isHidden = false
+        indicatorView.startAnimation(nil)
         attempt(maximumRetryCount: 3) {
             APIClient.fetchRankList(category: self.category)
             }.done { (list) in
                 self.list = list
             }.catch({ (error) in
                 print(error)
+                self.showError(error)
             }).finally {
                 self.tableView.reloadData()
-                self.incdicatorView.stopAnimation(nil)
-                self.incdicatorView.isHidden = true
+                self.indicatorView.stopAnimation(nil)
+                self.indicatorView.isHidden = true
                 self.tableView.scrollToVisible(.zero)
         }
     }

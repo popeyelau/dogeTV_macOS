@@ -14,7 +14,7 @@ class VideoGridViewController: NSViewController {
     @IBOutlet weak var queryPanel: NSView!
     @IBOutlet weak var queryStack: NSStackView!
     
-    @IBOutlet weak var incdicatorView: NSProgressIndicator!
+    @IBOutlet weak var indicatorView: NSProgressIndicator!
     var category: Category? = .film
     var isDouban: Bool = false
     var pageIndex: Int = 1
@@ -76,28 +76,6 @@ class VideoGridViewController: NSViewController {
         toggleQueryPanel()
     }
     
-    
-    func showVideo(id: String) {
-        incdicatorView.isHidden = false
-        incdicatorView.startAnimation(nil)
-        attempt(maximumRetryCount: 3) {
-            when(fulfilled: APIClient.fetchVideo(id: id),
-                 APIClient.fetchEpisodes(id: id))
-            }.done { detail, episodes in
-                let window = AppWindowController(windowNibName: "AppWindowController")
-                let content = PlayerViewController()
-                content.videDetail = detail
-                content.episodes = episodes
-                window.content = content
-                window.show(from:self.view.window)
-            }.catch{ error in
-                print(error)
-            }.finally {
-                self.incdicatorView.stopAnimation(nil)
-                self.incdicatorView.isHidden = true
-        }
-    }
-    
     var selectedQuery: String {
         if queryOptions == nil {
             return "-Shot"
@@ -144,7 +122,7 @@ extension VideoGridViewController: NSCollectionViewDelegate, NSCollectionViewDat
         guard let indexPath = indexPaths.first else { return }
         collectionView.deselectItems(at: indexPaths)
         let video = videos[indexPath.item]
-        showVideo(id: video.id)
+        showVideo(id: video.id, indicatorView: indicatorView)
     }
 }
 
@@ -192,17 +170,18 @@ extension VideoGridViewController {
         pageIndex = 1
         isLoading = true
         let query = selectedQuery
-        incdicatorView.isHidden = false
-        incdicatorView.startAnimation(nil)
+        indicatorView.isHidden = false
+        indicatorView.startAnimation(nil)
         attempt(maximumRetryCount: 3) {
             APIClient.fetchCategoryList(category: category, isDouban: self.isDouban, query: query)}
             .done { (category) in
                 self.refreshData(category)
             }.catch({ (error) in
                 print(error)
+                self.showError(error)
             }).finally {
-                self.incdicatorView.isHidden = true
-                self.incdicatorView.stopAnimation(nil)
+                self.indicatorView.isHidden = true
+                self.indicatorView.stopAnimation(nil)
                 self.isLoading = false
                 self.pageIndex = 1
                 self.collectionView.reloadData()
@@ -233,3 +212,5 @@ extension VideoGridViewController {
         }
     }
 }
+
+extension VideoGridViewController: Initializable {}

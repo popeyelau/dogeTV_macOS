@@ -25,7 +25,7 @@
                 </imageView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="eQh-e0-RLj">
                     <rect key="frame" x="174" y="8" width="278" height="17"/>
-                    <textFieldCell key="cell" selectable="YES" title="Multiline Label" id="iLf-U8-2AD">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" enabled="NO" title="Multiline Label" id="iLf-U8-2AD">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

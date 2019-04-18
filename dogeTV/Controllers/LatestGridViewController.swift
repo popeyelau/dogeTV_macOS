@@ -13,29 +13,12 @@ import PromiseKit
 class LatestGridViewController: NSViewController {
     
     @IBOutlet weak var collectionView: NSCollectionView!
-    
+    @IBOutlet weak var indicatorView: NSProgressIndicator!
     var hots: [Hot] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         refresh()
-    }
-    
-    func showVideo(id: String) {
-        attempt(maximumRetryCount: 3) {
-            when(fulfilled: APIClient.fetchVideo(id: id),
-                 APIClient.fetchEpisodes(id: id))
-            }.done { detail, episodes in
-                let window = AppWindowController(windowNibName: "AppWindowController")
-                let content = PlayerViewController()
-                content.videDetail = detail
-                content.episodes = episodes
-                window.content = content
-                window.show(from:self.view.window)
-            }.catch{ error in
-                print(error)
-            }.finally {
-        }
     }
 }
 
@@ -68,12 +51,14 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         guard let indexPath = indexPaths.first else { return }
         let video = hots[indexPath.section].items[indexPath.item]
-        showVideo(id: video.id)
+        showVideo(id: video.id, indicatorView: indicatorView)
     }
 }
 
 extension LatestGridViewController {
     func refresh() {
+        indicatorView.isHidden = false
+        indicatorView.startAnimation(nil)
         attempt(maximumRetryCount: 3) {
             when(fulfilled: APIClient.fetchTopics(),
                  APIClient.fetchHome())
@@ -81,10 +66,14 @@ extension LatestGridViewController {
                 self.hots = hots
             }.catch{ error in
                 print(error)
+                self.showError(error)
             }.finally {
                 self.collectionView.reloadData()
+                self.indicatorView.isHidden = true
+                self.indicatorView.stopAnimation(nil)
         }
     }
 }
 
 
+extension LatestGridViewController: Initializable {}

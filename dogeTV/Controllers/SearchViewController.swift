@@ -23,31 +23,10 @@ class SearchViewController: NSViewController {
     var isNoMoreData: Bool = false
     var parseResult: CloudParse?
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet weak var incdicatorView: NSProgressIndicator!
+    @IBOutlet weak var indicatorView: NSProgressIndicator!
     override func viewDidLoad() {
         super.viewDidLoad()
         startSearch(keywords: keywords!)
-    }
-    
-    func showVideo(id: String) {
-        incdicatorView.isHidden = false
-        incdicatorView.startAnimation(nil)
-        attempt(maximumRetryCount: 3) {
-            when(fulfilled: APIClient.fetchVideo(id: id),
-                 APIClient.fetchEpisodes(id: id))
-            }.done { detail, episodes in
-                let window = AppWindowController(windowNibName: "AppWindowController")
-                let content = PlayerViewController()
-                content.videDetail = detail
-                content.episodes = episodes
-                window.content = content
-                window.show(from:self.view.window)
-            }.catch{ error in
-                print(error)
-            }.finally {
-                self.incdicatorView.isHidden = true
-                self.incdicatorView.stopAnimation(nil)
-        }
     }
 
     func startSearch(keywords: String) {
@@ -113,7 +92,7 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
         }
 
         let video = results[indexPaths.first!.item]
-        showVideo(id: video.id)
+        showVideo(id: video.id, indicatorView: indicatorView)
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
@@ -125,25 +104,31 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
     }
 
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        return isCloudParse ? NSSize(width: 90, height: 30) : NSSize(width: 150, height: 240)
+        if isCloudParse {
+            guard let title = parseResult?.episodes[indexPath.item].title else { return .zero }
+            let width = title.widthOfString(usingFont: .systemFont(ofSize: 14)) + 20
+            return NSSize(width: width, height: 30)
+        }
+        return VideoCardView.itemSize
     }
 }
 
 extension SearchViewController {
     func search() {
         guard let keywords = keywords, !keywords.isEmpty else { return }
-        incdicatorView.isHidden = false
-        incdicatorView.startAnimation(nil)
+        indicatorView.isHidden = false
+        indicatorView.startAnimation(nil)
         _ = APIClient.search(keywords: keywords)
             .done { (items) in
                 self.results = items
             }.catch({ (error) in
                 print(error)
+                self.showError(error)
             }).finally {
                 self.pageIndex = 1
                 self.collectionView.reloadData()
-                self.incdicatorView.isHidden = true
-                self.incdicatorView.stopAnimation(nil)
+                self.indicatorView.isHidden = true
+                self.indicatorView.stopAnimation(nil)
                 
         }
     }
@@ -158,23 +143,27 @@ extension SearchViewController {
             }.catch({ (error) in
                 self.pageIndex = max(1, self.pageIndex-1)
                 print(error)
+                self.showError(error)
             }).finally {
                 self.collectionView.reloadData()
         }
     }
 
     func parse(url: URL) {
-        incdicatorView.isHidden = false
-        incdicatorView.startAnimation(nil)
+        indicatorView.isHidden = false
+        indicatorView.startAnimation(nil)
         _ = APIClient.cloudParse(url: url.absoluteString)
             .done { (result) in
                 self.parseResult = result
             }.catch({ (error) in
                 print(error)
+                self.showError(error)
             }).finally {
                 self.collectionView.reloadData()
-                self.incdicatorView.isHidden = true
-                self.incdicatorView.stopAnimation(nil)
+                self.indicatorView.isHidden = true
+                self.indicatorView.stopAnimation(nil)
         }
     }
 }
+
+extension SearchViewController: Initializable {}

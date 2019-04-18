@@ -8,7 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SearchViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Dos-oL-Lgc" id="vK0-3q-JgU"/>
-                <outlet property="incdicatorView" destination="rjr-Ml-IKO" id="z6U-F6-BX2"/>
+                <outlet property="indicatorView" destination="rjr-Ml-IKO" id="z6U-F6-BX2"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -22,7 +22,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                     <clipView key="contentView" id="gIH-ng-baJ">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <collectionView selectable="YES" id="Dos-oL-Lgc">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>

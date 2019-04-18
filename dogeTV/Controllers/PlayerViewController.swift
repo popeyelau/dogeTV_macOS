@@ -40,7 +40,7 @@ class PlayerViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var avPlayer: AVPlayerView!
     @IBOutlet weak var toggleBtn: NSButton!
-    @IBOutlet weak var incdicatorView: NSProgressIndicator!
+    @IBOutlet weak var indicatorView: NSProgressIndicator!
     var titleText: String?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,33 +87,35 @@ class PlayerViewController: NSViewController {
         }
         
         
-        incdicatorView.isHidden = false
-        incdicatorView.startAnimation(nil)
+        indicatorView.isHidden = false
+        indicatorView.startAnimation(nil)
         _ = APIClient.resolveUrl(url: episode.url)
             .done { (url) in
                 self.avPlayer.player = AVPlayer(url: URL(string: url)!)
                 self.avPlayer.player?.play()
             }.catch({ (error) in
                 print(error)
+                self.showError(error)
             }).finally {
-                self.incdicatorView.stopAnimation(nil)
-                self.incdicatorView.isHidden = true
+                self.indicatorView.stopAnimation(nil)
+                self.indicatorView.isHidden = true
         }
         
     }
     
     func updateSource(index: Int) {
         guard let id = videDetail?.info.id else { return }
-        incdicatorView.isHidden = false
-        incdicatorView.startAnimation(nil)
+        indicatorView.isHidden = false
+        indicatorView.startAnimation(nil)
         _ = APIClient.fetchEpisodes(id: id, source: index).done { (episodes) in
             self.episodes = episodes
             }.catch({ (error) in
                 print(error)
+                self.showError(error)
             }).finally {
                 self.updateDataSource()
-                self.incdicatorView.stopAnimation(nil)
-                self.incdicatorView.isHidden = true
+                self.indicatorView.stopAnimation(nil)
+                self.indicatorView.isHidden = true
         }
     }
     

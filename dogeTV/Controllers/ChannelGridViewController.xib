@@ -8,7 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ChannelGridViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="lSJ-In-P7d" id="QIl-ze-J7D"/>
-                <outlet property="incdicatorView" destination="Ueg-wB-xo3" id="iLz-U5-8dt"/>
+                <outlet property="indicatorView" destination="Ueg-wB-xo3" id="iLz-U5-8dt"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -22,7 +22,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                     <clipView key="contentView" id="96S-0i-iDr">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <collectionView selectable="YES" id="lSJ-In-P7d">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="158"/>
