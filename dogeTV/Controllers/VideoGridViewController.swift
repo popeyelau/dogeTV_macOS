@@ -34,7 +34,6 @@ class VideoGridViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         if let clipView = collectionView.superview, let scrollView = clipView.superview as? NSScrollView{
             let contentView = scrollView.contentView
             contentView.postsBoundsChangedNotifications = true
