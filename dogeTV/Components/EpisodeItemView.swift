@@ -28,7 +28,7 @@ class EpisodeItemView: NSCollectionViewItem {
     func updateColor() {
         if isSelected {
             textField?.textColor = .primaryColor
-            view.layer?.backgroundColor = NSColor(srgbRed:0.20, green:0.21, blue:0.22, alpha:1.00).cgColor
+            view.layer?.backgroundColor = NSColor(red:0.20, green:0.21, blue:0.22, alpha:1.00).cgColor
         } else {
             textField?.textColor = .labelColor
             view.layer?.backgroundColor = NSColor.clear.cgColor

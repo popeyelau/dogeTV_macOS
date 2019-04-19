@@ -8,6 +8,7 @@
 
 import Cocoa
 import AVKit
+import PromiseKit
 
 class PlayerViewController: NSViewController {
     
@@ -15,6 +16,7 @@ class PlayerViewController: NSViewController {
         case episodes([Episode])
         case source([Int])
         case video(Video)
+        case recommends([Video])
 
         var title: String {
             switch self {
@@ -24,6 +26,8 @@ class PlayerViewController: NSViewController {
                 return "线路"
             case .video:
                 return "简介"
+            case .recommends:
+                return "猜你喜欢"
             }
         }
     }
@@ -45,15 +49,18 @@ class PlayerViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         episodePanel.wantsLayer = true
-        episodePanel.backgroundColor = NSColor(srgbRed:0.12, green:0.12, blue:0.13, alpha:1.00)
+        episodePanel.backgroundColor = NSColor(red:0.12, green:0.12, blue:0.13, alpha:1.00)
         titleLabel.stringValue = titleText ?? ""
         updateDataSource()
+        playing()
+        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self, userInfo: nil)
+        view.addTrackingArea(trackingArea)
+    }
+    
+    func playing() {
         if let playing = episodes?[safe: episodeIndex] {
             play(episode: playing)
         }
-
-        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self, userInfo: nil)
-        view.addTrackingArea(trackingArea)
     }
 
     override func mouseEntered(with event: NSEvent) {
@@ -128,7 +135,33 @@ class PlayerViewController: NSViewController {
             dataSource.insert(.source(Array((0..<min(video.source,5)))), at: 0)
             dataSource.insert(.video(video), at: 0)
         }
+        if let recommends = videDetail?.recommends {
+            dataSource.append(.recommends(recommends))
+        }
         collectionView.reloadData()
+        collectionView.scrollToVisible(.zero)
+    }
+    
+    func replace(id: String) {
+        self.indicatorView?.isHidden = false
+        self.indicatorView?.startAnimation(nil)
+        attempt(maximumRetryCount: 3) {
+            when(fulfilled: APIClient.fetchVideo(id: id),
+                 APIClient.fetchEpisodes(id: id))
+            }.done { detail, episodes in
+                self.videDetail = detail
+                self.episodes = episodes
+            }.catch{ error in
+                print(error)
+                self.showError(error)
+            }.finally {
+                self.sourceIndex = 0
+                self.episodeIndex = 0
+                self.indicatorView?.stopAnimation(nil)
+                self.indicatorView?.isHidden = true
+                self.updateDataSource()
+                self.playing()
+        }
     }
 }
 
@@ -147,6 +180,8 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             return source.count
         case .video:
             return 1
+        case .recommends(let videos):
+            return videos.count
         }
     }
     
@@ -171,6 +206,11 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             let item = collectionView.makeItem(withIdentifier: .init("VideoIntroView"), for: indexPath) as! VideoIntroView
             item.textField?.stringValue =  "导演: \(video.director)\n主演: \(video.actor))\n国家/地区: \(video.area)\n上映: \(video.year )\n类型: \(video.tag)\n\(video.state)"
             item.imageView?.setResourceImage(with: video.cover)
+            return item
+        case .recommends(let videos):
+            let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+            let video = videos[indexPath.item]
+            item.data = video
             return item
         }
     }
@@ -205,6 +245,10 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             updateSource(index: source)
         case .video:
             break
+        case .recommends(let videos):
+            let video = videos[indexPath.item]
+            avPlayer.player?.pause()
+            replace(id: video.id)
         }
     }
     
@@ -218,7 +262,9 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             let width = title.widthOfString(usingFont: .systemFont(ofSize: 14)) + 20
             return NSSize(width: width, height: 30)
         case .video:
-            return NSSize(width: collectionView.bounds.width - 32, height: 200)
+            return NSSize(width: collectionView.bounds.width - 40, height: 200)
+        case .recommends:
+            return VideoCardView.smallSize
         }
     }
     

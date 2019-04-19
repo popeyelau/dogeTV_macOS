@@ -49,9 +49,11 @@ class RootViewController: NSViewController {
         searchBarView.onSearchAction = { [weak self] keywords in
             self?.onSearch(keywords: keywords)
         }
+        
 
         let trackingArea = NSTrackingArea(rect: homeBtn.bounds, options: [.mouseEnteredAndExited, .activeAlways], owner: self, userInfo: nil)
         homeBtn.addTrackingArea(trackingArea)
+        homeBtn.focusRingType = .none
     }
     
     @objc func handleMoreNotification(_ notify: Notification) {
@@ -71,10 +73,6 @@ class RootViewController: NSViewController {
         homeBtn.rotate360Degrees()
     }
 
-    override func mouseExited(with event: NSEvent) {
-        homeBtn.rotate360Degrees()
-    }
-    
     func showTopRated() {
         let target = makeContentView(type: TopRatedViewController.self, key: "topRated")
         makeTransition(to: target)

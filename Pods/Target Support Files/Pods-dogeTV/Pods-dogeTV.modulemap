@@ -1,0 +1,6 @@
+framework module Pods_dogeTV {
+  umbrella header "Pods-dogeTV-umbrella.h"
+
+  export *
+  module * { export * }
+}

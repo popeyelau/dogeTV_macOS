@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		59DBAE656258FC0986932945 /* Pods_dogeTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26910516B8FE6E0B0C9D258 /* Pods_dogeTV.framework */; };
+		79115816226995FC0034E551 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79115815226995FB0034E551 /* AVKit.framework */; };
 		7916EF132266BA1400FB6721 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF112266BA1400FB6721 /* SearchViewController.swift */; };
 		7916EF142266BA1400FB6721 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7916EF122266BA1400FB6721 /* SearchViewController.xib */; };
 		7916EF172266C0EF00FB6721 /* ChannelCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF152266C0EF00FB6721 /* ChannelCardView.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		0762FFF90A53923C70174323 /* Pods-dogeTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dogeTV.debug.xcconfig"; path = "Target Support Files/Pods-dogeTV/Pods-dogeTV.debug.xcconfig"; sourceTree = "<group>"; };
+		79115815226995FB0034E551 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		7916EF112266BA1400FB6721 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7916EF122266BA1400FB6721 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		7916EF152266C0EF00FB6721 /* ChannelCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCardView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79115816226995FC0034E551 /* AVKit.framework in Frameworks */,
 				59DBAE656258FC0986932945 /* Pods_dogeTV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +308,7 @@
 		E0CC786C672A53CA64E3B4E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79115815226995FB0034E551 /* AVKit.framework */,
 				F26910516B8FE6E0B0C9D258 /* Pods_dogeTV.framework */,
 			);
 			name = Frameworks;

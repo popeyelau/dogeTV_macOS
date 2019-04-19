@@ -20,16 +20,16 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <avPlayerView controlsStyle="floating" showsFrameSteppingButtons="YES" showsFullScreenToggleButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qp2-r0-9Rs">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="237"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="236"/>
                 </avPlayerView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="y6s-pF-o5Z">
-                    <rect key="frame" x="0.0" y="237" width="480" height="35"/>
+                    <rect key="frame" x="0.0" y="236" width="480" height="36"/>
                     <subviews>
                         <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="HYY-dV-Mjh">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="35"/>
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="36"/>
                         </visualEffectView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="95Z-F2-HQO">
-                            <rect key="frame" x="183" y="8" width="115" height="19"/>
+                            <rect key="frame" x="183" y="9" width="115" height="19"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Channel Name" id="jTd-vZ-PLC">
                                 <font key="font" metaFont="system" size="16"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -38,13 +38,13 @@
                         </textField>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="95Z-F2-HQO" firstAttribute="top" secondItem="y6s-pF-o5Z" secondAttribute="top" constant="8" id="9vw-4z-Giq"/>
                         <constraint firstAttribute="trailing" secondItem="HYY-dV-Mjh" secondAttribute="trailing" id="bmp-K0-UgQ"/>
+                        <constraint firstAttribute="height" constant="36" id="bwi-Fv-krI"/>
                         <constraint firstAttribute="bottom" secondItem="HYY-dV-Mjh" secondAttribute="bottom" id="bzT-Bc-E9g"/>
+                        <constraint firstItem="95Z-F2-HQO" firstAttribute="centerY" secondItem="y6s-pF-o5Z" secondAttribute="centerY" id="knV-TU-ktr"/>
                         <constraint firstItem="HYY-dV-Mjh" firstAttribute="leading" secondItem="y6s-pF-o5Z" secondAttribute="leading" id="pR3-8G-CXE"/>
                         <constraint firstItem="95Z-F2-HQO" firstAttribute="centerX" secondItem="y6s-pF-o5Z" secondAttribute="centerX" id="ruy-Ac-WVG"/>
                         <constraint firstItem="HYY-dV-Mjh" firstAttribute="top" secondItem="y6s-pF-o5Z" secondAttribute="top" id="wmz-ur-BME"/>
-                        <constraint firstAttribute="bottom" secondItem="95Z-F2-HQO" secondAttribute="bottom" constant="8" id="yzX-tn-h0W"/>
                     </constraints>
                 </customView>
             </subviews>

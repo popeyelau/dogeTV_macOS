@@ -421,7 +421,7 @@
                                     </visualEffectView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FoK-Mc-fvG">
                                         <rect key="frame" x="0.0" y="424" width="150" height="100"/>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="doge" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xp2-aX-wdJ">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="doge" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" sound="Frog" inset="2" id="xp2-aX-wdJ">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -437,7 +437,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="it8-ut-4Kq"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  最近更新" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="hH5-Su-pGM">
+                                                <buttonCell key="cell" type="bevel" title="  最近更新" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="hH5-Su-pGM">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                 </buttonCell>
@@ -450,7 +450,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="Kps-A3-FKM"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  精选" bezelStyle="regularSquare" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="gQo-3P-Mir">
+                                                <buttonCell key="cell" type="bevel" title="  精选" bezelStyle="regularSquare" imagePosition="left" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="gQo-3P-Mir">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                 </buttonCell>
@@ -463,7 +463,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="uaI-ew-Ma9"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  电影" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="EMX-ie-Fic">
+                                                <buttonCell key="cell" type="bevel" title="  电影" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="EMX-ie-Fic">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                 </buttonCell>
@@ -476,7 +476,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="dzt-q1-wvh"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  电视剧" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="dJo-pg-Iv8">
+                                                <buttonCell key="cell" type="bevel" title="  电视剧" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="dJo-pg-Iv8">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                 </buttonCell>
@@ -489,7 +489,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="S8J-Mr-4JX"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  综艺" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="KU8-Xl-ExM">
+                                                <buttonCell key="cell" type="bevel" title="  综艺" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="KU8-Xl-ExM">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                 </buttonCell>
@@ -502,7 +502,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="8vv-Mm-HaM"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  动漫" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="BKv-Ou-rjW">
+                                                <buttonCell key="cell" type="bevel" title="  动漫" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="BKv-Ou-rjW">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                 </buttonCell>
@@ -515,7 +515,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="202-OB-Bsh"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  纪录片" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="9Hx-M9-I1G">
+                                                <buttonCell key="cell" type="bevel" title="  纪录片" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="9Hx-M9-I1G">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                 </buttonCell>
@@ -528,7 +528,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="r9V-DY-oyq"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  电视直播" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="mu5-00-g3Y">
+                                                <buttonCell key="cell" type="bevel" title="  电视直播" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="mu5-00-g3Y">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                 </buttonCell>
@@ -584,10 +584,10 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TYq-7v-Uo4" userLabel="Content View" customClass="ContainerView" customModule="dogeTV" customModuleProvider="target">
-                                <rect key="frame" x="150" y="0.0" width="670" height="524"/>
+                                <rect key="frame" x="150" y="0.0" width="670" height="504"/>
                                 <subviews>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="fAW-KD-8CV">
-                                        <rect key="frame" x="319" y="246" width="32" height="32"/>
+                                        <rect key="frame" x="319" y="236" width="32" height="32"/>
                                     </progressIndicator>
                                 </subviews>
                                 <constraints>
@@ -596,13 +596,13 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="bg2-O3-Nhl">
-                                <rect key="frame" x="150" y="524" width="670" height="50"/>
+                                <rect key="frame" x="150" y="504" width="670" height="70"/>
                                 <subviews>
                                     <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="e1n-Q2-IQd">
-                                        <rect key="frame" x="0.0" y="0.0" width="670" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="670" height="70"/>
                                     </visualEffectView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="jQL-F1-Mbx" customClass="SearchBarView" customModule="dogeTV" customModuleProvider="target">
-                                        <rect key="frame" x="350" y="10" width="300" height="30"/>
+                                        <rect key="frame" x="350" y="20" width="300" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Yyk-T0-2dg"/>
                                             <constraint firstAttribute="width" constant="300" id="wS4-Zu-x7c"/>
@@ -610,7 +610,7 @@
                                     </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Gut-a2-9EC"/>
+                                    <constraint firstAttribute="height" constant="70" id="Gut-a2-9EC"/>
                                     <constraint firstAttribute="trailing" secondItem="jQL-F1-Mbx" secondAttribute="trailing" constant="20" id="RPC-Bb-Huy"/>
                                     <constraint firstItem="e1n-Q2-IQd" firstAttribute="leading" secondItem="bg2-O3-Nhl" secondAttribute="leading" id="T2V-al-aFR"/>
                                     <constraint firstAttribute="bottom" secondItem="e1n-Q2-IQd" secondAttribute="bottom" id="f8T-i0-SX5"/>
@@ -656,5 +656,7 @@
     </scenes>
     <resources>
         <image name="doge" width="100" height="100"/>
+        <sound name="Frog"/>
+        <sound name="Pop"/>
     </resources>
 </document>

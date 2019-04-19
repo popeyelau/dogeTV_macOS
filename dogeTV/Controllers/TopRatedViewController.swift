@@ -36,6 +36,7 @@ class TopRatedViewController: NSViewController {
             segmentCtrl.setWidth(100, forSegment: index)
             segmentCtrl.setLabel(element.title, forSegment: index)
         }
+        segmentCtrl.selectedSegmentBezelColor = .primaryColor
     }
     
     @objc func tableViewDoubleAction(_ sender: NSTableView) {

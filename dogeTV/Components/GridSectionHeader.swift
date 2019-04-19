@@ -22,12 +22,12 @@ class GridSectionHeader: NSView {
     override func awakeFromNib() {
         super.awakeFromNib()
         wantsLayer = true
-        layer?.backgroundColor = NSColor(srgbRed:0.12, green:0.12, blue:0.13, alpha:0.75).cgColor
+        layer?.backgroundColor = NSColor(red:0.12, green:0.12, blue:0.13, alpha:0.75).cgColor
         titleLabel.textColor = .labelColor
         
         
         indicatorView.wantsLayer = true
-        indicatorView.layer?.backgroundColor = NSColor(srgbRed:0.88, green:0.88, blue:0.88, alpha:1.00).cgColor
+        indicatorView.layer?.backgroundColor = NSColor(red:0.88, green:0.88, blue:0.88, alpha:1.00).cgColor
     }
     
     @IBAction func moreAction(_ sender: NSButton) {

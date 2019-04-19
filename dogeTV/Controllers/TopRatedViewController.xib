@@ -20,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cG-fZ-Dxx">
-                    <rect key="frame" x="16" y="16" width="628" height="260"/>
+                    <rect key="frame" x="16" y="16" width="628" height="261"/>
                     <clipView key="contentView" id="cK0-gM-1wu">
-                        <rect key="frame" x="1" y="0.0" width="626" height="259"/>
+                        <rect key="frame" x="1" y="0.0" width="626" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="36" rowSizeStyle="large" headerView="Zf3-uD-a9P" viewBased="YES" id="lA3-yv-gp5">
-                                <rect key="frame" x="0.0" y="0.0" width="1132" height="234"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1132" height="235"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="10" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -238,8 +238,8 @@
                             </tableView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.99011857707509876" horizontal="YES" id="lKc-Ad-Txn">
-                        <rect key="frame" x="1" y="243" width="626" height="16"/>
+                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="lKc-Ad-Txn">
+                        <rect key="frame" x="1" y="244" width="626" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="LkW-im-02n">
@@ -254,9 +254,9 @@
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lad-xK-rwz" userLabel="indicatorView">
                     <rect key="frame" x="314" y="149" width="32" height="32"/>
                 </progressIndicator>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PWQ-Oi-K0W">
-                    <rect key="frame" x="244" y="291" width="172" height="23"/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="IhD-N8-4mQ">
+                <segmentedControl focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PWQ-Oi-K0W">
+                    <rect key="frame" x="244" y="291" width="172" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" focusRingType="none" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="IhD-N8-4mQ">
                         <font key="font" metaFont="system"/>
                         <segments>
                             <segment width="100"/>
