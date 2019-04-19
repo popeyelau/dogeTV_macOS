@@ -10,5 +10,5 @@ import AppKit
 
 
 extension NSColor {
-    static let primaryColor = NSColor(red:0.00, green:0.74, blue:0.61, alpha:1.00)
+    static let primaryColor = NSColor(red:0.92, green:0.26, blue:0.21, alpha:1.00)
 }

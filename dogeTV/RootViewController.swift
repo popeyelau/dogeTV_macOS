@@ -54,6 +54,7 @@ class RootViewController: NSViewController {
         let trackingArea = NSTrackingArea(rect: homeBtn.bounds, options: [.mouseEnteredAndExited, .activeAlways], owner: self, userInfo: nil)
         homeBtn.addTrackingArea(trackingArea)
         homeBtn.focusRingType = .none
+        view.window?.makeFirstResponder(nil)
     }
     
     @objc func handleMoreNotification(_ notify: Notification) {
@@ -98,7 +99,7 @@ class RootViewController: NSViewController {
     }
     
     @IBAction func menuBtnClicked(_ sender: PPButton) {
-        searchBarView.resignFirstResponder()
+        view.window?.makeFirstResponder(nil)
         guard let identifier = sender.identifier?.rawValue, !identifier.isEmpty else { return }
         resetButtons()
         sender.isSelected = true
