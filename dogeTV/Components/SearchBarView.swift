@@ -12,18 +12,15 @@ import Cocoa
 class SearchBarView: NSView, LoadableNib {
     @IBOutlet var contentView: NSView!
     @IBOutlet weak var textField: NSTextField!
-
     @IBOutlet weak var searchBtn: NSButton!
+    
     var onSearchAction: ((String) -> Void)?
     var onTopRatedAction: (() -> Void)?
 
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-    }
-    
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
     }
+    
     @IBAction func commitAction(_ sender: NSTextField) {
         window?.makeFirstResponder(nil)
         guard !sender.stringValue.isEmpty else { return }

@@ -8,20 +8,12 @@
 
 import Alamofire
 
-
-/*
- Film        MediaType = 1 //电影1
- Drama       MediaType = 2 //电视剧2
- Variety     MediaType = 3 //综艺3
- Cartoon     MediaType = 4 //动漫4
- Documentary MediaType = 5 //记录片5
- */
 enum Category: Int, CaseIterable {
-    case film
-    case drama
-    case variety
-    case cartoon
-    case documentary
+    case film //电影
+    case drama //电视剧
+    case variety //综艺
+    case cartoon //动漫
+    case documentary //记录片
 
     var categoryKey: String {
         switch self {

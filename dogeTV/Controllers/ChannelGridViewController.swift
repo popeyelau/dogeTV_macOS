@@ -66,7 +66,7 @@ extension ChannelGridViewController: NSCollectionViewDelegate, NSCollectionViewD
 
 extension ChannelGridViewController {
     func refresh() {
-        indicatorView.isHidden = true
+        indicatorView.isHidden = false
         indicatorView.stopAnimation(nil)
         _ = APIClient.fetchTV(location).done { (groups) in
             self.channelGroups = groups

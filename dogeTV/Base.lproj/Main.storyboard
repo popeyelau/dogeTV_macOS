@@ -390,7 +390,7 @@
                     <window key="window" title="dogeTV" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" appearanceType="darkAqua" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="425" width="480" height="161"/>
+                        <rect key="contentRect" x="196" y="425" width="1200" height="800"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="1200" height="800"/>
                         <connections>
@@ -585,15 +585,6 @@
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TYq-7v-Uo4" userLabel="Content View" customClass="ContainerView" customModule="dogeTV" customModuleProvider="target">
                                 <rect key="frame" x="150" y="0.0" width="670" height="504"/>
-                                <subviews>
-                                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="fAW-KD-8CV">
-                                        <rect key="frame" x="319" y="236" width="32" height="32"/>
-                                    </progressIndicator>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="fAW-KD-8CV" firstAttribute="centerY" secondItem="TYq-7v-Uo4" secondAttribute="centerY" id="H4i-1l-1N7"/>
-                                    <constraint firstItem="fAW-KD-8CV" firstAttribute="centerX" secondItem="TYq-7v-Uo4" secondAttribute="centerX" id="hyT-Hp-C5Z"/>
-                                </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="bg2-O3-Nhl">
                                 <rect key="frame" x="150" y="504" width="670" height="70"/>
