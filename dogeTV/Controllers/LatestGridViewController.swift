@@ -15,7 +15,6 @@ class LatestGridViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
     var hots: [Hot] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         refresh()
@@ -57,8 +56,7 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
 
 extension LatestGridViewController {
     func refresh() {
-        indicatorView.isHidden = false
-        indicatorView.startAnimation(nil)
+        indicatorView.show()
         attempt(maximumRetryCount: 3) {
             when(fulfilled: APIClient.fetchTopics(),
                  APIClient.fetchHome())
@@ -69,8 +67,7 @@ extension LatestGridViewController {
                 self.showError(error)
             }.finally {
                 self.collectionView.reloadData()
-                self.indicatorView.isHidden = true
-                self.indicatorView.stopAnimation(nil)
+                self.indicatorView.dismiss()
         }
     }
 }

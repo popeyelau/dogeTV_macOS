@@ -50,3 +50,16 @@ extension NSView {
         self.layer?.add(rotate, forKey: nil)
     }
 }
+
+
+extension NSProgressIndicator {
+    func show() {
+        isHidden = false
+        startAnimation(nil)
+    }
+
+    func dismiss() {
+        isHidden = true
+        stopAnimation(nil)
+    }
+}

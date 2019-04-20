@@ -44,6 +44,16 @@
 		799FED7822655A8800BD5900 /* VideoGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799FED7622655A8800BD5900 /* VideoGridViewController.swift */; };
 		799FED7922655A8800BD5900 /* VideoGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799FED7722655A8800BD5900 /* VideoGridViewController.xib */; };
 		799FED7B2265685200BD5900 /* PPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799FED7A2265685200BD5900 /* PPButton.swift */; };
+		79B7AD06226AADE600600282 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AD04226AADE600600282 /* UserViewController.swift */; };
+		79B7AD07226AADE600600282 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79B7AD05226AADE600600282 /* UserViewController.xib */; };
+		79B7AD0A226AB63C00600282 /* HistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AD08226AB63C00600282 /* HistoryCardView.swift */; };
+		79B7AD0B226AB63C00600282 /* HistoryCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79B7AD09226AB63C00600282 /* HistoryCardView.xib */; };
+		79B7AD0D226AD36700600282 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AD0C226AD36700600282 /* EmptyView.swift */; };
+		79B7AD0F226AD37000600282 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79B7AD0E226AD37000600282 /* EmptyView.xib */; };
+		79B7AD15226AE38000600282 /* AboutWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B7AD14226AE38000600282 /* AboutWindow.storyboard */; };
+		79B7AD17226AE39F00600282 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AD16226AE39F00600282 /* AboutWindowController.swift */; };
+		79B7AD19226AE3BB00600282 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AD18226AE3BB00600282 /* AboutViewController.swift */; };
+		79C9EEB02269F905007B6B35 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C9EEAF2269F905007B6B35 /* Repository.swift */; };
 		79D927A422657854009C446E /* QueryOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927A222657854009C446E /* QueryOptionView.swift */; };
 		79D927A522657854009C446E /* QueryOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927A322657854009C446E /* QueryOptionView.xib */; };
 		79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927A62265931A009C446E /* NSButtonExtension.swift */; };
@@ -109,6 +119,16 @@
 		799FED7622655A8800BD5900 /* VideoGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGridViewController.swift; sourceTree = "<group>"; };
 		799FED7722655A8800BD5900 /* VideoGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoGridViewController.xib; sourceTree = "<group>"; };
 		799FED7A2265685200BD5900 /* PPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPButton.swift; sourceTree = "<group>"; };
+		79B7AD04226AADE600600282 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		79B7AD05226AADE600600282 /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
+		79B7AD08226AB63C00600282 /* HistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardView.swift; sourceTree = "<group>"; };
+		79B7AD09226AB63C00600282 /* HistoryCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCardView.xib; sourceTree = "<group>"; };
+		79B7AD0C226AD36700600282 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		79B7AD0E226AD37000600282 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
+		79B7AD14226AE38000600282 /* AboutWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutWindow.storyboard; sourceTree = "<group>"; };
+		79B7AD16226AE39F00600282 /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
+		79B7AD18226AE3BB00600282 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		79C9EEAF2269F905007B6B35 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		79D927A222657854009C446E /* QueryOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionView.swift; sourceTree = "<group>"; };
 		79D927A322657854009C446E /* QueryOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryOptionView.xib; sourceTree = "<group>"; };
 		79D927A62265931A009C446E /* NSButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSButtonExtension.swift; sourceTree = "<group>"; };
@@ -173,6 +193,8 @@
 				79E09106226835B000219C87 /* TopRatedViewController.xib */,
 				79E0911722686AB200219C87 /* TopicsViewController.swift */,
 				79E0911822686AB200219C87 /* TopicsViewController.xib */,
+				79B7AD04226AADE600600282 /* UserViewController.swift */,
+				79B7AD05226AADE600600282 /* UserViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -199,6 +221,10 @@
 				79E091112268474900219C87 /* SearchBarView.xib */,
 				79E0911B226873A000219C87 /* DisablableScrollView.swift */,
 				7988F6B722689824002B5B9D /* AspectFitImageView.swift */,
+				79B7AD08226AB63C00600282 /* HistoryCardView.swift */,
+				79B7AD09226AB63C00600282 /* HistoryCardView.xib */,
+				79B7AD0C226AD36700600282 /* EmptyView.swift */,
+				79B7AD0E226AD37000600282 /* EmptyView.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -257,11 +283,22 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		79C9EEAE2269F7D7007B6B35 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				79C9EEAF2269F905007B6B35 /* Repository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		79D927A8226597F5009C446E /* Window */ = {
 			isa = PBXGroup;
 			children = (
 				79D927AD22659890009C446E /* AppWindowController.swift */,
 				79D927AE22659890009C446E /* AppWindowController.xib */,
+				79B7AD14226AE38000600282 /* AboutWindow.storyboard */,
+				79B7AD16226AE39F00600282 /* AboutWindowController.swift */,
+				79B7AD18226AE3BB00600282 /* AboutViewController.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -287,6 +324,7 @@
 		79FD5BF522647AC3009EDB9C /* dogeTV */ = {
 			isa = PBXGroup;
 			children = (
+				79C9EEAE2269F7D7007B6B35 /* Repository */,
 				79D927A8226597F5009C446E /* Window */,
 				799B962B2264B076002C8FFA /* Extension */,
 				799B96132264AF7E002C8FFA /* Models */,
@@ -394,15 +432,19 @@
 				7916EF142266BA1400FB6721 /* SearchViewController.xib in Resources */,
 				7916EF1C2266C1AD00FB6721 /* ChannelGridViewController.xib in Resources */,
 				79D927B4226598AD009C446E /* PlayerViewController.xib in Resources */,
+				79B7AD07226AADE600600282 /* UserViewController.xib in Resources */,
 				799FED7922655A8800BD5900 /* VideoGridViewController.xib in Resources */,
 				79D927A522657854009C446E /* QueryOptionView.xib in Resources */,
 				79D927B022659890009C446E /* AppWindowController.xib in Resources */,
+				79B7AD0F226AD37000600282 /* EmptyView.xib in Resources */,
 				799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */,
 				79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */,
 				79FD5BFE22647AC4009EDB9C /* Main.storyboard in Resources */,
 				799B96072264AD8A002C8FFA /* LatestGridViewController.xib in Resources */,
 				79E091122268474900219C87 /* SearchBarView.xib in Resources */,
+				79B7AD0B226AB63C00600282 /* HistoryCardView.xib in Resources */,
 				79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */,
+				79B7AD15226AE38000600282 /* AboutWindow.storyboard in Resources */,
 				79E09108226835B000219C87 /* TopRatedViewController.xib in Resources */,
 				79D927BC2265B97F009C446E /* VideoIntroView.xib in Resources */,
 				79D927B82265A73B009C446E /* EpisodeItemView.xib in Resources */,
@@ -462,10 +504,13 @@
 				799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */,
 				799B96222264AF7F002C8FFA /* Channel.swift in Sources */,
 				799B96262264AF7F002C8FFA /* Ranking.swift in Sources */,
+				79B7AD0D226AD36700600282 /* EmptyView.swift in Sources */,
 				79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */,
 				79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */,
+				79B7AD17226AE39F00600282 /* AboutWindowController.swift in Sources */,
 				799B960E2264AF61002C8FFA /* ENV.swift in Sources */,
 				79D927B72265A73B009C446E /* EpisodeItemView.swift in Sources */,
+				79C9EEB02269F905007B6B35 /* Repository.swift in Sources */,
 				7939584422675F06001FE58A /* NSViewControllerExtension.swift in Sources */,
 				799B962A2264AF7F002C8FFA /* Router.swift in Sources */,
 				79D927B3226598AD009C446E /* PlayerViewController.swift in Sources */,
@@ -473,6 +518,7 @@
 				7939584222674F90001FE58A /* SearchBarView.swift in Sources */,
 				799FED7B2265685200BD5900 /* PPButton.swift in Sources */,
 				799B96242264AF7F002C8FFA /* Response.swift in Sources */,
+				79B7AD0A226AB63C00600282 /* HistoryCardView.swift in Sources */,
 				79D927AF22659890009C446E /* AppWindowController.swift in Sources */,
 				79D927BB2265B97F009C446E /* VideoIntroView.swift in Sources */,
 				7916EF1E2266EF3600FB6721 /* NSColorExtension.swift in Sources */,
@@ -482,7 +528,9 @@
 				79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */,
 				799B96212264AF7F002C8FFA /* CloudParse.swift in Sources */,
 				79E0911922686AB200219C87 /* TopicsViewController.swift in Sources */,
+				79B7AD06226AADE600600282 /* UserViewController.swift in Sources */,
 				799B96252264AF7F002C8FFA /* OptionSet.swift in Sources */,
+				79B7AD19226AE3BB00600282 /* AboutViewController.swift in Sources */,
 				79FD5BF922647AC3009EDB9C /* RootViewController.swift in Sources */,
 				79E09107226835B000219C87 /* TopRatedViewController.swift in Sources */,
 				7916EF172266C0EF00FB6721 /* ChannelCardView.swift in Sources */,

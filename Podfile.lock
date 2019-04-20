@@ -6,11 +6,18 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/CorePromise (6.8.4)
   - SnapKit (4.2.0)
+  - SQLiteRepairKit (1.2.2):
+    - WCDBOptimizedSQLCipher (~> 1.2.0)
+  - WCDB.swift (1.0.8.2):
+    - SQLiteRepairKit (~> 1.2.0)
+    - WCDBOptimizedSQLCipher (~> 1.2.0)
+  - WCDBOptimizedSQLCipher (1.2.1)
 
 DEPENDENCIES:
   - Kingfisher
   - PromiseKit/Alamofire
   - SnapKit
+  - WCDB.swift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -18,13 +25,19 @@ SPEC REPOS:
     - Kingfisher
     - PromiseKit
     - SnapKit
+    - SQLiteRepairKit
+    - WCDB.swift
+    - WCDBOptimizedSQLCipher
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
+  WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
+  WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
 
-PODFILE CHECKSUM: 155be69b7d88b6923652f1068bb6bc1c0fc182db
+PODFILE CHECKSUM: 322480d33ed8fd05ca22ccb16c6ab193b3a2a061
 
 COCOAPODS: 1.7.0.beta.3

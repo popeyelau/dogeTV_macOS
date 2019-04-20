@@ -104,7 +104,7 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
 
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         if isCloudParse {
-            return NSSize(width: 120, height: 30)
+            return NSSize(width: 150, height: 30)
         }
         return VideoCardView.itemSize
     }
@@ -113,8 +113,7 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
 extension SearchViewController {
     func search() {
         guard let keywords = keywords, !keywords.isEmpty else { return }
-        indicatorView.isHidden = false
-        indicatorView.startAnimation(nil)
+        indicatorView.show()
         _ = APIClient.search(keywords: keywords)
             .done { (items) in
                 self.results = items
@@ -125,9 +124,7 @@ extension SearchViewController {
                 self.isCloudParse = false
                 self.pageIndex = 1
                 self.collectionView.reloadData()
-                self.indicatorView.isHidden = true
-                self.indicatorView.stopAnimation(nil)
-                
+                self.indicatorView.dismiss()
         }
     }
     
@@ -149,8 +146,7 @@ extension SearchViewController {
     }
 
     func parse(url: URL) {
-        indicatorView.isHidden = false
-        indicatorView.startAnimation(nil)
+        indicatorView.show()
         _ = APIClient.cloudParse(url: url.absoluteString)
             .done { (result) in
                 self.parseResult = result
@@ -160,8 +156,7 @@ extension SearchViewController {
             }).finally {
                 self.isCloudParse = true
                 self.collectionView.reloadData()
-                self.indicatorView.isHidden = true
-                self.indicatorView.stopAnimation(nil)
+                self.indicatorView.dismiss()
         }
     }
 }

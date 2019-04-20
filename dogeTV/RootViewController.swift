@@ -69,6 +69,10 @@ class RootViewController: NSViewController {
         case .documentary: menuBtnClicked(documentaryBtn)
         }
     }
+    @IBAction func userAction(_ sender: NSButton) {
+        let target = makeContentView(type: UserViewController.self, key: "history")
+        makeTransition(to: target)
+    }
 
     override func mouseEntered(with event: NSEvent) {
         homeBtn.rotate360Degrees()

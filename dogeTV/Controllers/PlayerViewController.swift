@@ -34,9 +34,27 @@ class PlayerViewController: NSViewController {
 
     var videDetail: VideoDetail?
     var episodes: [Episode]?
+
+    var history: History? {
+        didSet {
+            if let history = history {
+                episodeIndex = history.episode
+                sourceIndex = history.source
+                duration = history.currentTime
+            }
+        }
+    }
+
     var episodeIndex: Int = 0
     var sourceIndex: Int = 0
+    var duration: Double = 0
+
+    var currentEpisode: Episode?
+
     var dataSource: [Section] = []
+
+    private var playerItemContext = 0
+
     
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var episodePanel: NSScrollView!
@@ -88,32 +106,36 @@ class PlayerViewController: NSViewController {
             titleLabel.stringValue = "\(videDetail?.info.name ?? "") - \(episode.title)"
         }
         if episode.canPlay {
-            avPlayer.player = AVPlayer(url: URL(string: episode.url)!)
-            avPlayer.player?.play()
+            self.prepareToPlay(url: episode.url)
             return
         }
-        
-        
-        indicatorView.isHidden = false
-        indicatorView.startAnimation(nil)
+
+        indicatorView.show()
         _ = APIClient.resolveUrl(url: episode.url)
             .done { (url) in
-                self.avPlayer.player = AVPlayer(url: URL(string: url)!)
-                self.avPlayer.player?.play()
+                self.prepareToPlay(url: url)
             }.catch({ (error) in
                 print(error)
                 self.showError(error)
             }).finally {
-                self.indicatorView.stopAnimation(nil)
-                self.indicatorView.isHidden = true
+                self.indicatorView.dismiss()
         }
-        
+    }
+
+    func prepareToPlay(url: String) {
+        avPlayer.player = AVPlayer(url: URL(string: url)!)
+        avPlayer.player?.addObserver(self,
+                                     forKeyPath: #keyPath(AVPlayer.status),
+                                     options: [.old, .new],
+                                     context: &playerItemContext)
+
+
+        self.avPlayer.player?.play()
     }
     
     func updateSource(index: Int) {
         guard let id = videDetail?.info.id else { return }
-        indicatorView.isHidden = false
-        indicatorView.startAnimation(nil)
+        indicatorView.show()
         _ = APIClient.fetchEpisodes(id: id, source: index).done { (episodes) in
             self.episodes = episodes
             }.catch({ (error) in
@@ -121,8 +143,7 @@ class PlayerViewController: NSViewController {
                 self.showError(error)
             }).finally {
                 self.updateDataSource()
-                self.indicatorView.stopAnimation(nil)
-                self.indicatorView.isHidden = true
+                self.indicatorView.dismiss()
         }
     }
     
@@ -143,8 +164,9 @@ class PlayerViewController: NSViewController {
     }
     
     func replace(id: String) {
-        self.indicatorView?.isHidden = false
-        self.indicatorView?.startAnimation(nil)
+        history = nil
+        indicatorView?.isHidden = false
+        indicatorView?.startAnimation(nil)
         attempt(maximumRetryCount: 3) {
             when(fulfilled: APIClient.fetchVideo(id: id),
                  APIClient.fetchEpisodes(id: id))
@@ -162,6 +184,67 @@ class PlayerViewController: NSViewController {
                 self.updateDataSource()
                 self.playing()
         }
+    }
+
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
+
+        guard context == &playerItemContext else {
+            super.observeValue(forKeyPath: keyPath,
+                               of: object,
+                               change: change,
+                               context: context)
+            return
+        }
+
+        //播放历史 && 时长 > 0 监听播放器状态，当成功加载时，跳转到历史播放时间点
+        guard let history = history, history.currentTime > 0, episodeIndex == history.episode else {
+            return
+        }
+        if keyPath == #keyPath(AVPlayer.status){
+            let status: AVPlayer.Status
+            if let statusNumber = change?[.newKey] as? NSNumber {
+                status = AVPlayer.Status(rawValue: statusNumber.intValue)!
+            } else {
+                status = .unknown
+            }
+
+            switch status {
+            case .readyToPlay:
+                //开始播放
+                let seekTo = CMTimeMakeWithSeconds(history.currentTime, preferredTimescale: 1000000)
+                avPlayer.player?.seek(to: seekTo)
+            default:
+                break
+            }
+        }
+    }
+
+    func addRecord() {
+        guard let video = videDetail?.info, let episode = episodes?[safe: episodeIndex] else { return }
+
+        let history = History()
+        history.primaryKey = video.id
+        history.videoId = video.id
+        history.name = video.name
+        history.episode = episodeIndex
+        history.episodeName = episode.title
+        history.source = sourceIndex
+        history.currentTime = avPlayer.player?.currentItem?.currentTime().seconds ?? 0
+        history.duration = 0
+        if let duration = avPlayer.player?.currentItem?.asset.duration {
+            history.duration = CMTimeGetSeconds(duration)
+        }
+        history.cover = video.cover
+        Repository.insertOrReplace(table: history)
+        NotificationCenter.default.post(name: .init(rawValue: "com.dogetv.history"), object: nil)
+    }
+
+    deinit {
+        guard avPlayer.player?.status == AVPlayer.Status.readyToPlay else { return }
+        addRecord()
     }
 }
 

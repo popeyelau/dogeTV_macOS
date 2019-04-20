@@ -9,5 +9,6 @@ target 'dogeTV' do
   pod 'SnapKit'
   pod 'PromiseKit/Alamofire'
   pod 'Kingfisher'
+  pod 'WCDB.swift'
 
 end

@@ -83,8 +83,7 @@ extension TopRatedViewController: NSTableViewDataSource, NSTableViewDelegate {
 
 extension TopRatedViewController {
     func refresh() {
-        indicatorView.isHidden = false
-        indicatorView.startAnimation(nil)
+        indicatorView.show()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchRankList(category: self.category)
             }.done { (list) in
@@ -94,8 +93,7 @@ extension TopRatedViewController {
                 self.showError(error)
             }).finally {
                 self.tableView.reloadData()
-                self.indicatorView.stopAnimation(nil)
-                self.indicatorView.isHidden = true
+                self.indicatorView.dismiss()
                 self.tableView.scrollToVisible(.zero)
         }
     }

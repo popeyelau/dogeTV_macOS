@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="UserViewController" customModule="dogeTV" customModuleProvider="target">
+            <connections>
+                <outlet property="emptyView" destination="DO6-XH-WL4" id="Y5O-ME-oQZ"/>
+                <outlet property="historyCollectionView" destination="pq7-Jg-ooE" id="nRz-rn-PVm"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="282"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXU-7P-xuD">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="282"/>
+                    <clipView key="contentView" id="2km-Tr-dLr">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="282"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView selectable="YES" id="pq7-Jg-ooE">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="158"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" sectionHeadersPinToVisibleBounds="YES" id="KGr-rY-Tv1">
+                                    <size key="itemSize" width="150" height="240"/>
+                                    <size key="headerReferenceSize" width="0.0" height="44"/>
+                                    <edgeInsets key="sectionInset" left="20" right="20" top="20" bottom="20"/>
+                                </collectionViewFlowLayout>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="NG6-x1-r4A"/>
+                                    <outlet property="delegate" destination="-2" id="YzP-8o-Piz"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="7OS-yj-wGS">
+                        <rect key="frame" x="1" y="112" width="231" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="1Nw-Dx-Yek">
+                        <rect key="frame" x="464" y="0.0" width="16" height="120"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a8i-uN-Fd4">
+                    <rect key="frame" x="412" y="255" width="54" height="17"/>
+                    <buttonCell key="cell" type="bevel" title="  清空" bezelStyle="rounded" image="trash" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="4JK-Ol-uZy">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="emptyTrashAction:" target="-2" id="q4G-0v-Erq"/>
+                    </connections>
+                </button>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="DO6-XH-WL4" customClass="EmptyView" customModule="dogeTV" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="282"/>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="a8i-uN-Fd4" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="BWG-Lt-wBs"/>
+                <constraint firstAttribute="trailing" secondItem="PXU-7P-xuD" secondAttribute="trailing" id="Ktq-P7-7TY"/>
+                <constraint firstItem="DO6-XH-WL4" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="UtZ-pY-6fa"/>
+                <constraint firstAttribute="bottom" secondItem="PXU-7P-xuD" secondAttribute="bottom" id="XO0-bC-5od"/>
+                <constraint firstAttribute="trailing" secondItem="a8i-uN-Fd4" secondAttribute="trailing" constant="14" id="brN-7f-RSp"/>
+                <constraint firstAttribute="bottom" secondItem="DO6-XH-WL4" secondAttribute="bottom" id="cm2-zS-emH"/>
+                <constraint firstItem="PXU-7P-xuD" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="kUo-zi-eJM"/>
+                <constraint firstItem="PXU-7P-xuD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="lUE-wa-AY4"/>
+                <constraint firstAttribute="trailing" secondItem="DO6-XH-WL4" secondAttribute="trailing" id="mIH-yU-GF9"/>
+                <constraint firstItem="DO6-XH-WL4" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="yjy-eh-BqN"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="235"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="trash" width="16" height="16"/>
+    </resources>
+</document>

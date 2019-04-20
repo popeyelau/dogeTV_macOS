@@ -10,17 +10,21 @@ import Cocoa
 import PromiseKit
 
 extension NSViewController {
-    func showVideo(id: String, indicatorView: NSProgressIndicator? = nil) {
+    func showVideo(id: String, history: History? = nil, indicatorView: NSProgressIndicator? = nil) {
         indicatorView?.isHidden = false
         indicatorView?.startAnimation(nil)
+
+        let source = history?.source ?? 0
+        
         attempt(maximumRetryCount: 3) {
             when(fulfilled: APIClient.fetchVideo(id: id),
-                 APIClient.fetchEpisodes(id: id))
+                 APIClient.fetchEpisodes(id: id, source: source))
             }.done { detail, episodes in
                 let window = AppWindowController(windowNibName: "AppWindowController")
                 let content = PlayerViewController()
                 content.videDetail = detail
                 content.episodes = episodes
+                content.history = history
                 window.content = content
                 window.show(from:self.view.window)
             }.catch{ error in
@@ -41,4 +45,15 @@ extension NSViewController {
         alert.addButton(withTitle: "OK")
         alert.runModal()*/
     }
+
+    func dialogOKCancel(question: String, text: String) -> Bool {
+        let alert = NSAlert()
+        alert.messageText = question
+        alert.informativeText = text
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "确定")
+        alert.addButton(withTitle: "取消")
+        return alert.runModal() == .alertFirstButtonReturn
+    }
+
 }

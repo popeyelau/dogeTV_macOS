@@ -167,8 +167,7 @@ extension VideoGridViewController {
         pageIndex = 1
         isLoading = true
         let query = selectedQuery
-        indicatorView.isHidden = false
-        indicatorView.startAnimation(nil)
+        indicatorView.show()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchCategoryList(category: category, isDouban: self.isDouban, query: query)}
             .done { (category) in
@@ -177,8 +176,7 @@ extension VideoGridViewController {
                 print(error)
                 self.showError(error)
             }).finally {
-                self.indicatorView.isHidden = true
-                self.indicatorView.stopAnimation(nil)
+                self.indicatorView.dismiss()
                 self.isLoading = false
                 self.pageIndex = 1
                 self.collectionView.reloadData()
