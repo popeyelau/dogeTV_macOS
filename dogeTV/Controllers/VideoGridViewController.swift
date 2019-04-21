@@ -13,8 +13,8 @@ class VideoGridViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var queryPanel: NSView!
     @IBOutlet weak var queryStack: NSStackView!
-    
     @IBOutlet weak var indicatorView: NSProgressIndicator!
+
     var category: Category? = .film
     var isDouban: Bool = false
     var pageIndex: Int = 1
@@ -30,6 +30,14 @@ class VideoGridViewController: NSViewController {
     var isNoMoreData: Bool = false
     var queryOptions: [OptionSet]?
     var queryString: String?
+
+    lazy var queryOptionsView: QueryOptionsView = {
+        let queryView = QueryOptionsView()
+        queryView.onQueryChanged = { [weak self]  in
+            self?.refresh()
+        }
+        return queryView
+    }()
     
     
     override func viewDidLoad() {
@@ -54,13 +62,8 @@ class VideoGridViewController: NSViewController {
     }
     
     @objc func collectionViewDidScroll() {
-        if(queryStack.arrangedSubviews.count <= 1) { return }
-        NSAnimationContext.runAnimationGroup { context in
-            context.timingFunction = CAMediaTimingFunction(name: .easeOut)
-            context.duration = 0.5
-            for item in queryStack.arrangedSubviews[1...] {
-                item.animator().isHidden = true
-            }
+        if(queryOptionsView.isExpanded) {
+            queryOptionsView.toggle()
         }
     }
     
@@ -69,8 +72,7 @@ class VideoGridViewController: NSViewController {
     }
     
     @IBAction func toggleAction(_ sender: NSButton) {
-        sender.state = sender.state == .on ? .off : .on
-        toggleQueryPanel()
+        queryOptionsView.toggle()
     }
     
     var selectedQuery: String {
@@ -126,36 +128,18 @@ extension VideoGridViewController: NSCollectionViewDelegate, NSCollectionViewDat
 
 extension VideoGridViewController {
     
-    func toggleQueryPanel() {
-        NSAnimationContext.runAnimationGroup { context in
-            context.timingFunction = CAMediaTimingFunction(name: .easeOut)
-            context.duration = 0.5
-            let views = queryStack.arrangedSubviews.filter { $0.isHidden }
-            if views.count > 0 {
-                views.forEach { $0.animator().isHidden = false}
-            } else {
-                queryStack.arrangedSubviews[1...].forEach { $0.animator().isHidden = true}
-            }
-        }
-    }
-    
     func refreshData(_ data: VideoCategory) {
         videos = data.items
-        
         if let query = data.query, queryOptions == nil {
             queryStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
             query.forEach {
                 $0.options.first?.isSelected = true
             }
             queryOptions = query
-            query.forEach {
-                let line = QueryLineView()
-                line.optionsSet = $0
-                line.onQueryChanged = { [weak self]  in
-                    self?.refresh()
-                }
-                line.isHidden = $0.title != "排序"
-                queryStack.addArrangedSubview(line)
+            queryOptionsView.optionsSet = query
+            queryStack.addArrangedSubview(queryOptionsView)
+            queryOptionsView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
             }
         }
     }

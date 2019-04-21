@@ -20,3 +20,30 @@ class DisablableScrollView: NSScrollView {
         }
     }
 }
+
+
+class InvisibleScroller: NSScroller {
+
+    override class var isCompatibleWithOverlayScrollers: Bool {
+        return true
+    }
+
+    override class func scrollerWidth(for controlSize: NSControl.ControlSize, scrollerStyle: NSScroller.Style) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        setup()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+
+    func setup() {
+        scrollerStyle = .overlay
+        alphaValue = 0
+    }
+}

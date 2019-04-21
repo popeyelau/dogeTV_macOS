@@ -16,7 +16,7 @@
 		7916EF1B2266C1AD00FB6721 /* ChannelGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF192266C1AD00FB6721 /* ChannelGridViewController.swift */; };
 		7916EF1C2266C1AD00FB6721 /* ChannelGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7916EF1A2266C1AD00FB6721 /* ChannelGridViewController.xib */; };
 		7916EF1E2266EF3600FB6721 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF1D2266EF3600FB6721 /* NSColorExtension.swift */; };
-		7916EF202267012000FB6721 /* QueryLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF1F2267012000FB6721 /* QueryLineView.swift */; };
+		7916EF202267012000FB6721 /* QueryOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF1F2267012000FB6721 /* QueryOptionsView.swift */; };
 		7916EF24226704AB00FB6721 /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF23226704AB00FB6721 /* NSViewExtension.swift */; };
 		7939584222674F90001FE58A /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939584122674F90001FE58A /* SearchBarView.swift */; };
 		7939584422675F06001FE58A /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939584322675F06001FE58A /* NSViewControllerExtension.swift */; };
@@ -92,7 +92,7 @@
 		7916EF192266C1AD00FB6721 /* ChannelGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelGridViewController.swift; sourceTree = "<group>"; };
 		7916EF1A2266C1AD00FB6721 /* ChannelGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelGridViewController.xib; sourceTree = "<group>"; };
 		7916EF1D2266EF3600FB6721 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
-		7916EF1F2267012000FB6721 /* QueryLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryLineView.swift; sourceTree = "<group>"; };
+		7916EF1F2267012000FB6721 /* QueryOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionsView.swift; sourceTree = "<group>"; };
 		7916EF23226704AB00FB6721 /* NSViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewExtension.swift; sourceTree = "<group>"; };
 		7939584122674F90001FE58A /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		7939584322675F06001FE58A /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 				79D927BA2265B97F009C446E /* VideoIntroView.xib */,
 				7916EF152266C0EF00FB6721 /* ChannelCardView.swift */,
 				7916EF162266C0EF00FB6721 /* ChannelCardView.xib */,
-				7916EF1F2267012000FB6721 /* QueryLineView.swift */,
+				7916EF1F2267012000FB6721 /* QueryOptionsView.swift */,
 				7939584122674F90001FE58A /* SearchBarView.swift */,
 				79E091032268013000219C87 /* ContainerView.swift */,
 				79E091112268474900219C87 /* SearchBarView.xib */,
@@ -551,7 +551,7 @@
 				799B96282264AF7F002C8FFA /* Topic.swift in Sources */,
 				799B96292264AF7F002C8FFA /* APIClient.swift in Sources */,
 				7916EF132266BA1400FB6721 /* SearchViewController.swift in Sources */,
-				7916EF202267012000FB6721 /* QueryLineView.swift in Sources */,
+				7916EF202267012000FB6721 /* QueryOptionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  QueryLineView.swift
+//  QueryOptionsView.swift
 //  dogeTV
 //
 //  Created by Popeye Lau on 2019/4/17.
@@ -10,34 +10,31 @@ import Cocoa
 import SnapKit
 
 
-class QueryLineView: NSView {
+class QueryOptionsView: NSView {
     var onQueryChanged: (() -> Void)?
-    var optionsSet: OptionSet? {
+
+    var isExpanded: Bool = false {
         didSet {
-            if let data = optionsSet {
-                let textParagraph:NSMutableParagraphStyle = NSMutableParagraphStyle()
-                textParagraph.minimumLineHeight = 20
-                let attribs = [NSAttributedString.Key.paragraphStyle:textParagraph]
-                let attrString:NSAttributedString = NSAttributedString(string: "\(data.title):", attributes: attribs)
-                titleLabel.attributedStringValue = attrString
-                collectionView.reloadData()
-            }
+            collectionView.reloadData()
+            needsLayout = true
+        }
+    }
+    var optionsSet: [OptionSet] = [] {
+        didSet {
+            collectionView.reloadData()
         }
     }
     
     lazy var scrollView: DisablableScrollView = {
         let scrollView = DisablableScrollView()
         scrollView.isEnabled = false
+        scrollView.verticalScroller = InvisibleScroller()
         scrollView.documentView = collectionView
         return scrollView
     }()
     
     lazy var collectionView: NSCollectionView = {
-        let layout = NSCollectionViewFlowLayout()
-        layout.itemSize = NSSize(width: 80, height: 24)
-        layout.sectionInset = NSEdgeInsetsMake(0, 0, 8, 200)
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 8
+        let layout = QueryOptionsFlowLayout()
         let collectionView = NSCollectionView()
         collectionView.collectionViewLayout = layout
         collectionView.delegate = self
@@ -60,6 +57,7 @@ class QueryLineView: NSView {
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         setupViews()
+
     }
     
     required init?(coder decoder: NSCoder) {
@@ -69,53 +67,68 @@ class QueryLineView: NSView {
     func setupViews() {
         addSubview(titleLabel)
         addSubview(scrollView)
-        titleLabel.snp.makeConstraints {
-            $0.top.left.equalToSuperview().offset(8)
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
-    
+
+    func toggle() {
+        isExpanded = !isExpanded
+    }
+
     override func layout() {
         super.layout()
         scrollView.snp.remakeConstraints {
-            $0.top.equalToSuperview().offset(8)
-            $0.left.equalTo(titleLabel.snp.right).offset(8)
+            $0.edges.equalToSuperview()
             $0.height.equalTo(collectionView.collectionViewLayout!.collectionViewContentSize.height)
-            $0.right.bottom.equalToSuperview()
         }
     }
 
 }
 
 
-extension QueryLineView: NSCollectionViewDelegate, NSCollectionViewDataSource {
+extension QueryOptionsView: NSCollectionViewDelegate, NSCollectionViewDataSource {
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        return 1
+        return isExpanded ? optionsSet.count : min(optionsSet.count, 1)
     }
-    
+
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let options = optionsSet?.options, !options.isEmpty else { return 0 }
-        return min(options.count, 20)
+        let section = optionsSet[section]
+        return min(section.options.count, 20)
     }
-    
+
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: .init("QueryOptionView"), for: indexPath) as! QueryOptionView
-        if let option = optionsSet?.options[indexPath.item] {
-            item.isSelected = option.isSelected
-            item.textField?.stringValue = option.text
-        }
+        let section = optionsSet[indexPath.section]
+        let option = section.options[indexPath.item]
+        item.isSelected = option.isSelected
+        item.textField?.stringValue = option.text
         return item
     }
+
+    func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
+        header.layer?.backgroundColor =  NSColor.clear.cgColor
+        let section = optionsSet[indexPath.section]
+        header.titleLabel.stringValue = "\(section.title):"
+        header.titleLabel.textColor = .secondaryLabelColor
+        header.titleLabel.font = NSFont.systemFont(ofSize: 13)
+        header.titleLabel.alignment = .left
+        header.moreButton.isHidden = true
+        return header
+    }
+
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         guard let indexPath = indexPaths.first else { return }
-        guard let option = optionsSet?.options[indexPath.item] else { return }
+        let section = optionsSet[indexPath.section]
+        guard let option = section.options[safe: indexPath.item] else { return }
+        //collectionView.deselectItems(at: indexPaths)
 
         if option.isSelected {
-            optionsSet?.setSelected(item: option)
             return
         }
-        collectionView.deselectItems(at: indexPaths)
-        optionsSet?.setSelected(item: option)
+        section.setSelected(item: option)
         collectionView.reloadData()
         onQueryChanged?()
     }
