@@ -21,8 +21,8 @@ class AboutViewController: NSViewController {
             if let name = infoDictionary["CFBundleName"] as? String {
                 appNameLabel.stringValue = name
             }
-            if let version = infoDictionary["CFBundleShortVersionString"] as? String {
-                appVersionLabel.stringValue = "Version \(version)"
+            if let version = infoDictionary["CFBundleShortVersionString"] as? String, let build = infoDictionary[String(kCFBundleVersionKey)] as? String {
+                appVersionLabel.stringValue = "Version \(version)(\(build))"
             }
         }
 
@@ -35,8 +35,6 @@ class AboutViewController: NSViewController {
     }
 
     @IBAction func openURL(_ sender: NSButton) {
-        guard let identifier = sender.identifier?.rawValue,
-            let url = URL(string: identifier) else { return }
-        NSWorkspace.shared.open(url)
+        openURL(with: sender)
     }
 }

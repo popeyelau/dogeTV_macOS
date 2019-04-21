@@ -29,7 +29,7 @@
                             <collectionView selectable="YES" id="nTI-HK-AQK">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="397"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Wag-tG-GRO">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Wag-tG-GRO" customClass="CollectionViewLeftFlowLayout" customModule="dogeTV" customModuleProvider="target">
                                     <size key="itemSize" width="150" height="240"/>
                                     <edgeInsets key="sectionInset" left="20" right="20" top="8" bottom="20"/>
                                 </collectionViewFlowLayout>
@@ -61,7 +61,7 @@
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ez0-NS-P8R">
                                     <rect key="frame" x="0.0" y="0.0" width="85" height="24"/>
-                                    <buttonCell key="cell" type="bevel" title=" 豆瓣优片" bezelStyle="regularSquare" image="douban" imagePosition="left" inset="2" id="9ph-ik-YMl">
+                                    <buttonCell key="cell" type="bevel" title=" 豆瓣好评" bezelStyle="regularSquare" image="douban" imagePosition="left" inset="2" id="9ph-ik-YMl">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>

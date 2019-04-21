@@ -56,4 +56,10 @@ extension NSViewController {
         return alert.runModal() == .alertFirstButtonReturn
     }
 
+    func openURL(with sender: NSButton) {
+        guard let identifier = sender.identifier?.rawValue,
+            let url = URL(string: identifier) else { return }
+        NSWorkspace.shared.open(url)
+    }
+
 }

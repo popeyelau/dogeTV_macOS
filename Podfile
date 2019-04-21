@@ -10,5 +10,4 @@ target 'dogeTV' do
   pod 'PromiseKit/Alamofire'
   pod 'Kingfisher'
   pod 'WCDB.swift'
-
 end

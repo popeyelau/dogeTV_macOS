@@ -22,12 +22,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                     <clipView key="contentView" id="96S-0i-iDr">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView selectable="YES" id="lSJ-In-P7d">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="158"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" sectionHeadersPinToVisibleBounds="YES" id="eug-yh-SET">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" sectionHeadersPinToVisibleBounds="YES" id="eug-yh-SET" customClass="CollectionViewLeftFlowLayout" customModule="dogeTV" customModuleProvider="target">
                                     <size key="itemSize" width="175" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="40"/>
                                     <edgeInsets key="sectionInset" left="20" right="20" top="20" bottom="20"/>

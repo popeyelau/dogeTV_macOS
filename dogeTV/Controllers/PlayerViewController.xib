@@ -30,11 +30,8 @@
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="bUp-vx-1e3">
                     <rect key="frame" x="0.0" y="497" width="722" height="36"/>
                     <subviews>
-                        <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="MT3-oh-qBR">
-                            <rect key="frame" x="0.0" y="0.0" width="722" height="36"/>
-                        </visualEffectView>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Og8-K8-FeM">
-                            <rect key="frame" x="678" y="6" width="24" height="24"/>
+                            <rect key="frame" x="686" y="10" width="16" height="16"/>
                             <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="more" imagePosition="overlaps" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyDown" sound="Pop" inset="2" id="732-qx-KhN">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -55,12 +52,8 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="1s6-nM-E4W"/>
-                        <constraint firstAttribute="right" secondItem="MT3-oh-qBR" secondAttribute="right" id="LJ9-9i-hQo"/>
                         <constraint firstItem="coZ-Av-RIg" firstAttribute="centerY" secondItem="bUp-vx-1e3" secondAttribute="centerY" id="MVZ-4d-aUe"/>
                         <constraint firstItem="Og8-K8-FeM" firstAttribute="centerY" secondItem="bUp-vx-1e3" secondAttribute="centerY" id="PrV-ts-s5g"/>
-                        <constraint firstAttribute="bottom" secondItem="MT3-oh-qBR" secondAttribute="bottom" id="ShF-lW-ud5"/>
-                        <constraint firstItem="MT3-oh-qBR" firstAttribute="top" secondItem="bUp-vx-1e3" secondAttribute="top" id="SuC-jF-GXn"/>
-                        <constraint firstItem="MT3-oh-qBR" firstAttribute="leading" secondItem="bUp-vx-1e3" secondAttribute="leading" id="kCY-CM-8jQ"/>
                         <constraint firstItem="coZ-Av-RIg" firstAttribute="centerX" secondItem="bUp-vx-1e3" secondAttribute="centerX" id="u8m-jd-5mo"/>
                         <constraint firstAttribute="trailing" secondItem="Og8-K8-FeM" secondAttribute="trailing" constant="20" id="wIB-ec-r5Q"/>
                     </constraints>
@@ -145,7 +138,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="more" width="24" height="24"/>
+        <image name="more" width="16" height="16"/>
         <image name="toggle_off" width="17" height="100"/>
         <sound name="Pop"/>
     </resources>

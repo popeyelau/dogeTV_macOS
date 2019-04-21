@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="455" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdX-r3-Pqe">
+                <button toolTip="排行榜" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdX-r3-Pqe">
                     <rect key="frame" x="403" y="12" width="16" height="16"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="rank" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hGm-YN-HhL">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -29,7 +29,7 @@
                         <action selector="topRatedAction:" target="-2" id="YDq-07-YAH"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CWk-Wv-vxl">
+                <button toolTip="搜索" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CWk-Wv-vxl">
                     <rect key="frame" x="427" y="12" width="16" height="16"/>
                     <buttonCell key="cell" type="bevel" title="Search" bezelStyle="circular" image="search" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="iQj-lb-ktB">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

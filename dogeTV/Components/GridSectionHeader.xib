@@ -20,8 +20,8 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GTf-ab-jY0">
-                    <rect key="frame" x="436" y="42" width="24" height="24"/>
+                <button toolTip="更多" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GTf-ab-jY0">
+                    <rect key="frame" x="444" y="46" width="16" height="16"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="more" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Ouz-aF-mSm">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -55,6 +55,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="more" width="24" height="24"/>
+        <image name="more" width="16" height="16"/>
     </resources>
 </document>

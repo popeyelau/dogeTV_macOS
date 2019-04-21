@@ -27,7 +27,7 @@
                             <collectionView selectable="YES" id="pq7-Jg-ooE">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="158"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" sectionHeadersPinToVisibleBounds="YES" id="KGr-rY-Tv1">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" sectionHeadersPinToVisibleBounds="YES" id="KGr-rY-Tv1" customClass="CollectionViewLeftFlowLayout" customModule="dogeTV" customModuleProvider="target">
                                     <size key="itemSize" width="150" height="240"/>
                                     <size key="headerReferenceSize" width="0.0" height="44"/>
                                     <edgeInsets key="sectionInset" left="20" right="20" top="20" bottom="20"/>

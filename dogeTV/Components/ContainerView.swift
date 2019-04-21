@@ -11,7 +11,7 @@ import Cocoa
 class ContainerView: NSView {
     override func addSubview(_ view: NSView) {
         super.addSubview(view)
-        view.snp.remakeConstraints {
+        view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }

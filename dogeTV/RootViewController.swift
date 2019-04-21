@@ -24,6 +24,7 @@ class RootViewController: NSViewController {
     @IBOutlet weak var documentaryBtn: PPButton!
     @IBOutlet weak var liveBtn: PPButton!
     @IBOutlet weak var homeBtn: NSButton!
+    @IBOutlet weak var versionBtn: NSButton!
 
     var mapping: [String: Initializable] = [:]
     var activiedController: NSViewController?
@@ -34,7 +35,7 @@ class RootViewController: NSViewController {
         contentView.wantsLayer = true
         contentView.layer?.cornerRadius = 6
         contentView.layer?.masksToBounds = true
-        contentView.layer?.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        //contentView.layer?.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
         let target = makeContentView(type: LatestGridViewController.self, key: "latest")
         activiedController = target
@@ -55,6 +56,15 @@ class RootViewController: NSViewController {
         homeBtn.addTrackingArea(trackingArea)
         homeBtn.focusRingType = .none
         view.window?.makeFirstResponder(nil)
+
+
+
+        if let infoDictionary = Bundle.main.infoDictionary {
+            if let version = infoDictionary["CFBundleShortVersionString"] as? String, let build = infoDictionary[String(kCFBundleVersionKey)] as? String {
+                versionBtn.title = "Version: \(version)(\(build))"
+            }
+        }
+
     }
     
     @objc func handleMoreNotification(_ notify: Notification) {
@@ -70,6 +80,7 @@ class RootViewController: NSViewController {
         }
     }
     @IBAction func userAction(_ sender: NSButton) {
+        resetButtons()
         let target = makeContentView(type: UserViewController.self, key: "history")
         makeTransition(to: target)
     }
@@ -79,6 +90,7 @@ class RootViewController: NSViewController {
     }
 
     func showTopRated() {
+        resetButtons()
         let target = makeContentView(type: TopRatedViewController.self, key: "topRated")
         makeTransition(to: target)
     }
@@ -153,11 +165,19 @@ class RootViewController: NSViewController {
 
     func onSearch(keywords: String) {
         if keywords.isEmpty { return }
-        
         let target = makeContentView(type: SearchViewController.self, key: "search")
         target.keywords = keywords
         target.startSearch(keywords: keywords)
         makeTransition(to: target)
+        resetButtons()
+    }
+
+    @IBAction func openURL(_ sender: NSButton) {
+        openURL(with: sender)
+    }
+
+    @IBAction func checkUpdateAction(_ sender: NSButton) {
+        //TODO:
     }
 }
 

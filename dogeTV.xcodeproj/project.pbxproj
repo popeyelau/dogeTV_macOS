@@ -44,6 +44,7 @@
 		799FED7822655A8800BD5900 /* VideoGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799FED7622655A8800BD5900 /* VideoGridViewController.swift */; };
 		799FED7922655A8800BD5900 /* VideoGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799FED7722655A8800BD5900 /* VideoGridViewController.xib */; };
 		799FED7B2265685200BD5900 /* PPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799FED7A2265685200BD5900 /* PPButton.swift */; };
+		79A219D8226C5B2500D9581B /* CollectionViewLeftFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A219D7226C5B2500D9581B /* CollectionViewLeftFlowLayout.swift */; };
 		79B7AD06226AADE600600282 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AD04226AADE600600282 /* UserViewController.swift */; };
 		79B7AD07226AADE600600282 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79B7AD05226AADE600600282 /* UserViewController.xib */; };
 		79B7AD0A226AB63C00600282 /* HistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AD08226AB63C00600282 /* HistoryCardView.swift */; };
@@ -119,6 +120,7 @@
 		799FED7622655A8800BD5900 /* VideoGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGridViewController.swift; sourceTree = "<group>"; };
 		799FED7722655A8800BD5900 /* VideoGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoGridViewController.xib; sourceTree = "<group>"; };
 		799FED7A2265685200BD5900 /* PPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPButton.swift; sourceTree = "<group>"; };
+		79A219D7226C5B2500D9581B /* CollectionViewLeftFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLeftFlowLayout.swift; sourceTree = "<group>"; };
 		79B7AD04226AADE600600282 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		79B7AD05226AADE600600282 /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		79B7AD08226AB63C00600282 /* HistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardView.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				79B7AD09226AB63C00600282 /* HistoryCardView.xib */,
 				79B7AD0C226AD36700600282 /* EmptyView.swift */,
 				79B7AD0E226AD37000600282 /* EmptyView.xib */,
+				79A219D7226C5B2500D9581B /* CollectionViewLeftFlowLayout.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				799B96252264AF7F002C8FFA /* OptionSet.swift in Sources */,
 				79B7AD19226AE3BB00600282 /* AboutViewController.swift in Sources */,
 				79FD5BF922647AC3009EDB9C /* RootViewController.swift in Sources */,
+				79A219D8226C5B2500D9581B /* CollectionViewLeftFlowLayout.swift in Sources */,
 				79E09107226835B000219C87 /* TopRatedViewController.swift in Sources */,
 				7916EF172266C0EF00FB6721 /* ChannelCardView.swift in Sources */,
 				79FD5C0E22648A27009EDB9C /* VideoCardView.swift in Sources */,
