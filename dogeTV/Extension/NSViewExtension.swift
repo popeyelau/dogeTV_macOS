@@ -49,6 +49,53 @@ extension NSView {
         self.layer?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.layer?.add(rotate, forKey: nil)
     }
+    
+    static var defaultAnimationDuration: TimeInterval {
+        return 0.5
+    }
+    
+    static var defaultAnimationTimingFunction: CAMediaTimingFunction {
+        return CAMediaTimingFunction(name: .easeInEaseOut)
+    }
+    
+    static func animate(duration: TimeInterval = defaultAnimationDuration,
+                        timingFunction: CAMediaTimingFunction = defaultAnimationTimingFunction,
+                        animations: () -> Void,
+                        completion: (() -> Void)? = nil) {
+        NSAnimationContext.runAnimationGroup({ context in
+            context.allowsImplicitAnimation = true
+            
+            context.duration = duration
+            context.timingFunction = timingFunction
+            
+            animations()
+        }, completionHandler: completion)
+    }
+    
+    // Convenience method for trailing closure syntax without completion handler
+    static func animate(duration: TimeInterval = defaultAnimationDuration,
+                        timingFunction: CAMediaTimingFunction = defaultAnimationTimingFunction,
+                        animations: () -> Void) {
+        animate(duration: duration, timingFunction: timingFunction, animations: animations, completion: nil)
+    }
+    
+    
+    @discardableResult func setTrackingArea(to rect: NSRect,
+                                                   options: NSTrackingArea.Options = [.mouseEnteredAndExited, .activeInKeyWindow])
+        -> NSTrackingArea {
+            resetTrackingAreas()
+            
+            let trackingArea = NSTrackingArea(rect: rect, options: options, owner: self, userInfo: nil)
+            
+            addTrackingArea(trackingArea)
+            
+            return trackingArea
+    }
+    
+    public func resetTrackingAreas() {
+        trackingAreas.forEach { removeTrackingArea($0) }
+    }
+        
 }
 
 

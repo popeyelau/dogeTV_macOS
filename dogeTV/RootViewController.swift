@@ -7,7 +7,9 @@
 //
 
 import Cocoa
-protocol Initializable where Self: NSViewController {}
+protocol Initializable where Self: NSViewController {
+    func refresh()
+}
 
 class RootViewController: NSViewController {
     
@@ -23,11 +25,11 @@ class RootViewController: NSViewController {
     @IBOutlet weak var cartoonBtn: PPButton!
     @IBOutlet weak var documentaryBtn: PPButton!
     @IBOutlet weak var liveBtn: PPButton!
-    @IBOutlet weak var homeBtn: NSButton!
+    @IBOutlet weak var iconImageView: AspectFitImageView!
     @IBOutlet weak var versionBtn: NSButton!
 
     var mapping: [String: Initializable] = [:]
-    var activiedController: NSViewController?
+    var activiedController: Initializable?
     
    
     override func viewDidLoad() {
@@ -35,7 +37,14 @@ class RootViewController: NSViewController {
         contentView.wantsLayer = true
         contentView.layer?.cornerRadius = 6
         contentView.layer?.masksToBounds = true
-        //contentView.layer?.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+
+        iconImageView.focusRingType = .none
+        if FileManager.default.fileExists(atPath: ENV.iconPath) {
+            iconImageView.image = NSImage(contentsOfFile: ENV.iconPath)
+            iconImageView.layer?.cornerRadius = 45
+            iconImageView.layer?.masksToBounds = true
+            iconImageView.layer?.backgroundColor = NSColor.black.cgColor
+        }
         
         let target = makeContentView(type: LatestGridViewController.self, key: "latest")
         activiedController = target
@@ -51,20 +60,13 @@ class RootViewController: NSViewController {
             self?.onSearch(keywords: keywords)
         }
         
-
-        let trackingArea = NSTrackingArea(rect: homeBtn.bounds, options: [.mouseEnteredAndExited, .activeAlways], owner: self, userInfo: nil)
-        homeBtn.addTrackingArea(trackingArea)
-        homeBtn.focusRingType = .none
         view.window?.makeFirstResponder(nil)
-
-
 
         if let infoDictionary = Bundle.main.infoDictionary {
             if let version = infoDictionary["CFBundleShortVersionString"] as? String, let build = infoDictionary[String(kCFBundleVersionKey)] as? String {
                 versionBtn.title = "Version: \(version)(\(build))"
             }
         }
-
     }
     
     @objc func handleMoreNotification(_ notify: Notification) {
@@ -85,20 +87,12 @@ class RootViewController: NSViewController {
         makeTransition(to: target)
     }
 
-    override func mouseEntered(with event: NSEvent) {
-        homeBtn.rotate360Degrees()
-    }
-
     func showTopRated() {
         resetButtons()
         let target = makeContentView(type: TopRatedViewController.self, key: "topRated")
         makeTransition(to: target)
     }
     
-    @IBAction func homeAction(_ sender: NSButton) {
-        menuBtnClicked(latestBtn)
-    }
-
     override func viewWillAppear() {
         super.viewWillAppear()
         view.window?.isMovableByWindowBackground = true
@@ -156,7 +150,7 @@ class RootViewController: NSViewController {
         }
     }
 
-    func makeTransition(to: NSViewController) {
+    func makeTransition(to: Initializable) {
         guard let from = activiedController else { return }
         transition(from: from, to: to, options: .crossfade) {
             self.activiedController = to
@@ -177,7 +171,18 @@ class RootViewController: NSViewController {
     }
 
     @IBAction func checkUpdateAction(_ sender: NSButton) {
-        //TODO:
+        //TODO: 
+    }
+    
+    @IBAction func refreshAction(_ sender: NSButton) {
+        activiedController?.refresh()
+    }
+    
+    @IBAction func dogeAction(_ sender: NSImageView) {
+        sender.image?.saveAsLogo()
+        sender.layer?.cornerRadius = 45
+        sender.layer?.masksToBounds = true
+        sender.layer?.backgroundColor = NSColor.black.cgColor
     }
 }
 

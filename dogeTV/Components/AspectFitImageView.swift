@@ -9,7 +9,7 @@
 import Cocoa
 
 class AspectFitImageView: NSImageView {
-
+    
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
@@ -21,7 +21,6 @@ class AspectFitImageView: NSImageView {
             self.layer = CALayer()
             self.layer?.contentsGravity = CALayerContentsGravity.resizeAspectFill
             self.layer?.contents = newValue
-            self.wantsLayer = true
             self.layer?.cornerRadius = 6
             self.layer?.masksToBounds = true
             self.layer?.backgroundColor = NSColor.black.cgColor

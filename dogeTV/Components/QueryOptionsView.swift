@@ -43,16 +43,6 @@ class QueryOptionsView: NSView {
         collectionView.backgroundColors = [NSColor.clear]
         return collectionView
     }()
-    
-    lazy var titleLabel: NSTextField = {
-        let label = NSTextField()
-        label.isBordered = false
-        label.textColor = .secondaryLabelColor
-        label.alignment = .center
-        label.isEditable = false
-        label.backgroundColor = nil
-        return label
-    }()
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -65,7 +55,6 @@ class QueryOptionsView: NSView {
     }
     
     func setupViews() {
-        addSubview(titleLabel)
         addSubview(scrollView)
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()

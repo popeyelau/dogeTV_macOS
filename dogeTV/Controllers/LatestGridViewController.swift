@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import SnapKit
 import PromiseKit
 
 class LatestGridViewController: NSViewController {

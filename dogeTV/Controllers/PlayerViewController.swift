@@ -48,9 +48,6 @@ class PlayerViewController: NSViewController {
     var episodeIndex: Int = 0
     var sourceIndex: Int = 0
     var duration: Double = 0
-
-    var currentEpisode: Episode?
-
     var dataSource: [Section] = []
 
     private var playerItemContext = 0
@@ -68,6 +65,7 @@ class PlayerViewController: NSViewController {
         super.viewDidLoad()
         episodePanel.wantsLayer = true
         episodePanel.backgroundColor = NSColor(red:0.12, green:0.12, blue:0.13, alpha:1.00)
+        
         titleLabel.stringValue = titleText ?? ""
         updateDataSource()
         playing()

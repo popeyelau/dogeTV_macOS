@@ -31,6 +31,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func about(_ sender: Any) {
         AboutWindowController.defaultController.window?.orderFront(self)
     }
+    
+    @IBAction func help(_ sender: Any) {
+        NSWorkspace.shared.open(URL(string: "https://github.com/popeyelau/dogeTV_macOS")!)
+    }
 
 
 }

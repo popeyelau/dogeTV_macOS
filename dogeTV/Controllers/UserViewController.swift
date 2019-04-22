@@ -81,6 +81,10 @@ extension UserViewController: NSCollectionViewDelegate, NSCollectionViewDataSour
         showVideo(id: history.videoId, history: history)
     }
 }
-extension UserViewController: Initializable {}
+extension UserViewController: Initializable {
+    func refresh() {
+        reload()
+    }
+}
 
 

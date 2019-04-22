@@ -22,6 +22,7 @@
 		7939584422675F06001FE58A /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939584322675F06001FE58A /* NSViewControllerExtension.swift */; };
 		79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79395845226764D8001FE58A /* LivePlayerViewController.swift */; };
 		79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79395846226764D8001FE58A /* LivePlayerViewController.xib */; };
+		794A8001226D5F0700941333 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A8000226D5F0700941333 /* NSImageExtension.swift */; };
 		7988F6B822689824002B5B9D /* AspectFitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7988F6B722689824002B5B9D /* AspectFitImageView.swift */; };
 		799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96022264AB54002C8FFA /* GridSectionHeader.swift */; };
 		799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799B96042264AB61002C8FFA /* GridSectionHeader.xib */; };
@@ -98,6 +99,7 @@
 		7939584322675F06001FE58A /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
 		79395845226764D8001FE58A /* LivePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePlayerViewController.swift; sourceTree = "<group>"; };
 		79395846226764D8001FE58A /* LivePlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LivePlayerViewController.xib; sourceTree = "<group>"; };
+		794A8000226D5F0700941333 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		7988F6B722689824002B5B9D /* AspectFitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFitImageView.swift; sourceTree = "<group>"; };
 		799B96022264AB54002C8FFA /* GridSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSectionHeader.swift; sourceTree = "<group>"; };
 		799B96042264AB61002C8FFA /* GridSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridSectionHeader.xib; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				7916EF1D2266EF3600FB6721 /* NSColorExtension.swift */,
 				7916EF23226704AB00FB6721 /* NSViewExtension.swift */,
 				7939584322675F06001FE58A /* NSViewControllerExtension.swift */,
+				794A8000226D5F0700941333 /* NSImageExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				7939584222674F90001FE58A /* SearchBarView.swift in Sources */,
 				799FED7B2265685200BD5900 /* PPButton.swift in Sources */,
 				799B96242264AF7F002C8FFA /* Response.swift in Sources */,
+				794A8001226D5F0700941333 /* NSImageExtension.swift in Sources */,
 				79B7AD0A226AB63C00600282 /* HistoryCardView.swift in Sources */,
 				79D927AF22659890009C446E /* AppWindowController.swift in Sources */,
 				79D927BB2265B97F009C446E /* VideoIntroView.swift in Sources */,
