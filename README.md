@@ -29,13 +29,11 @@
 
 
 ### Preview
-![Demo](./screenshots/1.png)
-![Demo](./screenshots/2.png)
-![Demo](./screenshots/3.png)
-![Demo](./screenshots/4.png)
-![Demo](./screenshots/5.png)
-![Demo](./screenshots/6.png)
-![Demo](./screenshots/7.png)
-![Demo](./screenshots/8.png)
+![电视剧](https://i.loli.net/2019/04/23/5cbe60c67d233.png)
+![精选](https://i.loli.net/2019/04/23/5cbe612ecdfab.png)
+![播放](https://i.loli.net/2019/04/23/5cbe612f12e6d.png)
+![电视直播](https://i.loli.net/2019/04/23/5cbe612e8ff64.png)
+![CCTV](https://i.loli.net/2019/04/23/5cbe6132ae1c8.png)
+![排行榜](https://i.loli.net/2019/04/23/5cbe612e4b7b2.png)
 
 
