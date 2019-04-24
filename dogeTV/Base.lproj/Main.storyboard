@@ -21,6 +21,13 @@
                                                 <action selector="about:" target="Voe-Tx-rLC" id="uln-SP-7P8"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Zk7-ZA-uzc"/>
+                                        <menuItem title="Check For Updates..." id="vev-L0-pp5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="checkForUpdates:" target="pRH-4s-GHE" id="AUz-Ht-LYa"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="rrc-H2-bHN"/>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
@@ -378,8 +385,18 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="dogeTV" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="dogeTV" customModuleProvider="target">
+                    <connections>
+                        <outlet property="updater" destination="pRH-4s-GHE" id="nBO-FA-8AR"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="pRH-4s-GHE" customClass="GitHubUpdater">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="user" value="popeyelau"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="repository" value="dogeTV_macOS"/>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>

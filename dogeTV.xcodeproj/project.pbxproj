@@ -23,6 +23,9 @@
 		79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79395845226764D8001FE58A /* LivePlayerViewController.swift */; };
 		79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79395846226764D8001FE58A /* LivePlayerViewController.xib */; };
 		794A8001226D5F0700941333 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A8000226D5F0700941333 /* NSImageExtension.swift */; };
+		79614BC3226FE88900F0E738 /* Relauncher in Resources */ = {isa = PBXBuildFile; fileRef = 79614BC1226FE88800F0E738 /* Relauncher */; };
+		79614BC6226FE8F900F0E738 /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79614BC2226FE88800F0E738 /* GitHubUpdates.framework */; };
+		79614BC7226FE8F900F0E738 /* GitHubUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 79614BC2226FE88800F0E738 /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7988F6B822689824002B5B9D /* AspectFitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7988F6B722689824002B5B9D /* AspectFitImageView.swift */; };
 		799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96022264AB54002C8FFA /* GridSectionHeader.swift */; };
 		799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799B96042264AB61002C8FFA /* GridSectionHeader.xib */; };
@@ -83,6 +86,20 @@
 		79FD5C0F22648A27009EDB9C /* VideoCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FD5C0D22648A27009EDB9C /* VideoCardView.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		79614BC8226FE8F900F0E738 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				79614BC7226FE8F900F0E738 /* GitHubUpdates.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0762FFF90A53923C70174323 /* Pods-dogeTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dogeTV.debug.xcconfig"; path = "Target Support Files/Pods-dogeTV/Pods-dogeTV.debug.xcconfig"; sourceTree = "<group>"; };
 		79115815226995FB0034E551 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -100,6 +117,9 @@
 		79395845226764D8001FE58A /* LivePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePlayerViewController.swift; sourceTree = "<group>"; };
 		79395846226764D8001FE58A /* LivePlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LivePlayerViewController.xib; sourceTree = "<group>"; };
 		794A8000226D5F0700941333 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
+		79614BBE226FE85B00F0E738 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitHubUpdates.framework; path = ../../../dogeTV/Frameworks/GitHubUpdates.framework; sourceTree = "<group>"; };
+		79614BC1226FE88800F0E738 /* Relauncher */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = Relauncher; sourceTree = "<group>"; };
+		79614BC2226FE88800F0E738 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GitHubUpdates.framework; sourceTree = "<group>"; };
 		7988F6B722689824002B5B9D /* AspectFitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFitImageView.swift; sourceTree = "<group>"; };
 		799B96022264AB54002C8FFA /* GridSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSectionHeader.swift; sourceTree = "<group>"; };
 		799B96042264AB61002C8FFA /* GridSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridSectionHeader.xib; sourceTree = "<group>"; };
@@ -170,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79614BC6226FE8F900F0E738 /* GitHubUpdates.framework in Frameworks */,
 				79115816226995FC0034E551 /* AVKit.framework in Frameworks */,
 				59DBAE656258FC0986932945 /* Pods_dogeTV.framework in Frameworks */,
 			);
@@ -178,6 +199,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79614BC0226FE87100F0E738 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				79614BC2226FE88800F0E738 /* GitHubUpdates.framework */,
+				79614BC1226FE88800F0E738 /* Relauncher */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		799B96082264AE4A002C8FFA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +360,7 @@
 		79FD5BF522647AC3009EDB9C /* dogeTV */ = {
 			isa = PBXGroup;
 			children = (
+				79614BC0226FE87100F0E738 /* Frameworks */,
 				79C9EEAE2269F7D7007B6B35 /* Repository */,
 				79D927A8226597F5009C446E /* Window */,
 				799B962B2264B076002C8FFA /* Extension */,
@@ -352,6 +383,7 @@
 		E0CC786C672A53CA64E3B4E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79614BBE226FE85B00F0E738 /* GitHubUpdates.framework */,
 				79115815226995FB0034E551 /* AVKit.framework */,
 				F26910516B8FE6E0B0C9D258 /* Pods_dogeTV.framework */,
 			);
@@ -379,6 +411,7 @@
 				79FD5BF022647AC3009EDB9C /* Frameworks */,
 				79FD5BF122647AC3009EDB9C /* Resources */,
 				21629770B55EFCE27BCCA014 /* [CP] Embed Pods Frameworks */,
+				79614BC8226FE8F900F0E738 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -443,6 +476,7 @@
 				79D927A522657854009C446E /* QueryOptionView.xib in Resources */,
 				79D927B022659890009C446E /* AppWindowController.xib in Resources */,
 				79B7AD0F226AD37000600282 /* EmptyView.xib in Resources */,
+				79614BC3226FE88900F0E738 /* Relauncher in Resources */,
 				799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */,
 				79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */,
 				79FD5BFE22647AC4009EDB9C /* Main.storyboard in Resources */,
@@ -697,6 +731,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 983GE8X6R9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/dogeTV/Frameworks",
+				);
 				INFOPLIST_FILE = dogeTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -718,6 +756,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 983GE8X6R9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/dogeTV/Frameworks",
+				);
 				INFOPLIST_FILE = dogeTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

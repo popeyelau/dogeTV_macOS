@@ -171,7 +171,8 @@ class RootViewController: NSViewController {
     }
 
     @IBAction func checkUpdateAction(_ sender: NSButton) {
-        //TODO: 
+        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.updater.checkForUpdates(sender)
     }
     
     @IBAction func refreshAction(_ sender: NSButton) {

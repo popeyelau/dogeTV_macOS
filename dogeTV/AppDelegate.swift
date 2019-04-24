@@ -7,11 +7,13 @@
 //
 
 import Cocoa
+import GitHubUpdates
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    @IBOutlet weak var updater: GitHubUpdater!
+    
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
