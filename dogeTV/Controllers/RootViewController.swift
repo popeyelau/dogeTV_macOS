@@ -170,9 +170,8 @@ class RootViewController: NSViewController {
         openURL(with: sender)
     }
 
-    @IBAction func checkUpdateAction(_ sender: NSButton) {
-        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else { return }
-        appDelegate.updater.checkForUpdates(sender)
+    @IBAction func checkUpdateAction(_ sender: Any) {
+        NSApplication.shared.checkForUpdates(background: true)
     }
     
     @IBAction func refreshAction(_ sender: NSButton) {

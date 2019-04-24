@@ -10,7 +10,7 @@ import Foundation
 
 struct ENV {
     static let host = "https://tv.popeye.vip"
-    static let resourceHost = "http://v.popeye.vip"
+    static let resourceHost = "http://www.haitum.com"
     static let dbPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! + "/dogetv.sqlite"
     static let iconPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! + "/logo.png"
     static let dbVersion = "1.0.0"

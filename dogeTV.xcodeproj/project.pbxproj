@@ -23,9 +23,10 @@
 		79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79395845226764D8001FE58A /* LivePlayerViewController.swift */; };
 		79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79395846226764D8001FE58A /* LivePlayerViewController.xib */; };
 		794A8001226D5F0700941333 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A8000226D5F0700941333 /* NSImageExtension.swift */; };
-		79614BC3226FE88900F0E738 /* Relauncher in Resources */ = {isa = PBXBuildFile; fileRef = 79614BC1226FE88800F0E738 /* Relauncher */; };
-		79614BC6226FE8F900F0E738 /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79614BC2226FE88800F0E738 /* GitHubUpdates.framework */; };
-		79614BC7226FE8F900F0E738 /* GitHubUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 79614BC2226FE88800F0E738 /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		79820F70226FF7FC00ADA103 /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79820F65226FF70600ADA103 /* GitHubUpdates.framework */; };
+		79820F71226FF7FD00ADA103 /* GitHubUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 79820F65226FF70600ADA103 /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		79820F742270093300ADA103 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79820F732270093300ADA103 /* MainWindowController.swift */; };
+		79820F762270097000ADA103 /* NSApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79820F752270097000ADA103 /* NSApplicationExtension.swift */; };
 		7988F6B822689824002B5B9D /* AspectFitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7988F6B722689824002B5B9D /* AspectFitImageView.swift */; };
 		799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96022264AB54002C8FFA /* GridSectionHeader.swift */; };
 		799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799B96042264AB61002C8FFA /* GridSectionHeader.xib */; };
@@ -87,13 +88,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		79614BC8226FE8F900F0E738 /* Embed Frameworks */ = {
+		79820F72226FF7FD00ADA103 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				79614BC7226FE8F900F0E738 /* GitHubUpdates.framework in Embed Frameworks */,
+				79820F71226FF7FD00ADA103 /* GitHubUpdates.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,8 +119,9 @@
 		79395846226764D8001FE58A /* LivePlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LivePlayerViewController.xib; sourceTree = "<group>"; };
 		794A8000226D5F0700941333 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		79614BBE226FE85B00F0E738 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitHubUpdates.framework; path = ../../../dogeTV/Frameworks/GitHubUpdates.framework; sourceTree = "<group>"; };
-		79614BC1226FE88800F0E738 /* Relauncher */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = Relauncher; sourceTree = "<group>"; };
-		79614BC2226FE88800F0E738 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GitHubUpdates.framework; sourceTree = "<group>"; };
+		79820F65226FF70600ADA103 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GitHubUpdates.framework; sourceTree = "<group>"; };
+		79820F732270093300ADA103 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		79820F752270097000ADA103 /* NSApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSApplicationExtension.swift; sourceTree = "<group>"; };
 		7988F6B722689824002B5B9D /* AspectFitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFitImageView.swift; sourceTree = "<group>"; };
 		799B96022264AB54002C8FFA /* GridSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSectionHeader.swift; sourceTree = "<group>"; };
 		799B96042264AB61002C8FFA /* GridSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridSectionHeader.xib; sourceTree = "<group>"; };
@@ -190,7 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79614BC6226FE8F900F0E738 /* GitHubUpdates.framework in Frameworks */,
+				79820F70226FF7FC00ADA103 /* GitHubUpdates.framework in Frameworks */,
 				79115816226995FC0034E551 /* AVKit.framework in Frameworks */,
 				59DBAE656258FC0986932945 /* Pods_dogeTV.framework in Frameworks */,
 			);
@@ -199,11 +201,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		79614BC0226FE87100F0E738 /* Frameworks */ = {
+		79820F64226FF68800ADA103 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				79614BC2226FE88800F0E738 /* GitHubUpdates.framework */,
-				79614BC1226FE88800F0E738 /* Relauncher */,
+				79820F65226FF70600ADA103 /* GitHubUpdates.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -211,6 +212,7 @@
 		799B96082264AE4A002C8FFA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				79FD5BF822647AC3009EDB9C /* RootViewController.swift */,
 				79FD5C0622648353009EDB9C /* LatestGridViewController.swift */,
 				799B96062264AD8A002C8FFA /* LatestGridViewController.xib */,
 				799FED7622655A8800BD5900 /* VideoGridViewController.swift */,
@@ -315,6 +317,7 @@
 				7916EF23226704AB00FB6721 /* NSViewExtension.swift */,
 				7939584322675F06001FE58A /* NSViewControllerExtension.swift */,
 				794A8000226D5F0700941333 /* NSImageExtension.swift */,
+				79820F752270097000ADA103 /* NSApplicationExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 		79D927A8226597F5009C446E /* Window */ = {
 			isa = PBXGroup;
 			children = (
+				79820F732270093300ADA103 /* MainWindowController.swift */,
 				79D927AD22659890009C446E /* AppWindowController.swift */,
 				79D927AE22659890009C446E /* AppWindowController.xib */,
 				79B7AD14226AE38000600282 /* AboutWindow.storyboard */,
@@ -360,7 +364,7 @@
 		79FD5BF522647AC3009EDB9C /* dogeTV */ = {
 			isa = PBXGroup;
 			children = (
-				79614BC0226FE87100F0E738 /* Frameworks */,
+				79820F64226FF68800ADA103 /* Frameworks */,
 				79C9EEAE2269F7D7007B6B35 /* Repository */,
 				79D927A8226597F5009C446E /* Window */,
 				799B962B2264B076002C8FFA /* Extension */,
@@ -371,7 +375,6 @@
 				799B96092264AE53002C8FFA /* Components */,
 				799B96082264AE4A002C8FFA /* Controllers */,
 				79FD5BF622647AC3009EDB9C /* AppDelegate.swift */,
-				79FD5BF822647AC3009EDB9C /* RootViewController.swift */,
 				79FD5BFA22647AC4009EDB9C /* Assets.xcassets */,
 				79FD5BFC22647AC4009EDB9C /* Main.storyboard */,
 				79FD5BFF22647AC4009EDB9C /* Info.plist */,
@@ -411,7 +414,7 @@
 				79FD5BF022647AC3009EDB9C /* Frameworks */,
 				79FD5BF122647AC3009EDB9C /* Resources */,
 				21629770B55EFCE27BCCA014 /* [CP] Embed Pods Frameworks */,
-				79614BC8226FE8F900F0E738 /* Embed Frameworks */,
+				79820F72226FF7FD00ADA103 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -435,8 +438,11 @@
 					79FD5BF222647AC3009EDB9C = {
 						CreatedOnToolsVersion = 10.2;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -476,7 +482,6 @@
 				79D927A522657854009C446E /* QueryOptionView.xib in Resources */,
 				79D927B022659890009C446E /* AppWindowController.xib in Resources */,
 				79B7AD0F226AD37000600282 /* EmptyView.xib in Resources */,
-				79614BC3226FE88900F0E738 /* Relauncher in Resources */,
 				799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */,
 				79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */,
 				79FD5BFE22647AC4009EDB9C /* Main.storyboard in Resources */,
@@ -566,6 +571,7 @@
 				7988F6B822689824002B5B9D /* AspectFitImageView.swift in Sources */,
 				7916EF24226704AB00FB6721 /* NSViewExtension.swift in Sources */,
 				79FD5C0722648353009EDB9C /* LatestGridViewController.swift in Sources */,
+				79820F742270093300ADA103 /* MainWindowController.swift in Sources */,
 				79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */,
 				799B96212264AF7F002C8FFA /* CloudParse.swift in Sources */,
 				79E0911922686AB200219C87 /* TopicsViewController.swift in Sources */,
@@ -576,6 +582,7 @@
 				79A219D8226C5B2500D9581B /* CollectionViewLeftFlowLayout.swift in Sources */,
 				79E09107226835B000219C87 /* TopRatedViewController.swift in Sources */,
 				7916EF172266C0EF00FB6721 /* ChannelCardView.swift in Sources */,
+				79820F762270097000ADA103 /* NSApplicationExtension.swift in Sources */,
 				79FD5C0E22648A27009EDB9C /* VideoCardView.swift in Sources */,
 				799B96272264AF7F002C8FFA /* Video.swift in Sources */,
 				79FD5BF722647AC3009EDB9C /* AppDelegate.swift in Sources */,
