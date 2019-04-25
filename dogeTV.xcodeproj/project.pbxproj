@@ -442,7 +442,7 @@
 								enabled = 0;
 							};
 							com.apple.Sandbox = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
