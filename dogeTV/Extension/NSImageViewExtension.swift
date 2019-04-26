@@ -11,7 +11,6 @@ import Kingfisher
 
 extension NSImageView {
     func setResourceImage(with url: String, placeholder: NSImage? = NSImage(named: "404")) {
-        self.kf.setImage(with: URL(string: url.hasPrefix("http") ? url : "\(ENV.resourceHost)\(url)"),
-                         placeholder: placeholder)
+        self.kf.setImage(with: URL(string: url), placeholder: placeholder)
     }
 }

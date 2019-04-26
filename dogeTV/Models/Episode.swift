@@ -18,6 +18,10 @@ struct Episode: Decodable, Equatable {
             || url.hasSuffix(".mp4")
             || url.hasSuffix(".avi")
     }
+    
+    static func == (lhs: Episode, rhs: Episode) -> Bool {
+        return lhs.url == rhs.url
+    }
 }
 
 struct VideoSource: Equatable, Hashable {

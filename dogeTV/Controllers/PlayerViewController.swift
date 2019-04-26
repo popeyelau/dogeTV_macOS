@@ -46,6 +46,7 @@ class PlayerViewController: NSViewController {
     }
 
     var episodeIndex: Int = 0
+    var playingEpisode: Episode?
     var sourceIndex: Int = 0
     var duration: Double = 0
     var dataSource: [Section] = []
@@ -98,6 +99,7 @@ class PlayerViewController: NSViewController {
     }
     
     func play(episode: Episode) {
+        playingEpisode = episode
         if videDetail == nil {
             titleLabel.stringValue = "\(titleText ?? "") - \(episode.title)"
         } else {
@@ -141,7 +143,18 @@ class PlayerViewController: NSViewController {
                 self.showError(error)
             }).finally {
                 self.updateDataSource()
+                self.updatePlayingEpisodeIfNeeded()
                 self.indicatorView.dismiss()
+        }
+    }
+    
+    func updatePlayingEpisodeIfNeeded() {
+        guard let playing = playingEpisode,
+            let updated = episodes?[safe: episodeIndex] else {
+                return
+        }
+        if playing != updated{
+            play(episode: updated)
         }
     }
     
@@ -196,11 +209,7 @@ class PlayerViewController: NSViewController {
                                context: context)
             return
         }
-
-        //播放历史 && 时长 > 0 监听播放器状态，当成功加载时，跳转到历史播放时间点
-        guard let history = history, history.currentTime > 0, episodeIndex == history.episode else {
-            return
-        }
+        
         if keyPath == #keyPath(AVPlayer.status){
             let status: AVPlayer.Status
             if let statusNumber = change?[.newKey] as? NSNumber {
@@ -210,10 +219,14 @@ class PlayerViewController: NSViewController {
             }
 
             switch status {
-            case .readyToPlay:
-                //开始播放
-                let seekTo = CMTimeMakeWithSeconds(history.currentTime, preferredTimescale: 1000000)
-                avPlayer.player?.seek(to: seekTo)
+            case .readyToPlay: //加载成功 开始播放
+                //播放历史 && 时长 > 0 监听播放器状态，当成功加载时，跳转到历史播放时间点
+                if let history = history, history.currentTime > 0, episodeIndex == history.episode  {
+                    let seekTo = CMTimeMakeWithSeconds(history.currentTime, preferredTimescale: 1000000)
+                    avPlayer.player?.seek(to: seekTo)
+                    self.history = nil
+                    return
+                }
             default:
                 break
             }
@@ -320,6 +333,7 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             play(episode: episode)
             return
         case .source(let sources):
+            if sourceIndex == indexPath.item { return }
             let source = sources[indexPath.item]
             sourceIndex = indexPath.item
             collectionView.reloadSections([indexPath.section])
