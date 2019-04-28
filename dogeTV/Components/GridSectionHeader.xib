@@ -20,41 +20,37 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button toolTip="更多" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GTf-ab-jY0">
-                    <rect key="frame" x="444" y="46" width="16" height="16"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="more" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Ouz-aF-mSm">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="13" name=".PingFangSC-Regular"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="moreAction:" target="c22-O7-iKe" id="Vyr-9Y-rJu"/>
-                    </connections>
-                </button>
                 <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K1M-y1-dCq">
                     <rect key="frame" x="8" y="27" width="2" height="53"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="2" id="6vV-UD-Cvk"/>
                     </constraints>
                 </customView>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mSJ-aA-ICw">
+                    <rect key="frame" x="429" y="47" width="33" height="14"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" enabled="NO" alignment="right" title="Label" usesSingleLineMode="YES" id="B9C-f9-9H6">
+                        <font key="font" metaFont="system" size="11"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="mSJ-aA-ICw" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="0t2-SH-O6D"/>
+                <constraint firstAttribute="trailing" secondItem="mSJ-aA-ICw" secondAttribute="trailing" constant="20" id="FZ8-ae-EaD"/>
                 <constraint firstItem="K1M-y1-dCq" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="LI8-8g-bbC"/>
+                <constraint firstItem="mSJ-aA-ICw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MAc-nS-tts" secondAttribute="trailing" constant="8" id="LOg-On-c2b"/>
                 <constraint firstItem="MAc-nS-tts" firstAttribute="leading" secondItem="K1M-y1-dCq" secondAttribute="trailing" constant="8" id="Ml2-5R-8sy"/>
                 <constraint firstItem="MAc-nS-tts" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Zrl-da-scv"/>
                 <constraint firstItem="K1M-y1-dCq" firstAttribute="height" secondItem="c22-O7-iKe" secondAttribute="height" multiplier="0.5" id="egK-yd-D1f"/>
                 <constraint firstItem="K1M-y1-dCq" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="ewO-cv-mCE"/>
-                <constraint firstItem="GTf-ab-jY0" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="rKL-A7-9wB"/>
-                <constraint firstAttribute="trailing" secondItem="GTf-ab-jY0" secondAttribute="trailing" constant="20" id="uwk-YX-XlK"/>
             </constraints>
             <connections>
                 <outlet property="indicatorView" destination="K1M-y1-dCq" id="2ca-8c-Imb"/>
-                <outlet property="moreButton" destination="GTf-ab-jY0" id="t4f-fd-vgp"/>
+                <outlet property="subTitleLabel" destination="mSJ-aA-ICw" id="yNI-GG-5JC"/>
                 <outlet property="titleLabel" destination="MAc-nS-tts" id="2m0-ti-2yF"/>
             </connections>
             <point key="canvasLocation" x="139" y="71.5"/>
         </customView>
     </objects>
-    <resources>
-        <image name="more" width="16" height="16"/>
-    </resources>
 </document>

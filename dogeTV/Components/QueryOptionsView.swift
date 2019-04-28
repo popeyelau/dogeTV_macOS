@@ -103,7 +103,7 @@ extension QueryOptionsView: NSCollectionViewDelegate, NSCollectionViewDataSource
         header.titleLabel.textColor = .secondaryLabelColor
         header.titleLabel.font = NSFont.systemFont(ofSize: 13)
         header.titleLabel.alignment = .left
-        header.moreButton.isHidden = true
+        header.subTitleLabel.isHidden = true
         return header
     }
 

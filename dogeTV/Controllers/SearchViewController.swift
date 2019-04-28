@@ -98,7 +98,7 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
         let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
         let title = isCloudParse ? parseResult?.title ?? "" : keywords ?? ""
         header.titleLabel.stringValue = "关键字:「\(title)」搜索结果"
-        header.moreButton.isHidden = true
+        header.subTitleLabel.isHidden = true
         return header
     }
 

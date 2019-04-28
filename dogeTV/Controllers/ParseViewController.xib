@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFN-dw-B3s">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="238"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="222"/>
                     <wkWebViewConfiguration key="configuration">
                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                         <wkPreferences key="preferences"/>
@@ -31,7 +31,7 @@
                     </connections>
                 </wkWebView>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nKi-0m-5Qf">
-                    <rect key="frame" x="189" y="245" width="102" height="20"/>
+                    <rect key="frame" x="189" y="237" width="102" height="20"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="Fs3-S2-LBN">
                         <font key="font" metaFont="cellTitle"/>
                         <segments>
@@ -50,9 +50,9 @@
             <constraints>
                 <constraint firstItem="fFN-dw-B3s" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="1JN-1f-f2K"/>
                 <constraint firstAttribute="trailing" secondItem="fFN-dw-B3s" secondAttribute="trailing" id="btO-Pd-YyZ"/>
-                <constraint firstItem="fFN-dw-B3s" firstAttribute="top" secondItem="nKi-0m-5Qf" secondAttribute="bottom" constant="8" id="eIe-g2-Ikb"/>
+                <constraint firstItem="fFN-dw-B3s" firstAttribute="top" secondItem="nKi-0m-5Qf" secondAttribute="bottom" constant="16" id="eIe-g2-Ikb"/>
                 <constraint firstAttribute="bottom" secondItem="fFN-dw-B3s" secondAttribute="bottom" id="f5c-Ze-h41"/>
-                <constraint firstItem="nKi-0m-5Qf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="tiu-ba-omS"/>
+                <constraint firstItem="nKi-0m-5Qf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="tiu-ba-omS"/>
                 <constraint firstItem="nKi-0m-5Qf" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="vzt-bR-AG3"/>
             </constraints>
         </customView>

@@ -10,11 +10,20 @@ import Cocoa
 
 class PPButton: NSButton {
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        setup()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    func setup() {
+        isBordered = false
+        setButtonType(.momentaryChange)
         focusRingType = .none
-        let trackingArea = NSTrackingArea(rect: bounds, options: [.mouseEnteredAndExited, .activeAlways], owner: self, userInfo: nil)
-        addTrackingArea(trackingArea)
         font = NSFont.systemFont(ofSize: 15)
     }
     
@@ -42,6 +51,12 @@ class PPButton: NSButton {
     
     override func mouseExited(with event: NSEvent) {
         updateColor()
+    }
+    
+    override func layout() {
+        super.layout()
+        let trackingArea = NSTrackingArea(rect: bounds, options: [.mouseEnteredAndExited, .activeAlways], owner: self, userInfo: nil)
+        addTrackingArea(trackingArea)
     }
 
     func updateColor() {

@@ -12,6 +12,7 @@ class MainWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
+        window?.isMovableByWindowBackground = true
         NSApplication.shared.checkForUpdates(background: true)
     }
 

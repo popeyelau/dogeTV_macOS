@@ -68,7 +68,7 @@ extension UserViewController: NSCollectionViewDelegate, NSCollectionViewDataSour
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
         let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
         header.titleLabel.stringValue = "历史观看"
-        header.moreButton.isHidden = true
+        header.subTitleLabel.isHidden = true
         return header
     }
 

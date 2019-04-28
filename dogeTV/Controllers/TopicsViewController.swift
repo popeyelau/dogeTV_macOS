@@ -41,7 +41,7 @@ extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataS
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
         let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
         header.titleLabel.stringValue = topics[indexPath.section].topic.title
-        header.moreButton.isHidden = true
+        header.subTitleLabel.isHidden = true
         return header
     }
     

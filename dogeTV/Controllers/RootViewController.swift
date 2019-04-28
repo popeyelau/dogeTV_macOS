@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+
 protocol Initializable where Self: NSViewController {
     func refresh()
 }
@@ -18,14 +19,6 @@ class RootViewController: NSViewController {
     @IBOutlet weak var topView: NSView!
     @IBOutlet weak var btnStack: NSStackView!
     @IBOutlet weak var searchBarView: SearchBarView!
-    @IBOutlet weak var latestBtn: PPButton!
-    @IBOutlet weak var filmBtn: PPButton!
-    @IBOutlet weak var dramaBtn: PPButton!
-    @IBOutlet weak var varietyBtn: PPButton!
-    @IBOutlet weak var cartoonBtn: PPButton!
-    @IBOutlet weak var documentaryBtn: PPButton!
-    @IBOutlet weak var liveBtn: PPButton!
-    @IBOutlet weak var parseBtn: PPButton!
     @IBOutlet weak var iconImageView: AspectFitImageView!
     @IBOutlet weak var versionBtn: NSButton!
 
@@ -47,12 +40,11 @@ class RootViewController: NSViewController {
             iconImageView.layer?.backgroundColor = NSColor.black.cgColor
         }
         
+        setupLeftMenus()
+        
         let target = makeContentView(type: LatestGridViewController.self, key: "latest")
         activiedController = target
         contentView.addSubview(target.view)
-        latestBtn.isSelected = true
-
-        NotificationCenter.default.addObserver(self, selector: #selector(handleMoreNotification(_:)), name: .init(rawValue: "com.dogetv.more"), object: nil)
         
         searchBarView.onTopRatedAction = { [weak self] in
             self?.showTopRated()
@@ -70,106 +62,60 @@ class RootViewController: NSViewController {
         }
     }
     
-    @objc func handleMoreNotification(_ notify: Notification) {
-        guard let title = notify.object as? String else { return }
-        let index = VideoCategory.sections.firstIndex(of: title) ?? 0
-        let category = Category(rawValue: index)!
-        switch category {
-        case .film: menuBtnClicked(filmBtn)
-        case .drama: menuBtnClicked(dramaBtn)
-        case .variety: menuBtnClicked(varietyBtn)
-        case .cartoon: menuBtnClicked(cartoonBtn)
-        case .documentary: menuBtnClicked(documentaryBtn)
+
+    func setupLeftMenus() {
+        Menus.allCases.forEach {
+            let btn = PPButton()
+            btn.title = $0.title
+            btn.identifier = .init($0.rawValue)
+            btnStack.addArrangedSubview(btn)
+            btn.action = #selector(menuBtnClicked(_:))
+            btn.snp.makeConstraints {
+                $0.width.equalToSuperview()
+                $0.height.equalTo(35)
+            }
+        }
+        
+        if let selectedBtn = btnStack.arrangedSubviews.first as? PPButton {
+            selectedBtn.isSelected = true
         }
     }
+    
+
     @IBAction func userAction(_ sender: NSButton) {
         resetButtons()
         let target = makeContentView(type: UserViewController.self, key: "history")
         makeTransition(to: target)
     }
 
-    func showTopRated() {
-        resetButtons()
-        let target = makeContentView(type: TopRatedViewController.self, key: "topRated")
-        makeTransition(to: target)
-    }
     
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        view.window?.isMovableByWindowBackground = true
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    override var representedObject: Any? {
-        didSet {
-            // Update the view, if already loaded.
-        }
-    }
-    
-    @IBAction func menuBtnClicked(_ sender: PPButton) {
+
+     @objc func menuBtnClicked(_ sender: PPButton) {
         view.window?.makeFirstResponder(nil)
-        guard let identifier = sender.identifier?.rawValue, !identifier.isEmpty else { return }
+        guard let identifier = sender.identifier?.rawValue, let menu = Menus(rawValue: identifier) else { return }
         resetButtons()
         sender.isSelected = true
-        switch identifier {
-        case "latest":
+
+        switch menu {
+        case .latest:
             let target = makeContentView(type: LatestGridViewController.self, key: identifier)
             makeTransition(to: target)
-        case Category.film.categoryKey, Category.drama.categoryKey, Category.variety.categoryKey, Category.cartoon.categoryKey, Category.documentary.categoryKey:
+        case .film, .drama, .variety, .cartoon, .documentary:
             let target = makeContentView(type: VideoGridViewController.self, key: identifier)
             target.category = .fromCategoryKey(identifier)
             makeTransition(to: target)
-        case "live":
+        case .live:
             let target = makeContentView(type: ChannelGridViewController.self, key: identifier)
             makeTransition(to: target)
-        case "topic":
+        case .topic:
             let target = makeContentView(type: TopicsViewController.self, key: identifier)
             makeTransition(to: target)
-        case "parse":
+        case .parse:
             let target = makeContentView(type: ParseViewController.self, key: identifier)
             makeTransition(to: target)
-        default: break
         }
     }
     
-    
-    func makeContentView<T>(type:T.Type, key: String) -> T where T: Initializable {
-        if let target = mapping[key] as? T {
-            return target
-        }
-        let target = type.init()
-        mapping[key] = target
-        addChild(target)
-        return target
-    }
-    
-    func resetButtons() {
-        for view in btnStack.subviews {
-            if let btn = view as? PPButton {
-                btn.isSelected = false
-            }
-        }
-    }
-
-    func makeTransition(to: Initializable) {
-        guard let from = activiedController else { return }
-        transition(from: from, to: to, options: .crossfade) {
-            self.activiedController = to
-        }
-    }
-
-    func onSearch(keywords: String) {
-        if keywords.isEmpty { return }
-        let target = makeContentView(type: SearchViewController.self, key: "search")
-        target.keywords = keywords
-        target.startSearch(keywords: keywords)
-        makeTransition(to: target)
-        resetButtons()
-    }
-
     @IBAction func openURL(_ sender: NSButton) {
         openURL(with: sender)
     }
@@ -187,6 +133,49 @@ class RootViewController: NSViewController {
         sender.layer?.cornerRadius = 45
         sender.layer?.masksToBounds = true
         sender.layer?.backgroundColor = NSColor.black.cgColor
+    }
+}
+
+
+extension RootViewController {
+    func onSearch(keywords: String) {
+        if keywords.isEmpty { return }
+        let target = makeContentView(type: SearchViewController.self, key: "search")
+        target.keywords = keywords
+        target.startSearch(keywords: keywords)
+        makeTransition(to: target)
+        resetButtons()
+    }
+    
+    func showTopRated() {
+        resetButtons()
+        let target = makeContentView(type: TopRatedViewController.self, key: "topRated")
+        makeTransition(to: target)
+    }
+    
+    func resetButtons() {
+        for view in btnStack.subviews {
+            if let btn = view as? PPButton {
+                btn.isSelected = false
+            }
+        }
+    }
+    
+    func makeContentView<T>(type:T.Type, key: String) -> T where T: Initializable {
+        if let target = mapping[key] as? T {
+            return target
+        }
+        let target = type.init()
+        mapping[key] = target
+        addChild(target)
+        return target
+    }
+    
+    func makeTransition(to: Initializable) {
+        guard let from = activiedController else { return }
+        transition(from: from, to: to, options: .crossfade) {
+            self.activiedController = to
+        }
     }
 }
 

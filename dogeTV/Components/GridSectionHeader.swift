@@ -11,9 +11,8 @@ import Cocoa
 class GridSectionHeader: NSView {
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var indicatorView: NSView!
-    @IBOutlet weak var moreButton: NSButton!
+    @IBOutlet weak var subTitleLabel: NSTextField!
     
-    var onMore: (() -> Void)?
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         // Drawing code here.
@@ -28,9 +27,5 @@ class GridSectionHeader: NSView {
         
         indicatorView.wantsLayer = true
         indicatorView.layer?.backgroundColor = NSColor(red:0.88, green:0.88, blue:0.88, alpha:1.00).cgColor
-    }
-    
-    @IBAction func moreAction(_ sender: NSButton) {
-        onMore?()
     }
 }

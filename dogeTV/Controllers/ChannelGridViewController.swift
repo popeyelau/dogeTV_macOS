@@ -47,7 +47,7 @@ extension ChannelGridViewController: NSCollectionViewDelegate, NSCollectionViewD
         let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
         let section = channelGroups[indexPath.section]
         header.titleLabel.stringValue = section.categoryName
-        header.moreButton.isHidden = true
+        header.subTitleLabel.isHidden = true
         return header
     }
 

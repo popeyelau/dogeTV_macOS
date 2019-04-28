@@ -43,7 +43,7 @@ class ParseViewController: NSViewController {
             }
         }
         
-        static let HandleURLs: [String] = ["https://v.youku.com/v_", "https://www.iqiyi.com/v_", "https://www.mgtv.com/b/", "https://v.qq.com/x/cover/", "https://film.sohu.com/album/",  "https://www.bilibili.com/video/av", "https://www.bilibili.com/bangumi/play/"]
+        static let HandleURLs: [String] = ["https://v.youku.com/v_", "https://www.iqiyi.com/v_", "https://www.mgtv.com/b/", "https://v.qq.com/x/cover/", "https://film.sohu.com/album/", "https://tv.sohu.com/v/",  "https://www.bilibili.com/video/av", "https://www.bilibili.com/bangumi/play/"]
     }
     
     

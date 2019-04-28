@@ -81,6 +81,7 @@
 		79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E0911822686AB200219C87 /* TopicsViewController.xib */; };
 		79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0911B226873A000219C87 /* DisablableScrollView.swift */; };
 		79F0413D2275591D0005B006 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F0413C2275591D0005B006 /* WebKit.framework */; };
+		79F04143227587A80005B006 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F04142227587A80005B006 /* Menu.swift */; };
 		79FD5BF722647AC3009EDB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD5BF622647AC3009EDB9C /* AppDelegate.swift */; };
 		79FD5BF922647AC3009EDB9C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD5BF822647AC3009EDB9C /* RootViewController.swift */; };
 		79FD5BFB22647AC4009EDB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FD5BFA22647AC4009EDB9C /* Assets.xcassets */; };
@@ -179,6 +180,7 @@
 		79E0911822686AB200219C87 /* TopicsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicsViewController.xib; sourceTree = "<group>"; };
 		79E0911B226873A000219C87 /* DisablableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisablableScrollView.swift; sourceTree = "<group>"; };
 		79F0413C2275591D0005B006 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		79F04142227587A80005B006 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		79FD5BF322647AC3009EDB9C /* dogeTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dogeTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FD5BF622647AC3009EDB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79FD5BF822647AC3009EDB9C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -261,8 +263,8 @@
 				7916EF152266C0EF00FB6721 /* ChannelCardView.swift */,
 				7916EF162266C0EF00FB6721 /* ChannelCardView.xib */,
 				7916EF1F2267012000FB6721 /* QueryOptionsView.swift */,
-				7939584122674F90001FE58A /* SearchBarView.swift */,
 				79E091032268013000219C87 /* ContainerView.swift */,
+				7939584122674F90001FE58A /* SearchBarView.swift */,
 				79E091112268474900219C87 /* SearchBarView.xib */,
 				79E0911B226873A000219C87 /* DisablableScrollView.swift */,
 				7988F6B722689824002B5B9D /* AspectFitImageView.swift */,
@@ -303,6 +305,7 @@
 				799B961A2264AF7E002C8FFA /* Ranking.swift */,
 				799B961B2264AF7E002C8FFA /* Video.swift */,
 				799B961C2264AF7E002C8FFA /* Topic.swift */,
+				79F04142227587A80005B006 /* Menu.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				799B96262264AF7F002C8FFA /* Ranking.swift in Sources */,
 				79B7AD0D226AD36700600282 /* EmptyView.swift in Sources */,
 				79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */,
+				79F04143227587A80005B006 /* Menu.swift in Sources */,
 				79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */,
 				79B7AD17226AE39F00600282 /* AboutWindowController.swift in Sources */,
 				799B960E2264AF61002C8FFA /* ENV.swift in Sources */,

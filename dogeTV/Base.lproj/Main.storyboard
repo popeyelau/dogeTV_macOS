@@ -434,177 +434,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="130" height="800"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-qa-Ovy">
-                                        <rect key="frame" x="0.0" y="165" width="130" height="475"/>
-                                        <subviews>
-                                            <button identifier="latest" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LwU-d7-bdc" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="440" width="130" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="it8-ut-4Kq"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  最新" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="hH5-Su-pGM">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                    <string key="keyEquivalent">1</string>
-                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="D7V-w2-r0r"/>
-                                                </connections>
-                                            </button>
-                                            <button identifier="topic" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Zf-df-d0C" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="385" width="130" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="Kps-A3-FKM"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  精选" bezelStyle="regularSquare" imagePosition="left" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="gQo-3P-Mir">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                    <string key="keyEquivalent">2</string>
-                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="7E2-nD-kiM"/>
-                                                </connections>
-                                            </button>
-                                            <button identifier="film" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aEM-CQ-BrF" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="330" width="130" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="uaI-ew-Ma9"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  电影" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="EMX-ie-Fic">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                    <string key="keyEquivalent">3</string>
-                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="Mg1-lU-esi"/>
-                                                </connections>
-                                            </button>
-                                            <button identifier="drama" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibb-wR-h7N" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="275" width="130" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="dzt-q1-wvh"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  电视剧" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="dJo-pg-Iv8">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                    <string key="keyEquivalent">4</string>
-                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="HJD-8g-MMp"/>
-                                                </connections>
-                                            </button>
-                                            <button identifier="variety" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qv0-wv-t0R" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="220" width="130" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="S8J-Mr-4JX"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  综艺" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="KU8-Xl-ExM">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                    <string key="keyEquivalent">5</string>
-                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="ugd-Bf-p83"/>
-                                                </connections>
-                                            </button>
-                                            <button identifier="cartoon" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x79-yq-Yax" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="165" width="130" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="8vv-Mm-HaM"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  动漫" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="BKv-Ou-rjW">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                    <string key="keyEquivalent">6</string>
-                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="T0e-Fv-V3d"/>
-                                                </connections>
-                                            </button>
-                                            <button identifier="documentary" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pZn-kP-XH4" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="110" width="130" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="202-OB-Bsh"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  纪录片" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="9Hx-M9-I1G">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                    <string key="keyEquivalent">7</string>
-                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="lVU-WO-5P3"/>
-                                                </connections>
-                                            </button>
-                                            <button identifier="parse" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h7m-1O-b8D" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="55" width="130" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="RMq-Xw-csV"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  云解析" bezelStyle="regularSquare" imagePosition="left" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="lAB-1y-hke">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                    <string key="keyEquivalent">8</string>
-                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="1uE-oX-Tl3"/>
-                                                </connections>
-                                            </button>
-                                            <button identifier="live" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PuS-pu-Kvk" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="130" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="r9V-DY-oyq"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  电视直播" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="mu5-00-g3Y">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                    <string key="keyEquivalent">9</string>
-                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="fmZ-8A-6xP"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="x79-yq-Yax" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="9Ab-HM-nEY"/>
-                                            <constraint firstItem="pZn-kP-XH4" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="EHS-5g-szo"/>
-                                            <constraint firstItem="qv0-wv-t0R" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="MTg-SR-fd3"/>
-                                            <constraint firstItem="h7m-1O-b8D" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="YGk-b6-Q0d"/>
-                                            <constraint firstItem="LwU-d7-bdc" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="YVe-wd-8sG"/>
-                                            <constraint firstItem="2Zf-df-d0C" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="kBP-cG-FXl"/>
-                                            <constraint firstItem="aEM-CQ-BrF" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="r53-BR-bu0"/>
-                                            <constraint firstItem="ibb-wR-h7N" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="t44-hG-ko5"/>
-                                            <constraint firstItem="PuS-pu-Kvk" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="zPE-g0-ByC"/>
-                                        </constraints>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
+                                        <rect key="frame" x="0.0" y="640" width="130" height="0.0"/>
                                     </stackView>
                                     <imageView toolTip="拖拽 自定义图标" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xNy-4W-mBy" customClass="AspectFitImageView" customModule="dogeTV" customModuleProvider="target">
                                         <rect key="frame" x="20" y="660" width="90" height="90"/>
@@ -760,19 +590,11 @@
                     </view>
                     <connections>
                         <outlet property="btnStack" destination="Dgl-qa-Ovy" id="nDs-Fe-ufA"/>
-                        <outlet property="cartoonBtn" destination="x79-yq-Yax" id="1FP-z5-I9W"/>
                         <outlet property="contentView" destination="TYq-7v-Uo4" id="Lkq-fC-hXS"/>
-                        <outlet property="documentaryBtn" destination="pZn-kP-XH4" id="TGy-Zw-omb"/>
-                        <outlet property="dramaBtn" destination="ibb-wR-h7N" id="vao-2c-d3x"/>
-                        <outlet property="filmBtn" destination="aEM-CQ-BrF" id="uAj-az-O1e"/>
                         <outlet property="iconImageView" destination="xNy-4W-mBy" id="EH1-R1-2ZT"/>
-                        <outlet property="latestBtn" destination="LwU-d7-bdc" id="NEq-O9-DHe"/>
-                        <outlet property="liveBtn" destination="PuS-pu-Kvk" id="ERc-Bk-Pgi"/>
                         <outlet property="menuView" destination="TR0-Y5-V84" id="k37-j0-bRN"/>
-                        <outlet property="parseBtn" destination="h7m-1O-b8D" id="kDh-2f-VcE"/>
                         <outlet property="searchBarView" destination="jQL-F1-Mbx" id="LSg-lI-FYg"/>
                         <outlet property="topView" destination="bg2-O3-Nhl" id="59G-pQ-Ccn"/>
-                        <outlet property="varietyBtn" destination="qv0-wv-t0R" id="hnV-MY-Nrb"/>
                         <outlet property="versionBtn" destination="nDA-bZ-fUT" id="Te4-II-3Yy"/>
                     </connections>
                 </viewController>
@@ -787,6 +609,5 @@
         <image name="history" width="24" height="24"/>
         <image name="refresh" width="24" height="24"/>
         <image name="telegram" width="16" height="16"/>
-        <sound name="Pop"/>
     </resources>
 </document>

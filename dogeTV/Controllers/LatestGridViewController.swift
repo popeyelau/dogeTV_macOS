@@ -40,9 +40,6 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
         let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
         let section = hots[indexPath.section]
         header.titleLabel.stringValue = section.title
-        header.onMore = {
-            NotificationCenter.default.post(name: .init(rawValue: "com.dogetv.more"), object: section.title)
-        }
         return header
     }
     

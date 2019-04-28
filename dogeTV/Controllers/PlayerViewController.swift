@@ -313,8 +313,12 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
         let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
         let section = dataSource[indexPath.section]
         header.titleLabel.stringValue = section.title
+        header.subTitleLabel.isHidden = true
+        if case Section.episodes(_) = section {
+            header.subTitleLabel.isHidden = false
+            header.subTitleLabel.stringValue = "无法播放? 尝试切换路线"
+        }
         header.titleLabel.font = NSFont.systemFont(ofSize: 14)
-        header.moreButton.isHidden = true
         return header
     }
     
