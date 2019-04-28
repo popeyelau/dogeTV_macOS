@@ -80,6 +80,7 @@
 		79E0911922686AB200219C87 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0911722686AB200219C87 /* TopicsViewController.swift */; };
 		79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E0911822686AB200219C87 /* TopicsViewController.xib */; };
 		79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0911B226873A000219C87 /* DisablableScrollView.swift */; };
+		79F0413D2275591D0005B006 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F0413C2275591D0005B006 /* WebKit.framework */; };
 		79FD5BF722647AC3009EDB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD5BF622647AC3009EDB9C /* AppDelegate.swift */; };
 		79FD5BF922647AC3009EDB9C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD5BF822647AC3009EDB9C /* RootViewController.swift */; };
 		79FD5BFB22647AC4009EDB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FD5BFA22647AC4009EDB9C /* Assets.xcassets */; };
@@ -177,6 +178,7 @@
 		79E0911722686AB200219C87 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		79E0911822686AB200219C87 /* TopicsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicsViewController.xib; sourceTree = "<group>"; };
 		79E0911B226873A000219C87 /* DisablableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisablableScrollView.swift; sourceTree = "<group>"; };
+		79F0413C2275591D0005B006 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		79FD5BF322647AC3009EDB9C /* dogeTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dogeTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FD5BF622647AC3009EDB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79FD5BF822647AC3009EDB9C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F0413D2275591D0005B006 /* WebKit.framework in Frameworks */,
 				79820F70226FF7FC00ADA103 /* GitHubUpdates.framework in Frameworks */,
 				79115816226995FC0034E551 /* AVKit.framework in Frameworks */,
 				59DBAE656258FC0986932945 /* Pods_dogeTV.framework in Frameworks */,
@@ -392,6 +395,7 @@
 		E0CC786C672A53CA64E3B4E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79F0413C2275591D0005B006 /* WebKit.framework */,
 				79614BBE226FE85B00F0E738 /* GitHubUpdates.framework */,
 				79115815226995FB0034E551 /* AVKit.framework */,
 				F26910516B8FE6E0B0C9D258 /* Pods_dogeTV.framework */,
