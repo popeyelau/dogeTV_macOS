@@ -25,6 +25,7 @@ class RootViewController: NSViewController {
     @IBOutlet weak var cartoonBtn: PPButton!
     @IBOutlet weak var documentaryBtn: PPButton!
     @IBOutlet weak var liveBtn: PPButton!
+    @IBOutlet weak var parseBtn: PPButton!
     @IBOutlet weak var iconImageView: AspectFitImageView!
     @IBOutlet weak var versionBtn: NSButton!
 
@@ -183,6 +184,12 @@ class RootViewController: NSViewController {
         sender.layer?.cornerRadius = 45
         sender.layer?.masksToBounds = true
         sender.layer?.backgroundColor = NSColor.black.cgColor
+    }
+    
+    @IBAction func parseAction(_ sender: PPButton) {
+        resetButtons()
+        let target = makeContentView(type: ParseViewController.self, key: "parse")
+        makeTransition(to: target)
     }
 }
 

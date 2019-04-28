@@ -434,14 +434,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="130" height="800"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-qa-Ovy">
-                                        <rect key="frame" x="0.0" y="220" width="130" height="420"/>
+                                        <rect key="frame" x="0.0" y="165" width="130" height="475"/>
                                         <subviews>
                                             <button identifier="latest" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LwU-d7-bdc" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="385" width="130" height="35"/>
+                                                <rect key="frame" x="0.0" y="440" width="130" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="it8-ut-4Kq"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="  最近更新" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="hH5-Su-pGM">
+                                                <buttonCell key="cell" type="bevel" title="  最新" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="hH5-Su-pGM">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                     <string key="keyEquivalent">1</string>
@@ -452,7 +452,7 @@
                                                 </connections>
                                             </button>
                                             <button identifier="topic" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Zf-df-d0C" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="330" width="130" height="35"/>
+                                                <rect key="frame" x="0.0" y="385" width="130" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="Kps-A3-FKM"/>
                                                 </constraints>
@@ -467,7 +467,7 @@
                                                 </connections>
                                             </button>
                                             <button identifier="film" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aEM-CQ-BrF" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="275" width="130" height="35"/>
+                                                <rect key="frame" x="0.0" y="330" width="130" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="uaI-ew-Ma9"/>
                                                 </constraints>
@@ -482,7 +482,7 @@
                                                 </connections>
                                             </button>
                                             <button identifier="drama" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibb-wR-h7N" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="220" width="130" height="35"/>
+                                                <rect key="frame" x="0.0" y="275" width="130" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="dzt-q1-wvh"/>
                                                 </constraints>
@@ -497,7 +497,7 @@
                                                 </connections>
                                             </button>
                                             <button identifier="variety" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qv0-wv-t0R" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="165" width="130" height="35"/>
+                                                <rect key="frame" x="0.0" y="220" width="130" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="S8J-Mr-4JX"/>
                                                 </constraints>
@@ -512,7 +512,7 @@
                                                 </connections>
                                             </button>
                                             <button identifier="cartoon" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x79-yq-Yax" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="110" width="130" height="35"/>
+                                                <rect key="frame" x="0.0" y="165" width="130" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="8vv-Mm-HaM"/>
                                                 </constraints>
@@ -527,7 +527,7 @@
                                                 </connections>
                                             </button>
                                             <button identifier="documentary" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pZn-kP-XH4" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="55" width="130" height="35"/>
+                                                <rect key="frame" x="0.0" y="110" width="130" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="202-OB-Bsh"/>
                                                 </constraints>
@@ -539,6 +539,21 @@
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="lVU-WO-5P3"/>
+                                                </connections>
+                                            </button>
+                                            <button identifier="live" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h7m-1O-b8D" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
+                                                <rect key="frame" x="43" y="55" width="44" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="RMq-Xw-csV"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="bevel" title="云解析" bezelStyle="regularSquare" imagePosition="left" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="lAB-1y-hke">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                                    <string key="keyEquivalent">8</string>
+                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="parseAction:" target="XfG-lQ-9wD" id="oY9-pU-GsL"/>
                                                 </connections>
                                             </button>
                                             <button identifier="live" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PuS-pu-Kvk" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
@@ -576,8 +591,10 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -751,6 +768,7 @@
                         <outlet property="latestBtn" destination="LwU-d7-bdc" id="NEq-O9-DHe"/>
                         <outlet property="liveBtn" destination="PuS-pu-Kvk" id="ERc-Bk-Pgi"/>
                         <outlet property="menuView" destination="TR0-Y5-V84" id="k37-j0-bRN"/>
+                        <outlet property="parseBtn" destination="h7m-1O-b8D" id="kDh-2f-VcE"/>
                         <outlet property="searchBarView" destination="jQL-F1-Mbx" id="LSg-lI-FYg"/>
                         <outlet property="topView" destination="bg2-O3-Nhl" id="59G-pQ-Ccn"/>
                         <outlet property="varietyBtn" destination="qv0-wv-t0R" id="hnV-MY-Nrb"/>

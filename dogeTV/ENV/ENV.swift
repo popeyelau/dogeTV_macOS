@@ -6,13 +6,13 @@
 //  Copyright © 2019 Popeye Lau. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 struct ENV {
     static let host = "https://tv.popeye.vip"
-    static let dbPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! + "/dogetv.sqlite"
-    static let iconPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! + "/logo.png"
-    static let dbVersion = "1.0.0"
+    static let dbPath = NSApplication.shared.appFolder + "/dogetv.sqlite"
+    static let iconPath = NSApplication.shared.appFolder + "/logo.png"
+    static let dbVersion = "1.0.2"
 }
 
 

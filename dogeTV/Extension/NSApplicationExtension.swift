@@ -17,4 +17,8 @@ extension NSApplication {
         }
         appDelegate.updater.checkForUpdates(nil)
     }
+    
+    var appFolder: String {
+       return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! + "/.dogeTV"
+    }
 }
