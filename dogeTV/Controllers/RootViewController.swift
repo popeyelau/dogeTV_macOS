@@ -128,6 +128,9 @@ class RootViewController: NSViewController {
         case "topic":
             let target = makeContentView(type: TopicsViewController.self, key: identifier)
             makeTransition(to: target)
+        case "parse":
+            let target = makeContentView(type: ParseViewController.self, key: identifier)
+            makeTransition(to: target)
         default: break
         }
     }
@@ -184,12 +187,6 @@ class RootViewController: NSViewController {
         sender.layer?.cornerRadius = 45
         sender.layer?.masksToBounds = true
         sender.layer?.backgroundColor = NSColor.black.cgColor
-    }
-    
-    @IBAction func parseAction(_ sender: PPButton) {
-        resetButtons()
-        let target = makeContentView(type: ParseViewController.self, key: "parse")
-        makeTransition(to: target)
     }
 }
 

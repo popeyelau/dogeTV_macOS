@@ -541,19 +541,19 @@
                                                     <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="lVU-WO-5P3"/>
                                                 </connections>
                                             </button>
-                                            <button identifier="live" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h7m-1O-b8D" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                                <rect key="frame" x="43" y="55" width="44" height="35"/>
+                                            <button identifier="parse" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h7m-1O-b8D" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="55" width="130" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="RMq-Xw-csV"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="云解析" bezelStyle="regularSquare" imagePosition="left" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="lAB-1y-hke">
+                                                <buttonCell key="cell" type="bevel" title="  云解析" bezelStyle="regularSquare" imagePosition="left" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="lAB-1y-hke">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                     <string key="keyEquivalent">8</string>
                                                     <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="parseAction:" target="XfG-lQ-9wD" id="oY9-pU-GsL"/>
+                                                    <action selector="menuBtnClicked:" target="XfG-lQ-9wD" id="1uE-oX-Tl3"/>
                                                 </connections>
                                             </button>
                                             <button identifier="live" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PuS-pu-Kvk" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
@@ -564,7 +564,7 @@
                                                 <buttonCell key="cell" type="bevel" title="  电视直播" bezelStyle="regularSquare" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="mu5-00-g3Y">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                    <string key="keyEquivalent">8</string>
+                                                    <string key="keyEquivalent">9</string>
                                                     <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                                 </buttonCell>
                                                 <connections>
@@ -576,6 +576,7 @@
                                             <constraint firstItem="x79-yq-Yax" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="9Ab-HM-nEY"/>
                                             <constraint firstItem="pZn-kP-XH4" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="EHS-5g-szo"/>
                                             <constraint firstItem="qv0-wv-t0R" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="MTg-SR-fd3"/>
+                                            <constraint firstItem="h7m-1O-b8D" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="YGk-b6-Q0d"/>
                                             <constraint firstItem="LwU-d7-bdc" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="YVe-wd-8sG"/>
                                             <constraint firstItem="2Zf-df-d0C" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="kBP-cG-FXl"/>
                                             <constraint firstItem="aEM-CQ-BrF" firstAttribute="width" secondItem="Dgl-qa-Ovy" secondAttribute="width" id="r53-BR-bu0"/>
