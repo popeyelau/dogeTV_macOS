@@ -46,14 +46,16 @@ extension NSViewController {
         alert.runModal()*/
     }
 
-    func dialogOKCancel(question: String, text: String) -> Bool {
+    func dialogOKCancel(question: String, text: String, handler: @escaping ((Bool) -> Void)) {
         let alert = NSAlert()
-        alert.messageText = question
-        alert.informativeText = text
+        alert.messageText = text
+        alert.informativeText = question
         alert.alertStyle = .warning
         alert.addButton(withTitle: "确定")
         alert.addButton(withTitle: "取消")
-        return alert.runModal() == .alertFirstButtonReturn
+        alert.beginSheetModal(for: view.window!) { (returnCode) in
+            handler(returnCode == .alertFirstButtonReturn)
+        }
     }
 
     func openURL(with sender: NSButton) {

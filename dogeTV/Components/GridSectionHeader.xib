@@ -13,23 +13,17 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MAc-nS-tts">
-                    <rect key="frame" x="16" y="44" width="44" height="19"/>
+                    <rect key="frame" x="8" y="44" width="44" height="19"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="cBQ-RI-eKv">
                         <font key="font" metaFont="system" size="16"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K1M-y1-dCq">
-                    <rect key="frame" x="8" y="27" width="2" height="53"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="2" id="6vV-UD-Cvk"/>
-                    </constraints>
-                </customView>
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mSJ-aA-ICw">
                     <rect key="frame" x="429" y="47" width="33" height="14"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" enabled="NO" alignment="right" title="Label" usesSingleLineMode="YES" id="B9C-f9-9H6">
-                        <font key="font" metaFont="system" size="11"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -38,15 +32,10 @@
             <constraints>
                 <constraint firstItem="mSJ-aA-ICw" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="0t2-SH-O6D"/>
                 <constraint firstAttribute="trailing" secondItem="mSJ-aA-ICw" secondAttribute="trailing" constant="20" id="FZ8-ae-EaD"/>
-                <constraint firstItem="K1M-y1-dCq" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="LI8-8g-bbC"/>
-                <constraint firstItem="mSJ-aA-ICw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MAc-nS-tts" secondAttribute="trailing" constant="8" id="LOg-On-c2b"/>
-                <constraint firstItem="MAc-nS-tts" firstAttribute="leading" secondItem="K1M-y1-dCq" secondAttribute="trailing" constant="8" id="Ml2-5R-8sy"/>
                 <constraint firstItem="MAc-nS-tts" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Zrl-da-scv"/>
-                <constraint firstItem="K1M-y1-dCq" firstAttribute="height" secondItem="c22-O7-iKe" secondAttribute="height" multiplier="0.5" id="egK-yd-D1f"/>
-                <constraint firstItem="K1M-y1-dCq" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="ewO-cv-mCE"/>
+                <constraint firstItem="MAc-nS-tts" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="aKO-44-HPO"/>
             </constraints>
             <connections>
-                <outlet property="indicatorView" destination="K1M-y1-dCq" id="2ca-8c-Imb"/>
                 <outlet property="subTitleLabel" destination="mSJ-aA-ICw" id="yNI-GG-5JC"/>
                 <outlet property="titleLabel" destination="MAc-nS-tts" id="2m0-ti-2yF"/>
             </connections>

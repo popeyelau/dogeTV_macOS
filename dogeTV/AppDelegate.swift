@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func about(_ sender: Any) {
-        AboutWindowController.defaultController.window?.orderFront(self)
+        AboutWindowController.defaultController.window?.makeKeyAndOrderFront(self)
     }
     
     @IBAction func help(_ sender: Any) {

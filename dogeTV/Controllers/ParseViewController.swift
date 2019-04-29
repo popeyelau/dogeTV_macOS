@@ -49,8 +49,8 @@ class ParseViewController: NSViewController {
     
 
     @IBOutlet weak var webView: WKWebView!
-    @IBOutlet weak var parseBtn: NSButton!
     @IBOutlet weak var segmentCtrl: NSSegmentedControl!
+    @IBOutlet weak var indicatorView: NSProgressIndicator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,12 +118,14 @@ extension ParseViewController: WKUIDelegate {
 
 extension ParseViewController {
     func parse(url: URL) {
+        indicatorView.show()
         _ = APIClient.cloudParse(url: url.absoluteString)
             .done { (result) in
                self.showPlayer(with: result)
             }.catch({ (error) in
                 print(error)
             }).finally {
+                self.indicatorView.dismiss()
         }
     }
     

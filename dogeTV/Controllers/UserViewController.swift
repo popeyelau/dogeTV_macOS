@@ -38,9 +38,10 @@ class UserViewController: NSViewController {
 
     @IBAction func emptyTrashAction(_ sender: NSButton) {
         guard !histories.isEmpty else { return }
-        if dialogOKCancel(question: "确定要清空全部历史记录吗？", text: "") {
+        dialogOKCancel(question: "确定要清空全部历史记录吗？", text: "清空历史") { [unowned self] isOK in
+            guard isOK else { return }
             Repository.truncate(table: History.self)
-            reload()
+            self.reload()
         }
     }
 

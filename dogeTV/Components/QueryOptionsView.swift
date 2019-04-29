@@ -96,14 +96,11 @@ extension QueryOptionsView: NSCollectionViewDelegate, NSCollectionViewDataSource
     }
 
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
-        header.layer?.backgroundColor =  NSColor.clear.cgColor
         let section = optionsSet[indexPath.section]
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("QueryOptionsKeyView"), for: indexPath) as! QueryOptionsKeyView
+        header.layer?.backgroundColor =  NSColor.clear.cgColor
         header.titleLabel.stringValue = "\(section.title):"
         header.titleLabel.textColor = .secondaryLabelColor
-        header.titleLabel.font = NSFont.systemFont(ofSize: 13)
-        header.titleLabel.alignment = .left
-        header.subTitleLabel.isHidden = true
         return header
     }
 
@@ -112,8 +109,6 @@ extension QueryOptionsView: NSCollectionViewDelegate, NSCollectionViewDataSource
         guard let indexPath = indexPaths.first else { return }
         let section = optionsSet[indexPath.section]
         guard let option = section.options[safe: indexPath.item] else { return }
-        //collectionView.deselectItems(at: indexPaths)
-
         if option.isSelected {
             return
         }

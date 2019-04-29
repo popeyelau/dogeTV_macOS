@@ -10,7 +10,6 @@ import Cocoa
 
 class GridSectionHeader: NSView {
     @IBOutlet weak var titleLabel: NSTextField!
-    @IBOutlet weak var indicatorView: NSView!
     @IBOutlet weak var subTitleLabel: NSTextField!
     
     override func draw(_ dirtyRect: NSRect) {
@@ -23,9 +22,5 @@ class GridSectionHeader: NSView {
         wantsLayer = true
         layer?.backgroundColor = NSColor(red:0.12, green:0.12, blue:0.13, alpha:0.75).cgColor
         titleLabel.textColor = .labelColor
-        
-        
-        indicatorView.wantsLayer = true
-        indicatorView.layer?.backgroundColor = NSColor(red:0.88, green:0.88, blue:0.88, alpha:1.00).cgColor
     }
 }

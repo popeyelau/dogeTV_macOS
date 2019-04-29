@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ParseViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
+                <outlet property="indicatorView" destination="Vat-Fe-fJe" id="iBG-xI-mpr"/>
                 <outlet property="segmentCtrl" destination="nKi-0m-5Qf" id="0ax-P2-sSO"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="webView" destination="fFN-dw-B3s" id="gfA-FJ-s2G"/>
@@ -46,14 +47,19 @@
                         <action selector="segmentIndexChanged:" target="-2" id="CF8-xh-Ic0"/>
                     </connections>
                 </segmentedControl>
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Vat-Fe-fJe">
+                    <rect key="frame" x="20" y="231" width="32" height="32"/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="fFN-dw-B3s" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="1JN-1f-f2K"/>
                 <constraint firstAttribute="trailing" secondItem="fFN-dw-B3s" secondAttribute="trailing" id="btO-Pd-YyZ"/>
+                <constraint firstItem="Vat-Fe-fJe" firstAttribute="centerY" secondItem="nKi-0m-5Qf" secondAttribute="centerY" id="dm2-ui-8oc"/>
                 <constraint firstItem="fFN-dw-B3s" firstAttribute="top" secondItem="nKi-0m-5Qf" secondAttribute="bottom" constant="16" id="eIe-g2-Ikb"/>
                 <constraint firstAttribute="bottom" secondItem="fFN-dw-B3s" secondAttribute="bottom" id="f5c-Ze-h41"/>
                 <constraint firstItem="nKi-0m-5Qf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="tiu-ba-omS"/>
                 <constraint firstItem="nKi-0m-5Qf" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="vzt-bR-AG3"/>
+                <constraint firstItem="Vat-Fe-fJe" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="y4L-Ow-bHo"/>
             </constraints>
         </customView>
     </objects>
