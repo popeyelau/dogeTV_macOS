@@ -13,7 +13,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MAc-nS-tts">
-                    <rect key="frame" x="8" y="44" width="44" height="19"/>
+                    <rect key="frame" x="14" y="44" width="44" height="19"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="cBQ-RI-eKv">
                         <font key="font" metaFont="system" size="16"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -33,7 +33,7 @@
                 <constraint firstItem="mSJ-aA-ICw" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="0t2-SH-O6D"/>
                 <constraint firstAttribute="trailing" secondItem="mSJ-aA-ICw" secondAttribute="trailing" constant="20" id="FZ8-ae-EaD"/>
                 <constraint firstItem="MAc-nS-tts" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Zrl-da-scv"/>
-                <constraint firstItem="MAc-nS-tts" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="aKO-44-HPO"/>
+                <constraint firstItem="MAc-nS-tts" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="aKO-44-HPO"/>
             </constraints>
             <connections>
                 <outlet property="subTitleLabel" destination="mSJ-aA-ICw" id="yNI-GG-5JC"/>
