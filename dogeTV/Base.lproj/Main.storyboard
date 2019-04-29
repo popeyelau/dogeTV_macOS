@@ -407,9 +407,9 @@
                 <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="dogeTV" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="dogeTV" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" appearanceType="darkAqua" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
-                        <rect key="contentRect" x="196" y="425" width="1200" height="800"/>
+                        <rect key="contentRect" x="196" y="425" width="1000" height="700"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="1200" height="800"/>
+                        <value key="minSize" type="size" width="1000" height="700"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
