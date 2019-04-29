@@ -34,26 +34,26 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fTc-lK-xba">
-                                <rect key="frame" x="200" y="134" width="80" height="18"/>
+                                <rect key="frame" x="196" y="133" width="89" height="19"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="App Name" id="5ey-7T-wH1">
-                                    <font key="font" metaFont="systemBold" size="14"/>
+                                    <font key="font" metaFont="systemBold" size="16"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNV-M5-VV8">
-                                <rect key="frame" x="219" y="113" width="43" height="13"/>
+                                <rect key="frame" x="216" y="109" width="49" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version" id="LsC-18-du9">
-                                    <font key="font" metaFont="system" size="10"/>
+                                    <font key="font" metaFont="system" size="12"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Ja-Sm-jiU">
-                                <rect key="frame" x="48" y="67" width="384" height="30"/>
+                                <rect key="frame" x="48" y="63" width="384" height="30"/>
                                 <textFieldCell key="cell" alignment="center" id="M3Y-Vl-W1I">
                                     <font key="font" size="12" name=".PingFangSC-Regular"/>
-                                    <string key="title">所有影视资源均从互联网采集而来 请勿作为商用用途
+                                    <string key="title">所有影视资源均从互联网采集而来 请勿作为商业用途
 其导致一切后果与本人无关 不承担任何责任</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -74,12 +74,12 @@
                                 </connections>
                             </button>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MX6-yH-3In">
-                                <rect key="frame" x="76" y="35" width="329" height="16"/>
+                                <rect key="frame" x="76" y="31" width="329" height="16"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r18-4x-jeh">
                                         <rect key="frame" x="-2" y="0.0" width="80" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="TelegramBot:" id="Qza-sA-9K4">
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -97,7 +97,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wyw-05-FWv">
                                         <rect key="frame" x="174" y="0.0" width="65" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Developer:" id="xLx-ta-bVs">
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>

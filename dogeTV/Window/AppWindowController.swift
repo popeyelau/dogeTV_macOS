@@ -23,7 +23,8 @@ class AppWindowController: NSWindowController {
         if let from = from {
             window?.setFrame(from.frame, display: true)
         }
-        window?.orderFront(nil)
+        window?.makeKeyAndOrderFront(self)
     }
     
+
 }
