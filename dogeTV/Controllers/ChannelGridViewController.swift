@@ -9,6 +9,8 @@
 import Cocoa
 import PromiseKit
 
+let userAgent = ["User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"]
+
 class ChannelGridViewController: NSViewController{
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
@@ -96,13 +98,14 @@ extension ChannelGridViewController: NSCollectionViewDelegate, NSCollectionViewD
         guard let indexPath = indexPaths.first else { return }
         collectionView.deselectItems(at: indexPaths)
         let channel = dataSource[indexPath.item]
-        getStreamURL(channel.url)
+        getStreamURL(channel: channel)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         return ChannelCardView.itemSize
     }
 }
+
 
 
 extension ChannelGridViewController {
@@ -148,6 +151,7 @@ extension ChannelGridViewController {
         }
     }
     
+    /*
     func getStreamURL(_ url: String) {
         indicatorView.show()
         _ = APIClient.fetchIPTVStreamURL(url).done { (channel) in
@@ -158,6 +162,58 @@ extension ChannelGridViewController {
             }).finally {
                 self.collectionView.reloadData()
                 self.indicatorView.dismiss()
+        }
+    }*/
+    
+    func getStreamURL(channel: IPTVChannel) {
+        guard let channelURL = URL(string: channel.url) else {
+            return
+        }
+        
+        indicatorView.show()
+        getHTMLBody(from: channelURL)
+            .map { ($0, "<option+.*?</option>") }
+            .then(extractURL)
+            .then(getHTMLBody)
+            .map { ($0, "url: '(.*?)'") }
+            .then(extractURL)
+            .done({ (url) in
+                let channel = IPTVChannel(name: channel.name, url: url.absoluteString, schedule: channel.schedule)
+                self.preparePlay(channel: channel)
+            }).catch { (err) in
+                print(err)
+            }.finally {
+                self.indicatorView.dismiss()
+        }
+    }
+    
+    func extractURL(from body: String, regex: String) -> Promise<URL> {
+        return Promise<URL> { resolver in
+            guard let url = self.firstMatch(for: regex, in: body)?.extractURLs().first else{
+                resolver.reject(E.decodeFaild)
+                return
+            }
+            resolver.fulfill(url)
+        }
+    }
+    
+    func getHTMLBody(from url: URL) -> Promise<String> {
+        return AlamofireManager.shared.request(url, method: .get, headers: userAgent)
+            .responseString()
+            .map { $0.string }
+    }
+    
+    func firstMatch(for regex: String, in text: String) -> String? {
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            guard let result = regex.firstMatch(in: text,
+                                                range: NSRange(text.startIndex..., in: text)) else {
+                                                    return nil
+            }
+            return String(text[Range(result.range, in: text)!])
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return nil
         }
     }
   
