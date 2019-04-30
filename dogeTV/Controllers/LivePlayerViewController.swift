@@ -10,7 +10,7 @@ import Cocoa
 import AVKit
 
 class LivePlayerViewController: NSViewController {
-    var channel: Channel?
+    var channel: IPTVChannel?
     
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var avPlayer: AVPlayerView!

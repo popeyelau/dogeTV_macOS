@@ -50,7 +50,7 @@ class UserViewController: NSViewController {
     }
 }
 
-extension UserViewController: NSCollectionViewDelegate, NSCollectionViewDataSource {
+extension UserViewController: NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return 1
     }
@@ -80,6 +80,10 @@ extension UserViewController: NSCollectionViewDelegate, NSCollectionViewDataSour
             return
         }
         showVideo(id: history.videoId, history: history)
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
+        return VideoCardView.itemSize
     }
 }
 extension UserViewController: Initializable {

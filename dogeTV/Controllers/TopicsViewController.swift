@@ -22,7 +22,7 @@ class TopicsViewController: NSViewController, Initializable {
 }
 
 
-extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataSource {
+extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return topics.count
     }
@@ -50,6 +50,10 @@ extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataS
         collectionView.deselectItems(at: indexPaths)
         let video = topics[indexPath.section].items[indexPath.item]
         showVideo(id: video.id, indicatorView: indicatorView)
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
+        return VideoCardView.itemSize
     }
 }
 

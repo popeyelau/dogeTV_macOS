@@ -9,9 +9,8 @@
 import Cocoa
 
 class HistoryCardView: NSCollectionViewItem {
-
-    static let itemSize: NSSize = NSSize(width: 150, height: 240)
-    static let smallSize: NSSize = NSSize(width: 150*0.75, height: 240*0.75)
+    static let itemSize: NSSize = NSSize(width: 135, height: 216)
+    static let smallSize: NSSize = NSSize(width: 112.5, height: 180)
     var data: History? {
         didSet {
             guard let history = data else { return }

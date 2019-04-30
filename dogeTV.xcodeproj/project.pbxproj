@@ -22,6 +22,7 @@
 		7939584422675F06001FE58A /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939584322675F06001FE58A /* NSViewControllerExtension.swift */; };
 		79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79395845226764D8001FE58A /* LivePlayerViewController.swift */; };
 		79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79395846226764D8001FE58A /* LivePlayerViewController.xib */; };
+		793AF1362277E3310030CE7F /* IPTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AF1352277E3310030CE7F /* IPTV.swift */; };
 		794A8001226D5F0700941333 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A8000226D5F0700941333 /* NSImageExtension.swift */; };
 		796C844A2276E07000EC8FCF /* QueryOptionsKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C84492276E07000EC8FCF /* QueryOptionsKeyView.swift */; };
 		796C844C2276E08100EC8FCF /* QueryOptionsKeyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796C844B2276E08100EC8FCF /* QueryOptionsKeyView.xib */; };
@@ -39,7 +40,6 @@
 		799B96122264AF78002C8FFA /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96112264AF78002C8FFA /* Helpers.swift */; };
 		799B96202264AF7F002C8FFA /* Hot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96142264AF7E002C8FFA /* Hot.swift */; };
 		799B96212264AF7F002C8FFA /* CloudParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96152264AF7E002C8FFA /* CloudParse.swift */; };
-		799B96222264AF7F002C8FFA /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96162264AF7E002C8FFA /* Channel.swift */; };
 		799B96232264AF7F002C8FFA /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96172264AF7E002C8FFA /* Episode.swift */; };
 		799B96242264AF7F002C8FFA /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96182264AF7E002C8FFA /* Response.swift */; };
 		799B96252264AF7F002C8FFA /* OptionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96192264AF7E002C8FFA /* OptionSet.swift */; };
@@ -123,6 +123,7 @@
 		7939584322675F06001FE58A /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
 		79395845226764D8001FE58A /* LivePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePlayerViewController.swift; sourceTree = "<group>"; };
 		79395846226764D8001FE58A /* LivePlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LivePlayerViewController.xib; sourceTree = "<group>"; };
+		793AF1352277E3310030CE7F /* IPTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTV.swift; sourceTree = "<group>"; };
 		794A8000226D5F0700941333 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		79614BBE226FE85B00F0E738 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitHubUpdates.framework; path = ../../../dogeTV/Frameworks/GitHubUpdates.framework; sourceTree = "<group>"; };
 		796C84492276E07000EC8FCF /* QueryOptionsKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionsKeyView.swift; sourceTree = "<group>"; };
@@ -140,7 +141,6 @@
 		799B96112264AF78002C8FFA /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		799B96142264AF7E002C8FFA /* Hot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hot.swift; sourceTree = "<group>"; };
 		799B96152264AF7E002C8FFA /* CloudParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudParse.swift; sourceTree = "<group>"; };
-		799B96162264AF7E002C8FFA /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		799B96172264AF7E002C8FFA /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		799B96182264AF7E002C8FFA /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		799B96192264AF7E002C8FFA /* OptionSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionSet.swift; sourceTree = "<group>"; };
@@ -304,7 +304,6 @@
 			children = (
 				799B96142264AF7E002C8FFA /* Hot.swift */,
 				799B96152264AF7E002C8FFA /* CloudParse.swift */,
-				799B96162264AF7E002C8FFA /* Channel.swift */,
 				799B96172264AF7E002C8FFA /* Episode.swift */,
 				799B96182264AF7E002C8FFA /* Response.swift */,
 				799B96192264AF7E002C8FFA /* OptionSet.swift */,
@@ -312,6 +311,7 @@
 				799B961B2264AF7E002C8FFA /* Video.swift */,
 				799B961C2264AF7E002C8FFA /* Topic.swift */,
 				79F04142227587A80005B006 /* Menu.swift */,
+				793AF1352277E3310030CE7F /* IPTV.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -568,12 +568,12 @@
 			files = (
 				799B96232264AF7F002C8FFA /* Episode.swift in Sources */,
 				799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */,
-				799B96222264AF7F002C8FFA /* Channel.swift in Sources */,
 				799B96262264AF7F002C8FFA /* Ranking.swift in Sources */,
 				79B7AD0D226AD36700600282 /* EmptyView.swift in Sources */,
 				79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */,
 				79F04143227587A80005B006 /* Menu.swift in Sources */,
 				79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */,
+				793AF1362277E3310030CE7F /* IPTV.swift in Sources */,
 				79B7AD17226AE39F00600282 /* AboutWindowController.swift in Sources */,
 				799B960E2264AF61002C8FFA /* ENV.swift in Sources */,
 				796C844A2276E07000EC8FCF /* QueryOptionsKeyView.swift in Sources */,

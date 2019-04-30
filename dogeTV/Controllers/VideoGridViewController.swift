@@ -95,7 +95,7 @@ class VideoGridViewController: NSViewController {
     }
 }
 
-extension VideoGridViewController: NSCollectionViewDelegate, NSCollectionViewDataSource {
+extension VideoGridViewController: NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return 1
     }
@@ -122,6 +122,10 @@ extension VideoGridViewController: NSCollectionViewDelegate, NSCollectionViewDat
         collectionView.deselectItems(at: indexPaths)
         let video = videos[indexPath.item]
         showVideo(id: video.id, indicatorView: indicatorView)
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
+        return VideoCardView.itemSize
     }
 }
 

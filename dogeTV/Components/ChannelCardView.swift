@@ -9,13 +9,15 @@
 import Cocoa
 
 class ChannelCardView: NSCollectionViewItem {
-
+    
+    static let itemSize: NSSize = NSSize(width: 135, height: 100)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
-        view.layer?.cornerRadius = 6
+        view.layer?.cornerRadius = 10
         view.layer?.borderWidth = 1
-        view.layer?.borderColor = NSColor.white.withAlphaComponent(0.2).cgColor
+        view.layer?.borderColor = NSColor.white.withAlphaComponent(0.1).cgColor
     }
     
 }

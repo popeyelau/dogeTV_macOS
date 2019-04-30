@@ -73,7 +73,7 @@ class PlayerViewController: NSViewController {
         let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self, userInfo: nil)
         view.addTrackingArea(trackingArea)
     }
-    
+
     func playing() {
         if let playing = episodes?[safe: episodeIndex] {
             play(episode: playing)
@@ -252,10 +252,10 @@ class PlayerViewController: NSViewController {
         Repository.insertOrReplace(table: history)
         NotificationCenter.default.post(name: .init(rawValue: "com.dogetv.history"), object: nil)
     }
+    
 
     deinit {
-        guard avPlayer.player?.status == AVPlayer.Status.readyToPlay else { return }
-        addRecord()
+        print("deinit")
     }
 }
 
@@ -367,5 +367,20 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
         }
     }
     
+}
+
+extension PlayerViewController: NSWindowDelegate {
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        view.window?.delegate = self
+    }
+    
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        avPlayer.player?.pause()
+        if avPlayer.player?.status == AVPlayer.Status.readyToPlay {
+            addRecord()
+        }
+        return true
+    }
 }
 

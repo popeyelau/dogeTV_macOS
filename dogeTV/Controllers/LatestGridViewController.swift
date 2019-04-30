@@ -20,7 +20,7 @@ class LatestGridViewController: NSViewController {
     }
 }
 
-extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewDataSource {
+extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return hots.count
     }
@@ -48,6 +48,11 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
         let video = hots[indexPath.section].items[indexPath.item]
         showVideo(id: video.id, indicatorView: indicatorView)
     }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
+        return VideoCardView.itemSize
+    }
+    
 }
 
 extension LatestGridViewController {

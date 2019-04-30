@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="collectionView" destination="lSJ-In-P7d" id="QIl-ze-J7D"/>
                 <outlet property="indicatorView" destination="Ueg-wB-xo3" id="iLz-U5-8dt"/>
+                <outlet property="searchTextField" destination="dwN-9L-sOA" id="VFW-em-p9L"/>
+                <outlet property="toggleBtn" destination="YfI-XO-iYK" id="5qa-U9-N1k"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -18,18 +20,17 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kH-yB-WmI">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kH-yB-WmI">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="216"/>
                     <clipView key="contentView" id="96S-0i-iDr">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="216"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView selectable="YES" id="lSJ-In-P7d">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="158"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" sectionHeadersPinToVisibleBounds="YES" id="eug-yh-SET" customClass="CollectionViewLeftFlowLayout" customModule="dogeTV" customModuleProvider="target">
-                                    <size key="itemSize" width="175" height="100"/>
-                                    <size key="headerReferenceSize" width="0.0" height="40"/>
+                                    <size key="itemSize" width="120" height="100"/>
                                     <edgeInsets key="sectionInset" left="20" right="20" top="20" bottom="20"/>
                                 </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -41,17 +42,17 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="z2i-bk-HdX">
-                        <rect key="frame" x="1" y="144" width="233" height="15"/>
+                        <rect key="frame" x="-100" y="-100" width="233" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="nta-7N-etJ">
-                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="nta-7N-etJ">
+                        <rect key="frame" x="463" y="1" width="16" height="214"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-XO-iYK">
-                    <rect key="frame" x="385" y="238" width="75" height="24"/>
-                    <buttonCell key="cell" type="bevel" title="  切换源" bezelStyle="circular" image="toggle" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="0FG-aV-boT">
+                <button toolTip="切换源" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-XO-iYK">
+                    <rect key="frame" x="432" y="232" width="28" height="24"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="circular" image="menu" imagePosition="trailing" alignment="center" imageScaling="proportionallyDown" inset="2" id="0FG-aV-boT">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -62,20 +63,49 @@
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Ueg-wB-xo3">
                     <rect key="frame" x="224" y="120" width="32" height="32"/>
                 </progressIndicator>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dwN-9L-sOA">
+                    <rect key="frame" x="42" y="236" width="204" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="yIC-rz-IAg"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" placeholderString="频道名称" usesSingleLineMode="YES" id="jpa-jA-C1q">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="searchFieldAction:" target="-2" id="kqZ-qb-iZA"/>
+                    </connections>
+                </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="Ixu-Yd-s3i">
+                    <rect key="frame" x="20" y="236" width="16" height="16"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Oij-Fn-Oj6">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="searchBtnAction:" target="-2" id="4Zn-lt-Xl5"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="5kH-yB-WmI" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="7y1-nf-YgP"/>
-                <constraint firstAttribute="trailing" secondItem="YfI-XO-iYK" secondAttribute="trailing" constant="20" id="9Jg-GR-E4d"/>
                 <constraint firstItem="Ueg-wB-xo3" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="K3h-fh-TKb"/>
                 <constraint firstItem="Ueg-wB-xo3" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="MIW-ag-yKC"/>
+                <constraint firstItem="dwN-9L-sOA" firstAttribute="centerY" secondItem="YfI-XO-iYK" secondAttribute="centerY" id="Nlg-PS-Gho"/>
                 <constraint firstAttribute="bottom" secondItem="5kH-yB-WmI" secondAttribute="bottom" id="UaJ-Ey-m05"/>
-                <constraint firstItem="YfI-XO-iYK" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="XJC-lY-Uqa"/>
+                <constraint firstItem="Ixu-Yd-s3i" firstAttribute="centerY" secondItem="dwN-9L-sOA" secondAttribute="centerY" id="UaN-2F-067"/>
                 <constraint firstAttribute="trailing" secondItem="5kH-yB-WmI" secondAttribute="trailing" id="Zar-XR-nwq"/>
-                <constraint firstItem="5kH-yB-WmI" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="jSi-yw-oad"/>
+                <constraint firstItem="YfI-XO-iYK" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="lbg-nX-3r5"/>
+                <constraint firstItem="dwN-9L-sOA" firstAttribute="leading" secondItem="Ixu-Yd-s3i" secondAttribute="trailing" constant="8" id="m2J-Ad-09E"/>
+                <constraint firstItem="5kH-yB-WmI" firstAttribute="top" secondItem="YfI-XO-iYK" secondAttribute="bottom" constant="16" id="sde-dz-SJv"/>
+                <constraint firstAttribute="trailing" secondItem="YfI-XO-iYK" secondAttribute="trailing" constant="20" id="uIJ-Ze-YZq"/>
+                <constraint firstItem="Ixu-Yd-s3i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="wHM-3E-lEN"/>
             </constraints>
         </customView>
     </objects>
     <resources>
-        <image name="toggle" width="24" height="24"/>
+        <image name="menu" width="24" height="24"/>
+        <image name="search" width="16" height="16"/>
     </resources>
 </document>

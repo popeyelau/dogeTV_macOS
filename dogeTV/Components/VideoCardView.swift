@@ -10,8 +10,8 @@ import Cocoa
 
 class VideoCardView: NSCollectionViewItem {
     
-    static let itemSize: NSSize = NSSize(width: 150, height: 240)
-    static let smallSize: NSSize = NSSize(width: 150*0.75, height: 240*0.75)
+    static let itemSize: NSSize = NSSize(width: 135, height: 220)
+    static let smallSize: NSSize = NSSize(width: 110, height: 180)
     var data: Video? {
         didSet {
             guard let video = data else { return }
