@@ -52,12 +52,6 @@ class ChannelGridViewController: NSViewController{
         window.show(from: view.window)
     }
     
-    @IBAction func searchFieldAction(_ sender: NSTextField) {
-        view.window?.makeFirstResponder(nil)
-        refreshDataSource()
-        collectionView.reloadData()
-    }
-    
     @objc func onCategoryChanged(_ sender: NSMenuItem) {
         view.window?.makeFirstResponder(nil)
         guard let tid = sender.identifier?.rawValue else { return }
@@ -218,5 +212,14 @@ extension ChannelGridViewController {
     }
   
 }
+
+extension ChannelGridViewController: NSTextFieldDelegate {
+    func controlTextDidChange(_ obj: Notification) {
+        guard let textField = obj.object as? NSTextField, textField == searchTextField else { return }
+        refreshDataSource()
+        collectionView.reloadData()
+    }
+}
+
 
 extension ChannelGridViewController: Initializable {}

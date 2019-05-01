@@ -123,14 +123,16 @@ class PlayerViewController: NSViewController {
     }
 
     func prepareToPlay(url: String) {
-        avPlayer.player = AVPlayer(url: URL(string: url)!)
-        avPlayer.player?.addObserver(self,
-                                     forKeyPath: #keyPath(AVPlayer.status),
-                                     options: [.old, .new],
-                                     context: &playerItemContext)
-
-
-        self.avPlayer.player?.play()
+        if avPlayer.player == nil {
+            avPlayer.player = AVPlayer(url: URL(string: url)!)
+            avPlayer.player?.addObserver(self,
+                                         forKeyPath: #keyPath(AVPlayer.status),
+                                         options: [.old, .new],
+                                         context: &playerItemContext)
+        } else {
+            avPlayer.player?.replaceCurrentItem(with: AVPlayerItem(url: URL(string: url)!))
+        }
+        avPlayer.player?.play()
     }
     
     func updateSource(index: Int) {
@@ -222,7 +224,7 @@ class PlayerViewController: NSViewController {
             case .readyToPlay: //加载成功 开始播放
                 //播放历史 && 时长 > 0 监听播放器状态，当成功加载时，跳转到历史播放时间点
                 if let history = history, history.currentTime > 0, episodeIndex == history.episode  {
-                    let seekTo = CMTimeMakeWithSeconds(history.currentTime, preferredTimescale: 1000000)
+                    let seekTo = CMTimeMakeWithSeconds(history.currentTime, preferredTimescale: 1000)
                     avPlayer.player?.seek(to: seekTo)
                     self.history = nil
                     return
@@ -377,7 +379,7 @@ extension PlayerViewController: NSWindowDelegate {
     }
     
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-        avPlayer.player?.pause()
+        avPlayer.player?.replaceCurrentItem(with: nil)
         if avPlayer.player?.status == AVPlayer.Status.readyToPlay {
             addRecord()
         }

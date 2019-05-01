@@ -74,7 +74,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <action selector="searchFieldAction:" target="-2" id="kqZ-qb-iZA"/>
+                        <outlet property="delegate" destination="-2" id="xI1-Ai-Dkc"/>
                     </connections>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Ixu-Yd-s3i">

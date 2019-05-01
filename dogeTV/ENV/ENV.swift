@@ -26,7 +26,7 @@ enum StaticURLs: String {
         case .githubRepo:
             return URL(string: "https://github.com/popeyelau/dogeTV_macOS")!
         case .telegramBot:
-            return URL(string: "https://github.com/popeyelau/dogeTV_macOS")!
+            return URL(string: "https://t.me/dogeTVBot")!
         case .github:
             return URL(string: "https://github.com/popeyelau")!
         }

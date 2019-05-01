@@ -16,6 +16,7 @@ class LivePlayerViewController: NSViewController {
     @IBOutlet weak var avPlayer: AVPlayerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.window?.delegate = self
         play()
     }
 
@@ -25,5 +26,10 @@ class LivePlayerViewController: NSViewController {
         avPlayer.player = AVPlayer(url: url)
         avPlayer.player?.play()
     }
-    
+}
+
+extension LivePlayerViewController: NSWindowDelegate {
+    func windowWillClose(_ notification: Notification) {
+        avPlayer.player?.replaceCurrentItem(with: nil)
+    }
 }
