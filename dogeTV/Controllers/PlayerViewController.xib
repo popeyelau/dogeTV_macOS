@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <avPlayerView controlsStyle="inline" showsFrameSteppingButtons="YES" showsFullScreenToggleButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwL-ZG-e8o">
-                    <rect key="frame" x="0.0" y="0.0" width="372" height="497"/>
+                    <rect key="frame" x="0.0" y="0.0" width="722" height="497"/>
                 </avPlayerView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="bUp-vx-1e3">
                     <rect key="frame" x="0.0" y="497" width="722" height="36"/>
@@ -59,16 +59,16 @@
                     </constraints>
                 </customView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="ort-Os-Zud">
-                    <rect key="frame" x="372" y="0.0" width="350" height="497"/>
+                    <rect key="frame" x="722" y="0.0" width="0.0" height="497"/>
                     <subviews>
                         <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3x-IG-NhB">
-                            <rect key="frame" x="0.0" y="0.0" width="350" height="497"/>
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="497"/>
                             <clipView key="contentView" copiesOnScroll="NO" id="cGh-GF-g8C">
-                                <rect key="frame" x="0.0" y="0.0" width="350" height="497"/>
+                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="497"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <collectionView selectable="YES" id="Ezh-Ky-S76">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="497"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="497"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="5" minimumLineSpacing="5" sectionHeadersPinToVisibleBounds="YES" id="GjE-i1-Ebv">
                                             <size key="itemSize" width="90" height="30"/>
@@ -85,7 +85,7 @@
                                 <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="0.22187063547486033" colorSpace="custom" customColorSpace="sRGB"/>
                             </clipView>
                             <constraints>
-                                <constraint firstAttribute="width" constant="350" id="8Fd-HT-nZ0"/>
+                                <constraint firstAttribute="width" id="8Fd-HT-nZ0"/>
                             </constraints>
                             <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="9Mh-lV-34F">
                                 <rect key="frame" x="-100" y="-100" width="233" height="15"/>
@@ -97,7 +97,7 @@
                             </scroller>
                         </scrollView>
                         <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="h6a-Wb-6gi">
-                            <rect key="frame" x="159" y="233" width="32" height="32"/>
+                            <rect key="frame" x="-16" y="233" width="32" height="32"/>
                         </progressIndicator>
                     </subviews>
                     <constraints>
@@ -109,7 +109,7 @@
                     </constraints>
                 </customView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rLP-zM-XID">
-                    <rect key="frame" x="355" y="217" width="17" height="100"/>
+                    <rect key="frame" x="705" y="217" width="17" height="100"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toggle_off" imagePosition="only" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="YSn-eS-s77">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>

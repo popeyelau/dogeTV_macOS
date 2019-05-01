@@ -14,6 +14,14 @@ class MainWindowController: NSWindowController {
         super.windowDidLoad()
         window?.isMovableByWindowBackground = true
         NSApplication.shared.checkForUpdates(background: true)
+
+      
+
+        let customToolbar = NSToolbar()
+        customToolbar.showsBaselineSeparator = false
+        window?.titlebarAppearsTransparent = true
+        window?.titleVisibility = .hidden
+        window?.toolbar = customToolbar
     }
 
 }

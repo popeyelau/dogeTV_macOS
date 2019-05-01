@@ -70,7 +70,7 @@ class PlayerViewController: NSViewController {
         titleLabel.stringValue = titleText ?? ""
         updateDataSource()
         playing()
-        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self, userInfo: nil)
+        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
         view.addTrackingArea(trackingArea)
     }
 
@@ -255,6 +255,7 @@ class PlayerViewController: NSViewController {
     
 
     deinit {
+        avPlayer?.player?.removeObserver(self, forKeyPath: #keyPath(AVPlayer.status), context: &playerItemContext)
         print("deinit")
     }
 }

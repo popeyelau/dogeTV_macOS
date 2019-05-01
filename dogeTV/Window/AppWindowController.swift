@@ -15,6 +15,11 @@ class AppWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
+        let customToolbar = NSToolbar()
+        customToolbar.showsBaselineSeparator = false
+        window?.titlebarAppearsTransparent = true
+        window?.titleVisibility = .hidden
+        window?.toolbar = customToolbar
     }
 
     func show(from: NSWindow? = nil) {

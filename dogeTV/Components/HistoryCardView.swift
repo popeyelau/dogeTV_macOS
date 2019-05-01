@@ -31,8 +31,8 @@ class HistoryCardView: NSCollectionViewItem {
         shadowView.layer?.cornerRadius = 6
         shadowView.layer?.masksToBounds = true
         shadowView.layer?.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeAlways], owner: self, userInfo: nil)
-        view.addTrackingArea(trackingArea)
+        let trackingArea = NSTrackingArea(rect: imageView!.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .assumeInside], owner: self, userInfo: nil)
+        imageView?.addTrackingArea(trackingArea)
     }
 
     override func mouseEntered(with event: NSEvent) {

@@ -171,7 +171,7 @@ extension VideoGridViewController {
                 self.isLoading = false
                 self.pageIndex = 1
                 self.collectionView.reloadData()
-                self.collectionView.scroll(.zero)
+                self.collectionView.animator().scroll(.zero)
         }
     }
     

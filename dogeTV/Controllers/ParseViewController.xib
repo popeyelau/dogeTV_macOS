@@ -8,7 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ParseViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
+                <outlet property="backBtn" destination="QkV-3f-DoG" id="P9W-Ss-4ly"/>
+                <outlet property="forwardBtn" destination="5FP-FR-q63" id="qmV-ho-knw"/>
                 <outlet property="indicatorView" destination="Vat-Fe-fJe" id="iBG-xI-mpr"/>
+                <outlet property="progressBar" destination="z9G-Pj-zxm" id="D2i-6W-0pE"/>
                 <outlet property="segmentCtrl" destination="nKi-0m-5Qf" id="0ax-P2-sSO"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="webView" destination="fFN-dw-B3s" id="gfA-FJ-s2G"/>
@@ -47,20 +50,74 @@
                         <action selector="segmentIndexChanged:" target="-2" id="CF8-xh-Ic0"/>
                     </connections>
                 </segmentedControl>
-                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Vat-Fe-fJe">
-                    <rect key="frame" x="20" y="231" width="32" height="32"/>
+                <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lAj-Kk-5lA">
+                    <rect key="frame" x="8" y="240" width="60" height="15"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QkV-3f-DoG">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="yeY-Gd-CL3"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSGoBackTemplate" imagePosition="overlaps" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="YlA-8k-CKb">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="goBack:" target="fFN-dw-B3s" id="Al6-5s-gUs"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5FP-FR-q63">
+                            <rect key="frame" x="30" y="0.0" width="30" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="cch-oP-7S9"/>
+                            </constraints>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSGoForwardTemplate" imagePosition="overlaps" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="6Hl-E1-hqX">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="goForward:" target="fFN-dw-B3s" id="i50-qY-HI5"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <progressIndicator wantsLayer="YES" maxValue="1" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="z9G-Pj-zxm">
+                    <rect key="frame" x="-2" y="221" width="480" height="1"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="J0L-qw-0jT"/>
+                    </constraints>
+                </progressIndicator>
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Vat-Fe-fJe">
+                    <rect key="frame" x="444" y="239" width="16" height="16"/>
                 </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="fFN-dw-B3s" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="1JN-1f-f2K"/>
+                <constraint firstItem="lAj-Kk-5lA" firstAttribute="centerY" secondItem="nKi-0m-5Qf" secondAttribute="centerY" id="2W5-tq-ng7"/>
+                <constraint firstItem="Vat-Fe-fJe" firstAttribute="centerY" secondItem="nKi-0m-5Qf" secondAttribute="centerY" id="7C8-yv-0mc"/>
+                <constraint firstItem="z9G-Pj-zxm" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="-2" id="Djv-79-GDg"/>
+                <constraint firstItem="lAj-Kk-5lA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="JaS-Hg-tZV"/>
+                <constraint firstAttribute="trailing" secondItem="Vat-Fe-fJe" secondAttribute="trailing" constant="20" id="Qis-vV-hcJ"/>
                 <constraint firstAttribute="trailing" secondItem="fFN-dw-B3s" secondAttribute="trailing" id="btO-Pd-YyZ"/>
-                <constraint firstItem="Vat-Fe-fJe" firstAttribute="centerY" secondItem="nKi-0m-5Qf" secondAttribute="centerY" id="dm2-ui-8oc"/>
                 <constraint firstItem="fFN-dw-B3s" firstAttribute="top" secondItem="nKi-0m-5Qf" secondAttribute="bottom" constant="16" id="eIe-g2-Ikb"/>
                 <constraint firstAttribute="bottom" secondItem="fFN-dw-B3s" secondAttribute="bottom" id="f5c-Ze-h41"/>
+                <constraint firstItem="z9G-Pj-zxm" firstAttribute="top" secondItem="fFN-dw-B3s" secondAttribute="top" id="fNQ-vW-0JH"/>
                 <constraint firstItem="nKi-0m-5Qf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="tiu-ba-omS"/>
                 <constraint firstItem="nKi-0m-5Qf" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="vzt-bR-AG3"/>
-                <constraint firstItem="Vat-Fe-fJe" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="y4L-Ow-bHo"/>
+                <constraint firstAttribute="trailing" secondItem="z9G-Pj-zxm" secondAttribute="trailing" constant="2" id="zc5-DE-rZc"/>
             </constraints>
         </customView>
     </objects>
+    <resources>
+        <image name="NSGoBackTemplate" width="9" height="12"/>
+        <image name="NSGoForwardTemplate" width="9" height="12"/>
+    </resources>
 </document>

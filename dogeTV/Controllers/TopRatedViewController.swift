@@ -65,7 +65,7 @@ extension TopRatedViewController: NSTableViewDataSource, NSTableViewDelegate {
             let cell = tableView.makeView(withIdentifier: .init(rawValue: "cell"), owner: nil) as? NSTableCellView else {
             return nil
         }
-        
+
         var textColor: NSColor = .labelColor
         let item = list[row]
         var value = "-"
