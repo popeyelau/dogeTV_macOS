@@ -90,7 +90,7 @@ class PlayerViewController: NSViewController {
 
     @IBAction func toggleEpisodePanel(_ sender: NSButton) {
         if episodePanelWidth.constant == 0 {
-            episodePanelWidth.constant = 400
+            episodePanelWidth.constant = 350
             toggleBtn.image = NSImage(named: "toggle_off")
         } else {
             episodePanelWidth.constant = 0
@@ -355,7 +355,7 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
           let section = dataSource[indexPath.section]
         switch section {
         case .source:
-            return NSSize(width: 90, height: 30)
+            return NSSize(width: 70, height: 30)
         case .episodes(let episodes):
             let title = episodes[indexPath.item].title
             let width = title.widthOfString(usingFont: .systemFont(ofSize: 14)) + 20

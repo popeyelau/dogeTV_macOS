@@ -8,6 +8,7 @@
 
 import Cocoa
 import GitHubUpdates
+import AVKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

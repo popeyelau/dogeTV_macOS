@@ -532,7 +532,7 @@
                                                     <action selector="checkUpdateAction:" target="XfG-lQ-9wD" id="c9T-vJ-V8N"/>
                                                 </connections>
                                             </button>
-                                            <button identifier="https://t.me/dogeTVBot" toolTip="Telegram Bot" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sKu-VW-EWD">
+                                            <button identifier="telegramBot" toolTip="Telegram Bot" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sKu-VW-EWD">
                                                 <rect key="frame" x="66" y="0.0" width="16" height="16"/>
                                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="telegram" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="VpK-59-fy7">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -542,7 +542,7 @@
                                                     <action selector="openURL:" target="XfG-lQ-9wD" id="KsN-Em-3su"/>
                                                 </connections>
                                             </button>
-                                            <button identifier="https://github.com/popeyelau/dogeTV_macOS" toolTip="GitHub" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Wv-Dv-YXo">
+                                            <button identifier="githubRepo" toolTip="GitHub" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Wv-Dv-YXo">
                                                 <rect key="frame" x="98" y="0.0" width="16" height="16"/>
                                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="github" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="fab-4S-fmF">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

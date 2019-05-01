@@ -2782,7 +2782,7 @@
 			};
 			name = Debug;
 		};
-		9372C791CA83E3CEEDA5AB4E7CFD57CF /* Debug */ = {
+		96CAA8341DCE56A68DB11A560B33BD64 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F3CAEA921ED7A928E94213C1A0372B9E /* SnapKit.xcconfig */;
 			buildSettings = {
@@ -2806,18 +2806,18 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
 				PRODUCT_MODULE_NAME = SnapKit;
 				PRODUCT_NAME = SnapKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		96D75B4B9499953CD1C16CB33871CE8C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2996,7 +2996,7 @@
 			};
 			name = Debug;
 		};
-		C841CF982D897A4995F5C1761F9C2215 /* Release */ = {
+		B1A21E5B2357ED1F7558C33594517C8C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F3CAEA921ED7A928E94213C1A0372B9E /* SnapKit.xcconfig */;
 			buildSettings = {
@@ -3020,18 +3020,18 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MODULEMAP_FILE = "Target Support Files/SnapKit/SnapKit.modulemap";
 				PRODUCT_MODULE_NAME = SnapKit;
 				PRODUCT_NAME = SnapKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		D0A5C185E6F96F034A3680A0F734FD8A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -3229,8 +3229,8 @@
 		3BBBC403BA79741703B9761E6A88A5B5 /* Build configuration list for PBXNativeTarget "SnapKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9372C791CA83E3CEEDA5AB4E7CFD57CF /* Debug */,
-				C841CF982D897A4995F5C1761F9C2215 /* Release */,
+				B1A21E5B2357ED1F7558C33594517C8C /* Debug */,
+				96CAA8341DCE56A68DB11A560B33BD64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -27,7 +27,7 @@ class ChannelGridViewController: NSViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
-        let backgroundColor = NSColor(red: 0.12, green: 0.12, blue: 0.13, alpha: 1.00)
+        let backgroundColor = NSColor.backgroundColor
         view.layer?.backgroundColor = backgroundColor.cgColor
         searchTextField.focusRingType = .none
         searchTextField.wantsLayer = true

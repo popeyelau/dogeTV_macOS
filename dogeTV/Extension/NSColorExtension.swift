@@ -12,4 +12,5 @@ import AppKit
 extension NSColor {
     static let primaryColor = NSColor(red:0.92, green:0.26, blue:0.21, alpha:1.00)
     static let selectedBackgroudColor = NSColor(red:0.12, green:0.13, blue:0.13, alpha:1.00)
+    static let backgroundColor = NSColor(red:0.12, green:0.13, blue:0.14, alpha:1.00)
 }

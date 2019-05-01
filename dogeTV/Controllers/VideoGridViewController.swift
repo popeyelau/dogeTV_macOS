@@ -42,6 +42,9 @@ class VideoGridViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        queryPanel.wantsLayer = true
+        queryPanel.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        
         if let clipView = collectionView.superview, let scrollView = clipView.superview as? NSScrollView{
             let contentView = scrollView.contentView
             contentView.postsBoundsChangedNotifications = true
@@ -118,8 +121,8 @@ extension VideoGridViewController: NSCollectionViewDelegate, NSCollectionViewDat
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        guard let indexPath = indexPaths.first else { return }
         collectionView.deselectItems(at: indexPaths)
+        guard let indexPath = indexPaths.first else { return }
         let video = videos[indexPath.item]
         showVideo(id: video.id, indicatorView: indicatorView)
     }

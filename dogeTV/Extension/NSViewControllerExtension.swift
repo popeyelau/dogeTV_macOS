@@ -60,7 +60,7 @@ extension NSViewController {
 
     func openURL(with sender: NSButton) {
         guard let identifier = sender.identifier?.rawValue,
-            let url = URL(string: identifier) else { return }
+            let url = StaticURLs(rawValue: identifier)?.url else { return }
         NSWorkspace.shared.open(url)
     }
 
