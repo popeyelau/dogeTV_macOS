@@ -73,6 +73,17 @@ class QueryOptionsView: NSView {
         }
     }
 
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        if isExpanded {
+            let colorTop = NSColor.black.withAlphaComponent(0.50)
+            let colorBottom = NSColor.backgroundColor
+            let gradient = NSGradient(colors: [colorTop, colorBottom])
+            gradient?.draw(in: dirtyRect, angle: 90)
+        }
+    }
+
+
 }
 
 

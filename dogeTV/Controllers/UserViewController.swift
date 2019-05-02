@@ -17,9 +17,12 @@ class UserViewController: NSViewController {
     }
     @IBOutlet weak var historyCollectionView: NSCollectionView!
     @IBOutlet weak var emptyView: EmptyView!
+    @IBOutlet weak var collectionView: NSCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(historyUpdatedHandler), name: .init(rawValue: "com.dogetv.history"), object: nil)
+
+        collectionView.backgroundColors = [.backgroundColor]
+        NotificationCenter.default.addObserver(self, selector: #selector(historyUpdatedHandler), name: .historyUpdated, object: nil)
     }
 
     func reload() {

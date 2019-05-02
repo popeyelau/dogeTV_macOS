@@ -20,8 +20,8 @@ class CollectionViewLeftFlowLayout: NSCollectionViewFlowLayout {
     }
 
     func setup() {
-        minimumLineSpacing = 20
-        minimumInteritemSpacing = 20
+        minimumLineSpacing = 15
+        minimumInteritemSpacing = 15
     }
 
     override func layoutAttributesForElements(in rect: NSRect) -> [NSCollectionViewLayoutAttributes] {
@@ -67,11 +67,11 @@ class QueryOptionsFlowLayout: NSCollectionViewFlowLayout {
     }
 
     func setup() {
-        minimumLineSpacing = 8
-        minimumInteritemSpacing = 8
+        minimumLineSpacing = 5
+        minimumInteritemSpacing = 5
         sectionInset = NSEdgeInsets(top: 10, left: 60, bottom: 10, right: 100)
         headerReferenceSize = CGSize(width: 60, height: 0.01)
-        itemSize = NSSize(width: 80, height: 24)
+        itemSize = NSSize(width: 70, height: 24)
     }
 
     override func layoutAttributesForElements(in rect: NSRect) -> [NSCollectionViewLayoutAttributes] {

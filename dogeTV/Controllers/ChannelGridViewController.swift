@@ -27,11 +27,11 @@ class ChannelGridViewController: NSViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
-        let backgroundColor = NSColor.backgroundColor
-        view.layer?.backgroundColor = backgroundColor.cgColor
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        collectionView.backgroundColors = [.backgroundColor]
         searchTextField.focusRingType = .none
         searchTextField.wantsLayer = true
-        searchTextField.backgroundColor = backgroundColor
+        searchTextField.backgroundColor = .backgroundColor
         refresh()
     }
 
@@ -44,6 +44,19 @@ class ChannelGridViewController: NSViewController{
     }
     
     func preparePlay(channel: IPTVChannel) {
+        NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
+        let playerWindow = NSApplication.shared.windows.first {
+            $0.contentViewController?.isKind(of: LivePlayerViewController.self) == true
+        }
+
+        if let window = playerWindow, let controller = window.contentViewController as? LivePlayerViewController {
+            controller.channel = channel
+            window.title = channel.name
+            controller.play()
+            window.makeKeyAndOrderFront(nil)
+            return
+        }
+
         let window = AppWindowController(windowNibName: "AppWindowController")
         let content = LivePlayerViewController()
         content.channel = channel

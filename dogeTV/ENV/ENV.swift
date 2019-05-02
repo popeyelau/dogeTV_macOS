@@ -12,7 +12,7 @@ struct ENV {
     static let host = "https://tv.popeye.vip"
     static let dbPath = NSApplication.shared.appFolder + "/dogetv.sqlite"
     static let iconPath = NSApplication.shared.appFolder + "/logo.png"
-    static let dbVersion = "1.0.2"
+    static let dbVersion = "1.0.3"
 }
 
 
@@ -34,5 +34,10 @@ enum StaticURLs: String {
 
 }
 
+
+extension NSNotification.Name {
+    static let playStatusChanged = NSNotification.Name.init("PlayStatusChanged")
+    static let historyUpdated = NSNotification.Name.init("historyUpdated")
+}
 
 

@@ -20,7 +20,9 @@ class RootViewController: NSViewController {
     @IBOutlet weak var btnStack: NSStackView!
     @IBOutlet weak var searchBarView: SearchBarView!
     @IBOutlet weak var iconImageView: AspectFitImageView!
+    @IBOutlet weak var bottomView: NSView!
     @IBOutlet weak var versionBtn: NSButton!
+    @IBOutlet weak var playingStatusBar: PlayStatusView!
 
     var mapping: [String: Initializable] = [:]
     var activiedController: Initializable?
@@ -28,9 +30,8 @@ class RootViewController: NSViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentView.wantsLayer = true
-        contentView.layer?.cornerRadius = 6
-        contentView.layer?.masksToBounds = true
+        bottomView.wantsLayer = true
+        bottomView.layer?.backgroundColor = NSColor.backgroundColor.cgColor
 
         iconImageView.focusRingType = .none
         if FileManager.default.fileExists(atPath: ENV.iconPath) {
@@ -58,6 +59,25 @@ class RootViewController: NSViewController {
         if let infoDictionary = Bundle.main.infoDictionary {
             if let version = infoDictionary["CFBundleShortVersionString"] as? String, let build = infoDictionary[String(kCFBundleVersionKey)] as? String {
                 versionBtn.title = "Version: \(version)(\(build))"
+            }
+        }
+        registerNotification()
+    }
+
+
+    func registerNotification()  {
+        NotificationCenter.default.addObserver(forName: .playStatusChanged, object: nil, queue: .main) { [weak self] (notify) in
+            guard let status = notify.object as? PlayStatus else {
+                return
+            }
+            switch status {
+            case .idle:
+                self?.playingStatusBar.isHidden = true
+                break
+            case .playing(let title):
+                self?.playingStatusBar.isHidden = false
+                self?.playingStatusBar.nameLabel.stringValue = title
+                break
             }
         }
     }
@@ -129,10 +149,14 @@ class RootViewController: NSViewController {
     }
     
     @IBAction func dogeAction(_ sender: NSImageView) {
-        sender.image?.saveAsLogo()
+        sender.image?.save(isLogo: true)
         sender.layer?.cornerRadius = 45
         sender.layer?.masksToBounds = true
         sender.layer?.backgroundColor = NSColor.black.cgColor
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

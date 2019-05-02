@@ -13,9 +13,8 @@ class MainWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.isMovableByWindowBackground = true
+        NSApplication.shared.appDelegate?.mainWindowController = self
         NSApplication.shared.checkForUpdates(background: true)
-
-      
 
         let customToolbar = NSToolbar()
         customToolbar.showsBaselineSeparator = false

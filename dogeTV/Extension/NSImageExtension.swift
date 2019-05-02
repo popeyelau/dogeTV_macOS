@@ -14,16 +14,23 @@ extension NSImage {
             let bitmapImage = NSBitmapImageRep(data: tiffRepresentation) else { return nil }
         return bitmapImage.representation(using: .png, properties: [:])
     }
-    
+
     @discardableResult
-    func saveAsLogo(options: Data.WritingOptions = .atomic) -> Bool {
+    func save(isLogo: Bool = false, options: Data.WritingOptions = .atomic) -> URL? {
+        var url: URL!
+        if isLogo {
+            url = URL(fileURLWithPath: ENV.iconPath)
+        } else {
+            let directory = NSTemporaryDirectory()
+            let fileName = NSUUID().uuidString
+            url = NSURL.fileURL(withPathComponents: [directory, fileName])!
+        }
         do {
-            let url = URL(fileURLWithPath: ENV.iconPath)
             try pngData?.write(to: url, options: options)
-            return true
+            return url
         } catch {
             print(error)
-            return false
+            return nil
         }
     }
 }

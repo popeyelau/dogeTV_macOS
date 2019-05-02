@@ -82,6 +82,9 @@
 		79E0911922686AB200219C87 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0911722686AB200219C87 /* TopicsViewController.swift */; };
 		79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E0911822686AB200219C87 /* TopicsViewController.xib */; };
 		79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0911B226873A000219C87 /* DisablableScrollView.swift */; };
+		79EAB4A4227AD46300C85EAD /* PlayStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAB4A3227AD46300C85EAD /* PlayStatusView.swift */; };
+		79EAB4A6227AD46F00C85EAD /* PlayStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79EAB4A5227AD46F00C85EAD /* PlayStatusView.xib */; };
+		79EAB4AA227AF31500C85EAD /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAB4A9227AF31500C85EAD /* GradientView.swift */; };
 		79F0413D2275591D0005B006 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F0413C2275591D0005B006 /* WebKit.framework */; };
 		79F04143227587A80005B006 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F04142227587A80005B006 /* Menu.swift */; };
 		79FD5BF722647AC3009EDB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FD5BF622647AC3009EDB9C /* AppDelegate.swift */; };
@@ -183,6 +186,9 @@
 		79E0911722686AB200219C87 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		79E0911822686AB200219C87 /* TopicsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicsViewController.xib; sourceTree = "<group>"; };
 		79E0911B226873A000219C87 /* DisablableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisablableScrollView.swift; sourceTree = "<group>"; };
+		79EAB4A3227AD46300C85EAD /* PlayStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayStatusView.swift; sourceTree = "<group>"; };
+		79EAB4A5227AD46F00C85EAD /* PlayStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayStatusView.xib; sourceTree = "<group>"; };
+		79EAB4A9227AF31500C85EAD /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		79F0413C2275591D0005B006 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		79F04142227587A80005B006 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		79FD5BF322647AC3009EDB9C /* dogeTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dogeTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,6 +285,9 @@
 				79A219D7226C5B2500D9581B /* CollectionViewLeftFlowLayout.swift */,
 				796C84492276E07000EC8FCF /* QueryOptionsKeyView.swift */,
 				796C844B2276E08100EC8FCF /* QueryOptionsKeyView.xib */,
+				79EAB4A3227AD46300C85EAD /* PlayStatusView.swift */,
+				79EAB4A5227AD46F00C85EAD /* PlayStatusView.xib */,
+				79EAB4A9227AF31500C85EAD /* GradientView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -491,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79FD5C0F22648A27009EDB9C /* VideoCardView.xib in Resources */,
+				79EAB4A6227AD46F00C85EAD /* PlayStatusView.xib in Resources */,
 				7916EF182266C0EF00FB6721 /* ChannelCardView.xib in Resources */,
 				79FD5BFB22647AC4009EDB9C /* Assets.xcassets in Resources */,
 				7916EF142266BA1400FB6721 /* SearchViewController.xib in Resources */,
@@ -570,6 +580,7 @@
 				799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */,
 				799B96262264AF7F002C8FFA /* Ranking.swift in Sources */,
 				79B7AD0D226AD36700600282 /* EmptyView.swift in Sources */,
+				79EAB4A4227AD46300C85EAD /* PlayStatusView.swift in Sources */,
 				79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */,
 				79F04143227587A80005B006 /* Menu.swift in Sources */,
 				79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */,
@@ -603,6 +614,7 @@
 				79B7AD19226AE3BB00600282 /* AboutViewController.swift in Sources */,
 				79FD5BF922647AC3009EDB9C /* RootViewController.swift in Sources */,
 				79A219D8226C5B2500D9581B /* CollectionViewLeftFlowLayout.swift in Sources */,
+				79EAB4AA227AF31500C85EAD /* GradientView.swift in Sources */,
 				79E09107226835B000219C87 /* TopRatedViewController.swift in Sources */,
 				7916EF172266C0EF00FB6721 /* ChannelCardView.swift in Sources */,
 				79820F762270097000ADA103 /* NSApplicationExtension.swift in Sources */,
@@ -759,10 +771,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = dogeTV/dogeTV.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: ZhiQuan Liu (DSY75NVPP5)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 983GE8X6R9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/dogeTV/Frameworks",
@@ -786,7 +798,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = dogeTV/dogeTV.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: ZhiQuan Liu (DSY75NVPP5)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 983GE8X6R9;

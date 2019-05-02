@@ -28,7 +28,7 @@ class TopRatedViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor(red:0.12, green:0.13, blue:0.13, alpha:1.00).cgColor
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
         
         tableView.target = self
         tableView.doubleAction = #selector(tableViewDoubleAction(_:))

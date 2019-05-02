@@ -16,6 +16,7 @@ class LatestGridViewController: NSViewController {
     var hots: [Hot] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.backgroundColors = [.backgroundColor]
         refresh()
     }
 }
