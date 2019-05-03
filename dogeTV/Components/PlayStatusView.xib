@@ -19,10 +19,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNG-Os-LKh">
-                    <rect key="frame" x="8" y="8" width="373" height="30"/>
+                    <rect key="frame" x="8" y="11" width="373" height="24"/>
                     <subviews>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="t99-LO-0uv">
-                            <rect key="frame" x="0.0" y="3" width="50" height="24"/>
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="4lh-oM-rYz"/>
                             </constraints>
@@ -35,10 +35,10 @@
                             </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-ax-BXH">
-                            <rect key="frame" x="56" y="7" width="319" height="16"/>
-                            <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Title" usesSingleLineMode="YES" id="tnm-ow-iXE">
-                                <font key="font" metaFont="system" size="12"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <rect key="frame" x="56" y="3" width="319" height="18"/>
+                            <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="Title" usesSingleLineMode="YES" id="tnm-ow-iXE">
+                                <font key="font" metaFont="system" size="14"/>
+                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
@@ -54,9 +54,8 @@
                 </stackView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="HNG-Os-LKh" secondAttribute="bottom" constant="8" id="TM4-HO-3BR"/>
+                <constraint firstItem="HNG-Os-LKh" firstAttribute="centerY" secondItem="kko-of-j1v" secondAttribute="centerY" id="Uwz-pc-81k"/>
                 <constraint firstItem="HNG-Os-LKh" firstAttribute="leading" secondItem="kko-of-j1v" secondAttribute="leading" constant="8" id="cYM-XC-1Rj"/>
-                <constraint firstItem="HNG-Os-LKh" firstAttribute="top" secondItem="kko-of-j1v" secondAttribute="top" constant="8" id="etj-KK-H6V"/>
                 <constraint firstAttribute="trailing" secondItem="HNG-Os-LKh" secondAttribute="trailing" constant="16" id="k2C-tX-Zoz"/>
             </constraints>
             <point key="canvasLocation" x="155.5" y="59"/>

@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFN-dw-B3s">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="222"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="235"/>
                     <wkWebViewConfiguration key="configuration">
                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                         <wkPreferences key="preferences"/>
@@ -35,9 +35,9 @@
                     </connections>
                 </wkWebView>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nKi-0m-5Qf">
-                    <rect key="frame" x="189" y="237" width="102" height="20"/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="Fs3-S2-LBN">
-                        <font key="font" metaFont="cellTitle"/>
+                    <rect key="frame" x="188" y="249" width="104" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="rounded" trackingMode="selectOne" id="Fs3-S2-LBN">
+                        <font key="font" metaFont="system"/>
                         <segments>
                             <segment width="32"/>
                             <segment width="32" tag="1"/>
@@ -51,7 +51,7 @@
                     </connections>
                 </segmentedControl>
                 <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lAj-Kk-5lA">
-                    <rect key="frame" x="8" y="240" width="60" height="15"/>
+                    <rect key="frame" x="8" y="254" width="60" height="15"/>
                     <subviews>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QkV-3f-DoG">
                             <rect key="frame" x="0.0" y="0.0" width="30" height="15"/>
@@ -90,13 +90,13 @@
                     </customSpacing>
                 </stackView>
                 <progressIndicator wantsLayer="YES" maxValue="1" controlSize="small" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="z9G-Pj-zxm">
-                    <rect key="frame" x="-2" y="221" width="480" height="1"/>
+                    <rect key="frame" x="-2" y="234" width="480" height="1"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="J0L-qw-0jT"/>
                     </constraints>
                 </progressIndicator>
                 <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Vat-Fe-fJe">
-                    <rect key="frame" x="444" y="239" width="16" height="16"/>
+                    <rect key="frame" x="444" y="254" width="16" height="16"/>
                 </progressIndicator>
             </subviews>
             <constraints>
@@ -110,7 +110,7 @@
                 <constraint firstItem="fFN-dw-B3s" firstAttribute="top" secondItem="nKi-0m-5Qf" secondAttribute="bottom" constant="16" id="eIe-g2-Ikb"/>
                 <constraint firstAttribute="bottom" secondItem="fFN-dw-B3s" secondAttribute="bottom" id="f5c-Ze-h41"/>
                 <constraint firstItem="z9G-Pj-zxm" firstAttribute="top" secondItem="fFN-dw-B3s" secondAttribute="top" id="fNQ-vW-0JH"/>
-                <constraint firstItem="nKi-0m-5Qf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="tiu-ba-omS"/>
+                <constraint firstItem="nKi-0m-5Qf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="tiu-ba-omS"/>
                 <constraint firstItem="nKi-0m-5Qf" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="vzt-bR-AG3"/>
                 <constraint firstAttribute="trailing" secondItem="z9G-Pj-zxm" secondAttribute="trailing" constant="2" id="zc5-DE-rZc"/>
             </constraints>

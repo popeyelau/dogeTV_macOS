@@ -20,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cG-fZ-Dxx">
-                    <rect key="frame" x="8" y="16" width="644" height="264"/>
+                    <rect key="frame" x="8" y="16" width="644" height="277"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="cK0-gM-1wu">
-                        <rect key="frame" x="0.0" y="0.0" width="644" height="264"/>
+                        <rect key="frame" x="0.0" y="0.0" width="644" height="277"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="36" rowSizeStyle="large" headerView="Zf3-uD-a9P" viewBased="YES" id="lA3-yv-gp5">
-                                <rect key="frame" x="0.0" y="0.0" width="840" height="239"/>
+                                <rect key="frame" x="0.0" y="0.0" width="840" height="252"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="10" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -79,11 +79,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="RQQ-oL-9uO">
-                                                <rect key="frame" x="65" y="1" width="150" height="17"/>
+                                                <rect key="frame" x="65" y="1" width="200" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nk3-lB-maP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="R0H-tM-K4c">
                                                             <font key="font" metaFont="system"/>
@@ -145,11 +145,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="okz-ze-J0F">
-                                                <rect key="frame" x="435" y="1" width="150" height="17"/>
+                                                <rect key="frame" x="435" y="1" width="180" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iFZ-Dd-tNs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="djX-Vz-Ul5">
                                                             <font key="font" metaFont="system"/>
@@ -252,13 +252,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lad-xK-rwz" userLabel="indicatorView">
-                    <rect key="frame" x="314" y="149" width="32" height="32"/>
-                </progressIndicator>
                 <segmentedControl focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PWQ-Oi-K0W">
-                    <rect key="frame" x="245" y="295" width="170" height="20"/>
-                    <segmentedCell key="cell" borderStyle="border" focusRingType="none" alignment="left" segmentDistribution="fillEqually" style="roundRect" trackingMode="selectOne" id="IhD-N8-4mQ">
-                        <font key="font" metaFont="cellTitle"/>
+                    <rect key="frame" x="244" y="307" width="172" height="24"/>
+                    <segmentedCell key="cell" borderStyle="border" focusRingType="none" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="IhD-N8-4mQ">
+                        <font key="font" metaFont="system"/>
                         <segments>
                             <segment width="100"/>
                             <segment width="32" selected="YES" tag="1"/>
@@ -271,15 +268,18 @@
                         <action selector="segmentIndexChanged:" target="-2" id="QG0-Dm-L5Q"/>
                     </connections>
                 </segmentedControl>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lad-xK-rwz" userLabel="indicatorView">
+                    <rect key="frame" x="608" y="298" width="32" height="32"/>
+                </progressIndicator>
             </subviews>
             <constraints>
-                <constraint firstItem="lad-xK-rwz" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="1DW-8C-WZc"/>
                 <constraint firstAttribute="bottom" secondItem="0cG-fZ-Dxx" secondAttribute="bottom" constant="16" id="EWg-H7-HQH"/>
                 <constraint firstAttribute="trailing" secondItem="0cG-fZ-Dxx" secondAttribute="trailing" constant="8" id="Huh-98-eYA"/>
+                <constraint firstAttribute="trailing" secondItem="lad-xK-rwz" secondAttribute="trailing" constant="20" id="Ruc-3J-eKJ"/>
                 <constraint firstItem="PWQ-Oi-K0W" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="YN2-vt-ML8"/>
-                <constraint firstItem="lad-xK-rwz" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="bfS-Mz-gX5"/>
-                <constraint firstItem="PWQ-Oi-K0W" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="kWZ-Ve-F4W"/>
+                <constraint firstItem="PWQ-Oi-K0W" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="kWZ-Ve-F4W"/>
                 <constraint firstItem="0cG-fZ-Dxx" firstAttribute="top" secondItem="PWQ-Oi-K0W" secondAttribute="bottom" constant="16" id="kwk-dL-XwL"/>
+                <constraint firstItem="lad-xK-rwz" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="rCK-xX-ueD"/>
                 <constraint firstItem="0cG-fZ-Dxx" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="siv-Qa-KaL"/>
             </constraints>
             <point key="canvasLocation" x="208" y="183"/>

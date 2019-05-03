@@ -20,8 +20,7 @@ class UserViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        collectionView.backgroundColors = [.backgroundColor]
+        collectionView.backgroundColors = [.clear]
         NotificationCenter.default.addObserver(self, selector: #selector(historyUpdatedHandler), name: .historyUpdated, object: nil)
     }
 
@@ -71,6 +70,8 @@ extension UserViewController: NSCollectionViewDelegate, NSCollectionViewDataSour
 
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
         let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
+        header.wantsLayer = true
+        header.layer?.backgroundColor = NSColor.sectionHeaderColor.cgColor
         header.titleLabel.stringValue = "历史观看"
         header.subTitleLabel.isHidden = true
         return header

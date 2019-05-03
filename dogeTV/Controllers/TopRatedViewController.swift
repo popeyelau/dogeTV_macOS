@@ -27,9 +27,7 @@ class TopRatedViewController: NSViewController {
     @IBOutlet weak var indicatorView: NSProgressIndicator!
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
-        
+
         tableView.target = self
         tableView.doubleAction = #selector(tableViewDoubleAction(_:))
         segmentCtrl.selectedSegment = category.rawValue
@@ -52,6 +50,8 @@ class TopRatedViewController: NSViewController {
         category = Category(rawValue: sender.selectedSegment) ?? .film
         refresh()
     }
+
+
 }
 
 extension TopRatedViewController: NSTableViewDataSource, NSTableViewDelegate {

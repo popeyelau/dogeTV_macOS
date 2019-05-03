@@ -36,7 +36,7 @@ class PlayStatusView: NSView, LoadableNib {
         wantsLayer = true
         layer?.cornerRadius = 15
         layer?.masksToBounds = true
-        layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        layer?.backgroundColor = NSColor.activedBackgroundColor.cgColor
         playBtn.contentTintColor = .primaryColor
     }
 }

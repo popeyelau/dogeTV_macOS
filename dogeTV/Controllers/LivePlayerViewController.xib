@@ -30,7 +30,7 @@
                             <rect key="frame" x="183" y="13" width="115" height="19"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Channel Name" id="jTd-vZ-PLC">
                                 <font key="font" metaFont="system" size="16"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>

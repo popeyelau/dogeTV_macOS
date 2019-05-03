@@ -20,8 +20,8 @@ class CollectionViewLeftFlowLayout: NSCollectionViewFlowLayout {
     }
 
     func setup() {
-        minimumLineSpacing = 15
-        minimumInteritemSpacing = 15
+        minimumLineSpacing = 20
+        minimumInteritemSpacing = 20
     }
 
     override func layoutAttributesForElements(in rect: NSRect) -> [NSCollectionViewLayoutAttributes] {

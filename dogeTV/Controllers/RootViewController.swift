@@ -15,13 +15,11 @@ protocol Initializable where Self: NSViewController {
 class RootViewController: NSViewController {
     
     @IBOutlet weak var contentView: ContainerView!
-    @IBOutlet weak var menuView: NSView!
-    @IBOutlet weak var topView: NSView!
+    @IBOutlet weak var menuView: GradientView!
+    @IBOutlet weak var topView: GradientView!
     @IBOutlet weak var btnStack: NSStackView!
     @IBOutlet weak var searchBarView: SearchBarView!
     @IBOutlet weak var iconImageView: AspectFitImageView!
-    @IBOutlet weak var bottomView: NSView!
-    @IBOutlet weak var versionBtn: NSButton!
     @IBOutlet weak var playingStatusBar: PlayStatusView!
 
     var mapping: [String: Initializable] = [:]
@@ -30,8 +28,8 @@ class RootViewController: NSViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        bottomView.wantsLayer = true
-        bottomView.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        menuView.colors = NSColor.menuBarGradientColors
+        topView.colors = NSColor.titleBarGradientColors
 
         iconImageView.focusRingType = .none
         if FileManager.default.fileExists(atPath: ENV.iconPath) {
@@ -55,12 +53,6 @@ class RootViewController: NSViewController {
         }
         
         view.window?.makeFirstResponder(nil)
-
-        if let infoDictionary = Bundle.main.infoDictionary {
-            if let version = infoDictionary["CFBundleShortVersionString"] as? String, let build = infoDictionary[String(kCFBundleVersionKey)] as? String {
-                versionBtn.title = "Version: \(version)(\(build))"
-            }
-        }
         registerNotification()
     }
 
@@ -135,15 +127,7 @@ class RootViewController: NSViewController {
             makeTransition(to: target)
         }
     }
-    
-    @IBAction func openURL(_ sender: NSButton) {
-        openURL(with: sender)
-    }
 
-    @IBAction func checkUpdateAction(_ sender: Any) {
-        NSApplication.shared.checkForUpdates(background: true)
-    }
-    
     @IBAction func refreshAction(_ sender: NSButton) {
         activiedController?.refresh()
     }

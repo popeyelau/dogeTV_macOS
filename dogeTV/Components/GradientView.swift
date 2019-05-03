@@ -10,7 +10,7 @@ import Cocoa
 
 class GradientView: NSView {
 
-    var colors: [NSColor] = [.backgroundColor, NSColor.black.withAlphaComponent(0.65)] {
+    var colors: [NSColor] = NSColor.viewGradientColors {
         didSet {
             needsDisplay = true
         }
