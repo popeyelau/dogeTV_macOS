@@ -14,7 +14,7 @@ protocol Initializable where Self: NSViewController {
 
 class RootViewController: NSViewController {
     
-    @IBOutlet weak var contentView: ContainerView!
+    @IBOutlet weak var contentView: GradientView!
     @IBOutlet weak var menuView: GradientView!
     @IBOutlet weak var topView: GradientView!
     @IBOutlet weak var btnStack: NSStackView!
@@ -28,6 +28,8 @@ class RootViewController: NSViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor(red:0.12, green:0.13, blue:0.14, alpha:1.00).cgColor
         menuView.colors = NSColor.menuBarGradientColors
         topView.colors = NSColor.titleBarGradientColors
 
@@ -64,11 +66,12 @@ class RootViewController: NSViewController {
             }
             switch status {
             case .idle:
+                self?.playingStatusBar.scrollTextLabel.setup(string: "")
                 self?.playingStatusBar.isHidden = true
                 break
             case .playing(let title):
                 self?.playingStatusBar.isHidden = false
-                self?.playingStatusBar.nameLabel.stringValue = title
+                self?.playingStatusBar.scrollTextLabel.setup(string: title)
                 break
             }
         }

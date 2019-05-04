@@ -56,7 +56,7 @@ class PlayerViewController: NSViewController {
 
     
     @IBOutlet weak var titleLabel: NSTextField!
-    @IBOutlet weak var episodePanel: NSScrollView!
+    @IBOutlet weak var episodePanel: NSView!
     @IBOutlet weak var episodePanelWidth: NSLayoutConstraint!
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var avPlayer: AVPlayerView!
@@ -67,7 +67,9 @@ class PlayerViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         episodePanel.wantsLayer = true
-        episodePanel.backgroundColor = NSColor(red:0.12, green:0.12, blue:0.13, alpha:1.00)
+        episodePanel.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        collectionView.backgroundColors = [.clear]
+
         titleView.wantsLayer = true
         titleView.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.75).cgColor
         
@@ -307,8 +309,6 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
         let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
         let section = dataSource[indexPath.section]
-        header.wantsLayer = true
-        header.layer?.backgroundColor = NSColor.sectionHeaderColor.cgColor
         header.titleLabel.stringValue = section.title
         header.subTitleLabel.isHidden = true
         if case Section.episodes(_) = section {

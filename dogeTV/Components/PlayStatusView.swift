@@ -16,7 +16,7 @@ enum PlayStatus {
 class PlayStatusView: NSView, LoadableNib {
     @IBOutlet var contentView: NSView!
     @IBOutlet weak var playBtn: NSButton!
-    @IBOutlet weak var nameLabel: NSTextField!
+    @IBOutlet weak var scrollTextLabel: ScrollingTextView!
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -31,6 +31,9 @@ class PlayStatusView: NSView, LoadableNib {
     override func mouseDown(with event: NSEvent) {
         NSApplication.shared.openPlayerWindow()
     }
+    @IBAction func playBtnAction(_ sender: NSButton) {
+        NSApplication.shared.openPlayerWindow()
+    }
 
     func setup() {
         wantsLayer = true
@@ -38,6 +41,8 @@ class PlayStatusView: NSView, LoadableNib {
         layer?.masksToBounds = true
         layer?.backgroundColor = NSColor.activedBackgroundColor.cgColor
         playBtn.contentTintColor = .primaryColor
+        scrollTextLabel.setup(string: "")
+        scrollTextLabel.spacing = 10
     }
 }
 

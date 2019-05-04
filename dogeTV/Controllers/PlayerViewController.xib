@@ -10,8 +10,8 @@
             <connections>
                 <outlet property="avPlayer" destination="XwL-ZG-e8o" id="HYf-pq-TI5"/>
                 <outlet property="collectionView" destination="Ezh-Ky-S76" id="fBv-EW-Mbg"/>
-                <outlet property="episodePanel" destination="S3x-IG-NhB" id="lY6-at-xMQ"/>
-                <outlet property="episodePanelWidth" destination="8Fd-HT-nZ0" id="rDO-4O-u7A"/>
+                <outlet property="episodePanel" destination="ort-Os-Zud" id="gcb-o1-3XI"/>
+                <outlet property="episodePanelWidth" destination="v9f-vV-3Z6" id="DAl-YA-C2w"/>
                 <outlet property="indicatorView" destination="h6a-Wb-6gi" id="euo-Ou-AUJ"/>
                 <outlet property="titleLabel" destination="coZ-Av-RIg" id="s4u-3Y-0Mc"/>
                 <outlet property="titleView" destination="bUp-vx-1e3" id="RAF-Rp-oRq"/>
@@ -119,9 +119,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="0.22187063547486033" colorSpace="custom" customColorSpace="sRGB"/>
                             </clipView>
-                            <constraints>
-                                <constraint firstAttribute="width" id="8Fd-HT-nZ0"/>
-                            </constraints>
                             <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="9Mh-lV-34F">
                                 <rect key="frame" x="-100" y="-100" width="233" height="15"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -141,6 +138,7 @@
                         <constraint firstAttribute="bottom" secondItem="S3x-IG-NhB" secondAttribute="bottom" id="XLM-bK-W5c"/>
                         <constraint firstAttribute="trailing" secondItem="S3x-IG-NhB" secondAttribute="trailing" id="ZSb-cq-VGz"/>
                         <constraint firstItem="h6a-Wb-6gi" firstAttribute="centerY" secondItem="S3x-IG-NhB" secondAttribute="centerY" id="oeO-N1-AOk"/>
+                        <constraint firstAttribute="width" id="v9f-vV-3Z6"/>
                     </constraints>
                 </customView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rLP-zM-XID">
@@ -163,9 +161,9 @@
                 <constraint firstItem="XwL-ZG-e8o" firstAttribute="top" secondItem="bUp-vx-1e3" secondAttribute="bottom" id="USQ-g2-1CZ"/>
                 <constraint firstItem="S3x-IG-NhB" firstAttribute="top" secondItem="bUp-vx-1e3" secondAttribute="bottom" id="Vea-YQ-0L5"/>
                 <constraint firstItem="bUp-vx-1e3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="WTu-fP-Iyo"/>
-                <constraint firstItem="ort-Os-Zud" firstAttribute="leading" secondItem="XwL-ZG-e8o" secondAttribute="trailing" id="Yrb-3B-QtG"/>
                 <constraint firstAttribute="trailing" secondItem="ort-Os-Zud" secondAttribute="trailing" id="aYk-QP-nq5"/>
                 <constraint firstItem="bUp-vx-1e3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="bE7-ED-54q"/>
+                <constraint firstItem="ort-Os-Zud" firstAttribute="leading" secondItem="XwL-ZG-e8o" secondAttribute="trailing" id="dwq-aT-7wm"/>
                 <constraint firstItem="XwL-ZG-e8o" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="hEm-sb-NwN"/>
                 <constraint firstItem="rLP-zM-XID" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="oKE-lk-tu9"/>
                 <constraint firstItem="Ezh-Ky-S76" firstAttribute="leading" secondItem="rLP-zM-XID" secondAttribute="trailing" id="rnl-II-FPy"/>

@@ -45,6 +45,7 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
         let video = hots[indexPath.section].items[indexPath.item]
         showVideo(id: video.id, indicatorView: indicatorView)

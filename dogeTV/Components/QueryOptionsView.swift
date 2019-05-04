@@ -76,7 +76,7 @@ class QueryOptionsView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         if isExpanded {
-            let gradient = NSGradient(colors: [NSColor(red:0.09, green:0.09, blue:0.09, alpha:1.00), NSColor(red:0.18, green:0.18, blue:0.18, alpha:1.00)] )
+            let gradient = NSGradient(colors: [NSColor(red:0.09, green:0.09, blue:0.09, alpha:1.00), NSColor(red:0.12, green:0.13, blue:0.14, alpha:1.00)] )
             gradient?.draw(in: dirtyRect, angle: 90)
         }
     }

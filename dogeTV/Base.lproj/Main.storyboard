@@ -426,7 +426,7 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="dogeTV" id="XfG-lQ-9wD" customClass="RootViewController" customModule="dogeTV" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl" customClass="GradientView" customModule="dogeTV" customModuleProvider="target">
+                    <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="1120" height="720"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

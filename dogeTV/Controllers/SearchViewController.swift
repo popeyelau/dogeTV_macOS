@@ -97,8 +97,6 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
         let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
-        header.wantsLayer = true
-        header.layer?.backgroundColor = NSColor.sectionHeaderColor.cgColor
         let title = isCloudParse ? parseResult?.title ?? "" : keywords ?? ""
         header.titleLabel.stringValue = "关键字:「\(title)」搜索结果"
         header.subTitleLabel.isHidden = true
