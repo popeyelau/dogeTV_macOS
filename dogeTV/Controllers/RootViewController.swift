@@ -64,16 +64,7 @@ class RootViewController: NSViewController {
             guard let status = notify.object as? PlayStatus else {
                 return
             }
-            switch status {
-            case .idle:
-                self?.playingStatusBar.scrollTextLabel.setup(string: "")
-                self?.playingStatusBar.isHidden = true
-                break
-            case .playing(let title):
-                self?.playingStatusBar.isHidden = false
-                self?.playingStatusBar.scrollTextLabel.setup(string: title)
-                break
-            }
+            self?.playingStatusBar.status = status
         }
     }
     

@@ -62,8 +62,8 @@ extension NSViewController {
 
     func dialogOKCancel(question: String, text: String, handler: @escaping ((Bool) -> Void)) {
         let alert = NSAlert()
-        alert.messageText = text
-        alert.informativeText = question
+        alert.messageText = question
+        alert.informativeText = text
         alert.alertStyle = .warning
         alert.addButton(withTitle: "确定")
         alert.addButton(withTitle: "取消")

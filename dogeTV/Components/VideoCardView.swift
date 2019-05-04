@@ -31,7 +31,7 @@ class VideoCardView: NSCollectionViewItem {
         shadowView.layer?.masksToBounds = true
         shadowView.layer?.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
-        let trackingArea = NSTrackingArea(rect: imageView!.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect,  .assumeInside], owner: self, userInfo: nil)
+        let trackingArea = NSTrackingArea(rect: imageView!.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
         imageView?.addTrackingArea(trackingArea)
     }
 

@@ -10,13 +10,28 @@ import Cocoa
 
 enum PlayStatus {
     case idle
-    case playing(title: String)
+    case playing(title: String, isLive: Bool)
 }
 
 class PlayStatusView: NSView, LoadableNib {
     @IBOutlet var contentView: NSView!
     @IBOutlet weak var playBtn: NSButton!
+    @IBOutlet weak var closeBtn: NSButton!
     @IBOutlet weak var scrollTextLabel: ScrollingTextView!
+    var status: PlayStatus = .idle {
+        didSet {
+            switch status {
+            case .idle:
+                scrollTextLabel.setup(string: "")
+                isHidden = true
+                break
+            case .playing(let title, _):
+                isHidden = false
+                scrollTextLabel.setup(string: title)
+                break
+            }
+        }
+    }
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -29,10 +44,16 @@ class PlayStatusView: NSView, LoadableNib {
     }
 
     override func mouseDown(with event: NSEvent) {
-        NSApplication.shared.openPlayerWindow()
+        openPlayerWindow()
     }
     @IBAction func playBtnAction(_ sender: NSButton) {
-        NSApplication.shared.openPlayerWindow()
+        openPlayerWindow()
+    }
+
+    func openPlayerWindow() {
+        if case let PlayStatus.playing(_, isLive) = status {
+            NSApplication.shared.openPlayerWindow(isLive: isLive)
+        }
     }
 
     func setup() {
@@ -41,8 +62,24 @@ class PlayStatusView: NSView, LoadableNib {
         layer?.masksToBounds = true
         layer?.backgroundColor = NSColor.activedBackgroundColor.cgColor
         playBtn.contentTintColor = .primaryColor
+        closeBtn.contentTintColor = .primaryColor
         scrollTextLabel.setup(string: "")
         scrollTextLabel.spacing = 10
+        setTrackingArea(to: bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside])
+    }
+
+    @IBAction func stopAction(_ sender: NSButton) {
+        if case let PlayStatus.playing(_, isLive) = status {
+            NSApplication.shared.closePlayerWindow(isLive: isLive)
+        }
+    }
+
+    override func mouseEntered(with event: NSEvent) {
+        NSCursor.pointingHand.set()
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        NSCursor.arrow.set()
     }
 }
 

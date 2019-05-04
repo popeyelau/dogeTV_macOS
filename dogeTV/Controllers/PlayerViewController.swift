@@ -160,7 +160,7 @@ class PlayerViewController: NSViewController {
             avPlayer.player?.replaceCurrentItem(with: nil)
             avPlayer.player?.replaceCurrentItem(with: AVPlayerItem(url: URL(string: url)!))
         }
-        let status =  PlayStatus.playing(title: self.titleLabel.stringValue)
+        let status =  PlayStatus.playing(title: self.titleLabel.stringValue, isLive: false)
         NotificationCenter.default.post(name: .playStatusChanged, object: status)
         playingEpisode?.url = url
         avPlayer.player?.play()

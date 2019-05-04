@@ -27,11 +27,20 @@ extension NSApplication {
         appDelegate?.mainWindowController?.window?.makeKeyAndOrderFront(nil)
     }
 
-    func openPlayerWindow() {
+    func openPlayerWindow(isLive: Bool = false) {
+        let type = isLive ? LivePlayerViewController.self : PlayerViewController.self
         let playerWindow = NSApplication.shared.windows.first {
-            $0.contentViewController?.isKind(of:PlayerViewController.self) == true
+            $0.contentViewController?.isKind(of: type) == true
         }
         playerWindow?.makeKeyAndOrderFront(nil)
+    }
+
+    func closePlayerWindow(isLive: Bool = false) {
+        let type = isLive ? LivePlayerViewController.self : PlayerViewController.self
+        let playerWindow = NSApplication.shared.windows.first {
+            $0.contentViewController?.isKind(of: type) == true
+        }
+        playerWindow?.close()
     }
     
     var appFolder: String {

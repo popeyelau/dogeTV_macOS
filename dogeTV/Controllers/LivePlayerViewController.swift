@@ -34,6 +34,8 @@ class LivePlayerViewController: NSViewController {
             avPlayer.player?.replaceCurrentItem(with: AVPlayerItem(url: url))
         }
         avPlayer.player?.play()
+        let status = PlayStatus.playing(title: channel.name, isLive: true)
+        NotificationCenter.default.post(name: .playStatusChanged, object: status)
     }
 
     @IBAction func openMainWindowAction(_ sender: NSButton) {
@@ -49,6 +51,7 @@ extension LivePlayerViewController: NSWindowDelegate {
     
     func windowWillClose(_ notification: Notification) {
         avPlayer.player?.replaceCurrentItem(with: nil)
+        NotificationCenter.default.post(name: .playStatusChanged, object: PlayStatus.idle)
         NSApplication.shared.openMainWindow()
     }
 }
