@@ -32,7 +32,7 @@ class QueryOptionView: NSCollectionViewItem {
     func updateColor() {
         if isSelected {
             textField?.textColor = .primaryColor
-            view.layer?.backgroundColor = NSColor.selectedBackgroudColor.cgColor
+            view.layer?.backgroundColor = NSColor.activedBackgroundColor.cgColor
         } else {
             textField?.textColor = .labelColor
             view.layer?.backgroundColor = NSColor.clear.cgColor

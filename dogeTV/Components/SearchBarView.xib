@@ -24,7 +24,7 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <color key="contentTintColor" red="0.42758721113204956" green="0.43128204345703125" blue="0.43964624404907227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="contentTintColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                     <connections>
                         <action selector="topRatedAction:" target="-2" id="YDq-07-YAH"/>
                     </connections>

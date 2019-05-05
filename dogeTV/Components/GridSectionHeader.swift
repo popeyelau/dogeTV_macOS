@@ -20,7 +20,6 @@ class GridSectionHeader: NSView {
     override func awakeFromNib() {
         super.awakeFromNib()
         wantsLayer = true
-        layer?.backgroundColor = NSColor(red:0.12, green:0.12, blue:0.13, alpha:0.75).cgColor
-        titleLabel.textColor = .labelColor
+        layer?.backgroundColor = NSColor.backgroundColor.cgColor
     }
 }

@@ -11,7 +11,7 @@ import Cocoa
 class VideoCardView: NSCollectionViewItem {
     
     static let itemSize: NSSize = NSSize(width: 135, height: 220)
-    static let smallSize: NSSize = NSSize(width: 110, height: 180)
+    static let smallSize: NSSize = NSSize(width: 100, height: 160)
     var data: Video? {
         didSet {
             guard let video = data else { return }
@@ -30,9 +30,9 @@ class VideoCardView: NSCollectionViewItem {
         shadowView.layer?.cornerRadius = 6
         shadowView.layer?.masksToBounds = true
         shadowView.layer?.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeAlways], owner: self, userInfo: nil)
-        view.addTrackingArea(trackingArea)
+
+        let trackingArea = NSTrackingArea(rect: imageView!.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
+        imageView?.addTrackingArea(trackingArea)
     }
 
     override func mouseEntered(with event: NSEvent) {

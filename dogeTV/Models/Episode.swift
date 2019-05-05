@@ -8,15 +8,17 @@
 
 import Foundation
 
+let videoStreamExtensions = ["m3u8", "mp4", "avi", "mov", "mkv"]
+
 struct Episode: Decodable, Equatable {
     let title: String
-    let url: String
+    var url: String
     
     var canPlay: Bool {
-        return url.hasSuffix(".m3u8")
-            || url.hasSuffix(".m3u")
-            || url.hasSuffix(".mp4")
-            || url.hasSuffix(".avi")
+        guard let fileExtension = URL(string: url)?.pathExtension else {
+            return false
+        }
+        return videoStreamExtensions.contains(fileExtension)
     }
     
     static func == (lhs: Episode, rhs: Episode) -> Bool {

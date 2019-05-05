@@ -10,10 +10,11 @@
             <connections>
                 <outlet property="avPlayer" destination="XwL-ZG-e8o" id="HYf-pq-TI5"/>
                 <outlet property="collectionView" destination="Ezh-Ky-S76" id="fBv-EW-Mbg"/>
-                <outlet property="episodePanel" destination="S3x-IG-NhB" id="lY6-at-xMQ"/>
-                <outlet property="episodePanelWidth" destination="8Fd-HT-nZ0" id="rDO-4O-u7A"/>
+                <outlet property="episodePanel" destination="ort-Os-Zud" id="gcb-o1-3XI"/>
+                <outlet property="episodePanelWidth" destination="v9f-vV-3Z6" id="DAl-YA-C2w"/>
                 <outlet property="indicatorView" destination="h6a-Wb-6gi" id="euo-Ou-AUJ"/>
                 <outlet property="titleLabel" destination="coZ-Av-RIg" id="s4u-3Y-0Mc"/>
+                <outlet property="titleView" destination="bUp-vx-1e3" id="RAF-Rp-oRq"/>
                 <outlet property="toggleBtn" destination="rLP-zM-XID" id="aSO-KI-HFF"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -25,50 +26,84 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <avPlayerView controlsStyle="inline" showsFrameSteppingButtons="YES" showsFullScreenToggleButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwL-ZG-e8o">
-                    <rect key="frame" x="0.0" y="0.0" width="322" height="497"/>
+                    <rect key="frame" x="0.0" y="0.0" width="722" height="489"/>
                 </avPlayerView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="bUp-vx-1e3">
-                    <rect key="frame" x="0.0" y="497" width="722" height="36"/>
+                    <rect key="frame" x="0.0" y="489" width="722" height="44"/>
                     <subviews>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Og8-K8-FeM">
-                            <rect key="frame" x="686" y="10" width="16" height="16"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="more" imagePosition="overlaps" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyDown" sound="Pop" inset="2" id="732-qx-KhN">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <connections>
-                                <action selector="toggleEpisodePanel:" target="-2" id="car-gi-Fhn"/>
-                            </connections>
-                        </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="coZ-Av-RIg">
-                            <rect key="frame" x="339" y="9" width="44" height="19"/>
+                            <rect key="frame" x="339" y="13" width="44" height="19"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="4dQ-pq-1Fr">
                                 <font key="font" metaFont="system" size="16"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
+                        <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Fp-jO-fko">
+                            <rect key="frame" x="100" y="13" width="97" height="18"/>
+                            <buttonCell key="cell" type="inline" title="打开主界面" bezelStyle="inline" image="home" imagePosition="left" alignment="center" focusRingType="none" inset="2" id="8aH-sA-hfT">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="openMainWindowAction:" target="-2" id="Cuf-cL-dpd"/>
+                            </connections>
+                        </button>
+                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bnS-yJ-Cnm">
+                            <rect key="frame" x="654" y="14" width="48" height="16"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FPS-fx-jDT">
+                                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="qrcode" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="3Pa-qb-3fu">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="shareAction:" target="-2" id="Ia6-oW-DUo"/>
+                                    </connections>
+                                </button>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Og8-K8-FeM">
+                                    <rect key="frame" x="32" y="0.0" width="16" height="16"/>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="more" imagePosition="overlaps" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyDown" sound="Pop" inset="2" id="732-qx-KhN">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="toggleEpisodePanel:" target="-2" id="car-gi-Fhn"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="36" id="1s6-nM-E4W"/>
+                        <constraint firstAttribute="height" constant="44" id="1s6-nM-E4W"/>
+                        <constraint firstItem="9Fp-jO-fko" firstAttribute="centerY" secondItem="bUp-vx-1e3" secondAttribute="centerY" id="L9P-k6-O6I"/>
                         <constraint firstItem="coZ-Av-RIg" firstAttribute="centerY" secondItem="bUp-vx-1e3" secondAttribute="centerY" id="MVZ-4d-aUe"/>
-                        <constraint firstItem="Og8-K8-FeM" firstAttribute="centerY" secondItem="bUp-vx-1e3" secondAttribute="centerY" id="PrV-ts-s5g"/>
+                        <constraint firstItem="9Fp-jO-fko" firstAttribute="leading" secondItem="bUp-vx-1e3" secondAttribute="leading" constant="100" id="ZIk-yj-fph"/>
+                        <constraint firstItem="bnS-yJ-Cnm" firstAttribute="centerY" secondItem="bUp-vx-1e3" secondAttribute="centerY" id="kvf-eI-u8L"/>
                         <constraint firstItem="coZ-Av-RIg" firstAttribute="centerX" secondItem="bUp-vx-1e3" secondAttribute="centerX" id="u8m-jd-5mo"/>
-                        <constraint firstAttribute="trailing" secondItem="Og8-K8-FeM" secondAttribute="trailing" constant="20" id="wIB-ec-r5Q"/>
+                        <constraint firstAttribute="trailing" secondItem="bnS-yJ-Cnm" secondAttribute="trailing" constant="20" id="y23-bl-euP"/>
                     </constraints>
                 </customView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="ort-Os-Zud">
-                    <rect key="frame" x="322" y="0.0" width="400" height="497"/>
+                    <rect key="frame" x="722" y="0.0" width="0.0" height="489"/>
                     <subviews>
                         <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3x-IG-NhB">
-                            <rect key="frame" x="0.0" y="0.0" width="400" height="497"/>
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="489"/>
                             <clipView key="contentView" copiesOnScroll="NO" id="cGh-GF-g8C">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="497"/>
+                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="489"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <collectionView selectable="YES" id="Ezh-Ky-S76">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="497"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="489"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="5" minimumLineSpacing="5" sectionHeadersPinToVisibleBounds="YES" id="GjE-i1-Ebv">
                                             <size key="itemSize" width="90" height="30"/>
@@ -84,20 +119,17 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="0.22187063547486033" colorSpace="custom" customColorSpace="sRGB"/>
                             </clipView>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="400" id="8Fd-HT-nZ0"/>
-                            </constraints>
                             <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="9Mh-lV-34F">
                                 <rect key="frame" x="-100" y="-100" width="233" height="15"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="cgn-dK-Ttz">
-                                <rect key="frame" x="384" y="0.0" width="16" height="497"/>
+                                <rect key="frame" x="-16" y="0.0" width="16" height="483"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
                         <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="h6a-Wb-6gi">
-                            <rect key="frame" x="184" y="233" width="32" height="32"/>
+                            <rect key="frame" x="-16" y="229" width="32" height="32"/>
                         </progressIndicator>
                     </subviews>
                     <constraints>
@@ -106,13 +138,16 @@
                         <constraint firstAttribute="bottom" secondItem="S3x-IG-NhB" secondAttribute="bottom" id="XLM-bK-W5c"/>
                         <constraint firstAttribute="trailing" secondItem="S3x-IG-NhB" secondAttribute="trailing" id="ZSb-cq-VGz"/>
                         <constraint firstItem="h6a-Wb-6gi" firstAttribute="centerY" secondItem="S3x-IG-NhB" secondAttribute="centerY" id="oeO-N1-AOk"/>
+                        <constraint firstAttribute="width" id="v9f-vV-3Z6"/>
                     </constraints>
                 </customView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rLP-zM-XID">
-                    <rect key="frame" x="305" y="217" width="17" height="100"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toggle_off" imagePosition="only" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="YSn-eS-s77">
+                    <rect key="frame" x="705" y="217" width="17" height="100"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toggle_on" imagePosition="only" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="YSn-eS-s77">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent">b</string>
+                        <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                     </buttonCell>
                     <connections>
                         <action selector="toggleEpisodePanel:" target="-2" id="Y49-1p-BBn"/>
@@ -126,9 +161,9 @@
                 <constraint firstItem="XwL-ZG-e8o" firstAttribute="top" secondItem="bUp-vx-1e3" secondAttribute="bottom" id="USQ-g2-1CZ"/>
                 <constraint firstItem="S3x-IG-NhB" firstAttribute="top" secondItem="bUp-vx-1e3" secondAttribute="bottom" id="Vea-YQ-0L5"/>
                 <constraint firstItem="bUp-vx-1e3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="WTu-fP-Iyo"/>
-                <constraint firstItem="ort-Os-Zud" firstAttribute="leading" secondItem="XwL-ZG-e8o" secondAttribute="trailing" id="Yrb-3B-QtG"/>
                 <constraint firstAttribute="trailing" secondItem="ort-Os-Zud" secondAttribute="trailing" id="aYk-QP-nq5"/>
                 <constraint firstItem="bUp-vx-1e3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="bE7-ED-54q"/>
+                <constraint firstItem="ort-Os-Zud" firstAttribute="leading" secondItem="XwL-ZG-e8o" secondAttribute="trailing" id="dwq-aT-7wm"/>
                 <constraint firstItem="XwL-ZG-e8o" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="hEm-sb-NwN"/>
                 <constraint firstItem="rLP-zM-XID" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="oKE-lk-tu9"/>
                 <constraint firstItem="Ezh-Ky-S76" firstAttribute="leading" secondItem="rLP-zM-XID" secondAttribute="trailing" id="rnl-II-FPy"/>
@@ -138,8 +173,10 @@
         </customView>
     </objects>
     <resources>
+        <image name="home" width="18" height="18"/>
         <image name="more" width="16" height="16"/>
-        <image name="toggle_off" width="17" height="100"/>
+        <image name="qrcode" width="16" height="16"/>
+        <image name="toggle_on" width="17" height="100"/>
         <sound name="Pop"/>
     </resources>
 </document>

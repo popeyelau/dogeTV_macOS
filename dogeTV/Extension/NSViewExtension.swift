@@ -92,7 +92,7 @@ extension NSView {
             return trackingArea
     }
     
-    public func resetTrackingAreas() {
+    func resetTrackingAreas() {
         trackingAreas.forEach { removeTrackingArea($0) }
     }
         

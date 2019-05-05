@@ -17,9 +17,11 @@ class UserViewController: NSViewController {
     }
     @IBOutlet weak var historyCollectionView: NSCollectionView!
     @IBOutlet weak var emptyView: EmptyView!
+    @IBOutlet weak var collectionView: NSCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(historyUpdatedHandler), name: .init(rawValue: "com.dogetv.history"), object: nil)
+        collectionView.backgroundColors = [.clear]
+        NotificationCenter.default.addObserver(self, selector: #selector(historyUpdatedHandler), name: .historyUpdated, object: nil)
     }
 
     func reload() {
@@ -38,7 +40,7 @@ class UserViewController: NSViewController {
 
     @IBAction func emptyTrashAction(_ sender: NSButton) {
         guard !histories.isEmpty else { return }
-        dialogOKCancel(question: "确定要清空全部历史记录吗？", text: "清空历史") { [unowned self] isOK in
+        dialogOKCancel(question: "确定要清空全部观看记录吗？", text: "将清空全部观看记录") { [unowned self] isOK in
             guard isOK else { return }
             Repository.truncate(table: History.self)
             self.reload()

@@ -26,12 +26,8 @@ class ChannelGridViewController: NSViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.wantsLayer = true
-        let backgroundColor = NSColor(red: 0.12, green: 0.12, blue: 0.13, alpha: 1.00)
-        view.layer?.backgroundColor = backgroundColor.cgColor
+        collectionView.backgroundColors = [.clear]
         searchTextField.focusRingType = .none
-        searchTextField.wantsLayer = true
-        searchTextField.backgroundColor = backgroundColor
         refresh()
     }
 
@@ -44,18 +40,25 @@ class ChannelGridViewController: NSViewController{
     }
     
     func preparePlay(channel: IPTVChannel) {
+        NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
+        let playerWindow = NSApplication.shared.windows.first {
+            $0.contentViewController?.isKind(of: LivePlayerViewController.self) == true
+        }
+
+        if let window = playerWindow, let controller = window.contentViewController as? LivePlayerViewController {
+            controller.channel = channel
+            window.title = channel.name
+            controller.play()
+            window.makeKeyAndOrderFront(nil)
+            return
+        }
+
         let window = AppWindowController(windowNibName: "AppWindowController")
         let content = LivePlayerViewController()
         content.channel = channel
         window.content = content
         window.window?.title = channel.name
         window.show(from: view.window)
-    }
-    
-    @IBAction func searchFieldAction(_ sender: NSTextField) {
-        view.window?.makeFirstResponder(nil)
-        refreshDataSource()
-        collectionView.reloadData()
     }
     
     @objc func onCategoryChanged(_ sender: NSMenuItem) {
@@ -218,5 +221,14 @@ extension ChannelGridViewController {
     }
   
 }
+
+extension ChannelGridViewController: NSTextFieldDelegate {
+    func controlTextDidChange(_ obj: Notification) {
+        guard let textField = obj.object as? NSTextField, textField == searchTextField else { return }
+        refreshDataSource()
+        collectionView.reloadData()
+    }
+}
+
 
 extension ChannelGridViewController: Initializable {}

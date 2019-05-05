@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="UserViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="pq7-Jg-ooE" id="jW9-Rc-Wjh"/>
                 <outlet property="emptyView" destination="DO6-XH-WL4" id="Y5O-ME-oQZ"/>
                 <outlet property="historyCollectionView" destination="pq7-Jg-ooE" id="nRz-rn-PVm"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>

@@ -52,25 +52,31 @@ class PlayerViewController: NSViewController {
     var dataSource: [Section] = []
 
     private var playerItemContext = 0
+    var playStatusObserver: NSKeyValueObservation?
 
     
     @IBOutlet weak var titleLabel: NSTextField!
-    @IBOutlet weak var episodePanel: NSScrollView!
+    @IBOutlet weak var episodePanel: NSView!
     @IBOutlet weak var episodePanelWidth: NSLayoutConstraint!
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var avPlayer: AVPlayerView!
     @IBOutlet weak var toggleBtn: NSButton!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
+    @IBOutlet weak var titleView: NSView!
     var titleText: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         episodePanel.wantsLayer = true
-        episodePanel.backgroundColor = NSColor(red:0.12, green:0.12, blue:0.13, alpha:1.00)
+        episodePanel.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        collectionView.backgroundColors = [.clear]
+
+        titleView.wantsLayer = true
+        titleView.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.75).cgColor
         
         titleLabel.stringValue = titleText ?? ""
         updateDataSource()
         playing()
-        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self, userInfo: nil)
+        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
         view.addTrackingArea(trackingArea)
     }
 
@@ -90,7 +96,7 @@ class PlayerViewController: NSViewController {
 
     @IBAction func toggleEpisodePanel(_ sender: NSButton) {
         if episodePanelWidth.constant == 0 {
-            episodePanelWidth.constant = 400
+            episodePanelWidth.constant = 350
             toggleBtn.image = NSImage(named: "toggle_off")
         } else {
             episodePanelWidth.constant = 0
@@ -98,6 +104,20 @@ class PlayerViewController: NSViewController {
         }
     }
     
+    @IBAction func openMainWindowAction(_ sender: NSButton) {
+        NSApplication.shared.appDelegate?.mainWindowController?.window?.makeKeyAndOrderFront(nil)
+    }
+
+    @IBAction func shareAction(_ sender: NSButton) {
+        guard let playing = playingEpisode, playing.canPlay else {
+            return
+        }
+        guard let image = QRCode.createQRImage(message: playing.url),let saved = image.save() else {
+            return
+        }
+        NSWorkspace.shared.open(saved)
+    }
+
     func play(episode: Episode) {
         playingEpisode = episode
         if videDetail == nil {
@@ -122,15 +142,28 @@ class PlayerViewController: NSViewController {
         }
     }
 
+
     func prepareToPlay(url: String) {
-        avPlayer.player = AVPlayer(url: URL(string: url)!)
-        avPlayer.player?.addObserver(self,
-                                     forKeyPath: #keyPath(AVPlayer.status),
-                                     options: [.old, .new],
-                                     context: &playerItemContext)
-
-
-        self.avPlayer.player?.play()
+        if avPlayer.player == nil {
+            avPlayer.player = AVPlayer(url: URL(string: url)!)
+            playStatusObserver = avPlayer.player?.observe(\AVPlayer.status, options: [.new], changeHandler: { (player, changed) in
+                if player.status == .readyToPlay {
+                    //播放历史 && 时长 > 0 监听播放器状态，当成功加载时，跳转到历史播放时间点
+                    if let history = self.history, history.currentTime > 0, self.episodeIndex == history.episode  {
+                        let seekTo = CMTimeMakeWithSeconds(history.currentTime, preferredTimescale: 1000)
+                        self.avPlayer.player?.seek(to: seekTo)
+                        self.history = nil
+                    }
+                }
+            })
+        } else {
+            avPlayer.player?.replaceCurrentItem(with: nil)
+            avPlayer.player?.replaceCurrentItem(with: AVPlayerItem(url: URL(string: url)!))
+        }
+        let status =  PlayStatus.playing(title: self.titleLabel.stringValue, isLive: false)
+        NotificationCenter.default.post(name: .playStatusChanged, object: status)
+        playingEpisode?.url = url
+        avPlayer.player?.play()
     }
     
     func updateSource(index: Int) {
@@ -176,6 +209,7 @@ class PlayerViewController: NSViewController {
     
     func replace(id: String) {
         history = nil
+        avPlayer.player?.replaceCurrentItem(with: nil)
         indicatorView?.isHidden = false
         indicatorView?.startAnimation(nil)
         attempt(maximumRetryCount: 3) {
@@ -197,45 +231,8 @@ class PlayerViewController: NSViewController {
         }
     }
 
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
-
-        guard context == &playerItemContext else {
-            super.observeValue(forKeyPath: keyPath,
-                               of: object,
-                               change: change,
-                               context: context)
-            return
-        }
-        
-        if keyPath == #keyPath(AVPlayer.status){
-            let status: AVPlayer.Status
-            if let statusNumber = change?[.newKey] as? NSNumber {
-                status = AVPlayer.Status(rawValue: statusNumber.intValue)!
-            } else {
-                status = .unknown
-            }
-
-            switch status {
-            case .readyToPlay: //加载成功 开始播放
-                //播放历史 && 时长 > 0 监听播放器状态，当成功加载时，跳转到历史播放时间点
-                if let history = history, history.currentTime > 0, episodeIndex == history.episode  {
-                    let seekTo = CMTimeMakeWithSeconds(history.currentTime, preferredTimescale: 1000000)
-                    avPlayer.player?.seek(to: seekTo)
-                    self.history = nil
-                    return
-                }
-            default:
-                break
-            }
-        }
-    }
-
     func addRecord() {
         guard let video = videDetail?.info, let episode = episodes?[safe: episodeIndex] else { return }
-
         let history = History()
         history.primaryKey = video.id
         history.videoId = video.id
@@ -250,7 +247,7 @@ class PlayerViewController: NSViewController {
         }
         history.cover = video.cover
         Repository.insertOrReplace(table: history)
-        NotificationCenter.default.post(name: .init(rawValue: "com.dogetv.history"), object: nil)
+        NotificationCenter.default.post(name: .historyUpdated, object: nil)
     }
     
 
@@ -355,7 +352,7 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
           let section = dataSource[indexPath.section]
         switch section {
         case .source:
-            return NSSize(width: 90, height: 30)
+            return NSSize(width: 70, height: 30)
         case .episodes(let episodes):
             let title = episodes[indexPath.item].title
             let width = title.widthOfString(usingFont: .systemFont(ofSize: 14)) + 20
@@ -376,11 +373,18 @@ extension PlayerViewController: NSWindowDelegate {
     }
     
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-        avPlayer.player?.pause()
         if avPlayer.player?.status == AVPlayer.Status.readyToPlay {
             addRecord()
+            avPlayer.player?.replaceCurrentItem(with: nil)
         }
         return true
+    }
+
+    func windowWillClose(_ notification: Notification) {
+        let status =  PlayStatus.idle
+        NotificationCenter.default.post(name: .playStatusChanged, object: status)
+        playStatusObserver = nil
+        NSApplication.shared.openMainWindow()
     }
 }
 

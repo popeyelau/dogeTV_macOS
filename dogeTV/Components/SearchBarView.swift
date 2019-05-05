@@ -48,10 +48,10 @@ class SearchBarView: NSView, LoadableNib {
         wantsLayer = true
         layer?.cornerRadius = 15
         layer?.masksToBounds = true
-        layer?.backgroundColor = NSColor.selectedBackgroudColor.cgColor
+        layer?.backgroundColor = NSColor.activedBackgroundColor.cgColor
         textField.focusRingType = .none
         textField.backgroundColor = .clear
-        let attr = NSAttributedString(string: "搜索电影/演员/导演/视频云解析", attributes: [.foregroundColor: NSColor.lightGray, .font: textField.font!])
+        let attr = NSAttributedString(string: "搜索电影/演员/导演/云解析", attributes: [.foregroundColor: NSColor.lightGray, .font: textField.font!])
         textField.placeholderAttributedString = attr
         searchBtn.contentTintColor = .primaryColor
     }

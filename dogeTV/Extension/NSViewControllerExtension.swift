@@ -10,6 +10,26 @@ import Cocoa
 import PromiseKit
 
 extension NSViewController {
+
+    private func preparePlayerWindow(video: VideoDetail, episodes: [Episode], history: History? = nil) {
+        NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
+        let playerWindow = NSApplication.shared.windows.first {
+            $0.contentViewController?.isKind(of:PlayerViewController.self) == true
+        }
+        if let window = playerWindow, let controller = window.contentViewController as? PlayerViewController {
+            controller.replace(id: video.info.id)
+            window.makeKeyAndOrderFront(nil)
+            return
+        }
+        let windowController = AppWindowController(windowNibName: "AppWindowController")
+        let content = PlayerViewController()
+        content.videDetail = video
+        content.episodes = episodes
+        content.history = history
+        windowController.content = content
+        windowController.show(from:self.view.window)
+    }
+
     func showVideo(id: String, history: History? = nil, indicatorView: NSProgressIndicator? = nil) {
         indicatorView?.isHidden = false
         indicatorView?.startAnimation(nil)
@@ -20,13 +40,7 @@ extension NSViewController {
             when(fulfilled: APIClient.fetchVideo(id: id),
                  APIClient.fetchEpisodes(id: id, source: source))
             }.done { detail, episodes in
-                let window = AppWindowController(windowNibName: "AppWindowController")
-                let content = PlayerViewController()
-                content.videDetail = detail
-                content.episodes = episodes
-                content.history = history
-                window.content = content
-                window.show(from:self.view.window)
+                self.preparePlayerWindow(video: detail, episodes: episodes, history: history)
             }.catch{ error in
                 print(error)
                 self.showError(error)
@@ -48,8 +62,8 @@ extension NSViewController {
 
     func dialogOKCancel(question: String, text: String, handler: @escaping ((Bool) -> Void)) {
         let alert = NSAlert()
-        alert.messageText = text
-        alert.informativeText = question
+        alert.messageText = question
+        alert.informativeText = text
         alert.alertStyle = .warning
         alert.addButton(withTitle: "确定")
         alert.addButton(withTitle: "取消")
@@ -60,7 +74,7 @@ extension NSViewController {
 
     func openURL(with sender: NSButton) {
         guard let identifier = sender.identifier?.rawValue,
-            let url = URL(string: identifier) else { return }
+            let url = StaticURLs(rawValue: identifier)?.url else { return }
         NSWorkspace.shared.open(url)
     }
 

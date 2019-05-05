@@ -17,6 +17,7 @@ class TopicsViewController: NSViewController, Initializable {
     override func viewDidLoad() {
         super.viewDidLoad()
         refresh()
+        collectionView.backgroundColors = [.clear]
         // Do view setup here.
     }
 }

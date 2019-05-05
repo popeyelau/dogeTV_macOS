@@ -14,13 +14,13 @@ protocol Initializable where Self: NSViewController {
 
 class RootViewController: NSViewController {
     
-    @IBOutlet weak var contentView: ContainerView!
-    @IBOutlet weak var menuView: NSView!
-    @IBOutlet weak var topView: NSView!
+    @IBOutlet weak var contentView: GradientView!
+    @IBOutlet weak var menuView: GradientView!
+    @IBOutlet weak var topView: GradientView!
     @IBOutlet weak var btnStack: NSStackView!
     @IBOutlet weak var searchBarView: SearchBarView!
     @IBOutlet weak var iconImageView: AspectFitImageView!
-    @IBOutlet weak var versionBtn: NSButton!
+    @IBOutlet weak var playingStatusBar: PlayStatusView!
 
     var mapping: [String: Initializable] = [:]
     var activiedController: Initializable?
@@ -28,9 +28,10 @@ class RootViewController: NSViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentView.wantsLayer = true
-        contentView.layer?.cornerRadius = 6
-        contentView.layer?.masksToBounds = true
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor(red:0.12, green:0.13, blue:0.14, alpha:1.00).cgColor
+        menuView.colors = NSColor.menuBarGradientColors
+        topView.colors = NSColor.titleBarGradientColors
 
         iconImageView.focusRingType = .none
         if FileManager.default.fileExists(atPath: ENV.iconPath) {
@@ -54,11 +55,16 @@ class RootViewController: NSViewController {
         }
         
         view.window?.makeFirstResponder(nil)
+        registerNotification()
+    }
 
-        if let infoDictionary = Bundle.main.infoDictionary {
-            if let version = infoDictionary["CFBundleShortVersionString"] as? String, let build = infoDictionary[String(kCFBundleVersionKey)] as? String {
-                versionBtn.title = "Version: \(version)(\(build))"
+
+    func registerNotification()  {
+        NotificationCenter.default.addObserver(forName: .playStatusChanged, object: nil, queue: .main) { [weak self] (notify) in
+            guard let status = notify.object as? PlayStatus else {
+                return
             }
+            self?.playingStatusBar.status = status
         }
     }
     
@@ -115,24 +121,20 @@ class RootViewController: NSViewController {
             makeTransition(to: target)
         }
     }
-    
-    @IBAction func openURL(_ sender: NSButton) {
-        openURL(with: sender)
-    }
 
-    @IBAction func checkUpdateAction(_ sender: Any) {
-        NSApplication.shared.checkForUpdates(background: true)
-    }
-    
     @IBAction func refreshAction(_ sender: NSButton) {
         activiedController?.refresh()
     }
     
     @IBAction func dogeAction(_ sender: NSImageView) {
-        sender.image?.saveAsLogo()
+        sender.image?.save(isLogo: true)
         sender.layer?.cornerRadius = 45
         sender.layer?.masksToBounds = true
         sender.layer?.backgroundColor = NSColor.black.cgColor
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

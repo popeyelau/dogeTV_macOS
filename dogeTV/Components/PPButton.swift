@@ -33,7 +33,7 @@ class PPButton: NSButton {
             let linePath = NSBezierPath()
             linePath.move(to: .zero)
             linePath.line(to: NSPoint(x: 0, y: dirtyRect.height))
-            linePath.lineWidth = 5
+            linePath.lineWidth = 6
             NSColor.primaryColor.set()
             linePath.stroke()
         }

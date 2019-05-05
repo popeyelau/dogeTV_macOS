@@ -44,7 +44,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNV-M5-VV8">
                                 <rect key="frame" x="216" y="109" width="49" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version" id="LsC-18-du9">
-                                    <font key="font" metaFont="system" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -59,7 +59,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button identifier="https://github.com/popeyelau/dogeTV_macOS" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eEc-pK-fe6">
+                            <button identifier="githubRepo" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eEc-pK-fe6">
                                 <rect key="frame" x="190" y="160" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="2bZ-Yx-gXm"/>
@@ -84,7 +84,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button identifier="https://t.me/dogeTVBot" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GeN-1f-1Pl">
+                                    <button identifier="telegramBot" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GeN-1f-1Pl">
                                         <rect key="frame" x="84" y="-1" width="84" height="17"/>
                                         <buttonCell key="cell" type="inline" title="@dogeTVBot" bezelStyle="inline" image="buttonCell:GNy-yA-lfe:image" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="GNy-yA-lfe">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -102,7 +102,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button identifier="https://github.com/popeyelau" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wLH-vC-sD2">
+                                    <button identifier="github" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wLH-vC-sD2">
                                         <rect key="frame" x="245" y="-1" width="84" height="17"/>
                                         <buttonCell key="cell" type="inline" title="@PopeyeLau" bezelStyle="inline" image="buttonCell:6wV-mB-i8O:image" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="6wV-mB-i8O">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
