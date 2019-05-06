@@ -11,7 +11,7 @@ import PromiseKit
 
 extension NSViewController {
 
-    private func preparePlayerWindow(video: VideoDetail, episodes: [Episode], history: History? = nil) {
+    func preparePlayerWindow(video: VideoDetail, episodes: [Episode], history: History? = nil) {
         NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
         let playerWindow = NSApplication.shared.windows.first {
             $0.contentViewController?.isKind(of:PlayerViewController.self) == true
@@ -27,7 +27,7 @@ extension NSViewController {
         content.episodes = episodes
         content.history = history
         windowController.content = content
-        windowController.show(from:self.view.window)
+        windowController.show(from: view.window)
     }
 
     func showVideo(id: String, history: History? = nil, indicatorView: NSProgressIndicator? = nil) {
@@ -45,8 +45,7 @@ extension NSViewController {
                 print(error)
                 self.showError(error)
             }.finally {
-                indicatorView?.stopAnimation(nil)
-                indicatorView?.isHidden = true
+                indicatorView?.dismiss()
         }
     }
 

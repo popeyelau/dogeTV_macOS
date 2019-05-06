@@ -17,6 +17,7 @@ class PlayerViewController: NSViewController {
         case source([Int])
         case video(Video)
         case recommends([Video])
+        case seasons([Seasons])
 
         var title: String {
             switch self {
@@ -28,6 +29,8 @@ class PlayerViewController: NSViewController {
                 return "简介"
             case .recommends:
                 return "猜你喜欢"
+            case .seasons:
+                return "分季"
             }
         }
     }
@@ -49,6 +52,7 @@ class PlayerViewController: NSViewController {
     var playingEpisode: Episode?
     var sourceIndex: Int = 0
     var duration: Double = 0
+    var seasonIndex: Int = 0
     var dataSource: [Section] = []
 
     private var playerItemContext = 0
@@ -145,8 +149,26 @@ class PlayerViewController: NSViewController {
             return
         }
 
+        getStreamURL(episode: episode)
+    }
+
+    func getStreamURL(episode: Episode) {
         indicatorView.show()
-        _ = APIClient.resolveUrl(url: episode.url)
+        if let id = episode.id,  episode.url.isEmpty {
+            APIClient.fetchPumpkinEpisodes(id: id)
+                .done { episodes in
+                    if let url = episodes.last?.url {
+                        self.prepareToPlay(url: url)
+                    }
+                }.catch{ error in
+                    print(error)
+                    self.showError(error)
+                }.finally {
+                    self.indicatorView?.dismiss()
+            }
+            return
+        }
+        APIClient.resolveUrl(url: episode.url)
             .done { (url) in
                 self.prepareToPlay(url: url)
             }.catch({ (error) in
@@ -156,7 +178,6 @@ class PlayerViewController: NSViewController {
                 self.indicatorView.dismiss()
         }
     }
-
 
     func prepareToPlay(url: String) {
         if avPlayer.player == nil {
@@ -195,6 +216,27 @@ class PlayerViewController: NSViewController {
                 self.indicatorView.dismiss()
         }
     }
+
+    func updateSeason(index: Int, sid: String) {
+        guard let id = videDetail?.info.id else { return }
+        indicatorView.show()
+        _ = APIClient.fetchPumpkinSeason(id: id, sid: sid).done { (detail) in
+            guard let seasons = detail.seasons, let episodes = seasons[safe: index]?.episodes else {
+                return
+            }
+            self.episodeIndex = 0
+            self.seasonIndex = index
+            self.videDetail = detail
+            self.episodes = episodes
+            }.catch({ (error) in
+                print(error)
+                self.showError(error)
+            }).finally {
+                self.updateDataSource()
+                self.updatePlayingEpisodeIfNeeded()
+                self.indicatorView.dismiss()
+        }
+    }
     
     func updatePlayingEpisodeIfNeeded() {
         guard let playing = playingEpisode,
@@ -208,16 +250,25 @@ class PlayerViewController: NSViewController {
     
     func updateDataSource() {
         dataSource.removeAll()
-        if let eipsodes = episodes {
+        if let video = videDetail?.info {
+            dataSource.insert(.video(video), at: 0)
+            if video.source > 0 {
+                dataSource.append(.source(Array((0..<min(video.source,5)))))
+            }
+        }
+
+        if let seasons = videDetail?.seasons, !seasons.isEmpty {
+            dataSource.append(.seasons(seasons))
+        }
+
+        if let eipsodes = episodes, !eipsodes.isEmpty {
             dataSource.append(.episodes(eipsodes))
         }
-        if let video = videDetail?.info {
-            dataSource.insert(.source(Array((0..<min(video.source,5)))), at: 0)
-            dataSource.insert(.video(video), at: 0)
-        }
-        if let recommends = videDetail?.recommends {
+
+        if let recommends = videDetail?.recommends, !recommends.isEmpty {
             dataSource.append(.recommends(recommends))
         }
+
         collectionView.reloadData()
         collectionView.scrollToVisible(.zero)
     }
@@ -239,8 +290,7 @@ class PlayerViewController: NSViewController {
             }.finally {
                 self.sourceIndex = 0
                 self.episodeIndex = 0
-                self.indicatorView?.stopAnimation(nil)
-                self.indicatorView?.isHidden = true
+                self.indicatorView?.dismiss()
                 self.updateDataSource()
                 self.playing()
         }
@@ -264,9 +314,9 @@ class PlayerViewController: NSViewController {
         Repository.insertOrReplace(table: history)
         NotificationCenter.default.post(name: .historyUpdated, object: nil)
     }
-    
 
     deinit {
+        print("hello world")
         print("deinit")
     }
 }
@@ -288,6 +338,8 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             return 1
         case .recommends(let videos):
             return videos.count
+        case .seasons(let seasons):
+            return seasons.count
         }
     }
     
@@ -317,6 +369,13 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
             let video = videos[indexPath.item]
             item.data = video
+            return item
+        case .seasons(let seasons):
+            let item = collectionView.makeItem(withIdentifier: .init("EpisodeItemView"), for: indexPath) as! EpisodeItemView
+            let season = seasons[indexPath.item]
+            item.textField?.stringValue = season.name
+            item.textField?.alignment = .center
+            item.isSelected = seasonIndex == indexPath.item
             return item
         }
     }
@@ -360,11 +419,17 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             let video = videos[indexPath.item]
             avPlayer.player?.pause()
             replace(id: video.id)
+        case .seasons(let seasons):
+            let index = indexPath.item
+            let sid = seasons[index].id
+            updateSeason(index: index, sid: sid)
+            break
         }
+        
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-          let section = dataSource[indexPath.section]
+        let section = dataSource[indexPath.section]
         switch section {
         case .source:
             return NSSize(width: 70, height: 30)
@@ -376,6 +441,8 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             return NSSize(width: collectionView.bounds.width - 40, height: 200)
         case .recommends:
             return VideoCardView.smallSize
+        case .seasons:
+            return NSSize(width: 70, height: 30)
         }
     }
     
@@ -398,8 +465,11 @@ extension PlayerViewController: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         let status =  PlayStatus.idle
         NotificationCenter.default.post(name: .playStatusChanged, object: status)
-        playStatusObserver?.invalidate()
+        playStatusObserver = nil
         NSApplication.shared.openMainWindow()
     }
 }
 
+
+extension PlayerViewController {
+}

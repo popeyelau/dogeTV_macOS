@@ -18,6 +18,8 @@
 		7916EF1E2266EF3600FB6721 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF1D2266EF3600FB6721 /* NSColorExtension.swift */; };
 		7916EF202267012000FB6721 /* QueryOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF1F2267012000FB6721 /* QueryOptionsView.swift */; };
 		7916EF24226704AB00FB6721 /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF23226704AB00FB6721 /* NSViewExtension.swift */; };
+		7932E6442280748400224F47 /* TopicCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7932E6422280748400224F47 /* TopicCardView.swift */; };
+		7932E6452280748400224F47 /* TopicCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7932E6432280748400224F47 /* TopicCardView.xib */; };
 		7939584222674F90001FE58A /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939584122674F90001FE58A /* SearchBarView.swift */; };
 		7939584422675F06001FE58A /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939584322675F06001FE58A /* NSViewControllerExtension.swift */; };
 		79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79395845226764D8001FE58A /* LivePlayerViewController.swift */; };
@@ -125,6 +127,8 @@
 		7916EF1D2266EF3600FB6721 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		7916EF1F2267012000FB6721 /* QueryOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionsView.swift; sourceTree = "<group>"; };
 		7916EF23226704AB00FB6721 /* NSViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewExtension.swift; sourceTree = "<group>"; };
+		7932E6422280748400224F47 /* TopicCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCardView.swift; sourceTree = "<group>"; };
+		7932E6432280748400224F47 /* TopicCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicCardView.xib; sourceTree = "<group>"; };
 		7939584122674F90001FE58A /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		7939584322675F06001FE58A /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
 		79395845226764D8001FE58A /* LivePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePlayerViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +301,8 @@
 				79EAB4A5227AD46F00C85EAD /* PlayStatusView.xib */,
 				79EAB4A9227AF31500C85EAD /* GradientView.swift */,
 				798E5B90227D568C005C6AA5 /* ScrollingTextView.swift */,
+				7932E6422280748400224F47 /* TopicCardView.swift */,
+				7932E6432280748400224F47 /* TopicCardView.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -522,6 +528,7 @@
 				79D927B022659890009C446E /* AppWindowController.xib in Resources */,
 				79B7AD0F226AD37000600282 /* EmptyView.xib in Resources */,
 				799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */,
+				7932E6452280748400224F47 /* TopicCardView.xib in Resources */,
 				79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */,
 				7943588C22801A36008E37B7 /* HomeViewController.xib in Resources */,
 				796C844C2276E08100EC8FCF /* QueryOptionsKeyView.xib in Resources */,
@@ -620,6 +627,7 @@
 				79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */,
 				799B96212264AF7F002C8FFA /* CloudParse.swift in Sources */,
 				79E0911922686AB200219C87 /* TopicsViewController.swift in Sources */,
+				7932E6442280748400224F47 /* TopicCardView.swift in Sources */,
 				79B7AD06226AADE600600282 /* UserViewController.swift in Sources */,
 				799B96252264AF7F002C8FFA /* OptionSet.swift in Sources */,
 				79B7AD19226AE3BB00600282 /* AboutViewController.swift in Sources */,
@@ -783,7 +791,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = dogeTV/dogeTV.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer: ZhiQuan Liu (DSY75NVPP5)";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 983GE8X6R9;
@@ -810,7 +818,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = dogeTV/dogeTV.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer: ZhiQuan Liu (DSY75NVPP5)";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 983GE8X6R9;

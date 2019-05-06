@@ -50,6 +50,7 @@ protocol APIConfiguration: URLRequestConvertible {
 enum Router: APIConfiguration {
     case recommended
     case pumpkin(id: String)
+    case pumpkinSeason(id: String, sid: String)
     case pumpkinStream(id: String)
     case latest
     case topics
@@ -80,6 +81,8 @@ enum Router: APIConfiguration {
         case .recommended:
             return "/pumpkin"
         case .pumpkin(let id):
+            return "/pumpkin/\(id)"
+        case .pumpkinSeason(let id, _):
             return "/pumpkin/\(id)"
         case .pumpkinStream(let id):
             return "/pumpkin/\(id)/stream"
@@ -126,6 +129,8 @@ enum Router: APIConfiguration {
             return ["tid": tid]
         case .iptvStreamURL(let url):
             return ["url": url.base64String]
+        case .pumpkinSeason(_, let sid):
+            return ["sid": sid]
         default:
             return nil
         }
@@ -139,8 +144,6 @@ enum Router: APIConfiguration {
     func asURLRequest() throws -> URLRequest {
         let url = try ENV.host.asURL()
         var request = URLRequest(url: url.appendingPathComponent(path))
-        
-        print(request.url?.absoluteString)
         request.httpMethod = method.rawValue
         return try encoding.encode(request, with: parameters)
     }

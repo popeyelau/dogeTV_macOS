@@ -20,27 +20,8 @@ class HomeViewController: NSViewController {
         refresh()
     }
     
-    func fetchPumpkin(id: String, indicatorView: NSProgressIndicator? = nil) {
-        indicatorView?.isHidden = false
-        indicatorView?.startAnimation(nil)
-        
-        attempt(maximumRetryCount: 3) {
-            APIClient.fetchPumpkin(id: id)
-            }.done { detail in
-                print(detail)
-            }.catch{ error in
-                print(error)
-                self.showError(error)
-            }.finally {
-                indicatorView?.stopAnimation(nil)
-                indicatorView?.isHidden = true
-        }
-    }
-    
     func showPumpkinVideo(id: String, indicatorView: NSProgressIndicator? = nil) {
-        indicatorView?.isHidden = false
-        indicatorView?.startAnimation(nil)
-        
+        indicatorView?.show()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchPumpkinEpisodes(id: id)
             }.done { episodes in
@@ -49,8 +30,7 @@ class HomeViewController: NSViewController {
                 print(error)
                 self.showError(error)
             }.finally {
-                indicatorView?.stopAnimation(nil)
-                indicatorView?.isHidden = true
+                indicatorView?.dismiss()
         }
     }
     
@@ -79,10 +59,19 @@ extension HomeViewController: NSCollectionViewDelegate,  NSCollectionViewDataSou
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
-        let video = hots[indexPath.section].items[indexPath.item]
-        item.data = video
-        return item
+        let type = hots[indexPath.section].type ?? .normal
+        switch type {
+        case .normal:
+            let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+            let video = hots[indexPath.section].items[indexPath.item]
+            item.data = video
+            return item
+        case .series, .topic:
+            let item = collectionView.makeItem(withIdentifier: .init("TopicCardView"), for: indexPath) as! TopicCardView
+            let video = hots[indexPath.section].items[indexPath.item]
+            item.imageView?.setResourceImage(with: video.cover)
+            return item
+        }
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
@@ -96,19 +85,13 @@ extension HomeViewController: NSCollectionViewDelegate,  NSCollectionViewDataSou
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
         let video = hots[indexPath.section].items[indexPath.item]
-        //showPumpkinVideo(id: video.id)
-        fetchPumpkin(id: video.id, indicatorView: indicatorView)
+        fetchPumpkin(id: video.id)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        let section = hots[indexPath.section]
-        var size = VideoCardView.itemSize
-        if section.width > 0 && section.height > 0{
-            size = NSSize(width: section.width, height: section.height)
-        }
-        return size
+        let type = hots[indexPath.section].type ?? .normal
+        return type.itemSize
     }
-    
 }
 
 extension HomeViewController {
@@ -126,6 +109,40 @@ extension HomeViewController {
                 self.indicatorView.dismiss()
         }
     }
+
+    func fetchPumpkin(id: String) {
+        indicatorView?.show()
+        attempt(maximumRetryCount: 3) {
+            APIClient.fetchPumpkin(id: id)
+            }.done { detail in
+                guard let episodes = detail.seasons?.first?.episodes else {
+                    self.fetchPumpkinStreamURL(video: detail)
+                    return
+                }
+                self.preparePlayerWindow(video: detail, episodes: episodes)
+            }.catch{ error in
+                print(error)
+                self.showError(error)
+            }.finally {
+                self.indicatorView?.dismiss()
+        }
+    }
+
+    func fetchPumpkinStreamURL(video: VideoDetail) {
+        indicatorView?.show()
+        attempt(maximumRetryCount: 3) {
+            APIClient.fetchPumpkinEpisodes(id: video.info.id)
+            }.done { episodes in
+                self.preparePlayerWindow(video: video, episodes: episodes)
+            }.catch{ error in
+                print(error)
+                self.showError(error)
+            }.finally {
+                self.indicatorView?.dismiss()
+        }
+    }
+
+   
 }
 
 

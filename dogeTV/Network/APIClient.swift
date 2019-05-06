@@ -193,4 +193,11 @@ struct APIClient {
             .responseDecodable(Response<VideoDetail>.self)
             .map { $0.data }
     }
+
+    static func fetchPumpkinSeason(id: String, sid: String) -> Promise<VideoDetail> {
+        return AlamofireManager.shared.request(Router.pumpkinSeason(id: id, sid: sid))
+            .validate(validate)
+            .responseDecodable(Response<VideoDetail>.self)
+            .map { $0.data }
+    }
 }

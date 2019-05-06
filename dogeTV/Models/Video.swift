@@ -33,6 +33,7 @@ struct VideoDetail: Decodable {
 struct Seasons: Decodable {
     let id: String
     let name: String
+    let episodes: [Episode]?
 }
 
 

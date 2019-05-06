@@ -13,7 +13,7 @@
                 <outlet property="collectionView" destination="Ezh-Ky-S76" id="fBv-EW-Mbg"/>
                 <outlet property="downloadBtn" destination="5o8-vn-f16" id="16A-Qa-jcJ"/>
                 <outlet property="episodePanel" destination="ort-Os-Zud" id="gcb-o1-3XI"/>
-                <outlet property="episodePanelWidth" destination="v9f-vV-3Z6" id="DAl-YA-C2w"/>
+                <outlet property="episodePanelWidth" destination="jpM-Wm-Z0e" id="FdJ-iq-UG9"/>
                 <outlet property="indicatorView" destination="h6a-Wb-6gi" id="euo-Ou-AUJ"/>
                 <outlet property="titleLabel" destination="coZ-Av-RIg" id="s4u-3Y-0Mc"/>
                 <outlet property="titleView" destination="bUp-vx-1e3" id="RAF-Rp-oRq"/>
@@ -27,6 +27,9 @@
             <rect key="frame" x="0.0" y="0.0" width="722" height="533"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <avPlayerView controlsStyle="inline" showsFrameSteppingButtons="YES" showsFullScreenToggleButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwL-ZG-e8o">
+                    <rect key="frame" x="0.0" y="0.0" width="722" height="489"/>
+                </avPlayerView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="bUp-vx-1e3">
                     <rect key="frame" x="0.0" y="489" width="722" height="44"/>
                     <subviews>
@@ -148,13 +151,10 @@
                         <constraint firstItem="S3x-IG-NhB" firstAttribute="leading" secondItem="ort-Os-Zud" secondAttribute="leading" id="Kte-9G-Vyn"/>
                         <constraint firstAttribute="bottom" secondItem="S3x-IG-NhB" secondAttribute="bottom" id="XLM-bK-W5c"/>
                         <constraint firstAttribute="trailing" secondItem="S3x-IG-NhB" secondAttribute="trailing" id="ZSb-cq-VGz"/>
+                        <constraint firstAttribute="width" id="jpM-Wm-Z0e"/>
                         <constraint firstItem="h6a-Wb-6gi" firstAttribute="centerY" secondItem="S3x-IG-NhB" secondAttribute="centerY" id="oeO-N1-AOk"/>
-                        <constraint firstAttribute="width" id="v9f-vV-3Z6"/>
                     </constraints>
                 </customView>
-                <avPlayerView controlsStyle="inline" showsFrameSteppingButtons="YES" showsFullScreenToggleButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwL-ZG-e8o">
-                    <rect key="frame" x="0.0" y="0.0" width="722" height="489"/>
-                </avPlayerView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rLP-zM-XID">
                     <rect key="frame" x="705" y="217" width="17" height="100"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="toggle_on" imagePosition="only" alignment="center" imageScaling="proportionallyDown" sound="Pop" inset="2" id="YSn-eS-s77">
