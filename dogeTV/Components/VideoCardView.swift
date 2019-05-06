@@ -45,5 +45,4 @@ class VideoCardView: NSCollectionViewItem {
         textField?.textColor = .labelColor
     }
 
-    
 }

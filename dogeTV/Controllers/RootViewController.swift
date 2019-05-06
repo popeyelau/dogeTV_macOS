@@ -78,7 +78,7 @@ class RootViewController: NSViewController {
             btn.action = #selector(menuBtnClicked(_:))
             btn.snp.makeConstraints {
                 $0.width.equalToSuperview()
-                $0.height.equalTo(30)
+                $0.height.equalTo(24)
             }
         }
         

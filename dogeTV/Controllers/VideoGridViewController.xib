@@ -57,7 +57,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="480" height="0.0"/>
                         </stackView>
                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OUs-67-usV">
-                            <rect key="frame" x="292" y="-30" width="168" height="18"/>
+                            <rect key="frame" x="318" y="-23" width="142" height="18"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ez0-NS-P8R">
                                     <rect key="frame" x="0.0" y="0.0" width="79" height="18"/>
@@ -71,8 +71,8 @@
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cM4-A1-wFf">
-                                    <rect key="frame" x="89" y="0.0" width="79" height="18"/>
-                                    <buttonCell key="cell" type="squareTextured" title=" 更多选项" bezelStyle="texturedSquare" image="filter" imagePosition="leading" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="tbO-jX-pVH">
+                                    <rect key="frame" x="89" y="0.0" width="53" height="18"/>
+                                    <buttonCell key="cell" type="squareTextured" title=" 更多" bezelStyle="texturedSquare" image="filter" imagePosition="leading" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="tbO-jX-pVH">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <string key="keyEquivalent">f</string>
@@ -98,7 +98,7 @@
                         <constraint firstItem="Ukb-bH-Kap" firstAttribute="top" secondItem="O3B-hc-3yh" secondAttribute="top" id="6la-ot-QFZ"/>
                         <constraint firstAttribute="trailing" secondItem="Ukb-bH-Kap" secondAttribute="trailing" id="N4f-Vl-P8f"/>
                         <constraint firstAttribute="trailing" secondItem="OUs-67-usV" secondAttribute="trailing" constant="20" id="UeP-NZ-hDN"/>
-                        <constraint firstItem="OUs-67-usV" firstAttribute="top" secondItem="O3B-hc-3yh" secondAttribute="top" constant="12" id="emC-Qt-9G5"/>
+                        <constraint firstItem="OUs-67-usV" firstAttribute="top" secondItem="O3B-hc-3yh" secondAttribute="top" constant="5" id="emC-Qt-9G5"/>
                         <constraint firstAttribute="bottom" secondItem="Ukb-bH-Kap" secondAttribute="bottom" id="nBu-eN-mpY"/>
                     </constraints>
                 </customView>

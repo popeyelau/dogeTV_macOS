@@ -21,13 +21,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kH-yB-WmI">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="216"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="232"/>
                     <clipView key="contentView" id="96S-0i-iDr">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="216"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="232"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView selectable="YES" id="lSJ-In-P7d">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="216"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="232"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" sectionHeadersPinToVisibleBounds="YES" id="eug-yh-SET" customClass="CollectionViewLeftFlowLayout" customModule="dogeTV" customModuleProvider="target">
                                     <size key="itemSize" width="120" height="100"/>
@@ -51,7 +51,7 @@
                     </scroller>
                 </scrollView>
                 <button toolTip="切换源" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YfI-XO-iYK">
-                    <rect key="frame" x="432" y="232" width="28" height="24"/>
+                    <rect key="frame" x="432" y="248" width="28" height="24"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="circular" image="menu" imagePosition="trailing" alignment="center" imageScaling="proportionallyDown" inset="2" id="0FG-aV-boT">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -64,7 +64,7 @@
                     <rect key="frame" x="224" y="120" width="32" height="32"/>
                 </progressIndicator>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dwN-9L-sOA">
-                    <rect key="frame" x="42" y="236" width="204" height="17"/>
+                    <rect key="frame" x="42" y="252" width="204" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="yIC-rz-IAg"/>
                     </constraints>
@@ -78,7 +78,7 @@
                     </connections>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Ixu-Yd-s3i">
-                    <rect key="frame" x="20" y="236" width="16" height="16"/>
+                    <rect key="frame" x="20" y="252" width="16" height="16"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Oij-Fn-Oj6">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -96,7 +96,7 @@
                 <constraint firstAttribute="bottom" secondItem="5kH-yB-WmI" secondAttribute="bottom" id="UaJ-Ey-m05"/>
                 <constraint firstItem="Ixu-Yd-s3i" firstAttribute="centerY" secondItem="dwN-9L-sOA" secondAttribute="centerY" id="UaN-2F-067"/>
                 <constraint firstAttribute="trailing" secondItem="5kH-yB-WmI" secondAttribute="trailing" id="Zar-XR-nwq"/>
-                <constraint firstItem="YfI-XO-iYK" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="lbg-nX-3r5"/>
+                <constraint firstItem="YfI-XO-iYK" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="lbg-nX-3r5"/>
                 <constraint firstItem="dwN-9L-sOA" firstAttribute="leading" secondItem="Ixu-Yd-s3i" secondAttribute="trailing" constant="8" id="m2J-Ad-09E"/>
                 <constraint firstItem="5kH-yB-WmI" firstAttribute="top" secondItem="YfI-XO-iYK" secondAttribute="bottom" constant="16" id="sde-dz-SJv"/>
                 <constraint firstAttribute="trailing" secondItem="YfI-XO-iYK" secondAttribute="trailing" constant="20" id="uIJ-Ze-YZq"/>

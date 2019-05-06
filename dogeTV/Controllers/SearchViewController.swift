@@ -12,6 +12,7 @@ import PromiseKit
 class SearchViewController: NSViewController {
     var results: [Video] = [] {
         didSet {
+            emptyView.isHidden = !results.isEmpty
             isNoMoreData = results.count < pageSize * pageIndex
         }
     }
@@ -23,6 +24,7 @@ class SearchViewController: NSViewController {
     var isNoMoreData: Bool = false
     var parseResult: CloudParse?
     @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var emptyView: EmptyView!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +123,9 @@ extension SearchViewController {
             }.catch({ (error) in
                 print(error)
                 self.showError(error)
+                if self.pageIndex == 1 {
+                    self.results = []
+                }
             }).finally {
                 self.isCloudParse = false
                 self.pageIndex = 1

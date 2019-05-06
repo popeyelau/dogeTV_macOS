@@ -12,7 +12,6 @@ import AVKit
 class LivePlayerViewController: NSViewController {
     var channel: IPTVChannel?
     @IBOutlet weak var titleLabel: NSTextField!
-    @IBOutlet weak var toggleBtn: NSButton!
     @IBOutlet weak var avPlayer: AVPlayerView!
     @IBOutlet weak var titleView: NSView!
 

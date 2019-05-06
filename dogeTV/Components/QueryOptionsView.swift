@@ -41,6 +41,7 @@ class QueryOptionsView: NSView {
         collectionView.dataSource = self
         collectionView.isSelectable = true
         collectionView.backgroundColors = [NSColor.clear]
+        
         return collectionView
     }()
 

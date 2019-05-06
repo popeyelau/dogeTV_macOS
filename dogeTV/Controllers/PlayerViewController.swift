@@ -53,6 +53,10 @@ class PlayerViewController: NSViewController {
 
     private var playerItemContext = 0
     var playStatusObserver: NSKeyValueObservation?
+    
+    var isDownieInstalled: Bool {
+        return NSWorkspace.shared.fullPath(forApplication: "Downie 3") != nil
+    }
 
     
     @IBOutlet weak var titleLabel: NSTextField!
@@ -63,6 +67,8 @@ class PlayerViewController: NSViewController {
     @IBOutlet weak var toggleBtn: NSButton!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var titleView: NSView!
+    @IBOutlet weak var downloadBtn: NSButton!
+    @IBOutlet weak var actionStackView: NSStackView!
     var titleText: String?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +84,7 @@ class PlayerViewController: NSViewController {
         playing()
         let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
         view.addTrackingArea(trackingArea)
+        downloadBtn.isHidden = !isDownieInstalled
     }
 
     func playing() {
@@ -116,6 +123,14 @@ class PlayerViewController: NSViewController {
             return
         }
         NSWorkspace.shared.open(saved)
+    }
+
+    @IBAction func downloadAction(_ sender: NSButton) {
+        guard isDownieInstalled else { return }
+        guard let playing = playingEpisode, playing.canPlay else { return }
+
+        let url = URL(string: "downie://XUOpenLink?url=\(playing.url)")!
+        NSWorkspace.shared.open(url)
     }
 
     func play(episode: Episode) {
@@ -383,7 +398,7 @@ extension PlayerViewController: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         let status =  PlayStatus.idle
         NotificationCenter.default.post(name: .playStatusChanged, object: status)
-        playStatusObserver = nil
+        playStatusObserver?.invalidate()
         NSApplication.shared.openMainWindow()
     }
 }

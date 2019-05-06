@@ -18,6 +18,17 @@ class ChannelCardView: NSCollectionViewItem {
         view.layer?.cornerRadius = 10
         view.layer?.borderWidth = 1
         view.layer?.borderColor = NSColor.white.withAlphaComponent(0.1).cgColor
+        
+        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
+        view.addTrackingArea(trackingArea)
     }
     
+    override func mouseEntered(with event: NSEvent) {
+        view.layer?.borderWidth = 2
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        view.layer?.borderColor = NSColor.white.withAlphaComponent(0.1).cgColor
+        view.layer?.borderWidth = 1
+    }
 }
