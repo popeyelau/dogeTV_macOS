@@ -549,7 +549,6 @@
                         <outlet property="btnStack" destination="Dgl-qa-Ovy" id="nDs-Fe-ufA"/>
                         <outlet property="contentView" destination="TYq-7v-Uo4" id="Lkq-fC-hXS"/>
                         <outlet property="iconImageView" destination="xNy-4W-mBy" id="EH1-R1-2ZT"/>
-                        <outlet property="lineView" destination="TYq-7v-Uo4" id="EiK-Gi-f3i"/>
                         <outlet property="menuView" destination="TR0-Y5-V84" id="k37-j0-bRN"/>
                         <outlet property="playingStatusBar" destination="Yzf-tL-JlH" id="OpQ-rt-s68"/>
                         <outlet property="searchBarView" destination="jQL-F1-Mbx" id="LSg-lI-FYg"/>

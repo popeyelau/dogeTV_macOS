@@ -1,15 +1,15 @@
 //
-//  LatestGridViewController.swift
+//  HomeViewController.swift
 //  dogeTV
 //
-//  Created by Popeye Lau on 2019/4/15.
+//  Created by Popeye Lau on 2019/5/6.
 //  Copyright © 2019 Popeye Lau. All rights reserved.
 //
 
 import Cocoa
 import PromiseKit
 
-class LatestGridViewController: NSViewController {
+class HomeViewController: NSViewController {
     
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
@@ -19,9 +19,57 @@ class LatestGridViewController: NSViewController {
         collectionView.backgroundColors = [.clear]
         refresh()
     }
+    
+    func fetchPumpkin(id: String, indicatorView: NSProgressIndicator? = nil) {
+        indicatorView?.isHidden = false
+        indicatorView?.startAnimation(nil)
+        
+        attempt(maximumRetryCount: 3) {
+            APIClient.fetchPumpkin(id: id)
+            }.done { detail in
+                print(detail)
+            }.catch{ error in
+                print(error)
+                self.showError(error)
+            }.finally {
+                indicatorView?.stopAnimation(nil)
+                indicatorView?.isHidden = true
+        }
+    }
+    
+    func showPumpkinVideo(id: String, indicatorView: NSProgressIndicator? = nil) {
+        indicatorView?.isHidden = false
+        indicatorView?.startAnimation(nil)
+        
+        attempt(maximumRetryCount: 3) {
+            APIClient.fetchPumpkinEpisodes(id: id)
+            }.done { episodes in
+                self.showPlayer(with: episodes)
+            }.catch{ error in
+                print(error)
+                self.showError(error)
+            }.finally {
+                indicatorView?.stopAnimation(nil)
+                indicatorView?.isHidden = true
+        }
+    }
+    
+    func showPlayer(with episodes: [Episode]) {
+        guard !episodes.isEmpty else {
+            return
+        }
+        let window = AppWindowController(windowNibName: "AppWindowController")
+        let content = PlayerViewController()
+        content.episodes = episodes
+        content.episodeIndex = 0
+        window.content = content
+        window.show(from:self.view.window)
+    }
+    
+    
 }
 
-extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
+extension HomeViewController: NSCollectionViewDelegate,  NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return hots.count
     }
@@ -48,20 +96,26 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
         let video = hots[indexPath.section].items[indexPath.item]
-        showVideo(id: video.id, indicatorView: indicatorView)
+        //showPumpkinVideo(id: video.id)
+        fetchPumpkin(id: video.id, indicatorView: indicatorView)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        return VideoCardView.itemSize
+        let section = hots[indexPath.section]
+        var size = VideoCardView.itemSize
+        if section.width > 0 && section.height > 0{
+            size = NSSize(width: section.width, height: section.height)
+        }
+        return size
     }
     
 }
 
-extension LatestGridViewController {
+extension HomeViewController {
     func refresh() {
         indicatorView.show()
         attempt(maximumRetryCount: 3) {
-            APIClient.fetchLatest()
+            APIClient.fetchHome()
             }.done { hots in
                 self.hots = hots
             }.catch{ error in
@@ -75,4 +129,4 @@ extension LatestGridViewController {
 }
 
 
-extension LatestGridViewController: Initializable {}
+extension HomeViewController: Initializable {}

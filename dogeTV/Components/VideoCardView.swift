@@ -25,6 +25,7 @@ class VideoCardView: NSCollectionViewItem {
     @IBOutlet weak var updatedLabel: NSTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         shadowView.wantsLayer = true
         shadowView.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.35).cgColor
         shadowView.layer?.cornerRadius = 6

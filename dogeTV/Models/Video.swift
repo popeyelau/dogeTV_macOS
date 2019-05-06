@@ -21,11 +21,18 @@ struct Video: Decodable, Equatable {
     let score: String
     let state: String
     let source: Int
+
 }
 
 struct VideoDetail: Decodable {
     let info: Video
     let recommends: [Video]?
+    let seasons: [Seasons]?
+}
+
+struct Seasons: Decodable {
+    let id: String
+    let name: String
 }
 
 

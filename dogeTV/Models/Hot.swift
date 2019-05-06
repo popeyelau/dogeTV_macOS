@@ -6,9 +6,11 @@
 //  Copyright © 2019 Popeye Lau. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 struct Hot: Decodable {
     let title: String
+    let width: CGFloat
+    let height: CGFloat
     let items: [Video]
 }

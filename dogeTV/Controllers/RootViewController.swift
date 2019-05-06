@@ -43,7 +43,7 @@ class RootViewController: NSViewController {
         
         setupLeftMenus()
         
-        let target = makeContentView(type: LatestGridViewController.self, key: "latest")
+        let target = makeContentView(type: HomeViewController.self, key: Menus.recommended.rawValue)
         activiedController = target
         contentView.addSubview(target.view)
         
@@ -103,6 +103,9 @@ class RootViewController: NSViewController {
         sender.isSelected = true
 
         switch menu {
+        case .recommended:
+            let target = makeContentView(type: HomeViewController.self, key: identifier)
+            makeTransition(to: target)
         case .latest:
             let target = makeContentView(type: LatestGridViewController.self, key: identifier)
             makeTransition(to: target)

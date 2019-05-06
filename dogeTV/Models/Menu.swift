@@ -9,6 +9,7 @@
 import Foundation
 
 enum Menus: String, CaseIterable {
+    case recommended
     case latest
     case topic
     case film
@@ -21,6 +22,7 @@ enum Menus: String, CaseIterable {
     
     var title: String {
         switch self {
+        case .recommended: return "推荐"
         case .latest: return "最新"
         case .topic: return "精选"
         case .film: return "电影"

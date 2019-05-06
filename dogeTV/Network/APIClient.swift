@@ -64,8 +64,15 @@ struct APIClient {
             .responseDecodable(Response<T>.self)
     }
 
+    static func fetchLatest() -> Promise<[Hot]>  {
+        return AlamofireManager.shared.request(Router.latest)
+            .validate(validate)
+            .responseDecodable(Response<[Hot]>.self)
+            .map { $0.data }
+    }
+    
     static func fetchHome() -> Promise<[Hot]>  {
-        return AlamofireManager.shared.request(Router.home)
+        return AlamofireManager.shared.request(Router.recommended)
             .validate(validate)
             .responseDecodable(Response<[Hot]>.self)
             .map { $0.data }
@@ -170,6 +177,20 @@ struct APIClient {
         return AlamofireManager.shared.request(Router.parse(url: url))
             .validate(validate)
             .responseDecodable(Response<CloudParse>.self)
+            .map { $0.data }
+    }
+    
+    static func fetchPumpkinEpisodes(id: String) -> Promise<[Episode]> {
+        return AlamofireManager.shared.request(Router.pumpkinStream(id: id))
+            .validate(validate)
+            .responseDecodable(Response<[Episode]>.self)
+            .map { $0.data }
+    }
+    
+    static func fetchPumpkin(id: String) -> Promise<VideoDetail> {
+        return AlamofireManager.shared.request(Router.pumpkin(id: id))
+            .validate(validate)
+            .responseDecodable(Response<VideoDetail>.self)
             .map { $0.data }
     }
 }

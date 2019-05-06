@@ -48,7 +48,10 @@ protocol APIConfiguration: URLRequestConvertible {
 
 
 enum Router: APIConfiguration {
-    case home
+    case recommended
+    case pumpkin(id: String)
+    case pumpkinStream(id: String)
+    case latest
     case topics
     case category(category: Category, page: Int, isDouban: Bool, query: String)
     case rank(category: Category)
@@ -74,7 +77,13 @@ enum Router: APIConfiguration {
     
     var path: String {
         switch self {
-        case .home:
+        case .recommended:
+            return "/pumpkin"
+        case .pumpkin(let id):
+            return "/pumpkin/\(id)"
+        case .pumpkinStream(let id):
+            return "/pumpkin/\(id)/stream"
+        case .latest:
             return "/videos"
         case .topics:
             return "/topics"
@@ -131,6 +140,7 @@ enum Router: APIConfiguration {
         let url = try ENV.host.asURL()
         var request = URLRequest(url: url.appendingPathComponent(path))
         
+        print(request.url?.absoluteString)
         request.httpMethod = method.rawValue
         return try encoding.encode(request, with: parameters)
     }
