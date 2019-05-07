@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum VideoSource: Int, Codable {
+    case other = 0
+    case pumpkin
+}
+
 struct Video: Decodable, Equatable {
     let id: String
     let name: String

@@ -26,8 +26,3 @@ struct Episode: Decodable, Equatable {
         return lhs.url == rhs.url
     }
 }
-
-struct VideoSource: Equatable, Hashable {
-    let source: Int
-    let isSelected: Bool
-}

@@ -316,7 +316,6 @@ class PlayerViewController: NSViewController {
     }
 
     deinit {
-        print("hello world")
         print("deinit")
     }
 }

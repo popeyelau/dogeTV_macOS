@@ -24,6 +24,7 @@ class RootViewController: NSViewController {
 
     var mapping: [String: Initializable] = [:]
     var activiedController: Initializable?
+    var prevController: Initializable?
     
    
     override func viewDidLoad() {
@@ -158,6 +159,20 @@ extension RootViewController {
         makeTransition(to: target)
     }
     
+    func showSeries(id: String, title: String? = nil) {
+        let target = makeContentView(type: SerieGridViewController.self, key: "series")
+        target.title = title
+        target.id = id
+        makeTransition(to: target)
+    }
+    
+    func back() {
+        guard let prev = prevController else {
+            return
+        }
+        makeTransition(to: prev)
+    }
+
     func resetButtons() {
         for view in btnStack.subviews {
             if let btn = view as? PPButton {
@@ -176,12 +191,14 @@ extension RootViewController {
         return target
     }
     
-    func makeTransition(to: Initializable) {
+    func makeTransition(to: Initializable, options: TransitionOptions = .crossfade) {
         guard let from = activiedController else { return }
-        transition(from: from, to: to, options: .crossfade) {
+        transition(from: from, to: to, options: options) {
+            self.prevController = from
             self.activiedController = to
         }
     }
 }
+
 
 

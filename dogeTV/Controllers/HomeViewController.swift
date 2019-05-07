@@ -9,6 +9,7 @@
 import Cocoa
 import PromiseKit
 
+
 class HomeViewController: NSViewController {
     
     @IBOutlet weak var collectionView: NSCollectionView!
@@ -84,8 +85,15 @@ extension HomeViewController: NSCollectionViewDelegate,  NSCollectionViewDataSou
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
-        let video = hots[indexPath.section].items[indexPath.item]
-        fetchPumpkin(id: video.id)
+        let section = hots[indexPath.section]
+        let type = section.type ?? .normal
+        let video = section.items[indexPath.item]
+        
+        if type == .normal {
+            showVideo(id: video.id, source: .pumpkin, indicatorView: indicatorView)
+            return
+        }
+        NSApplication.shared.rootViewController?.showSeries(id: video.id, title: video.name)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
@@ -106,44 +114,14 @@ extension HomeViewController {
                 self.showError(error)
             }.finally {
                 self.collectionView.reloadData()
+                self.collectionView.scroll(.zero)
                 self.indicatorView.dismiss()
         }
     }
-
-    func fetchPumpkin(id: String) {
-        indicatorView?.show()
-        attempt(maximumRetryCount: 3) {
-            APIClient.fetchPumpkin(id: id)
-            }.done { detail in
-                guard let episodes = detail.seasons?.first?.episodes else {
-                    self.fetchPumpkinStreamURL(video: detail)
-                    return
-                }
-                self.preparePlayerWindow(video: detail, episodes: episodes)
-            }.catch{ error in
-                print(error)
-                self.showError(error)
-            }.finally {
-                self.indicatorView?.dismiss()
-        }
-    }
-
-    func fetchPumpkinStreamURL(video: VideoDetail) {
-        indicatorView?.show()
-        attempt(maximumRetryCount: 3) {
-            APIClient.fetchPumpkinEpisodes(id: video.info.id)
-            }.done { episodes in
-                self.preparePlayerWindow(video: video, episodes: episodes)
-            }.catch{ error in
-                print(error)
-                self.showError(error)
-            }.finally {
-                self.indicatorView?.dismiss()
-        }
-    }
-
-   
 }
 
 
 extension HomeViewController: Initializable {}
+
+
+

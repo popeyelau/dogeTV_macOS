@@ -200,4 +200,11 @@ struct APIClient {
             .responseDecodable(Response<VideoDetail>.self)
             .map { $0.data }
     }
+    
+    static func fetchPumpkinserieVideos(id: String, page: Int = 0) -> Promise<[Video]> {
+        return AlamofireManager.shared.request(Router.pumpkinSerieVideos(id: id, page: page))
+            .validate(validate)
+            .responseDecodable(Response<[Video]>.self)
+            .map { $0.data }
+    }
 }

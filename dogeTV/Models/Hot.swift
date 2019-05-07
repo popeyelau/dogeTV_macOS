@@ -8,19 +8,17 @@
 
 import Cocoa
 
-enum HomeSectionType: String, Decodable {
+enum ContentItemType: String, Decodable {
     case normal
     case series
     case topic
 
     var itemSize: NSSize {
         switch self {
-        case .normal:
+        case .normal, .topic:
             return VideoCardView.itemSize
         case .series:
-            return NSSize(width: 250, height: 125)
-        case .topic:
-            return NSSize(width: 120, height: 240)
+            return NSSize(width: 200, height: 100)
         }
     }
 }
@@ -29,6 +27,6 @@ struct Hot: Decodable {
     let title: String
     let width: CGFloat
     let height: CGFloat
-    let type: HomeSectionType?
+    let type: ContentItemType?
     let items: [Video]
 }

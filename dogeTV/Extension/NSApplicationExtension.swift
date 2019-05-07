@@ -46,4 +46,8 @@ extension NSApplication {
     var appFolder: String {
        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! + "/.dogeTV"
     }
+    
+    var rootViewController: RootViewController? {
+       return appDelegate?.mainWindowController?.contentViewController as? RootViewController
+    }
 }

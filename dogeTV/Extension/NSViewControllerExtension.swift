@@ -11,44 +11,7 @@ import PromiseKit
 
 extension NSViewController {
 
-    func preparePlayerWindow(video: VideoDetail, episodes: [Episode], history: History? = nil) {
-        NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
-        let playerWindow = NSApplication.shared.windows.first {
-            $0.contentViewController?.isKind(of:PlayerViewController.self) == true
-        }
-        if let window = playerWindow, let controller = window.contentViewController as? PlayerViewController {
-            controller.replace(id: video.info.id)
-            window.makeKeyAndOrderFront(nil)
-            return
-        }
-        let windowController = AppWindowController(windowNibName: "AppWindowController")
-        let content = PlayerViewController()
-        content.videDetail = video
-        content.episodes = episodes
-        content.history = history
-        windowController.content = content
-        windowController.show(from: view.window)
-    }
-
-    func showVideo(id: String, history: History? = nil, indicatorView: NSProgressIndicator? = nil) {
-        indicatorView?.isHidden = false
-        indicatorView?.startAnimation(nil)
-
-        let source = history?.source ?? 0
-        
-        attempt(maximumRetryCount: 3) {
-            when(fulfilled: APIClient.fetchVideo(id: id),
-                 APIClient.fetchEpisodes(id: id, source: source))
-            }.done { detail, episodes in
-                self.preparePlayerWindow(video: detail, episodes: episodes, history: history)
-            }.catch{ error in
-                print(error)
-                self.showError(error)
-            }.finally {
-                indicatorView?.dismiss()
-        }
-    }
-
+  
     func showError(_ error: Error) {
         /*
         let alert: NSAlert = NSAlert()
@@ -77,4 +40,78 @@ extension NSViewController {
         NSWorkspace.shared.open(url)
     }
 
+}
+
+
+// video handle
+extension NSViewController {
+    func preparePlayerWindow(video: VideoDetail, episodes: [Episode], history: History? = nil) {
+        NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
+        let playerWindow = NSApplication.shared.windows.first {
+            $0.contentViewController?.isKind(of:PlayerViewController.self) == true
+        }
+        if let window = playerWindow, let controller = window.contentViewController as? PlayerViewController {
+            controller.replace(id: video.info.id)
+            window.makeKeyAndOrderFront(nil)
+            return
+        }
+        let windowController = AppWindowController(windowNibName: "AppWindowController")
+        let content = PlayerViewController()
+        content.videDetail = video
+        content.episodes = episodes
+        content.history = history
+        windowController.content = content
+        windowController.show(from: view.window)
+    }
+    
+    func showVideo(id: String, source: VideoSource = .other,  history: History? = nil, indicatorView: NSProgressIndicator? = nil) {
+        indicatorView?.isHidden = false
+        indicatorView?.startAnimation(nil)
+
+        switch source {
+        case .other:
+            let source = history?.source ?? 0
+            attempt(maximumRetryCount: 3) {
+                when(fulfilled: APIClient.fetchVideo(id: id),
+                     APIClient.fetchEpisodes(id: id, source: source))
+                }.done { detail, episodes in
+                    self.preparePlayerWindow(video: detail, episodes: episodes, history: history)
+                }.catch{ error in
+                    print(error)
+                    self.showError(error)
+                }.finally {
+                    indicatorView?.dismiss()
+            }
+            break
+        case .pumpkin:
+            attempt(maximumRetryCount: 3) {
+                APIClient.fetchPumpkin(id: id)
+                }.done { detail in
+                    guard let episodes = detail.seasons?.first?.episodes else {
+                        self.fetchPumpkinStreamURL(video: detail)
+                        return
+                    }
+                    self.preparePlayerWindow(video: detail, episodes: episodes)
+                }.catch{ error in
+                    print(error)
+                    self.showError(error)
+                }.finally {
+                    indicatorView?.dismiss()
+            }
+            break
+            
+        }
+    }
+
+    private func fetchPumpkinStreamURL(video: VideoDetail) {
+        attempt(maximumRetryCount: 3) {
+            APIClient.fetchPumpkinEpisodes(id: video.info.id)
+            }.done { episodes in
+                self.preparePlayerWindow(video: video, episodes: episodes)
+            }.catch{ error in
+                print(error)
+                self.showError(error)
+            }.finally {
+        }
+    }
 }

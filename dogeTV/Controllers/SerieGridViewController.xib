@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SerieGridViewController" customModule="dogeTV" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="wT6-QZ-5dz" id="XDt-F2-PcG"/>
+                <outlet property="indicatorView" destination="rgS-m1-cB0" id="GmC-tH-VI3"/>
+                <outlet property="view" destination="AT8-5k-d8R" id="MtQ-Ya-AEG"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="AT8-5k-d8R">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="397"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNx-JF-enq">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="397"/>
+                    <clipView key="contentView" id="2Mi-GK-9SC">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="397"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView selectable="YES" id="wT6-QZ-5dz">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="397"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" sectionHeadersPinToVisibleBounds="YES" id="KPy-ib-0fl" customClass="CollectionViewLeftFlowLayout" customModule="dogeTV" customModuleProvider="target">
+                                    <size key="itemSize" width="150" height="240"/>
+                                    <size key="headerReferenceSize" width="0.0" height="44"/>
+                                    <edgeInsets key="sectionInset" left="20" right="20" top="8" bottom="20"/>
+                                </collectionViewFlowLayout>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="isz-en-49Y"/>
+                                    <outlet property="delegate" destination="-2" id="G0Y-pi-Biv"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="npa-2l-DJT">
+                        <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Z0S-Fa-ZWK">
+                        <rect key="frame" x="464" y="0.0" width="16" height="357"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="rgS-m1-cB0">
+                    <rect key="frame" x="224" y="183" width="32" height="32"/>
+                </progressIndicator>
+            </subviews>
+            <constraints>
+                <constraint firstItem="PNx-JF-enq" firstAttribute="top" secondItem="AT8-5k-d8R" secondAttribute="top" id="3UC-bS-m1F"/>
+                <constraint firstAttribute="trailing" secondItem="PNx-JF-enq" secondAttribute="trailing" id="5LZ-MA-8hJ"/>
+                <constraint firstItem="rgS-m1-cB0" firstAttribute="centerY" secondItem="AT8-5k-d8R" secondAttribute="centerY" id="7xe-ZK-D27"/>
+                <constraint firstItem="rgS-m1-cB0" firstAttribute="centerX" secondItem="AT8-5k-d8R" secondAttribute="centerX" id="QyC-2Z-Zyo"/>
+                <constraint firstAttribute="bottom" secondItem="PNx-JF-enq" secondAttribute="bottom" id="nSo-QU-mbC"/>
+                <constraint firstItem="PNx-JF-enq" firstAttribute="leading" secondItem="AT8-5k-d8R" secondAttribute="leading" id="xds-Yu-bwj"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="153.5"/>
+        </customView>
+    </objects>
+</document>
