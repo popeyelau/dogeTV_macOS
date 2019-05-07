@@ -11,7 +11,7 @@ import PromiseKit
 
 class TopRatedViewController: NSViewController {
     
-    @IBOutlet weak var segmentCtrl: NSSegmentedControl!
+    @IBOutlet weak var segmentCtrl: CustomSegmentedControl!
     enum Columns: String, CaseIterable {
         case index
         case name
@@ -30,24 +30,37 @@ class TopRatedViewController: NSViewController {
 
         tableView.target = self
         tableView.doubleAction = #selector(tableViewDoubleAction(_:))
-        segmentCtrl.selectedSegment = category.rawValue
-        segmentCtrl.segmentCount = Category.allCases.count
+
         Category.allCases.enumerated().forEach { index, element in
-            segmentCtrl.setWidth(100, forSegment: index)
-            segmentCtrl.setLabel(element.title, forSegment: index)
+            segmentCtrl.addSegment(withTitle: element.title)
         }
-        segmentCtrl.selectedSegmentBezelColor = .primaryColor
+        segmentCtrl.selectedIndex = category.rawValue
+
         
         refresh()
+
+        /*
+        let segment = CustomSegmentedControl()
+        segment.addSegment(withTitle: "我爱中国")
+        segment.addSegment(withTitle: "我爱中国2")
+        segment.addSegment(withTitle: "我爱中国3")
+        segment.addSegment(withTitle: "我爱中国4")
+        segment.addSegment(withTitle: "我爱中国5")
+        segment.addSegment(withTitle: "我爱中国6")
+        view.addSubview(segment)
+        segment.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }*/
     }
-    
+
     @objc func tableViewDoubleAction(_ sender: NSTableView) {
         guard tableView.clickedRow != -1 else { return }
         let selected = list[tableView.clickedRow]
         showVideo(id: selected.id, indicatorView: indicatorView)
     }
-    @IBAction func segmentIndexChanged(_ sender: NSSegmentedControl) {
-        category = Category(rawValue: sender.selectedSegment) ?? .film
+    @IBAction func segmentIndexChanged(_ sender: CustomSegmentedControl) {
+        let index = sender.selectedIndex ?? 0
+        category = Category(rawValue: index) ?? .film
         refresh()
     }
 

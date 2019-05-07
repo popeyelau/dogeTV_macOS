@@ -39,6 +39,23 @@ enum TabItems: CaseIterable {
         }
     }
 
+    var key: String {
+        switch self {
+        case .action: return "CATG_ACTION"
+        case .war: return "CATG_WAR"
+        case .sf: return "CATG_SF"
+        case .risk: return "CATG_RISK"
+        case .serial: return "CATG_SERIAL"
+        case .crime: return "CATG_CRIME"
+        case .disaster: return "CATG_DISASTER"
+        case .magic: return "CATG_MAGIC"
+        case .suspense: return "CATG_SUSPENSE"
+        case .feature: return "CATG_FEATURE"
+        case .terror: return "CATG_TERROR"
+        case .west: return "CATG_WEST"
+        }
+    }
+
 }
 
 class TagGridViewController: NSViewController {
@@ -49,10 +66,11 @@ class TagGridViewController: NSViewController {
         super.viewDidLoad()
         tabView.tabPosition = .none
         tabView.tabViewBorderType = .none
-        
-        
+
         tabView.tabViewItems = TabItems.allCases.map { tag in
-            let item = NSTabViewItem(viewController: HomeViewController())
+            let controller = HomeViewController()
+            controller.sourceType = .category(category: tag.key)
+            let item = NSTabViewItem(viewController: controller)
             item.label = tag.title
             return item
             

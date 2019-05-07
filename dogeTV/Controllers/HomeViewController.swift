@@ -11,10 +11,18 @@ import PromiseKit
 
 
 class HomeViewController: NSViewController {
+
+    enum SourceType {
+        case home
+        case category(category: String)
+    }
+
     
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
     var hots: [Hot] = []
+    var sourceType: SourceType = .home
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColors = [.backgroundColor]
@@ -104,9 +112,34 @@ extension HomeViewController: NSCollectionViewDelegate,  NSCollectionViewDataSou
 
 extension HomeViewController {
     func refresh() {
+        switch sourceType {
+        case .home:
+            refreshHome()
+        case .category(let category):
+            refreshCategory(category: category)
+        }
+    }
+
+    func refreshHome() {
         indicatorView.show()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchHome()
+            }.done { hots in
+                self.hots = hots
+            }.catch{ error in
+                print(error)
+                self.showError(error)
+            }.finally {
+                self.collectionView.reloadData()
+                self.collectionView.scroll(.zero)
+                self.indicatorView.dismiss()
+        }
+    }
+
+    func refreshCategory(category: String) {
+        indicatorView.show()
+        attempt(maximumRetryCount: 3) {
+            APIClient.fetchPumpkinCategoryVideo(category: category)
             }.done { hots in
                 self.hots = hots
             }.catch{ error in

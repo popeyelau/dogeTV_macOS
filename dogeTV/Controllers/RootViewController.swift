@@ -123,6 +123,9 @@ class RootViewController: NSViewController {
         case .parse:
             let target = makeContentView(type: ParseViewController.self, key: identifier)
             makeTransition(to: target)
+        case .tag:
+            let target = makeContentView(type: TagGridViewController.self, key: identifier)
+            makeTransition(to: target)
         }
     }
 

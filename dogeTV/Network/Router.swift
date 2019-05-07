@@ -53,6 +53,7 @@ enum Router: APIConfiguration {
     case pumpkinSeason(id: String, sid: String)
     case pumpkinStream(id: String)
     case pumpkinSerieVideos(id: String, page: Int)
+    case pumpkinCategoryVideos(category: String, page: Int)
     case latest
     case topics
     case category(category: Category, page: Int, isDouban: Bool, query: String)
@@ -89,6 +90,8 @@ enum Router: APIConfiguration {
             return "/pumpkin/\(id)/stream"
         case .pumpkinSerieVideos(let id, _):
             return "/pumpkin/\(id)/list"
+        case .pumpkinCategoryVideos:
+            return "pumpkin1/category"
         case .latest:
             return "/videos"
         case .topics:
@@ -136,6 +139,8 @@ enum Router: APIConfiguration {
             return ["sid": sid]
         case .pumpkinSerieVideos(_, let page):
             return ["p": page]
+        case .pumpkinCategoryVideos(let category, let page):
+            return ["category": category, "p": page]
         default:
             return nil
         }

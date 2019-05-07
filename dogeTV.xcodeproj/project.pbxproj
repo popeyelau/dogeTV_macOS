@@ -31,6 +31,7 @@
 		793AF1362277E3310030CE7F /* IPTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AF1352277E3310030CE7F /* IPTV.swift */; };
 		7943588B22801A36008E37B7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7943588922801A36008E37B7 /* HomeViewController.swift */; };
 		7943588C22801A36008E37B7 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943588A22801A36008E37B7 /* HomeViewController.xib */; };
+		79463B332281D5AB003BE96D /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79463B322281D5AB003BE96D /* CustomSegmentedControl.swift */; };
 		794A8001226D5F0700941333 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A8000226D5F0700941333 /* NSImageExtension.swift */; };
 		796C844A2276E07000EC8FCF /* QueryOptionsKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C84492276E07000EC8FCF /* QueryOptionsKeyView.swift */; };
 		796C844C2276E08100EC8FCF /* QueryOptionsKeyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796C844B2276E08100EC8FCF /* QueryOptionsKeyView.xib */; };
@@ -144,6 +145,7 @@
 		793AF1352277E3310030CE7F /* IPTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTV.swift; sourceTree = "<group>"; };
 		7943588922801A36008E37B7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7943588A22801A36008E37B7 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		79463B322281D5AB003BE96D /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		794A8000226D5F0700941333 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		79614BBE226FE85B00F0E738 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitHubUpdates.framework; path = ../../../dogeTV/Frameworks/GitHubUpdates.framework; sourceTree = "<group>"; };
 		796C84492276E07000EC8FCF /* QueryOptionsKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionsKeyView.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				798E5B90227D568C005C6AA5 /* ScrollingTextView.swift */,
 				7932E6422280748400224F47 /* TopicCardView.swift */,
 				7932E6432280748400224F47 /* TopicCardView.xib */,
+				79463B322281D5AB003BE96D /* CustomSegmentedControl.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				796C844A2276E07000EC8FCF /* QueryOptionsKeyView.swift in Sources */,
 				79D927B72265A73B009C446E /* EpisodeItemView.swift in Sources */,
 				79076F3322812F42007499A3 /* SerieGridViewController.swift in Sources */,
+				79463B332281D5AB003BE96D /* CustomSegmentedControl.swift in Sources */,
 				79C9EEB02269F905007B6B35 /* Repository.swift in Sources */,
 				7939584422675F06001FE58A /* NSViewControllerExtension.swift in Sources */,
 				799B962A2264AF7F002C8FFA /* Router.swift in Sources */,
