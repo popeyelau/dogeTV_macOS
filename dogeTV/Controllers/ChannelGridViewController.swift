@@ -26,7 +26,7 @@ class ChannelGridViewController: NSViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColors = [.clear]
+        collectionView.backgroundColors = [.backgroundColor]
         searchTextField.focusRingType = .none
         refresh()
     }

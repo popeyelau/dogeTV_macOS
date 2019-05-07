@@ -25,7 +25,7 @@ class SerieGridViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColors = [.clear]
+        collectionView.backgroundColors = [.backgroundColor]
     }
     
     override func viewWillAppear() {
@@ -45,6 +45,7 @@ extension SerieGridViewController: NSCollectionViewDelegate, NSCollectionViewDat
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+        item.shadowView.isHidden = true
         let video = videos[indexPath.item]
         item.data = video
         return item

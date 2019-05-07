@@ -78,7 +78,7 @@ class PlayerViewController: NSViewController {
         super.viewDidLoad()
         episodePanel.wantsLayer = true
         episodePanel.layer?.backgroundColor = NSColor.backgroundColor.cgColor
-        collectionView.backgroundColors = [.clear]
+        collectionView.backgroundColors = [.backgroundColor]
 
         titleView.wantsLayer = true
         titleView.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.75).cgColor

@@ -10,6 +10,8 @@
 		59DBAE656258FC0986932945 /* Pods_dogeTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26910516B8FE6E0B0C9D258 /* Pods_dogeTV.framework */; };
 		79076F3322812F42007499A3 /* SerieGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79076F3122812F42007499A3 /* SerieGridViewController.swift */; };
 		79076F3422812F42007499A3 /* SerieGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79076F3222812F42007499A3 /* SerieGridViewController.xib */; };
+		79076F52228172EB007499A3 /* TagGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79076F50228172EB007499A3 /* TagGridViewController.swift */; };
+		79076F53228172EB007499A3 /* TagGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79076F51228172EB007499A3 /* TagGridViewController.xib */; };
 		79115816226995FC0034E551 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79115815226995FB0034E551 /* AVKit.framework */; };
 		7916EF132266BA1400FB6721 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF112266BA1400FB6721 /* SearchViewController.swift */; };
 		7916EF142266BA1400FB6721 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7916EF122266BA1400FB6721 /* SearchViewController.xib */; };
@@ -121,6 +123,8 @@
 		0762FFF90A53923C70174323 /* Pods-dogeTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dogeTV.debug.xcconfig"; path = "Target Support Files/Pods-dogeTV/Pods-dogeTV.debug.xcconfig"; sourceTree = "<group>"; };
 		79076F3122812F42007499A3 /* SerieGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieGridViewController.swift; sourceTree = "<group>"; };
 		79076F3222812F42007499A3 /* SerieGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieGridViewController.xib; sourceTree = "<group>"; };
+		79076F50228172EB007499A3 /* TagGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagGridViewController.swift; sourceTree = "<group>"; };
+		79076F51228172EB007499A3 /* TagGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagGridViewController.xib; sourceTree = "<group>"; };
 		79115815226995FB0034E551 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		7916EF112266BA1400FB6721 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7916EF122266BA1400FB6721 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -270,6 +274,8 @@
 				7943588A22801A36008E37B7 /* HomeViewController.xib */,
 				79076F3122812F42007499A3 /* SerieGridViewController.swift */,
 				79076F3222812F42007499A3 /* SerieGridViewController.xib */,
+				79076F50228172EB007499A3 /* TagGridViewController.swift */,
+				79076F51228172EB007499A3 /* TagGridViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -535,6 +541,7 @@
 				79B7AD0F226AD37000600282 /* EmptyView.xib in Resources */,
 				79076F3422812F42007499A3 /* SerieGridViewController.xib in Resources */,
 				799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */,
+				79076F53228172EB007499A3 /* TagGridViewController.xib in Resources */,
 				7932E6452280748400224F47 /* TopicCardView.xib in Resources */,
 				79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */,
 				7943588C22801A36008E37B7 /* HomeViewController.xib in Resources */,
@@ -621,6 +628,7 @@
 				799B96122264AF78002C8FFA /* Helpers.swift in Sources */,
 				7939584222674F90001FE58A /* SearchBarView.swift in Sources */,
 				799FED7B2265685200BD5900 /* PPButton.swift in Sources */,
+				79076F52228172EB007499A3 /* TagGridViewController.swift in Sources */,
 				799B96242264AF7F002C8FFA /* Response.swift in Sources */,
 				794A8001226D5F0700941333 /* NSImageExtension.swift in Sources */,
 				79B7AD0A226AB63C00600282 /* HistoryCardView.swift in Sources */,

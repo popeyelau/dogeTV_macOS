@@ -17,7 +17,7 @@ class HomeViewController: NSViewController {
     var hots: [Hot] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColors = [.clear]
+        collectionView.backgroundColors = [.backgroundColor]
         refresh()
     }
     
@@ -70,7 +70,7 @@ extension HomeViewController: NSCollectionViewDelegate,  NSCollectionViewDataSou
         case .series, .topic:
             let item = collectionView.makeItem(withIdentifier: .init("TopicCardView"), for: indexPath) as! TopicCardView
             let video = hots[indexPath.section].items[indexPath.item]
-            item.imageView?.setResourceImage(with: video.cover)
+            item.imageView?.setResourceImage(with: video.cover, placeholder: NSImage(named: "404_series"))
             return item
         }
     }

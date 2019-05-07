@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="327" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W0E-uA-bge" customClass="AspectFitImageView" customModule="dogeTV" customModuleProvider="target">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W0E-uA-bge">
                     <rect key="frame" x="0.0" y="0.0" width="327" height="272"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="PX2-LO-pP5"/>
                 </imageView>

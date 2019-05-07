@@ -28,7 +28,7 @@ class SearchViewController: NSViewController {
     @IBOutlet weak var indicatorView: NSProgressIndicator!
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColors = [.clear]
+        collectionView.backgroundColors = [.backgroundColor]
         startSearch(keywords: keywords!)
     }
 

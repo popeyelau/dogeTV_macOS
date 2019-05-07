@@ -14,6 +14,10 @@ class TopicCardView: NSCollectionViewItem {
         super.viewDidLoad()
         let trackingArea = NSTrackingArea(rect: imageView!.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
         imageView?.addTrackingArea(trackingArea)
+        
+        imageView?.wantsLayer = true
+        imageView?.layer?.cornerRadius = 6
+        imageView?.layer?.masksToBounds = true
     }
     
     override func mouseEntered(with event: NSEvent) {

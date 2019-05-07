@@ -20,7 +20,7 @@ class UserViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColors = [.clear]
+        collectionView.backgroundColors = [.backgroundColor]
         NotificationCenter.default.addObserver(self, selector: #selector(historyUpdatedHandler), name: .historyUpdated, object: nil)
     }
 
