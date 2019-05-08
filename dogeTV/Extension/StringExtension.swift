@@ -37,6 +37,12 @@ extension String {
         }
         return urls
     }
+
+    var encodedURI: String {
+        var characterSet = CharacterSet.alphanumerics
+        characterSet.insert(charactersIn: "-_.!~*'()")
+        return self.addingPercentEncoding(withAllowedCharacters: characterSet) ?? self
+    }
     
 }
 

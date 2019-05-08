@@ -79,7 +79,10 @@ class RootViewController: NSViewController {
             btn.action = #selector(menuBtnClicked(_:))
             btn.snp.makeConstraints {
                 $0.width.equalToSuperview()
-                $0.height.equalTo(24)
+                $0.height.equalTo(20)
+            }
+            if $0 == .blueray {
+                btn.toolTip = "可能需要通过代理访问"
             }
         }
         
@@ -125,6 +128,9 @@ class RootViewController: NSViewController {
             makeTransition(to: target)
         case .tag:
             let target = makeContentView(type: TagGridViewController.self, key: identifier)
+            makeTransition(to: target)
+        case .blueray:
+            let target = makeContentView(type: BlueRayTabViewController.self, key: identifier)
             makeTransition(to: target)
         }
     }

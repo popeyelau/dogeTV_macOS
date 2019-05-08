@@ -221,4 +221,18 @@ struct APIClient {
             .responseDecodable(Response<[Video]>.self)
             .map { $0.data }
     }
+
+    static func fetchBlueRays(category: BlueRayTabViewController.TabItems, page: Int = 1) -> Promise<[Video]>  {
+        return AlamofireManager.shared.request(Router.blueRay(category: category, page: page))
+            .validate(validate)
+            .responseDecodable(Response<[Video]>.self)
+            .map { $0.data }
+    }
+
+    static func fetchBlueVideo(id: String) -> Promise<VideoDetail>  {
+        return AlamofireManager.shared.request(Router.blueRayVideo(id: id))
+            .validate(validate)
+            .responseDecodable(Response<VideoDetail>.self)
+            .map { $0.data }
+    }
 }

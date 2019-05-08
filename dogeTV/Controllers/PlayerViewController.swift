@@ -73,6 +73,8 @@ class PlayerViewController: NSViewController {
     @IBOutlet weak var titleView: NSView!
     @IBOutlet weak var downloadBtn: NSButton!
     @IBOutlet weak var actionStackView: NSStackView!
+    @IBOutlet weak var toggleMenuBtn: NSButton!
+    var hideToggleBtn = true
     var titleText: String?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,9 +88,16 @@ class PlayerViewController: NSViewController {
         titleLabel.stringValue = titleText ?? ""
         updateDataSource()
         playing()
-        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
-        view.addTrackingArea(trackingArea)
+
         downloadBtn.isHidden = !isDownieInstalled
+        hideToggleBtn = videDetail == nil && episodes?.count == 1
+        toggleMenuBtn.isHidden = hideToggleBtn
+        toggleBtn.isHidden = hideToggleBtn
+
+        if(!hideToggleBtn) {
+            let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
+            view.addTrackingArea(trackingArea)
+        }
     }
 
     func playing() {
@@ -98,10 +107,12 @@ class PlayerViewController: NSViewController {
     }
 
     override func mouseEntered(with event: NSEvent) {
+        guard !hideToggleBtn else { return }
         toggleBtn.isHidden = false
     }
 
     override func mouseExited(with event: NSEvent) {
+        guard !hideToggleBtn else { return }
         toggleBtn.isHidden = true
     }
 
@@ -181,7 +192,7 @@ class PlayerViewController: NSViewController {
 
     func prepareToPlay(url: String) {
         if avPlayer.player == nil {
-            avPlayer.player = AVPlayer(url: URL(string: url)!)
+            avPlayer.player = AVPlayer(url: URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!)
             playStatusObserver = avPlayer.player?.observe(\AVPlayer.status, options: [.new], changeHandler: { (player, changed) in
                 if player.status == .readyToPlay {
                     //播放历史 && 时长 > 0 监听播放器状态，当成功加载时，跳转到历史播放时间点

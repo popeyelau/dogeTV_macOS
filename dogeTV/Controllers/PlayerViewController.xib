@@ -18,6 +18,7 @@
                 <outlet property="titleLabel" destination="coZ-Av-RIg" id="s4u-3Y-0Mc"/>
                 <outlet property="titleView" destination="bUp-vx-1e3" id="RAF-Rp-oRq"/>
                 <outlet property="toggleBtn" destination="rLP-zM-XID" id="aSO-KI-HFF"/>
+                <outlet property="toggleMenuBtn" destination="Og8-K8-FeM" id="S37-Tp-dnY"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>

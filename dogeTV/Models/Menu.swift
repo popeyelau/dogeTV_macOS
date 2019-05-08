@@ -19,6 +19,7 @@ enum Menus: String, CaseIterable {
     case cartoon
     case documentary
     case parse
+    case blueray
     case live
     
     var title: String {
@@ -31,6 +32,7 @@ enum Menus: String, CaseIterable {
         case .drama: return "电视剧"
         case .variety: return "综艺"
         case .cartoon: return "动漫"
+        case .blueray: return "高清专区"
         case .documentary: return "纪录片"
         case .parse: return "云解析"
         case .live: return "电视直播"

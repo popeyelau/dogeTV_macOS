@@ -34,6 +34,10 @@
 		794A8001226D5F0700941333 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A8000226D5F0700941333 /* NSImageExtension.swift */; };
 		796C844A2276E07000EC8FCF /* QueryOptionsKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C84492276E07000EC8FCF /* QueryOptionsKeyView.swift */; };
 		796C844C2276E08100EC8FCF /* QueryOptionsKeyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796C844B2276E08100EC8FCF /* QueryOptionsKeyView.xib */; };
+		7974C77522830D8A00563263 /* BlueRayTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7974C77322830D8A00563263 /* BlueRayTabViewController.swift */; };
+		7974C77622830D8A00563263 /* BlueRayTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7974C77422830D8A00563263 /* BlueRayTabViewController.xib */; };
+		7974C77922830EE000563263 /* BlueRayGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7974C77722830EE000563263 /* BlueRayGridViewController.swift */; };
+		7974C77A22830EE000563263 /* BlueRayGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7974C77822830EE000563263 /* BlueRayGridViewController.xib */; };
 		7980B96A227531AC00DD8336 /* ParseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980B968227531AC00DD8336 /* ParseViewController.swift */; };
 		7980B96B227531AC00DD8336 /* ParseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7980B969227531AC00DD8336 /* ParseViewController.xib */; };
 		79820F70226FF7FC00ADA103 /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79820F65226FF70600ADA103 /* GitHubUpdates.framework */; };
@@ -149,6 +153,10 @@
 		79614BBE226FE85B00F0E738 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitHubUpdates.framework; path = ../../../dogeTV/Frameworks/GitHubUpdates.framework; sourceTree = "<group>"; };
 		796C84492276E07000EC8FCF /* QueryOptionsKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionsKeyView.swift; sourceTree = "<group>"; };
 		796C844B2276E08100EC8FCF /* QueryOptionsKeyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryOptionsKeyView.xib; sourceTree = "<group>"; };
+		7974C77322830D8A00563263 /* BlueRayTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueRayTabViewController.swift; sourceTree = "<group>"; };
+		7974C77422830D8A00563263 /* BlueRayTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlueRayTabViewController.xib; sourceTree = "<group>"; };
+		7974C77722830EE000563263 /* BlueRayGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueRayGridViewController.swift; sourceTree = "<group>"; };
+		7974C77822830EE000563263 /* BlueRayGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlueRayGridViewController.xib; sourceTree = "<group>"; };
 		7980B968227531AC00DD8336 /* ParseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseViewController.swift; sourceTree = "<group>"; };
 		7980B969227531AC00DD8336 /* ParseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParseViewController.xib; sourceTree = "<group>"; };
 		79820F65226FF70600ADA103 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GitHubUpdates.framework; sourceTree = "<group>"; };
@@ -278,6 +286,10 @@
 				79076F3222812F42007499A3 /* SerieGridViewController.xib */,
 				79076F50228172EB007499A3 /* TagGridViewController.swift */,
 				79076F51228172EB007499A3 /* TagGridViewController.xib */,
+				7974C77322830D8A00563263 /* BlueRayTabViewController.swift */,
+				7974C77422830D8A00563263 /* BlueRayTabViewController.xib */,
+				7974C77722830EE000563263 /* BlueRayGridViewController.swift */,
+				7974C77822830EE000563263 /* BlueRayGridViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -552,6 +564,8 @@
 				79FD5BFE22647AC4009EDB9C /* Main.storyboard in Resources */,
 				799B96072264AD8A002C8FFA /* LatestGridViewController.xib in Resources */,
 				79E091122268474900219C87 /* SearchBarView.xib in Resources */,
+				7974C77A22830EE000563263 /* BlueRayGridViewController.xib in Resources */,
+				7974C77622830D8A00563263 /* BlueRayTabViewController.xib in Resources */,
 				79B7AD0B226AB63C00600282 /* HistoryCardView.xib in Resources */,
 				79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */,
 				79B7AD15226AE38000600282 /* AboutWindow.storyboard in Resources */,
@@ -613,6 +627,7 @@
 				799B96232264AF7F002C8FFA /* Episode.swift in Sources */,
 				799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */,
 				799B96262264AF7F002C8FFA /* Ranking.swift in Sources */,
+				7974C77522830D8A00563263 /* BlueRayTabViewController.swift in Sources */,
 				79B7AD0D226AD36700600282 /* EmptyView.swift in Sources */,
 				79EAB4A4227AD46300C85EAD /* PlayStatusView.swift in Sources */,
 				79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */,
@@ -629,6 +644,7 @@
 				79C9EEB02269F905007B6B35 /* Repository.swift in Sources */,
 				7939584422675F06001FE58A /* NSViewControllerExtension.swift in Sources */,
 				799B962A2264AF7F002C8FFA /* Router.swift in Sources */,
+				7974C77922830EE000563263 /* BlueRayGridViewController.swift in Sources */,
 				79D927B3226598AD009C446E /* PlayerViewController.swift in Sources */,
 				799B96122264AF78002C8FFA /* Helpers.swift in Sources */,
 				7939584222674F90001FE58A /* SearchBarView.swift in Sources */,
