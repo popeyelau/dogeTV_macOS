@@ -481,17 +481,12 @@
                                                     <action selector="refreshAction:" target="XfG-lQ-9wD" id="gsN-CM-zRz"/>
                                                 </connections>
                                             </button>
-                                            <button identifier="history" toolTip="历史观看" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Qv-13-gHv">
+                                            <button identifier="history" toolTip="重构中" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Qv-13-gHv">
                                                 <rect key="frame" x="34" y="0.0" width="24" height="24"/>
                                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="history" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xjJ-MW-iKI">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
-                                                    <string key="keyEquivalent">y</string>
-                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                                 </buttonCell>
-                                                <connections>
-                                                    <action selector="userAction:" target="XfG-lQ-9wD" id="tUO-1S-0dE"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <visibilityPriorities>
