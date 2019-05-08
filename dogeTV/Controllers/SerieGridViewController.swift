@@ -32,6 +32,12 @@ class SerieGridViewController: NSViewController {
         super.viewWillAppear()
         refresh()
     }
+    
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
+        videos.removeAll()
+        collectionView.reloadData()
+    }
 }
 
 extension SerieGridViewController: NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {

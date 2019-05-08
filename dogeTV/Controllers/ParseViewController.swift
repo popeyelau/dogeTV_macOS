@@ -47,7 +47,7 @@ class ParseViewController: NSViewController {
     
 
     @IBOutlet weak var webView: WKWebView!
-    @IBOutlet weak var segmentCtrl: NSSegmentedControl!
+    @IBOutlet weak var segmentCtrl: CustomSegmentedControl!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var backBtn: NSButton!
     @IBOutlet weak var forwardBtn: NSButton!
@@ -58,13 +58,10 @@ class ParseViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        segmentCtrl.segmentCount = Site.allCases.count
         Site.allCases.enumerated().forEach { index, element in
-            segmentCtrl.setWidth(100, forSegment: index)
-            segmentCtrl.setLabel(element.title, forSegment: index)
+            segmentCtrl.addSegment(withTitle: element.title)
         }
-        segmentCtrl.selectedSegmentBezelColor = .primaryColor
-        segmentCtrl.selectedSegment = selectedSite.rawValue
+        segmentCtrl.selectedIndex = selectedSite.rawValue
         sendRequest(url: selectedSite.url)
 
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.canGoBack), options: .new, context: &webViewStateContext)
@@ -72,8 +69,8 @@ class ParseViewController: NSViewController {
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: &webViewStateContext)
     }
     
-    @IBAction func segmentIndexChanged(_ sender: NSSegmentedControl) {
-        guard let site = Site(rawValue: sender.selectedSegment) else { return }
+    @IBAction func segmentIndexChanged(_ sender: CustomSegmentedControl) {
+        guard let index = sender.selectedIndex, let site = Site(rawValue: index) else { return }
         selectedSite = site
         sendRequest(url: site.url)
     }
@@ -124,8 +121,7 @@ class ParseViewController: NSViewController {
 
 extension ParseViewController: Initializable {
     func refresh() {
-        guard let url = Site(rawValue: segmentCtrl.selectedSegment)?.url else { return }
-        sendRequest(url: url)
+        sendRequest(url: selectedSite.url)
     }
 }
 

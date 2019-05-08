@@ -12,10 +12,15 @@ import Cocoa
 class SearchBarView: NSView, LoadableNib {
     @IBOutlet var contentView: NSView!
     @IBOutlet weak var textField: NSTextField!
+    @IBOutlet weak var hdBtn: NSButton!
     @IBOutlet weak var searchBtn: NSButton!
     
     var onSearchAction: ((String) -> Void)?
     var onTopRatedAction: (() -> Void)?
+    
+    var isHD: Bool {
+       return hdBtn?.state == .on
+    }
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

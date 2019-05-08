@@ -7,7 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TagGridViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
-                <outlet property="segmentCtrl" destination="vTu-0X-PKH" id="VQr-5P-mvX"/>
+                <outlet property="segmentCtrl" destination="sDM-bD-Vvn" id="SGB-ac-htZ"/>
                 <outlet property="tabView" destination="FJR-UB-rEf" id="4PE-aG-NN7"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -19,12 +19,12 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <tabView drawsBackground="NO" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="FJR-UB-rEf">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="235"/>
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Tab" identifier="" id="Vd0-iu-omx">
                             <view key="view" id="qBK-mM-RnQ">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="235"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
                         </tabViewItem>
@@ -42,30 +42,24 @@
                         </tabViewItem>
                     </tabViewItems>
                 </tabView>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vTu-0X-PKH">
-                    <rect key="frame" x="188" y="249" width="104" height="24"/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="emX-jj-xQS">
-                        <font key="font" metaFont="system"/>
-                        <segments>
-                            <segment width="32"/>
-                            <segment width="32" selected="YES" tag="1"/>
-                            <segment width="32">
-                                <nil key="label"/>
-                            </segment>
-                        </segments>
-                    </segmentedCell>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="sDM-bD-Vvn" customClass="CustomSegmentedControl" customModule="dogeTV" customModuleProvider="target">
+                    <rect key="frame" x="15" y="234" width="300" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" placeholder="YES" id="h8m-N9-kDO"/>
+                        <constraint firstAttribute="height" constant="30" placeholder="YES" id="rlc-wj-4w4"/>
+                    </constraints>
                     <connections>
-                        <action selector="segmentIndexChanged:" target="-2" id="Lal-WP-2FE"/>
+                        <action selector="segmentIndexChanged:" target="-2" id="cKG-yZ-1yJ"/>
                     </connections>
-                </segmentedControl>
+                </customView>
             </subviews>
             <constraints>
-                <constraint firstItem="vTu-0X-PKH" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="ATu-F1-Xln"/>
-                <constraint firstItem="vTu-0X-PKH" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="EQr-O9-6e0"/>
+                <constraint firstItem="sDM-bD-Vvn" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="FN1-qI-8TO"/>
+                <constraint firstItem="FJR-UB-rEf" firstAttribute="top" secondItem="sDM-bD-Vvn" secondAttribute="bottom" constant="8" id="L8a-bT-Odp"/>
                 <constraint firstAttribute="trailing" secondItem="FJR-UB-rEf" secondAttribute="trailing" id="PVy-qh-DnT"/>
-                <constraint firstItem="FJR-UB-rEf" firstAttribute="top" secondItem="vTu-0X-PKH" secondAttribute="bottom" constant="16" id="cdJ-1V-jDh"/>
                 <constraint firstAttribute="bottom" secondItem="FJR-UB-rEf" secondAttribute="bottom" id="oKX-n4-Ch7"/>
                 <constraint firstItem="FJR-UB-rEf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="q0v-EH-gLc"/>
+                <constraint firstItem="sDM-bD-Vvn" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="15" id="qEt-Re-tVQ"/>
             </constraints>
             <point key="canvasLocation" x="-64" y="90"/>
         </customView>

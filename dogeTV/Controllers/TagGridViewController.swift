@@ -8,7 +8,7 @@
 
 import Cocoa
 
-enum TabItems: CaseIterable {
+enum TabItems: Int, CaseIterable {
     case action //动作
     case war //战争
     case sf //科幻
@@ -59,37 +59,41 @@ enum TabItems: CaseIterable {
 }
 
 class TagGridViewController: NSViewController {
-
-    @IBOutlet weak var segmentCtrl: NSSegmentedControl!
+    @IBOutlet weak var segmentCtrl: CustomSegmentedControl!
     @IBOutlet weak var tabView: NSTabView!
+    var selectedCategory: TabItems = .action
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabView.tabPosition = .none
         tabView.tabViewBorderType = .none
-
+        
         tabView.tabViewItems = TabItems.allCases.map { tag in
-            let controller = HomeViewController()
+            let controller = PumpkinViewController()
             controller.sourceType = .category(category: tag.key)
             let item = NSTabViewItem(viewController: controller)
             item.label = tag.title
             return item
-            
         }
-        segmentCtrl.segmentCount = TabItems.allCases.count
+        
         TabItems.allCases.enumerated().forEach { index, element in
-            segmentCtrl.setWidth(60, forSegment: index)
-            segmentCtrl.setLabel(element.title, forSegment: index)
+            segmentCtrl.addSegment(withTitle: element.title)
         }
+        segmentCtrl.selectedIndex = selectedCategory.rawValue
     }
     
-    @IBAction func segmentIndexChanged(_ sender: NSSegmentedControl) {
-        tabView.selectTabViewItem(at: sender.selectedSegment)
+    @IBAction func segmentIndexChanged(_ sender: CustomSegmentedControl) {
+        guard let index = sender.selectedIndex else { return }
+        selectedCategory = TabItems(rawValue: index) ?? .action
+        tabView.selectTabViewItem(at: index)
     }
 }
 
 
 extension TagGridViewController: Initializable {
     func refresh() {
-        
+        guard let index = segmentCtrl.selectedIndex else { return }
+        guard let controller = tabView.tabViewItems[safe: index]?.viewController as? Initializable else { return }
+        controller.refresh()
     }
 }

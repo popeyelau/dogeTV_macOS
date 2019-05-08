@@ -44,7 +44,7 @@ class RootViewController: NSViewController {
         
         setupLeftMenus()
         
-        let target = makeContentView(type: HomeViewController.self, key: Menus.recommended.rawValue)
+        let target = makeContentView(type: PumpkinViewController.self, key: Menus.recommended.rawValue)
         activiedController = target
         contentView.addSubview(target.view)
         
@@ -105,7 +105,7 @@ class RootViewController: NSViewController {
 
         switch menu {
         case .recommended:
-            let target = makeContentView(type: HomeViewController.self, key: identifier)
+            let target = makeContentView(type: PumpkinViewController.self, key: identifier)
             makeTransition(to: target)
         case .latest:
             let target = makeContentView(type: LatestGridViewController.self, key: identifier)
@@ -151,6 +151,7 @@ extension RootViewController {
         if keywords.isEmpty { return }
         let target = makeContentView(type: SearchViewController.self, key: "search")
         target.keywords = keywords
+        target.isHD = searchBarView.isHD
         target.startSearch(keywords: keywords)
         makeTransition(to: target)
         resetButtons()

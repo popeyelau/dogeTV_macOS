@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SearchBarView" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="c22-O7-iKe" id="UAA-ox-8au"/>
+                <outlet property="hdBtn" destination="xzX-na-tjC" id="7iC-an-jD9"/>
                 <outlet property="searchBtn" destination="CWk-Wv-vxl" id="mLA-eg-LLr"/>
                 <outlet property="textField" destination="oQ9-G3-Qg8" id="gHL-Bc-PDl"/>
             </connections>
@@ -18,30 +19,53 @@
             <rect key="frame" x="0.0" y="0.0" width="455" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button toolTip="排行榜" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdX-r3-Pqe">
-                    <rect key="frame" x="403" y="12" width="16" height="16"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="rank" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hGm-YN-HhL">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <color key="contentTintColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                    <connections>
-                        <action selector="topRatedAction:" target="-2" id="YDq-07-YAH"/>
-                    </connections>
-                </button>
-                <button toolTip="搜索" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CWk-Wv-vxl">
-                    <rect key="frame" x="427" y="12" width="16" height="16"/>
-                    <buttonCell key="cell" type="bevel" title="Search" bezelStyle="circular" image="search" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="iQj-lb-ktB">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                    <connections>
-                        <action selector="searchAction:" target="-2" id="XI9-kR-CBJ"/>
-                    </connections>
-                </button>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nwp-gO-KeY">
+                    <rect key="frame" x="367" y="8" width="76" height="24"/>
+                    <subviews>
+                        <button toolTip="高清片源" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xzX-na-tjC">
+                            <rect key="frame" x="0.0" y="0.0" width="28" height="24"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="HD" imagePosition="left" inset="2" id="1yt-sF-Si0">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <accessibility help="只显示"/>
+                        </button>
+                        <button toolTip="排行榜" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdX-r3-Pqe">
+                            <rect key="frame" x="36" y="4" width="16" height="16"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="rank" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hGm-YN-HhL">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="topRatedAction:" target="-2" id="YDq-07-YAH"/>
+                            </connections>
+                        </button>
+                        <button toolTip="搜索" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CWk-Wv-vxl">
+                            <rect key="frame" x="60" y="4" width="16" height="16"/>
+                            <buttonCell key="cell" type="bevel" title="Search" bezelStyle="circular" image="search" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="iQj-lb-ktB">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="searchAction:" target="-2" id="XI9-kR-CBJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oQ9-G3-Qg8">
-                    <rect key="frame" x="12" y="11" width="379" height="18"/>
+                    <rect key="frame" x="12" y="11" width="343" height="18"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" placeholderString="搜索电影/演员/导演" drawsBackground="YES" id="dxw-RC-gf1">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -53,18 +77,17 @@
                 </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="nwp-gO-KeY" firstAttribute="leading" secondItem="oQ9-G3-Qg8" secondAttribute="trailing" constant="12" id="CyB-vU-crl"/>
+                <constraint firstAttribute="trailing" secondItem="nwp-gO-KeY" secondAttribute="trailing" constant="12" id="EOq-l9-GMt"/>
                 <constraint firstItem="oQ9-G3-Qg8" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="12" id="KRK-iw-ajY"/>
                 <constraint firstItem="oQ9-G3-Qg8" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="VhK-y4-7Jv"/>
-                <constraint firstItem="CWk-Wv-vxl" firstAttribute="leading" secondItem="hdX-r3-Pqe" secondAttribute="trailing" constant="8" id="ZfH-lo-B8d"/>
-                <constraint firstAttribute="trailing" secondItem="CWk-Wv-vxl" secondAttribute="trailing" constant="12" id="qk9-fm-Jrj"/>
-                <constraint firstItem="hdX-r3-Pqe" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="v2U-w0-o88"/>
-                <constraint firstItem="hdX-r3-Pqe" firstAttribute="leading" secondItem="oQ9-G3-Qg8" secondAttribute="trailing" constant="12" id="xbl-aK-HVu"/>
-                <constraint firstItem="CWk-Wv-vxl" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="xhs-wO-21T"/>
+                <constraint firstItem="nwp-gO-KeY" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="mIe-JM-kgd"/>
             </constraints>
             <point key="canvasLocation" x="126.5" y="59"/>
         </customView>
     </objects>
     <resources>
+        <image name="HD" width="24" height="24"/>
         <image name="rank" width="16" height="16"/>
         <image name="search" width="16" height="16"/>
     </resources>

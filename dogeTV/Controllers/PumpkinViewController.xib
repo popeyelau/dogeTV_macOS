@@ -5,7 +5,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HomeViewController" customModule="dogeTV" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="PumpkinViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Mbs-Ie-81J" id="nLN-6K-O9f"/>
                 <outlet property="indicatorView" destination="JoM-7s-AwT" id="myJ-WQ-CJf"/>

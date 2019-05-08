@@ -13,7 +13,7 @@ class SearchViewController: NSViewController {
     var results: [Video] = [] {
         didSet {
             emptyView.isHidden = !results.isEmpty
-            isNoMoreData = results.count < pageSize * pageIndex
+            isNoMoreData = isHD ? true : results.count < pageSize * pageIndex
         }
     }
     var keywords: String?
@@ -23,6 +23,8 @@ class SearchViewController: NSViewController {
     let pageSize: Int = 10
     var isNoMoreData: Bool = false
     var parseResult: CloudParse?
+    var isHD: Bool = false
+    
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var emptyView: EmptyView!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
@@ -92,9 +94,9 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
             window.show(from:self.view.window)
             return
         }
-
-        let video = results[indexPaths.first!.item]
-        showVideo(id: video.id, indicatorView: indicatorView)
+        let video = results[indexPath.item]
+        let source: VideoSource = isHD ? .pumpkin : .other
+        showVideo(id: video.id, source: source, indicatorView: indicatorView)
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
@@ -116,6 +118,14 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
 extension SearchViewController {
     func search() {
         guard let keywords = keywords, !keywords.isEmpty else { return }
+        if !isHD {
+            searchAll(keywords: keywords)
+            return
+        }
+        searchHQ(keywords: keywords)
+    }
+
+    func searchAll(keywords: String) {
         indicatorView.show()
         _ = APIClient.search(keywords: keywords)
             .done { (items) in
@@ -126,6 +136,22 @@ extension SearchViewController {
                 if self.pageIndex == 1 {
                     self.results = []
                 }
+            }).finally {
+                self.isCloudParse = false
+                self.pageIndex = 1
+                self.collectionView.reloadData()
+                self.indicatorView.dismiss()
+        }
+    }
+    
+    func searchHQ(keywords: String) {
+        indicatorView.show()
+        _ = APIClient.fetchPumpkinSearchResults(keywords: keywords)
+            .done { (items) in
+                self.results = items
+            }.catch({ (error) in
+                print(error)
+                self.showError(error)
             }).finally {
                 self.isCloudParse = false
                 self.pageIndex = 1

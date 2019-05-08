@@ -35,22 +35,7 @@ class TopRatedViewController: NSViewController {
             segmentCtrl.addSegment(withTitle: element.title)
         }
         segmentCtrl.selectedIndex = category.rawValue
-
-        
         refresh()
-
-        /*
-        let segment = CustomSegmentedControl()
-        segment.addSegment(withTitle: "我爱中国")
-        segment.addSegment(withTitle: "我爱中国2")
-        segment.addSegment(withTitle: "我爱中国3")
-        segment.addSegment(withTitle: "我爱中国4")
-        segment.addSegment(withTitle: "我爱中国5")
-        segment.addSegment(withTitle: "我爱中国6")
-        view.addSubview(segment)
-        segment.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }*/
     }
 
     @objc func tableViewDoubleAction(_ sender: NSTableView) {
@@ -58,8 +43,9 @@ class TopRatedViewController: NSViewController {
         let selected = list[tableView.clickedRow]
         showVideo(id: selected.id, indicatorView: indicatorView)
     }
+    
     @IBAction func segmentIndexChanged(_ sender: CustomSegmentedControl) {
-        let index = sender.selectedIndex ?? 0
+        guard let index = sender.selectedIndex else { return }
         category = Category(rawValue: index) ?? .film
         refresh()
     }

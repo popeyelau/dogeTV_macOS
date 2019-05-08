@@ -67,7 +67,6 @@ extension NSViewController {
     func showVideo(id: String, source: VideoSource = .other,  history: History? = nil, indicatorView: NSProgressIndicator? = nil) {
         indicatorView?.isHidden = false
         indicatorView?.startAnimation(nil)
-
         switch source {
         case .other:
             let source = history?.source ?? 0
@@ -82,7 +81,6 @@ extension NSViewController {
                 }.finally {
                     indicatorView?.dismiss()
             }
-            break
         case .pumpkin:
             attempt(maximumRetryCount: 3) {
                 APIClient.fetchPumpkin(id: id)
@@ -98,8 +96,6 @@ extension NSViewController {
                 }.finally {
                     indicatorView?.dismiss()
             }
-            break
-            
         }
     }
 

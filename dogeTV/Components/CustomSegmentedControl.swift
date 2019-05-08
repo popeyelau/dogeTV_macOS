@@ -11,22 +11,14 @@ import Cocoa
 class CustomSegmentedControl: NSControl {
 
     private var buttons: [NSButton] = []
-    private var separators: [NSBox] = []
 
     private lazy var stackView: NSStackView = {
         let stackView = NSStackView()
         stackView.orientation = .horizontal
         stackView.alignment = .centerY
-        stackView.distribution = NSStackView.Distribution.fillEqually
-        stackView.spacing = 15
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 2
         return stackView
-    }()
-
-    private lazy var separator: NSBox = {
-        let separator: NSBox = NSBox()
-        separator.boxType = NSBox.BoxType.custom
-        separator.borderColor = NSColor.primaryColor
-        return separator
     }()
 
     var titles: [String] = []
@@ -39,21 +31,16 @@ class CustomSegmentedControl: NSControl {
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-
-        unifiedInit()
+        setup()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-
-        unifiedInit()
+        setup()
     }
 
-    func unifiedInit() {
-        translatesAutoresizingMaskIntoConstraints = false
+    func setup() {
         addSubview(stackView)
-        addSubview(separator)
-
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -61,18 +48,14 @@ class CustomSegmentedControl: NSControl {
     }
 
     private func updateSelection() {
-        for button in buttons {
-            button.state = .off
+        buttons.forEach {
+            $0.state = .off
+            $0.layer?.backgroundColor = NSColor.clear.cgColor
         }
 
-        if buttons.count > 0 && selectedIndex != nil {
-            let btn = buttons[selectedIndex!]
-            btn.state = .on
-            separator.snp.remakeConstraints {
-                $0.top.equalTo(btn.snp.bottom).offset(5)
-                $0.left.right.equalTo(btn)
-                $0.height.equalTo(1)
-            }
+        if let index = selectedIndex, let selectedBtn = buttons[safe: index] {
+            selectedBtn.state = .on
+            selectedBtn.layer?.backgroundColor = NSColor.activedBackgroundColor.cgColor
         }
     }
 
@@ -95,29 +78,21 @@ class CustomSegmentedControl: NSControl {
         buttons.forEach { $0.removeFromSuperview() }
         buttons.removeAll()
 
-        separators.forEach { $0.removeFromSuperview() }
-        separators.removeAll()
-
-        stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-
         for title in titles {
-            let newButton: NSButton = NSButton(title: title, target: self, action: #selector(CustomSegmentedControl.handleSegmentPress(_:)))
-            newButton.setButtonType(.toggle)
-            newButton.bezelStyle = .regularSquare
-            newButton.isBordered = false
-            newButton.font = NSFont.systemFont(ofSize: 16)
-            buttons.append(newButton)
-
-            /*
-            let newSeparator: NSBox = NSBox()
-            newSeparator.boxType = NSBox.BoxType.separator
-            separators.append(newSeparator)*/
-
-            stackView.addArrangedSubview(newButton)
-            //stackView.addArrangedSubview(newSeparator)
+            let btn: NSButton = NSButton(title: title, target: self, action: #selector(CustomSegmentedControl.handleSegmentPress(_:)))
+            btn.setButtonType(.toggle)
+            btn.bezelStyle = .regularSquare
+            btn.isBordered = false
+            btn.wantsLayer = true
+            btn.layer?.cornerRadius = 15
+            btn.font = NSFont.systemFont(ofSize: 15)
+            buttons.append(btn)
+            stackView.addArrangedSubview(btn)
+            btn.snp.makeConstraints {
+                $0.width.greaterThanOrEqualTo(60)
+                $0.height.equalTo(30)
+            }
         }
-
-        separators.last?.isHidden = true
         updateSelection()
     }
 
@@ -138,7 +113,6 @@ class CustomSegmentedControl: NSControl {
 
     override func resizeSubviews(withOldSize oldSize: NSSize) {
         super.resizeSubviews(withOldSize: oldSize)
-        positionButtons()
     }
 
 }

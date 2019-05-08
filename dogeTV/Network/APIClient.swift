@@ -214,4 +214,11 @@ struct APIClient {
             .responseDecodable(Response<[Hot]>.self)
             .map { $0.data }
     }
+    
+    static func fetchPumpkinSearchResults(keywords: String) -> Promise<[Video]>  {
+        return AlamofireManager.shared.request(Router.pumpkinSearch(keywords: keywords))
+            .validate(validate)
+            .responseDecodable(Response<[Video]>.self)
+            .map { $0.data }
+    }
 }

@@ -20,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cG-fZ-Dxx">
-                    <rect key="frame" x="8" y="16" width="644" height="266"/>
+                    <rect key="frame" x="8" y="16" width="644" height="268"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="cK0-gM-1wu">
-                        <rect key="frame" x="0.0" y="0.0" width="644" height="266"/>
+                        <rect key="frame" x="0.0" y="0.0" width="644" height="268"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="36" rowSizeStyle="large" headerView="Zf3-uD-a9P" viewBased="YES" id="lA3-yv-gp5">
-                                <rect key="frame" x="0.0" y="0.0" width="840" height="241"/>
+                                <rect key="frame" x="0.0" y="0.0" width="840" height="243"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="10" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -252,13 +252,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lad-xK-rwz" userLabel="indicatorView">
-                    <rect key="frame" x="608" y="298" width="32" height="32"/>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lad-xK-rwz" userLabel="indicatorView">
+                    <rect key="frame" x="624" y="299" width="16" height="16"/>
                 </progressIndicator>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="4mT-GW-bEv" customClass="CustomSegmentedControl" customModule="dogeTV" customModuleProvider="target">
-                    <rect key="frame" x="180" y="300" width="300" height="30"/>
+                    <rect key="frame" x="8" y="292" width="300" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="cWR-HN-E8u"/>
+                        <constraint firstAttribute="height" constant="30" placeholder="YES" id="cWR-HN-E8u"/>
                         <constraint firstAttribute="width" priority="999" constant="300" placeholder="YES" id="lcx-c1-R6V"/>
                     </constraints>
                     <connections>
@@ -267,13 +267,13 @@
                 </customView>
             </subviews>
             <constraints>
-                <constraint firstItem="4mT-GW-bEv" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="8oA-ZU-nQf"/>
+                <constraint firstItem="lad-xK-rwz" firstAttribute="centerY" secondItem="4mT-GW-bEv" secondAttribute="centerY" id="1Lv-Br-oX4"/>
+                <constraint firstItem="4mT-GW-bEv" firstAttribute="leading" secondItem="0cG-fZ-Dxx" secondAttribute="leading" id="7XO-eO-6jA"/>
                 <constraint firstAttribute="bottom" secondItem="0cG-fZ-Dxx" secondAttribute="bottom" constant="16" id="EWg-H7-HQH"/>
                 <constraint firstAttribute="trailing" secondItem="0cG-fZ-Dxx" secondAttribute="trailing" constant="8" id="Huh-98-eYA"/>
                 <constraint firstAttribute="trailing" secondItem="lad-xK-rwz" secondAttribute="trailing" constant="20" id="Ruc-3J-eKJ"/>
-                <constraint firstItem="4mT-GW-bEv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="a2K-V6-GI0"/>
-                <constraint firstItem="0cG-fZ-Dxx" firstAttribute="top" secondItem="4mT-GW-bEv" secondAttribute="bottom" constant="18" id="ls8-Wi-K3d"/>
-                <constraint firstItem="lad-xK-rwz" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="rCK-xX-ueD"/>
+                <constraint firstItem="4mT-GW-bEv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="a2K-V6-GI0"/>
+                <constraint firstItem="0cG-fZ-Dxx" firstAttribute="top" secondItem="4mT-GW-bEv" secondAttribute="bottom" constant="8" id="ls8-Wi-K3d"/>
                 <constraint firstItem="0cG-fZ-Dxx" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="siv-Qa-KaL"/>
             </constraints>
             <point key="canvasLocation" x="208" y="183"/>

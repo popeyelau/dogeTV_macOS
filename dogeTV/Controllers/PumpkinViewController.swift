@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  PumpkinViewController.swift
 //  dogeTV
 //
 //  Created by Popeye Lau on 2019/5/6.
@@ -10,7 +10,7 @@ import Cocoa
 import PromiseKit
 
 
-class HomeViewController: NSViewController {
+class PumpkinViewController: NSViewController {
 
     enum SourceType {
         case home
@@ -58,7 +58,7 @@ class HomeViewController: NSViewController {
     
 }
 
-extension HomeViewController: NSCollectionViewDelegate,  NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
+extension PumpkinViewController: NSCollectionViewDelegate,  NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return hots.count
     }
@@ -73,6 +73,7 @@ extension HomeViewController: NSCollectionViewDelegate,  NSCollectionViewDataSou
         case .normal:
             let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
             let video = hots[indexPath.section].items[indexPath.item]
+            item.shadowView.isHidden = true
             item.data = video
             return item
         case .series, .topic:
@@ -110,7 +111,7 @@ extension HomeViewController: NSCollectionViewDelegate,  NSCollectionViewDataSou
     }
 }
 
-extension HomeViewController {
+extension PumpkinViewController {
     func refresh() {
         switch sourceType {
         case .home:
@@ -154,7 +155,7 @@ extension HomeViewController {
 }
 
 
-extension HomeViewController: Initializable {}
+extension PumpkinViewController: Initializable {}
 
 
 

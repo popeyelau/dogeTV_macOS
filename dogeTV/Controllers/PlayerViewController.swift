@@ -22,7 +22,7 @@ class PlayerViewController: NSViewController {
         var title: String {
             switch self {
             case .episodes:
-                return "分集"
+                return "选集"
             case .source:
                 return "线路"
             case .video:

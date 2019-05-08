@@ -29,8 +29,7 @@
 		79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79395845226764D8001FE58A /* LivePlayerViewController.swift */; };
 		79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79395846226764D8001FE58A /* LivePlayerViewController.xib */; };
 		793AF1362277E3310030CE7F /* IPTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AF1352277E3310030CE7F /* IPTV.swift */; };
-		7943588B22801A36008E37B7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7943588922801A36008E37B7 /* HomeViewController.swift */; };
-		7943588C22801A36008E37B7 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943588A22801A36008E37B7 /* HomeViewController.xib */; };
+		7943588C22801A36008E37B7 /* PumpkinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7943588A22801A36008E37B7 /* PumpkinViewController.xib */; };
 		79463B332281D5AB003BE96D /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79463B322281D5AB003BE96D /* CustomSegmentedControl.swift */; };
 		794A8001226D5F0700941333 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A8000226D5F0700941333 /* NSImageExtension.swift */; };
 		796C844A2276E07000EC8FCF /* QueryOptionsKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C84492276E07000EC8FCF /* QueryOptionsKeyView.swift */; };
@@ -85,6 +84,7 @@
 		79D927B82265A73B009C446E /* EpisodeItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927B62265A73B009C446E /* EpisodeItemView.xib */; };
 		79D927BB2265B97F009C446E /* VideoIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927B92265B97F009C446E /* VideoIntroView.swift */; };
 		79D927BC2265B97F009C446E /* VideoIntroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927BA2265B97F009C446E /* VideoIntroView.xib */; };
+		79DD1CEE228262F3000D6FEC /* PumpkinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD1CED228262F2000D6FEC /* PumpkinViewController.swift */; };
 		79E091042268013000219C87 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E091032268013000219C87 /* ContainerView.swift */; };
 		79E09107226835B000219C87 /* TopRatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E09105226835B000219C87 /* TopRatedViewController.swift */; };
 		79E09108226835B000219C87 /* TopRatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E09106226835B000219C87 /* TopRatedViewController.xib */; };
@@ -143,8 +143,7 @@
 		79395845226764D8001FE58A /* LivePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePlayerViewController.swift; sourceTree = "<group>"; };
 		79395846226764D8001FE58A /* LivePlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LivePlayerViewController.xib; sourceTree = "<group>"; };
 		793AF1352277E3310030CE7F /* IPTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTV.swift; sourceTree = "<group>"; };
-		7943588922801A36008E37B7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		7943588A22801A36008E37B7 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		7943588A22801A36008E37B7 /* PumpkinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PumpkinViewController.xib; sourceTree = "<group>"; };
 		79463B322281D5AB003BE96D /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		794A8000226D5F0700941333 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		79614BBE226FE85B00F0E738 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitHubUpdates.framework; path = ../../../dogeTV/Frameworks/GitHubUpdates.framework; sourceTree = "<group>"; };
@@ -199,6 +198,7 @@
 		79D927B62265A73B009C446E /* EpisodeItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeItemView.xib; sourceTree = "<group>"; };
 		79D927B92265B97F009C446E /* VideoIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoIntroView.swift; sourceTree = "<group>"; };
 		79D927BA2265B97F009C446E /* VideoIntroView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoIntroView.xib; sourceTree = "<group>"; };
+		79DD1CED228262F2000D6FEC /* PumpkinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PumpkinViewController.swift; sourceTree = "<group>"; };
 		79E091032268013000219C87 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		79E09105226835B000219C87 /* TopRatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedViewController.swift; sourceTree = "<group>"; };
 		79E09106226835B000219C87 /* TopRatedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopRatedViewController.xib; sourceTree = "<group>"; };
@@ -272,8 +272,8 @@
 				79B7AD05226AADE600600282 /* UserViewController.xib */,
 				7980B968227531AC00DD8336 /* ParseViewController.swift */,
 				7980B969227531AC00DD8336 /* ParseViewController.xib */,
-				7943588922801A36008E37B7 /* HomeViewController.swift */,
-				7943588A22801A36008E37B7 /* HomeViewController.xib */,
+				79DD1CED228262F2000D6FEC /* PumpkinViewController.swift */,
+				7943588A22801A36008E37B7 /* PumpkinViewController.xib */,
 				79076F3122812F42007499A3 /* SerieGridViewController.swift */,
 				79076F3222812F42007499A3 /* SerieGridViewController.xib */,
 				79076F50228172EB007499A3 /* TagGridViewController.swift */,
@@ -547,7 +547,7 @@
 				79076F53228172EB007499A3 /* TagGridViewController.xib in Resources */,
 				7932E6452280748400224F47 /* TopicCardView.xib in Resources */,
 				79E0911A22686AB200219C87 /* TopicsViewController.xib in Resources */,
-				7943588C22801A36008E37B7 /* HomeViewController.xib in Resources */,
+				7943588C22801A36008E37B7 /* PumpkinViewController.xib in Resources */,
 				796C844C2276E08100EC8FCF /* QueryOptionsKeyView.xib in Resources */,
 				79FD5BFE22647AC4009EDB9C /* Main.storyboard in Resources */,
 				799B96072264AD8A002C8FFA /* LatestGridViewController.xib in Resources */,
@@ -619,6 +619,7 @@
 				79F04143227587A80005B006 /* Menu.swift in Sources */,
 				79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */,
 				793AF1362277E3310030CE7F /* IPTV.swift in Sources */,
+				79DD1CEE228262F3000D6FEC /* PumpkinViewController.swift in Sources */,
 				79B7AD17226AE39F00600282 /* AboutWindowController.swift in Sources */,
 				799B960E2264AF61002C8FFA /* ENV.swift in Sources */,
 				796C844A2276E07000EC8FCF /* QueryOptionsKeyView.swift in Sources */,
@@ -669,7 +670,6 @@
 				79E091042268013000219C87 /* ContainerView.swift in Sources */,
 				799B962F2264B357002C8FFA /* NSImageViewExtension.swift in Sources */,
 				799B96282264AF7F002C8FFA /* Topic.swift in Sources */,
-				7943588B22801A36008E37B7 /* HomeViewController.swift in Sources */,
 				799B96292264AF7F002C8FFA /* APIClient.swift in Sources */,
 				7916EF132266BA1400FB6721 /* SearchViewController.swift in Sources */,
 				7916EF202267012000FB6721 /* QueryOptionsView.swift in Sources */,
