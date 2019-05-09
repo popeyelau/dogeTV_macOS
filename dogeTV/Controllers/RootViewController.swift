@@ -92,10 +92,8 @@ class RootViewController: NSViewController {
     }
     
 
-    @IBAction func userAction(_ sender: NSButton) {
-        resetButtons()
-        let target = makeContentView(type: UserViewController.self, key: "history")
-        makeTransition(to: target)
+    @IBAction func feedbackAction(_ sender: NSButton) {
+        openURL(with: sender)
     }
 
     

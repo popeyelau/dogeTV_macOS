@@ -45,7 +45,7 @@ extension NSViewController {
 
 // video handle
 extension NSViewController {
-    func preparePlayerWindow(video: VideoDetail, episodes: [Episode], history: History? = nil) {
+    func preparePlayerWindow(video: VideoDetail, episodes: [Episode]) {
         NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
         let playerWindow = NSApplication.shared.windows.first {
             $0.contentViewController?.isKind(of:PlayerViewController.self) == true
@@ -59,22 +59,51 @@ extension NSViewController {
         let content = PlayerViewController()
         content.videDetail = video
         content.episodes = episodes
-        content.history = history
         windowController.content = content
         windowController.show(from: view.window)
     }
     
-    func showVideo(id: String, source: VideoSource = .other,  history: History? = nil, indicatorView: NSProgressIndicator? = nil) {
+    func replacePlayerWindowIfNeeded(video: VideoDetail?, episodes: [Episode], episodeIndex: Int = 0, title: String? = nil) {
+        guard !episodes.isEmpty else {
+            return
+        }
+        
+        NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
+        let window = NSApplication.shared.windows.first {
+            $0.contentViewController?.isKind(of:PlayerViewController.self) == true
+        }
+        
+        let contentController: PlayerViewController? = window?.contentViewController as? PlayerViewController ?? PlayerViewController()
+        contentController?.episodes = episodes
+        contentController?.episodeIndex = episodeIndex
+        contentController?.titleText = title ?? video?.info.name
+        contentController?.videDetail = nil
+        if let info = video?.info {
+            contentController?.videDetail = VideoDetail(info: info, recommends: nil, seasons: nil)
+        }
+        
+        if let window = window {
+            contentController?.updateDataSource()
+            contentController?.updatePlayingEpisodeIfNeeded()
+            window.makeKeyAndOrderFront(nil)
+            return
+        }
+        
+        let windowController = AppWindowController(windowNibName: "AppWindowController")
+        windowController.content = contentController
+        windowController.show(from:self.view.window)
+    }
+    
+    func showVideo(id: String, source: VideoSource = .other,  indicatorView: NSProgressIndicator? = nil) {
         indicatorView?.isHidden = false
         indicatorView?.startAnimation(nil)
         switch source {
         case .other:
-            let source = history?.source ?? 0
             attempt(maximumRetryCount: 3) {
                 when(fulfilled: APIClient.fetchVideo(id: id),
-                     APIClient.fetchEpisodes(id: id, source: source))
+                     APIClient.fetchEpisodes(id: id))
                 }.done { detail, episodes in
-                    self.preparePlayerWindow(video: detail, episodes: episodes, history: history)
+                    self.preparePlayerWindow(video: detail, episodes: episodes)
                 }.catch{ error in
                     print(error)
                     self.showError(error)
@@ -89,7 +118,22 @@ extension NSViewController {
                         self.fetchPumpkinStreamURL(video: detail)
                         return
                     }
-                    self.preparePlayerWindow(video: detail, episodes: episodes)
+                    self.replacePlayerWindowIfNeeded(video: detail, episodes: episodes)
+                }.catch{ error in
+                    print(error)
+                    self.showError(error)
+                }.finally {
+                    indicatorView?.dismiss()
+            }
+        case .blueray:
+            attempt(maximumRetryCount: 3) {
+                APIClient.fetchBlueVideo(id: id)
+                }.done { detail in
+                    guard let episodes = detail.seasons?.first?.episodes else {
+                        return
+                    }
+                    let video = VideoDetail(info: detail.info, recommends: nil, seasons: nil)
+                    self.replacePlayerWindowIfNeeded(video: video, episodes: episodes)
                 }.catch{ error in
                     print(error)
                     self.showError(error)
@@ -103,7 +147,7 @@ extension NSViewController {
         attempt(maximumRetryCount: 3) {
             APIClient.fetchPumpkinEpisodes(id: video.info.id)
             }.done { episodes in
-                self.preparePlayerWindow(video: video, episodes: episodes)
+                self.replacePlayerWindowIfNeeded(video: video, episodes: episodes)
             }.catch{ error in
                 print(error)
                 self.showError(error)

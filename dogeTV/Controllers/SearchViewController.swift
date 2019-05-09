@@ -46,6 +46,12 @@ class SearchViewController: NSViewController {
         search()
     }
     
+    func showParsePlayer(at indexPath: IndexPath) {
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
@@ -83,19 +89,17 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         guard let indexPath = indexPaths.first else { return }
         collectionView.deselectItems(at: indexPaths)
-
         if isCloudParse {
-            let window = AppWindowController(windowNibName: "AppWindowController")
-            let content = PlayerViewController()
-            content.episodes = parseResult?.episodes
-            content.episodeIndex = indexPath.item
-            content.titleText = parseResult?.title
-            window.content = content
-            window.show(from:self.view.window)
+            guard let episodes = parseResult?.episodes else { return }
+            replacePlayerWindowIfNeeded(video: nil, episodes: episodes, episodeIndex: indexPath.item, title: parseResult?.title)
             return
         }
+        
         let video = results[indexPath.item]
-        let source: VideoSource = isHD ? .pumpkin : .other
+        var source: VideoSource = isHD ? .pumpkin : .other
+        if video.cover.contains("4kdy") {
+            source = .blueray
+        }
         showVideo(id: video.id, source: source, indicatorView: indicatorView)
     }
     

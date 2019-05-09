@@ -38,31 +38,16 @@ class PlayerViewController: NSViewController {
     var videDetail: VideoDetail?
     var episodes: [Episode]?
 
-    var history: History? {
-        didSet {
-            if let history = history {
-                episodeIndex = history.episode
-                sourceIndex = history.source
-                duration = history.currentTime
-            }
-        }
-    }
-
     var episodeIndex: Int = 0
     var playingEpisode: Episode?
     var sourceIndex: Int = 0
-    var duration: Double = 0
     var seasonIndex: Int = 0
     var dataSource: [Section] = []
 
-    private var playerItemContext = 0
-    var playStatusObserver: NSKeyValueObservation?
-    
     var isDownieInstalled: Bool {
         return NSWorkspace.shared.fullPath(forApplication: "Downie 3") != nil
     }
 
-    
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var episodePanel: NSView!
     @IBOutlet weak var episodePanelWidth: NSLayoutConstraint!
@@ -76,6 +61,7 @@ class PlayerViewController: NSViewController {
     @IBOutlet weak var toggleMenuBtn: NSButton!
     var hideToggleBtn = true
     var titleText: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         episodePanel.wantsLayer = true
@@ -193,16 +179,6 @@ class PlayerViewController: NSViewController {
     func prepareToPlay(url: String) {
         if avPlayer.player == nil {
             avPlayer.player = AVPlayer(url: URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!)
-            playStatusObserver = avPlayer.player?.observe(\AVPlayer.status, options: [.new], changeHandler: { (player, changed) in
-                if player.status == .readyToPlay {
-                    //播放历史 && 时长 > 0 监听播放器状态，当成功加载时，跳转到历史播放时间点
-                    if let history = self.history, history.currentTime > 0, self.episodeIndex == history.episode  {
-                        let seekTo = CMTimeMakeWithSeconds(history.currentTime, preferredTimescale: 1000)
-                        self.avPlayer.player?.seek(to: seekTo)
-                        self.history = nil
-                    }
-                }
-            })
         } else {
             avPlayer.player?.replaceCurrentItem(with: nil)
             avPlayer.player?.replaceCurrentItem(with: AVPlayerItem(url: URL(string: url)!))
@@ -285,7 +261,6 @@ class PlayerViewController: NSViewController {
     }
     
     func replace(id: String) {
-        history = nil
         avPlayer.player?.replaceCurrentItem(with: nil)
         indicatorView?.isHidden = false
         indicatorView?.startAnimation(nil)
@@ -305,25 +280,6 @@ class PlayerViewController: NSViewController {
                 self.updateDataSource()
                 self.playing()
         }
-    }
-
-    func addRecord() {
-        guard let video = videDetail?.info, let episode = episodes?[safe: episodeIndex] else { return }
-        let history = History()
-        history.primaryKey = video.id
-        history.videoId = video.id
-        history.name = video.name
-        history.episode = episodeIndex
-        history.episodeName = episode.title
-        history.source = sourceIndex
-        history.currentTime = avPlayer.player?.currentItem?.currentTime().seconds ?? 0
-        history.duration = 0
-        if let duration = avPlayer.player?.currentItem?.asset.duration {
-            history.duration = CMTimeGetSeconds(duration)
-        }
-        history.cover = video.cover
-        Repository.insertOrReplace(table: history)
-        NotificationCenter.default.post(name: .historyUpdated, object: nil)
     }
 
     deinit {
@@ -465,17 +421,13 @@ extension PlayerViewController: NSWindowDelegate {
     }
     
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-        if avPlayer.player?.status == AVPlayer.Status.readyToPlay {
-            addRecord()
-            avPlayer.player?.replaceCurrentItem(with: nil)
-        }
+        avPlayer.player?.replaceCurrentItem(with: nil)
         return true
     }
 
     func windowWillClose(_ notification: Notification) {
         let status =  PlayStatus.idle
         NotificationCenter.default.post(name: .playStatusChanged, object: status)
-        playStatusObserver = nil
         NSApplication.shared.openMainWindow()
     }
 }

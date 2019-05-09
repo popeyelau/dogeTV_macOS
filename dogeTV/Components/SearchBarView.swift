@@ -17,7 +17,7 @@ class SearchBarView: NSView, LoadableNib {
     
     var onSearchAction: ((String) -> Void)?
     var onTopRatedAction: (() -> Void)?
-    
+
     var isHD: Bool {
        return hdBtn?.state == .on
     }
@@ -39,6 +39,11 @@ class SearchBarView: NSView, LoadableNib {
     
     @IBAction func searchAction(_ sender: NSButton) {
         window?.makeFirstResponder(nil)
+        guard !textField.stringValue.isEmpty else { return }
+        onSearchAction?(textField.stringValue)
+    }
+    
+    @IBAction func hdBtnAction(_ sender: NSButton) {
         guard !textField.stringValue.isEmpty else { return }
         onSearchAction?(textField.stringValue)
     }

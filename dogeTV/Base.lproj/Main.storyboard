@@ -407,9 +407,9 @@
                 <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="dogeTV" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="dogeTV" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" appearanceType="darkAqua" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
-                        <rect key="contentRect" x="196" y="425" width="1120" height="720"/>
+                        <rect key="contentRect" x="196" y="425" width="1280" height="720"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="1120" height="720"/>
+                        <value key="minSize" type="size" width="1280" height="720"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -427,7 +427,7 @@
             <objects>
                 <viewController title="dogeTV" id="XfG-lQ-9wD" customClass="RootViewController" customModule="dogeTV" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="1120" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1280" height="720"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TR0-Y5-V84" customClass="GradientView" customModule="dogeTV" customModuleProvider="target">
@@ -464,10 +464,10 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="bg2-O3-Nhl" customClass="GradientView" customModule="dogeTV" customModuleProvider="target">
-                                <rect key="frame" x="150" y="660" width="970" height="60"/>
+                                <rect key="frame" x="150" y="658" width="1130" height="62"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-Kh-V35">
-                                        <rect key="frame" x="892" y="13" width="58" height="24"/>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-Kh-V35">
+                                        <rect key="frame" x="1041" y="15" width="59" height="24"/>
                                         <subviews>
                                             <button toolTip="刷新" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zas-hi-Adg">
                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -481,12 +481,15 @@
                                                     <action selector="refreshAction:" target="XfG-lQ-9wD" id="gsN-CM-zRz"/>
                                                 </connections>
                                             </button>
-                                            <button identifier="history" toolTip="重构中" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Qv-13-gHv">
-                                                <rect key="frame" x="34" y="0.0" width="24" height="24"/>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="history" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xjJ-MW-iKI">
+                                            <button identifier="telegram" toolTip="反馈" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Qv-13-gHv">
+                                                <rect key="frame" x="39" y="2" width="20" height="20"/>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="bug" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xjJ-MW-iKI">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="feedbackAction:" target="XfG-lQ-9wD" id="ia3-AZ-BD9"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <visibilityPriorities>
@@ -499,14 +502,14 @@
                                         </customSpacing>
                                     </stackView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="jQL-F1-Mbx" customClass="SearchBarView" customModule="dogeTV" customModuleProvider="target">
-                                        <rect key="frame" x="572" y="10" width="300" height="30"/>
+                                        <rect key="frame" x="721" y="12" width="300" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Yyk-T0-2dg"/>
                                             <constraint firstAttribute="width" constant="300" id="wS4-Zu-x7c"/>
                                         </constraints>
                                     </customView>
                                     <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yzf-tL-JlH" customClass="PlayStatusView" customModule="dogeTV" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="10" width="200" height="30"/>
+                                        <rect key="frame" x="20" y="12" width="200" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="nhf-nP-cKr"/>
                                             <constraint firstAttribute="height" constant="30" id="pYR-Ub-RA5"/>
@@ -519,12 +522,12 @@
                                     <constraint firstItem="jQL-F1-Mbx" firstAttribute="top" secondItem="bg2-O3-Nhl" secondAttribute="top" constant="20" id="9pT-Hn-C4s"/>
                                     <constraint firstItem="Yzf-tL-JlH" firstAttribute="leading" secondItem="bg2-O3-Nhl" secondAttribute="leading" constant="20" id="GSC-ZJ-6iG"/>
                                     <constraint firstItem="s6s-Kh-V35" firstAttribute="centerY" secondItem="jQL-F1-Mbx" secondAttribute="centerY" id="ek2-CY-o28"/>
-                                    <constraint firstAttribute="bottom" secondItem="jQL-F1-Mbx" secondAttribute="bottom" constant="10" id="jlf-o1-ZtJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="s6s-Kh-V35" secondAttribute="trailing" constant="20" id="o6D-Li-6bP"/>
+                                    <constraint firstAttribute="bottom" secondItem="jQL-F1-Mbx" secondAttribute="bottom" constant="12" id="jlf-o1-ZtJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="s6s-Kh-V35" secondAttribute="trailing" constant="30" id="o6D-Li-6bP"/>
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TYq-7v-Uo4" userLabel="Content View" customClass="ContainerView" customModule="dogeTV" customModuleProvider="target">
-                                <rect key="frame" x="150" y="0.0" width="970" height="660"/>
+                                <rect key="frame" x="150" y="0.0" width="1130" height="658"/>
                             </customView>
                         </subviews>
                         <constraints>
@@ -556,8 +559,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bug" width="20" height="20"/>
         <image name="doge" width="100" height="100"/>
-        <image name="history" width="24" height="24"/>
         <image name="refresh" width="24" height="24"/>
     </resources>
 </document>

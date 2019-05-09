@@ -171,12 +171,6 @@ extension ParseViewController {
         guard !result.episodes.isEmpty else {
            return
         }
-        let window = AppWindowController(windowNibName: "AppWindowController")
-        let content = PlayerViewController()
-        content.episodes = result.episodes
-        content.episodeIndex = 0
-        content.titleText = result.title
-        window.content = content
-        window.show(from:self.view.window)
+        replacePlayerWindowIfNeeded(video: nil, episodes: result.episodes, title: result.title)
     }
 }

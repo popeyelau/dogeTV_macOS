@@ -11,6 +11,7 @@ import Foundation
 enum VideoSource: Int, Codable {
     case other = 0
     case pumpkin
+    case blueray
 }
 
 struct Video: Decodable, Equatable {

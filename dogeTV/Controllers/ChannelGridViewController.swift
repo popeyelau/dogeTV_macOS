@@ -52,7 +52,7 @@ class ChannelGridViewController: NSViewController{
             window.makeKeyAndOrderFront(nil)
             return
         }
-
+        
         let window = AppWindowController(windowNibName: "AppWindowController")
         let content = LivePlayerViewController()
         content.channel = channel

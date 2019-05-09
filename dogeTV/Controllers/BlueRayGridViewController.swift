@@ -32,20 +32,10 @@ class BlueRayGridViewController: NSViewController {
 
 
     func showPlayer(with result: VideoDetail) {
-        guard let episodes = result.seasons?.first?.episodes else {
+        guard let episodes = result.seasons?.first?.episodes, !episodes.isEmpty else {
             return
         }
-
-        let window = AppWindowController(windowNibName: "AppWindowController")
-        let content = PlayerViewController()
-        content.episodes = episodes
-        content.episodeIndex = 0
-        content.titleText = result.info.name
-        if episodes.count > 1 {
-            content.videDetail = VideoDetail(info: result.info, recommends: nil, seasons: nil)
-        }
-        window.content = content
-        window.show(from:self.view.window)
+        replacePlayerWindowIfNeeded(video: result, episodes: episodes)
     }
 
 }
