@@ -11,6 +11,7 @@
                 <outlet property="indicatorView" destination="wCy-Nr-iz4" id="IJI-7f-0TG"/>
                 <outlet property="queryPanel" destination="O3B-hc-3yh" id="h6h-9l-CX8"/>
                 <outlet property="queryStack" destination="Ukb-bH-Kap" id="lmp-jI-PAn"/>
+                <outlet property="scrollView" destination="HIk-PW-2de" id="7lq-5l-Fhg"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>

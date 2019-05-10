@@ -13,13 +13,7 @@ extension NSViewController {
 
   
     func showError(_ error: Error) {
-        /*
-        let alert: NSAlert = NSAlert()
-        alert.messageText = "出错啦"
-        alert.informativeText = error.localizedDescription
-        alert.alertStyle = .warning
-        alert.addButton(withTitle: "OK")
-        alert.runModal()*/
+        //toast(message: error.localizedDescription)
     }
 
     func dialogOKCancel(question: String, text: String, handler: @escaping ((Bool) -> Void)) {

@@ -73,6 +73,8 @@
 		79B7AD17226AE39F00600282 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AD16226AE39F00600282 /* AboutWindowController.swift */; };
 		79B7AD19226AE3BB00600282 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AD18226AE3BB00600282 /* AboutViewController.swift */; };
 		79C9CEA922850ED8003582AD /* UnderLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C9CEA822850ED8003582AD /* UnderLineTextField.swift */; };
+		79C9CEAB2285290F003582AD /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C9CEAA2285290F003582AD /* Toast.swift */; };
+		79C9CEAD2285486F003582AD /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C9CEAC2285486F003582AD /* QRCode.swift */; };
 		79D927A422657854009C446E /* QueryOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927A222657854009C446E /* QueryOptionView.swift */; };
 		79D927A522657854009C446E /* QueryOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927A322657854009C446E /* QueryOptionView.xib */; };
 		79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927A62265931A009C446E /* NSButtonExtension.swift */; };
@@ -187,6 +189,8 @@
 		79B7AD16226AE39F00600282 /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		79B7AD18226AE3BB00600282 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		79C9CEA822850ED8003582AD /* UnderLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderLineTextField.swift; sourceTree = "<group>"; };
+		79C9CEAA2285290F003582AD /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		79C9CEAC2285486F003582AD /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		79D927A222657854009C446E /* QueryOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionView.swift; sourceTree = "<group>"; };
 		79D927A322657854009C446E /* QueryOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryOptionView.xib; sourceTree = "<group>"; };
 		79D927A62265931A009C446E /* NSButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSButtonExtension.swift; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 				7932E6432280748400224F47 /* TopicCardView.xib */,
 				79463B322281D5AB003BE96D /* CustomSegmentedControl.swift */,
 				79C9CEA822850ED8003582AD /* UnderLineTextField.swift */,
+				79C9CEAA2285290F003582AD /* Toast.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				799B96112264AF78002C8FFA /* Helpers.swift */,
+				79C9CEAC2285486F003582AD /* QRCode.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -611,6 +617,7 @@
 				79E0911C226873A000219C87 /* DisablableScrollView.swift in Sources */,
 				79F04143227587A80005B006 /* Menu.swift in Sources */,
 				79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */,
+				79C9CEAD2285486F003582AD /* QRCode.swift in Sources */,
 				793AF1362277E3310030CE7F /* IPTV.swift in Sources */,
 				79DD1CEE228262F3000D6FEC /* PumpkinViewController.swift in Sources */,
 				79B7AD17226AE39F00600282 /* AboutWindowController.swift in Sources */,
@@ -651,6 +658,7 @@
 				7916EF172266C0EF00FB6721 /* ChannelCardView.swift in Sources */,
 				79820F762270097000ADA103 /* NSApplicationExtension.swift in Sources */,
 				79FD5C0E22648A27009EDB9C /* VideoCardView.swift in Sources */,
+				79C9CEAB2285290F003582AD /* Toast.swift in Sources */,
 				799B96272264AF7F002C8FFA /* Video.swift in Sources */,
 				7980B96A227531AC00DD8336 /* ParseViewController.swift in Sources */,
 				79FD5BF722647AC3009EDB9C /* AppDelegate.swift in Sources */,

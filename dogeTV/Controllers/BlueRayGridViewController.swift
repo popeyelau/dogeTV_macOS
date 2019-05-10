@@ -13,6 +13,7 @@ import PromiseKit
 class BlueRayGridViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
+    @IBOutlet weak var scrollView: NSScrollView!
     var category: BlueRayTabViewController.TabItems = .film
     var pageIndex: Int = 1
     let pageSize: Int = 24
@@ -29,6 +30,7 @@ class BlueRayGridViewController: NSViewController {
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
         collectionView.backgroundColors = [.backgroundColor]
+        registLoadMoreNotification()
         refresh()
     }
 
@@ -40,6 +42,27 @@ class BlueRayGridViewController: NSViewController {
         replacePlayerWindowIfNeeded(video: result, episodes: episodes)
     }
 
+    func registLoadMoreNotification() {
+        guard let clipView = collectionView.superview,
+            let scrollView = clipView.superview as? NSScrollView else {
+                return
+        }
+        scrollView.contentView.postsBoundsChangedNotifications = true
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(collectionViewDidScroll),
+                                               name: NSView.boundsDidChangeNotification,
+                                               object: clipView)
+    }
+    
+    @objc func collectionViewDidScroll() {
+        
+        guard !isNoMoreData, !isLoading else { return }
+        guard let value = scrollView.verticalScroller?.floatValue,  value >= 0.9 else {
+            return
+        }
+        
+        loadMore()
+    }
 }
 
 extension BlueRayGridViewController: NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
@@ -52,20 +75,14 @@ extension BlueRayGridViewController: NSCollectionViewDelegate, NSCollectionViewD
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+        let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
         let video = videos[indexPath.item]
         item.data = video
         return item
     }
 
-    func collectionView(_ collectionView: NSCollectionView, willDisplay item: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
-        if indexPath.item == videos.count - 1 {
-            loadMore()
-        }
-    }
-
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .gridSectionHeader, for: indexPath) as! GridSectionHeader
         header.backBtn.isHidden = false
         if let title = title {
             header.titleLabel.stringValue = title

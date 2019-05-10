@@ -295,31 +295,31 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
         let section = dataSource[indexPath.section]
         switch section {
         case .episodes(let episodes):
-            let item = collectionView.makeItem(withIdentifier: .init("EpisodeItemView"), for: indexPath) as! EpisodeItemView
+            let item = collectionView.makeItem(withIdentifier: .episodeItemView, for: indexPath) as! EpisodeItemView
             let episode = episodes[indexPath.item]
             item.textField?.stringValue = episode.title
             item.textField?.alignment = .center
             item.isSelected = episodeIndex == indexPath.item
             return item
         case .source(let sources):
-            let item = collectionView.makeItem(withIdentifier: .init("EpisodeItemView"), for: indexPath) as! EpisodeItemView
+            let item = collectionView.makeItem(withIdentifier: .episodeItemView, for: indexPath) as! EpisodeItemView
             let source = sources[indexPath.item]
             item.textField?.stringValue = source == 0 ? "默认线路" : "线路\(source)"
             item.textField?.alignment = .center
             item.isSelected = sourceIndex == indexPath.item
             return item
         case .video(let video):
-            let item = collectionView.makeItem(withIdentifier: .init("VideoIntroView"), for: indexPath) as! VideoIntroView
+            let item = collectionView.makeItem(withIdentifier: .videoIntroView, for: indexPath) as! VideoIntroView
             item.textField?.stringValue =  "导演: \(video.director)\n主演: \(video.actor))\n国家/地区: \(video.area)\n上映: \(video.year )\n类型: \(video.tag)\n\(video.state)"
             item.imageView?.setResourceImage(with: video.cover)
             return item
         case .recommends(let videos):
-            let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+            let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
             let video = videos[indexPath.item]
             item.data = video
             return item
         case .seasons(let seasons):
-            let item = collectionView.makeItem(withIdentifier: .init("EpisodeItemView"), for: indexPath) as! EpisodeItemView
+            let item = collectionView.makeItem(withIdentifier: .episodeItemView, for: indexPath) as! EpisodeItemView
             let season = seasons[indexPath.item]
             item.textField?.stringValue = season.name
             item.textField?.alignment = .center
@@ -329,7 +329,7 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .gridSectionHeader, for: indexPath) as! GridSectionHeader
         let section = dataSource[indexPath.section]
         header.titleLabel.stringValue = section.title
         header.subTitleLabel.isHidden = true

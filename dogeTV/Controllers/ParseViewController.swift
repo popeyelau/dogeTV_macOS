@@ -164,6 +164,7 @@ extension ParseViewController {
             .done { (result) in
                self.showPlayer(with: result)
             }.catch({ (error) in
+                self.toast(message: "oops~ 解析失败")
                 print(error)
             }).finally {
                 self.indicatorView.dismiss()

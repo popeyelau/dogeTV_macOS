@@ -33,14 +33,14 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+        let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
         let video = hots[indexPath.section].items[indexPath.item]
         item.data = video
         return item
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .gridSectionHeader, for: indexPath) as! GridSectionHeader
         let section = hots[indexPath.section]
         header.titleLabel.stringValue = section.title
         return header

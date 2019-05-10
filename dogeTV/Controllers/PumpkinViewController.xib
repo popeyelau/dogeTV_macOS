@@ -49,16 +49,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="JoM-7s-AwT">
-                    <rect key="frame" x="224" y="120" width="32" height="32"/>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="JoM-7s-AwT">
+                    <rect key="frame" x="444" y="248" width="16" height="16"/>
                 </progressIndicator>
             </subviews>
             <constraints>
-                <constraint firstItem="JoM-7s-AwT" firstAttribute="centerY" secondItem="5vk-xp-Gvp" secondAttribute="centerY" id="9HM-vT-c87"/>
                 <constraint firstAttribute="trailing" secondItem="xMU-NU-2Xt" secondAttribute="trailing" id="AoK-Kc-Yvz"/>
                 <constraint firstItem="xMU-NU-2Xt" firstAttribute="leading" secondItem="5vk-xp-Gvp" secondAttribute="leading" id="FjP-ZG-Iri"/>
+                <constraint firstAttribute="trailing" secondItem="JoM-7s-AwT" secondAttribute="trailing" constant="20" id="l1Y-3Q-PUh"/>
+                <constraint firstItem="JoM-7s-AwT" firstAttribute="top" secondItem="5vk-xp-Gvp" secondAttribute="top" constant="8" id="mpd-Jx-a9F"/>
                 <constraint firstItem="xMU-NU-2Xt" firstAttribute="top" secondItem="5vk-xp-Gvp" secondAttribute="top" id="nBv-6a-Y6H"/>
-                <constraint firstItem="JoM-7s-AwT" firstAttribute="centerX" secondItem="5vk-xp-Gvp" secondAttribute="centerX" id="tks-29-4xw"/>
                 <constraint firstAttribute="bottom" secondItem="xMU-NU-2Xt" secondAttribute="bottom" id="ukd-nY-8JD"/>
             </constraints>
         </customView>

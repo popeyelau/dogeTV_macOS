@@ -97,7 +97,7 @@ extension QueryOptionsView: NSCollectionViewDelegate, NSCollectionViewDataSource
     }
 
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: .init("QueryOptionView"), for: indexPath) as! QueryOptionView
+        let item = collectionView.makeItem(withIdentifier: .queryOptionView, for: indexPath) as! QueryOptionView
         let section = optionsSet[indexPath.section]
         let option = section.options[indexPath.item]
         item.isSelected = option.isSelected
@@ -107,7 +107,7 @@ extension QueryOptionsView: NSCollectionViewDelegate, NSCollectionViewDataSource
 
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
         let section = optionsSet[indexPath.section]
-        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("QueryOptionsKeyView"), for: indexPath) as! QueryOptionsKeyView
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .queryOptionsKeyView, for: indexPath) as! QueryOptionsKeyView
         header.layer?.backgroundColor =  NSColor.clear.cgColor
         header.titleLabel.stringValue = "\(section.title):"
         header.titleLabel.textColor = .secondaryLabelColor

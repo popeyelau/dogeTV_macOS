@@ -45,13 +45,13 @@ extension PumpkinViewController: NSCollectionViewDelegate,  NSCollectionViewData
         let type = hots[indexPath.section].type ?? .normal
         switch type {
         case .normal:
-            let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+            let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
             let video = hots[indexPath.section].items[indexPath.item]
             item.shadowView.isHidden = true
             item.data = video
             return item
         case .series, .topic:
-            let item = collectionView.makeItem(withIdentifier: .init("TopicCardView"), for: indexPath) as! TopicCardView
+            let item = collectionView.makeItem(withIdentifier: .topicCardView, for: indexPath) as! TopicCardView
             let video = hots[indexPath.section].items[indexPath.item]
             item.imageView?.setResourceImage(with: video.cover, placeholder: NSImage(named: "404_series"))
             return item
@@ -59,7 +59,7 @@ extension PumpkinViewController: NSCollectionViewDelegate,  NSCollectionViewData
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .gridSectionHeader, for: indexPath) as! GridSectionHeader
         let section = hots[indexPath.section]
         header.titleLabel.stringValue = section.title
         return header

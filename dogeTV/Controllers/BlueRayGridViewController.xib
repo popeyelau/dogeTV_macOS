@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="collectionView" destination="1l9-hc-BTh" id="bFN-P3-4Hx"/>
                 <outlet property="indicatorView" destination="KI4-0s-7bN" id="j4U-N4-5Ys"/>
+                <outlet property="scrollView" destination="cir-P7-30y" id="TfX-Zp-bUH"/>
                 <outlet property="view" destination="EbF-t4-Lhg" id="Jk3-wB-IQs"/>
             </connections>
         </customObject>
@@ -48,16 +49,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="KI4-0s-7bN">
-                    <rect key="frame" x="224" y="183" width="32" height="32"/>
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="KI4-0s-7bN">
+                    <rect key="frame" x="444" y="373" width="16" height="16"/>
                 </progressIndicator>
             </subviews>
             <constraints>
-                <constraint firstItem="KI4-0s-7bN" firstAttribute="centerX" secondItem="EbF-t4-Lhg" secondAttribute="centerX" id="LfK-jQ-atU"/>
+                <constraint firstItem="KI4-0s-7bN" firstAttribute="top" secondItem="EbF-t4-Lhg" secondAttribute="top" constant="8" id="BeE-CL-eNU"/>
+                <constraint firstAttribute="trailing" secondItem="KI4-0s-7bN" secondAttribute="trailing" constant="20" id="ODg-3p-hbp"/>
                 <constraint firstAttribute="bottom" secondItem="cir-P7-30y" secondAttribute="bottom" id="T1E-4h-cYA"/>
                 <constraint firstAttribute="trailing" secondItem="cir-P7-30y" secondAttribute="trailing" id="TO2-hu-1hW"/>
                 <constraint firstItem="cir-P7-30y" firstAttribute="leading" secondItem="EbF-t4-Lhg" secondAttribute="leading" id="XO0-OV-Nq7"/>
-                <constraint firstItem="KI4-0s-7bN" firstAttribute="centerY" secondItem="EbF-t4-Lhg" secondAttribute="centerY" id="btv-PH-ju5"/>
                 <constraint firstItem="cir-P7-30y" firstAttribute="top" secondItem="EbF-t4-Lhg" secondAttribute="top" id="cLg-nc-ASY"/>
             </constraints>
             <point key="canvasLocation" x="139" y="153.5"/>

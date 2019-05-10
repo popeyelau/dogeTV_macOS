@@ -21,7 +21,8 @@ class RootViewController: NSViewController {
     @IBOutlet weak var searchBarView: SearchBarView!
     @IBOutlet weak var iconImageView: AspectFitImageView!
     @IBOutlet weak var playingStatusBar: PlayStatusView!
-
+    @IBOutlet weak var refreshBtn: NSButton!
+    
     var mapping: [String: Initializable] = [:]
     var activiedController: Initializable?
     var prevController: Initializable?
@@ -57,8 +58,15 @@ class RootViewController: NSViewController {
         
         view.window?.makeFirstResponder(nil)
         registerNotification()
+        
+        let trackingArea = NSTrackingArea(rect: refreshBtn.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
+        refreshBtn.addTrackingArea(trackingArea)
     }
 
+    
+    override func mouseEntered(with event: NSEvent) {
+        refreshBtn.rotate360Degrees()
+    }
 
     func registerNotification()  {
         NotificationCenter.default.addObserver(forName: .playStatusChanged, object: nil, queue: .main) { [weak self] (notify) in
@@ -79,7 +87,7 @@ class RootViewController: NSViewController {
             btn.action = #selector(menuBtnClicked(_:))
             btn.snp.makeConstraints {
                 $0.width.equalToSuperview()
-                $0.height.equalTo(20)
+                $0.height.equalTo(30)
             }
             if $0 == .blueray {
                 btn.toolTip = "可能需要通过代理访问"

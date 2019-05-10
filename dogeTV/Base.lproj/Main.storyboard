@@ -431,13 +431,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TR0-Y5-V84" customClass="GradientView" customModule="dogeTV" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="720"/>
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="720"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-qa-Ovy">
-                                        <rect key="frame" x="0.0" y="560" width="150" height="0.0"/>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-qa-Ovy">
+                                        <rect key="frame" x="0.0" y="550" width="160" height="0.0"/>
                                     </stackView>
                                     <imageView toolTip="拖拽 自定义图标" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xNy-4W-mBy" customClass="AspectFitImageView" customModule="dogeTV" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="580" width="90" height="90"/>
+                                        <rect key="frame" x="35" y="580" width="90" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="5Yy-90-THL"/>
                                             <constraint firstAttribute="width" constant="90" id="FZw-3W-LMA"/>
@@ -448,15 +448,15 @@
                                         </connections>
                                     </imageView>
                                     <box hidden="YES" horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="IEJ-W8-ICX">
-                                        <rect key="frame" x="147" y="0.0" width="5" height="720"/>
+                                        <rect key="frame" x="157" y="0.0" width="5" height="720"/>
                                     </box>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="IEJ-W8-ICX" secondAttribute="bottom" id="814-QL-2UF"/>
                                     <constraint firstItem="Dgl-qa-Ovy" firstAttribute="centerX" secondItem="TR0-Y5-V84" secondAttribute="centerX" id="GNG-4F-Bda"/>
                                     <constraint firstItem="Dgl-qa-Ovy" firstAttribute="width" secondItem="TR0-Y5-V84" secondAttribute="width" id="Gfw-tX-uC7"/>
-                                    <constraint firstAttribute="width" constant="150" id="S3h-yN-Aw8"/>
-                                    <constraint firstItem="Dgl-qa-Ovy" firstAttribute="top" secondItem="xNy-4W-mBy" secondAttribute="bottom" constant="20" id="Tta-sI-iZo"/>
+                                    <constraint firstAttribute="width" constant="160" id="S3h-yN-Aw8"/>
+                                    <constraint firstItem="Dgl-qa-Ovy" firstAttribute="top" secondItem="xNy-4W-mBy" secondAttribute="bottom" constant="30" id="Tta-sI-iZo"/>
                                     <constraint firstItem="IEJ-W8-ICX" firstAttribute="top" secondItem="TR0-Y5-V84" secondAttribute="top" id="WdZ-77-HG4"/>
                                     <constraint firstItem="xNy-4W-mBy" firstAttribute="centerX" secondItem="TR0-Y5-V84" secondAttribute="centerX" id="fgG-6W-9by"/>
                                     <constraint firstAttribute="trailing" secondItem="IEJ-W8-ICX" secondAttribute="trailing" id="jfy-gh-vHc"/>
@@ -464,7 +464,7 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="bg2-O3-Nhl" customClass="GradientView" customModule="dogeTV" customModuleProvider="target">
-                                <rect key="frame" x="150" y="658" width="1130" height="62"/>
+                                <rect key="frame" x="160" y="658" width="1120" height="62"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-Kh-V35">
                                         <rect key="frame" x="1041" y="15" width="59" height="24"/>
@@ -523,11 +523,11 @@
                                     <constraint firstItem="Yzf-tL-JlH" firstAttribute="leading" secondItem="bg2-O3-Nhl" secondAttribute="leading" constant="20" id="GSC-ZJ-6iG"/>
                                     <constraint firstItem="s6s-Kh-V35" firstAttribute="centerY" secondItem="jQL-F1-Mbx" secondAttribute="centerY" id="ek2-CY-o28"/>
                                     <constraint firstAttribute="bottom" secondItem="jQL-F1-Mbx" secondAttribute="bottom" constant="12" id="jlf-o1-ZtJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="s6s-Kh-V35" secondAttribute="trailing" constant="30" id="o6D-Li-6bP"/>
+                                    <constraint firstAttribute="trailing" secondItem="s6s-Kh-V35" secondAttribute="trailing" constant="20" id="o6D-Li-6bP"/>
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TYq-7v-Uo4" userLabel="Content View" customClass="ContainerView" customModule="dogeTV" customModuleProvider="target">
-                                <rect key="frame" x="150" y="0.0" width="1130" height="658"/>
+                                <rect key="frame" x="160" y="0.0" width="1120" height="658"/>
                             </customView>
                         </subviews>
                         <constraints>
@@ -549,6 +549,7 @@
                         <outlet property="iconImageView" destination="xNy-4W-mBy" id="EH1-R1-2ZT"/>
                         <outlet property="menuView" destination="TR0-Y5-V84" id="k37-j0-bRN"/>
                         <outlet property="playingStatusBar" destination="Yzf-tL-JlH" id="OpQ-rt-s68"/>
+                        <outlet property="refreshBtn" destination="Zas-hi-Adg" id="NtY-Dy-VFD"/>
                         <outlet property="searchBarView" destination="jQL-F1-Mbx" id="LSg-lI-FYg"/>
                         <outlet property="topView" destination="bg2-O3-Nhl" id="59G-pQ-Ccn"/>
                     </connections>

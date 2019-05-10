@@ -67,13 +67,13 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         if isCloudParse {
-            let item = collectionView.makeItem(withIdentifier: .init("EpisodeItemView"), for: indexPath) as! EpisodeItemView
+            let item = collectionView.makeItem(withIdentifier: .episodeItemView, for: indexPath) as! EpisodeItemView
             let episode = parseResult!.episodes[indexPath.item]
             item.textField?.stringValue = episode.title
             return item
         }
 
-        let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+        let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
         let video = results[indexPath.item]
         item.data = video
         return item
@@ -102,7 +102,7 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .gridSectionHeader, for: indexPath) as! GridSectionHeader
         let title = isCloudParse ? parseResult?.title ?? "" : keywords ?? ""
         header.titleLabel.stringValue = "关键字:「\(title)」搜索结果"
         header.subTitleLabel.isHidden = true

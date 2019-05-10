@@ -14,7 +14,10 @@ class VideoGridViewController: NSViewController {
     @IBOutlet weak var queryPanel: NSView!
     @IBOutlet weak var queryStack: NSStackView!
     @IBOutlet weak var indicatorView: NSProgressIndicator!
-
+    @IBOutlet weak var scrollView: NSScrollView!
+    
+    private var scrollverObsrver: NSKeyValueObservation?
+    
     var category: Category? = .film
     var isDouban: Bool = false
     var pageIndex: Int = 1
@@ -45,16 +48,7 @@ class VideoGridViewController: NSViewController {
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
         collectionView.backgroundColors = [.backgroundColor]
-        
-        if let clipView = collectionView.superview, let scrollView = clipView.superview as? NSScrollView{
-            let contentView = scrollView.contentView
-            contentView.postsBoundsChangedNotifications = true
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(collectionViewDidScroll),
-                                                   name: NSView.boundsDidChangeNotification,
-                                                   object: clipView)
-        }
-        
+        registLoadMoreNotification()
         refresh()
     }
 
@@ -65,10 +59,29 @@ class VideoGridViewController: NSViewController {
         refresh()
     }
     
+    func registLoadMoreNotification() {
+        guard let clipView = collectionView.superview,
+            let scrollView = clipView.superview as? NSScrollView else {
+            return
+        }
+        scrollView.contentView.postsBoundsChangedNotifications = true
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(collectionViewDidScroll),
+                                               name: NSView.boundsDidChangeNotification,
+                                               object: clipView)
+    }
+    
     @objc func collectionViewDidScroll() {
         if(queryOptionsView.isExpanded) {
             queryOptionsView.toggle()
         }
+        
+        guard !isNoMoreData, !isLoading else { return }
+        guard let value = scrollView.verticalScroller?.floatValue,  value >= 0.9 else {
+            return
+        }
+        
+        loadMore()
     }
     
     deinit {
@@ -109,18 +122,12 @@ extension VideoGridViewController: NSCollectionViewDelegate, NSCollectionViewDat
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+        let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
         let video = videos[indexPath.item]
         item.data = video
         return item
     }
 
-    func collectionView(_ collectionView: NSCollectionView, willDisplay item: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
-        if indexPath.item == videos.count - 1 {
-            loadMore()
-        }
-    }
-    
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }

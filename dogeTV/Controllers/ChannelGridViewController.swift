@@ -91,7 +91,7 @@ extension ChannelGridViewController: NSCollectionViewDelegate, NSCollectionViewD
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: .init("ChannelCardView"), for: indexPath) as! ChannelCardView
+        let item = collectionView.makeItem(withIdentifier: .channelCardView, for: indexPath) as! ChannelCardView
         let channel = dataSource[indexPath.item]
         item.textField?.stringValue = channel.name
         item.imageView?.image = NSImage(named: "tv")

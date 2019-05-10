@@ -10,33 +10,9 @@ import Cocoa
 
 struct ENV {
     static let host = "https://tv.popeye.vip"
+    //static let host = "http://localhost:9999"
     static let iconPath = NSApplication.shared.appFolder + "/logo.png"
 }
 
-
-enum StaticURLs: String {
-    case githubRepo
-    case telegramBot
-    case github
-    case telegram
-
-    var url: URL {
-        switch self {
-        case .githubRepo:
-            return URL(string: "https://github.com/popeyelau/dogeTV_macOS")!
-        case .telegramBot:
-            return URL(string: "https://t.me/dogeTVBot")!
-        case .github:
-            return URL(string: "https://github.com/popeyelau")!
-        case .telegram:
-            return URL(string: "https://t.me/popeyelau")!
-        }
-    }
-}
-
-
-extension NSNotification.Name {
-    static let playStatusChanged = NSNotification.Name.init("PlayStatusChanged")
-}
 
 
