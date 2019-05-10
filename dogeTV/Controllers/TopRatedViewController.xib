@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="660" height="330"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cG-fZ-Dxx">
+                <scrollView toolTip="双击观看" borderType="none" autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cG-fZ-Dxx">
                     <rect key="frame" x="8" y="16" width="644" height="268"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="cK0-gM-1wu">
                         <rect key="frame" x="0.0" y="0.0" width="644" height="268"/>

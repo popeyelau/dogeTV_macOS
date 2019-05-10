@@ -25,6 +25,8 @@ class SerieGridViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
         collectionView.backgroundColors = [.backgroundColor]
     }
     
@@ -76,7 +78,7 @@ extension SerieGridViewController: NSCollectionViewDelegate, NSCollectionViewDat
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
         let video = videos[indexPath.item]
-        showVideo(id: video.id, source: .pumpkin, indicatorView: indicatorView)
+        showVideo(video: video, indicatorView: indicatorView)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {

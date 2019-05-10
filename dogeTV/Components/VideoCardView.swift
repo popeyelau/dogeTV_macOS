@@ -18,6 +18,7 @@ class VideoCardView: NSCollectionViewItem {
             textField?.stringValue = video.name
             imageView?.setResourceImage(with: video.cover)
             updatedLabel?.stringValue = video.state
+            shadowView?.isHidden = video.state.isEmpty
         }
     }
 

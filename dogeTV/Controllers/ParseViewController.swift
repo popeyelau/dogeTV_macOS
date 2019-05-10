@@ -58,6 +58,9 @@ class ParseViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        
         Site.allCases.enumerated().forEach { index, element in
             segmentCtrl.addSegment(withTitle: element.title)
         }

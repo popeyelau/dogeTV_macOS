@@ -39,22 +39,14 @@ extension NSViewController {
             let url = StaticURLs(rawValue: identifier)?.url else { return }
         NSWorkspace.shared.open(url)
     }
-
 }
 
 
 // video handle
 extension NSViewController {
     func preparePlayerWindow(video: VideoDetail, episodes: [Episode]) {
-        NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
-        let playerWindow = NSApplication.shared.windows.first {
-            $0.contentViewController?.isKind(of:PlayerViewController.self) == true
-        }
-        if let window = playerWindow, let controller = window.contentViewController as? PlayerViewController {
-            controller.replace(id: video.info.id)
-            window.makeKeyAndOrderFront(nil)
-            return
-        }
+        NSApplication.shared.closePlayerWindow()
+        //NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
         let windowController = AppWindowController(windowNibName: "AppWindowController")
         let content = PlayerViewController()
         content.videDetail = video
@@ -63,11 +55,11 @@ extension NSViewController {
         windowController.show(from: view.window)
     }
     
+    
     func replacePlayerWindowIfNeeded(video: VideoDetail?, episodes: [Episode], episodeIndex: Int = 0, title: String? = nil) {
         guard !episodes.isEmpty else {
             return
         }
-        
         NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
         let window = NSApplication.shared.windows.first {
             $0.contentViewController?.isKind(of:PlayerViewController.self) == true
@@ -79,7 +71,7 @@ extension NSViewController {
         contentController?.titleText = title ?? video?.info.name
         contentController?.videDetail = nil
         if let info = video?.info {
-            contentController?.videDetail = VideoDetail(info: info, recommends: nil, seasons: nil)
+            contentController?.videDetail = VideoDetail(info: info, recommends: video?.recommends , seasons: nil)
         }
         
         if let window = window {
@@ -94,10 +86,13 @@ extension NSViewController {
         windowController.show(from:self.view.window)
     }
     
-    func showVideo(id: String, source: VideoSource = .other,  indicatorView: NSProgressIndicator? = nil) {
-        indicatorView?.isHidden = false
-        indicatorView?.startAnimation(nil)
-        switch source {
+    func showVideo(video: Video, indicatorView: NSProgressIndicator? = nil) {
+        indicatorView?.show()
+        
+        let id = video.id
+        let source = video.sourceType
+
+        switch source{
         case .other:
             attempt(maximumRetryCount: 3) {
                 when(fulfilled: APIClient.fetchVideo(id: id),
@@ -118,7 +113,7 @@ extension NSViewController {
                         self.fetchPumpkinStreamURL(video: detail)
                         return
                     }
-                    self.replacePlayerWindowIfNeeded(video: detail, episodes: episodes)
+                    self.preparePlayerWindow(video: detail, episodes: episodes)
                 }.catch{ error in
                     print(error)
                     self.showError(error)
@@ -132,8 +127,8 @@ extension NSViewController {
                     guard let episodes = detail.seasons?.first?.episodes else {
                         return
                     }
-                    let video = VideoDetail(info: detail.info, recommends: nil, seasons: nil)
-                    self.replacePlayerWindowIfNeeded(video: video, episodes: episodes)
+                    let video = VideoDetail(info: detail.info, recommends: detail.recommends, seasons: nil)
+                    self.preparePlayerWindow(video: video, episodes: episodes)
                 }.catch{ error in
                     print(error)
                     self.showError(error)
@@ -147,7 +142,7 @@ extension NSViewController {
         attempt(maximumRetryCount: 3) {
             APIClient.fetchPumpkinEpisodes(id: video.info.id)
             }.done { episodes in
-                self.replacePlayerWindowIfNeeded(video: video, episodes: episodes)
+                self.preparePlayerWindow(video: video, episodes: episodes)
             }.catch{ error in
                 print(error)
                 self.showError(error)

@@ -30,6 +30,8 @@ class SearchViewController: NSViewController {
     @IBOutlet weak var indicatorView: NSProgressIndicator!
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
         collectionView.backgroundColors = [.backgroundColor]
         startSearch(keywords: keywords!)
     }
@@ -96,11 +98,7 @@ extension SearchViewController: NSCollectionViewDelegate, NSCollectionViewDataSo
         }
         
         let video = results[indexPath.item]
-        var source: VideoSource = isHD ? .pumpkin : .other
-        if video.cover.contains("4kdy") {
-            source = .blueray
-        }
-        showVideo(id: video.id, source: source, indicatorView: indicatorView)
+        showVideo(video: video, indicatorView: indicatorView)
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {

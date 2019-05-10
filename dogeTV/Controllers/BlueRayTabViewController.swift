@@ -15,6 +15,9 @@ class BlueRayTabViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        
         tabView.tabPosition = .none
         tabView.tabViewBorderType = .none
 

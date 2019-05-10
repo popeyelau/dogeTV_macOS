@@ -25,37 +25,11 @@ class PumpkinViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
         collectionView.backgroundColors = [.backgroundColor]
         refresh()
     }
-    
-    func showPumpkinVideo(id: String, indicatorView: NSProgressIndicator? = nil) {
-        indicatorView?.show()
-        attempt(maximumRetryCount: 3) {
-            APIClient.fetchPumpkinEpisodes(id: id)
-            }.done { episodes in
-                self.showPlayer(with: episodes)
-            }.catch{ error in
-                print(error)
-                self.showError(error)
-            }.finally {
-                indicatorView?.dismiss()
-        }
-    }
-    
-    func showPlayer(with episodes: [Episode]) {
-        guard !episodes.isEmpty else {
-            return
-        }
-        let window = AppWindowController(windowNibName: "AppWindowController")
-        let content = PlayerViewController()
-        content.episodes = episodes
-        content.episodeIndex = 0
-        window.content = content
-        window.show(from:self.view.window)
-    }
-    
-    
 }
 
 extension PumpkinViewController: NSCollectionViewDelegate,  NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
@@ -99,7 +73,7 @@ extension PumpkinViewController: NSCollectionViewDelegate,  NSCollectionViewData
         let video = section.items[indexPath.item]
         
         if type == .normal {
-            showVideo(id: video.id, source: .pumpkin, indicatorView: indicatorView)
+            showVideo(video: video, indicatorView: indicatorView)
             return
         }
         NSApplication.shared.rootViewController?.showSeries(id: video.id, title: video.name)
@@ -109,6 +83,7 @@ extension PumpkinViewController: NSCollectionViewDelegate,  NSCollectionViewData
         let type = hots[indexPath.section].type ?? .normal
         return type.itemSize
     }
+    
 }
 
 extension PumpkinViewController {

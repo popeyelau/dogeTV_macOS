@@ -17,6 +17,8 @@ class TopicsViewController: NSViewController, Initializable {
     override func viewDidLoad() {
         super.viewDidLoad()
         refresh()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
         collectionView.backgroundColors = [.backgroundColor]
         // Do view setup here.
     }
@@ -50,7 +52,7 @@ extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataS
         guard let indexPath = indexPaths.first else { return }
         collectionView.deselectItems(at: indexPaths)
         let video = topics[indexPath.section].items[indexPath.item]
-        showVideo(id: video.id, indicatorView: indicatorView)
+        showVideo(video: video, indicatorView: indicatorView)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {

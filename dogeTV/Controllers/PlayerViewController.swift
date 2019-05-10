@@ -260,26 +260,8 @@ class PlayerViewController: NSViewController {
         collectionView.scrollToVisible(.zero)
     }
     
-    func replace(id: String) {
-        avPlayer.player?.replaceCurrentItem(with: nil)
-        indicatorView?.isHidden = false
-        indicatorView?.startAnimation(nil)
-        attempt(maximumRetryCount: 3) {
-            when(fulfilled: APIClient.fetchVideo(id: id),
-                 APIClient.fetchEpisodes(id: id))
-            }.done { detail, episodes in
-                self.videDetail = detail
-                self.episodes = episodes
-            }.catch{ error in
-                print(error)
-                self.showError(error)
-            }.finally {
-                self.sourceIndex = 0
-                self.episodeIndex = 0
-                self.indicatorView?.dismiss()
-                self.updateDataSource()
-                self.playing()
-        }
+    func replace(video: Video) {
+        showVideo(video: video)
     }
 
     deinit {
@@ -384,7 +366,7 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
         case .recommends(let videos):
             let video = videos[indexPath.item]
             avPlayer.player?.pause()
-            replace(id: video.id)
+            replace(video: video)
         case .seasons(let seasons):
             let index = indexPath.item
             let sid = seasons[index].id

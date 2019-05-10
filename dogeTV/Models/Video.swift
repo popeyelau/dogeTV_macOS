@@ -27,6 +27,17 @@ struct Video: Decodable, Equatable {
     let score: String
     let state: String
     let source: Int
+    
+    
+    var sourceType: VideoSource {
+        if cover.contains("vcinema") {
+            return .pumpkin
+        } else if cover.contains("4kdy") {
+            return .blueray
+        } else {
+            return .other
+        }
+    }
 
 }
 

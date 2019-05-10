@@ -27,7 +27,10 @@ class TopRatedViewController: NSViewController {
     @IBOutlet weak var indicatorView: NSProgressIndicator!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        
         tableView.target = self
         tableView.doubleAction = #selector(tableViewDoubleAction(_:))
 
@@ -41,7 +44,18 @@ class TopRatedViewController: NSViewController {
     @objc func tableViewDoubleAction(_ sender: NSTableView) {
         guard tableView.clickedRow != -1 else { return }
         let selected = list[tableView.clickedRow]
-        showVideo(id: selected.id, indicatorView: indicatorView)
+        indicatorView.show()
+        attempt(maximumRetryCount: 3) {
+            when(fulfilled: APIClient.fetchVideo(id: selected.id),
+                 APIClient.fetchEpisodes(id: selected.id))
+            }.done { detail, episodes in
+                self.preparePlayerWindow(video: detail, episodes: episodes)
+            }.catch{ error in
+                print(error)
+                self.showError(error)
+            }.finally {
+                self.indicatorView?.dismiss()
+        }
     }
     
     @IBAction func segmentIndexChanged(_ sender: CustomSegmentedControl) {
