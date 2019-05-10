@@ -49,13 +49,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="KI4-0s-7bN">
-                    <rect key="frame" x="444" y="373" width="16" height="16"/>
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="KI4-0s-7bN">
+                    <rect key="frame" x="224" y="183" width="32" height="32"/>
                 </progressIndicator>
             </subviews>
             <constraints>
-                <constraint firstItem="KI4-0s-7bN" firstAttribute="top" secondItem="EbF-t4-Lhg" secondAttribute="top" constant="8" id="BeE-CL-eNU"/>
-                <constraint firstAttribute="trailing" secondItem="KI4-0s-7bN" secondAttribute="trailing" constant="20" id="ODg-3p-hbp"/>
+                <constraint firstItem="KI4-0s-7bN" firstAttribute="centerY" secondItem="EbF-t4-Lhg" secondAttribute="centerY" id="3Zn-AC-V0F"/>
+                <constraint firstItem="KI4-0s-7bN" firstAttribute="centerX" secondItem="EbF-t4-Lhg" secondAttribute="centerX" id="OYJ-Da-qZD"/>
                 <constraint firstAttribute="bottom" secondItem="cir-P7-30y" secondAttribute="bottom" id="T1E-4h-cYA"/>
                 <constraint firstAttribute="trailing" secondItem="cir-P7-30y" secondAttribute="trailing" id="TO2-hu-1hW"/>
                 <constraint firstItem="cir-P7-30y" firstAttribute="leading" secondItem="EbF-t4-Lhg" secondAttribute="leading" id="XO0-OV-Nq7"/>

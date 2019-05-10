@@ -433,7 +433,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TR0-Y5-V84" customClass="GradientView" customModule="dogeTV" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="160" height="720"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-qa-Ovy">
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-qa-Ovy">
                                         <rect key="frame" x="0.0" y="550" width="160" height="0.0"/>
                                     </stackView>
                                     <imageView toolTip="拖拽 自定义图标" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xNy-4W-mBy" customClass="AspectFitImageView" customModule="dogeTV" customModuleProvider="target">
