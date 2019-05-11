@@ -8,7 +8,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ChannelGridViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="lSJ-In-P7d" id="QIl-ze-J7D"/>
-                <outlet property="indicatorView" destination="Ueg-wB-xo3" id="iLz-U5-8dt"/>
                 <outlet property="searchTextField" destination="dwN-9L-sOA" id="VFW-em-p9L"/>
                 <outlet property="toggleBtn" destination="YfI-XO-iYK" id="5qa-U9-N1k"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -60,9 +59,6 @@
                         <action selector="toggleAction:" target="-2" id="lXF-3L-uau"/>
                     </connections>
                 </button>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Ueg-wB-xo3">
-                    <rect key="frame" x="224" y="120" width="32" height="32"/>
-                </progressIndicator>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dwN-9L-sOA">
                     <rect key="frame" x="42" y="252" width="204" height="17"/>
                     <constraints>
@@ -90,8 +86,6 @@
             </subviews>
             <constraints>
                 <constraint firstItem="5kH-yB-WmI" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="7y1-nf-YgP"/>
-                <constraint firstItem="Ueg-wB-xo3" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="K3h-fh-TKb"/>
-                <constraint firstItem="Ueg-wB-xo3" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="MIW-ag-yKC"/>
                 <constraint firstItem="dwN-9L-sOA" firstAttribute="centerY" secondItem="YfI-XO-iYK" secondAttribute="centerY" id="Nlg-PS-Gho"/>
                 <constraint firstAttribute="bottom" secondItem="5kH-yB-WmI" secondAttribute="bottom" id="UaJ-Ey-m05"/>
                 <constraint firstItem="Ixu-Yd-s3i" firstAttribute="centerY" secondItem="dwN-9L-sOA" secondAttribute="centerY" id="UaN-2F-067"/>

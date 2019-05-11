@@ -12,7 +12,6 @@ import PromiseKit
 class TopicsViewController: NSViewController, Initializable {
 
     var topics: [TopicDetail] = []
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var collectionView: NSCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +51,7 @@ extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataS
         guard let indexPath = indexPaths.first else { return }
         collectionView.deselectItems(at: indexPaths)
         let video = topics[indexPath.section].items[indexPath.item]
-        showVideo(video: video, indicatorView: indicatorView)
+        showVideo(video: video)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
@@ -63,23 +62,19 @@ extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataS
 
 extension TopicsViewController {
     func refresh() {
-        _ = APIClient.fetchTopics().done { (topics) in
-            topics.forEach {
-                self.refreshTopicVideos(id: $0.id)
-            }
-            }.catch({ (error) in
-                print(error)
-                self.showError(error)
-            }).finally {
-        }
-    }
-    
-    func refreshTopicVideos(id: String) {
-        APIClient.fetchTopic(id: id).done { (topic) in
-            self.topics.append(topic)
+        showSpinning()
+        _ = APIClient.fetchTopics()
+            .thenMap(refreshTopicVideos)
+            .done { (topics) in
+                self.topics.append(contentsOf: topics)
             }.catch{ (error) in
             }.finally {
                 self.collectionView.reloadData()
+                self.removeSpinning()
         }
+    }
+    
+    func refreshTopicVideos(topic: Topic) -> Promise<TopicDetail> {
+        return APIClient.fetchTopic(id: topic.id)
     }
 }

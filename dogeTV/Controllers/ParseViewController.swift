@@ -8,6 +8,7 @@
 
 import Cocoa
 import WebKit
+import SafariServices
 
 class ParseViewController: NSViewController {
     
@@ -16,6 +17,7 @@ class ParseViewController: NSViewController {
         case iqiyi
         case mgtv
         case tencent
+        case letv
         case sohu
         case bilibili
 
@@ -25,6 +27,7 @@ class ParseViewController: NSViewController {
             case .iqiyi: return "爱奇艺"
             case .mgtv: return "芒果TV"
             case .tencent: return "腾讯"
+            case .letv: return "乐视"
             case .sohu: return "搜狐"
             case .bilibili: return "BiliBili"
             }
@@ -32,35 +35,53 @@ class ParseViewController: NSViewController {
         
         var url: URL {
             switch self {
-            case .youku: return URL(string: "https://home.vip.youku.com/")!
-            case .iqiyi: return URL(string: "https://vip.iqiyi.com/")!
-            case .mgtv: return URL(string: "https://www.mgtv.com/vip/")!
-            case .tencent: return URL(string: "https://film.qq.com/")!
-            case .sohu: return URL(string: "https://film.sohu.com/")!
+            case .youku: return URL(string: "https://vip.youku.com/vips/TV.html?tag=10005")!
+            case .iqiyi: return URL(string: "https://vip.iqiyi.com/hot.html")!
+            case .mgtv: return URL(string: "https://www.mgtv.com/vip/pianku/")!
+            case .tencent: return URL(string: "https://film.qq.com/film_all_list/allfilm.html?type=movie")!
+            case .sohu: return URL(string: "https://film.sohu.com/list_0_0_0_0_0_1_60.html")!
+            case .letv: return URL(string: "http://yuanxian.le.com/paySearchPage/index.shtml")!
             case .bilibili: return URL(string: "https://www.bilibili.com/movie/")!
             }
         }
+
+        var elementId: String {
+            switch self {
+            case .youku: return "ykPlayer"
+            case .iqiyi: return "flashbox"
+            case .mgtv: return "mgtv-player-wrap"
+            case .tencent: return "mod_player"
+            case .sohu: return "player"
+            case .bilibili: return ""
+            case .letv: return ""
+            }
+        }
         
-        static let HandleURLs: [String] = ["https://v.youku.com/v_", "https://www.iqiyi.com/v_", "https://www.mgtv.com/b/", "https://v.qq.com/x/cover/", "https://film.sohu.com/album/", "https://tv.sohu.com/v/",  "https://www.bilibili.com/video/av", "https://www.bilibili.com/bangumi/play/"]
+        static let HandleURLs: [String] = ["https://v.youku.com/v_", "https://www.iqiyi.com/v_", "https://www.mgtv.com/b/", "https://v.qq.com/x/cover/", "https://film.sohu.com/album/", "https://tv.sohu.com/v/",  "https://www.bilibili.com/video/av", "https://www.bilibili.com/bangumi/play/", "http://www.le.com/ptv/vplay/"]
     }
     
     
-
+    @IBOutlet weak var channelBtn: NSButton!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var segmentCtrl: CustomSegmentedControl!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var backBtn: NSButton!
     @IBOutlet weak var forwardBtn: NSButton!
     @IBOutlet weak var progressBar: NSProgressIndicator!
     var selectedSite: Site = .youku
     private var webViewStateContext = 0
 
+    var isHD: Bool {
+        return channelBtn.state == .on
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
-        
+
+        channelBtn.setAttributedString("高清线路", color: .secondaryLabelColor)
+
         Site.allCases.enumerated().forEach { index, element in
             segmentCtrl.addSegment(withTitle: element.title)
         }
@@ -71,7 +92,11 @@ class ParseViewController: NSViewController {
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.canGoForward), options: .new, context: &webViewStateContext)
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: &webViewStateContext)
     }
-    
+
+    @IBAction func channelBtnAction(_ sender: NSButton) {
+
+    }
+
     @IBAction func segmentIndexChanged(_ sender: CustomSegmentedControl) {
         guard let index = sender.selectedIndex, let site = Site(rawValue: index) else { return }
         selectedSite = site
@@ -110,8 +135,6 @@ class ParseViewController: NSViewController {
         let progress =  webView.estimatedProgress
         progressBar.doubleValue = progress
         progressBar.isHidden = progress >= 1
-
-
     }
 
     deinit {
@@ -126,6 +149,36 @@ extension ParseViewController: Initializable {
     func refresh() {
         sendRequest(url: selectedSite.url)
     }
+
+
+
+    func parseHandle(url: URL) {
+        if selectedSite == .letv {
+            parseHD(url: url)
+            return
+        }
+
+        if selectedSite == .bilibili || selectedSite == .sohu {
+            parse(url: url)
+            return
+        }
+
+        if isHD {
+            parseHD(url: url)
+            return
+        }
+        parse(url: url)
+    }
+
+    func parseHD(url: URL) {
+        let windowController = AppWindowController(windowNibName: "AppWindowController")
+        let controller = WebPlayerViewController()
+        controller.url = url
+        controller.site = selectedSite
+        windowController.content = controller
+        windowController.show(from:self.view.window)
+        return
+    }
 }
 
 extension ParseViewController: WKNavigationDelegate {
@@ -135,13 +188,13 @@ extension ParseViewController: WKNavigationDelegate {
             decisionHandler(.cancel)
             return
         }
-        
+
         if Site.HandleURLs.contains(where: { url.absoluteString.hasPrefix($0) }) {
-            parse(url: url)
+            parseHandle(url: url)
             decisionHandler(.cancel)
             return
         }
-        
+
         decisionHandler(.allow)
     }
     
@@ -155,11 +208,34 @@ extension ParseViewController: WKUIDelegate {
         webView.load(navigationAction.request)
         return nil
     }
+
+    /*
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        guard let url = webView.url else { return }
+        if Site.HandleURLs.contains(where: { url.absoluteString.hasPrefix($0) }) {
+            let elementId = selectedSite.elementId
+            let removeElementIdScript = """
+            var element = document.getElementById('\(elementId)');
+            element.parentElement.removeChild(element);
+
+            var vidoes = document.getElementsByTagName('video')
+            while (vidoes[0]) {
+                videos[0].muted = true
+                vidoes[0].parentNode.removeChild(vidoes[0])
+            }
+
+            """
+            webView.evaluateJavaScript(removeElementIdScript) { (response, error) in
+                debugPrint("Am here")
+            }
+            return
+        }
+    }*/
 }
 
 extension ParseViewController {
     func parse(url: URL) {
-        indicatorView.show()
+        showSpinning()
         _ = APIClient.cloudParse(url: url.absoluteString)
             .done { (result) in
                self.showPlayer(with: result)
@@ -167,7 +243,7 @@ extension ParseViewController {
                 self.toast(message: "oops~ 解析失败")
                 print(error)
             }).finally {
-                self.indicatorView.dismiss()
+                self.removeSpinning()
         }
     }
     

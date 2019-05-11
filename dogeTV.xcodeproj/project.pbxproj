@@ -75,6 +75,8 @@
 		79C9CEA922850ED8003582AD /* UnderLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C9CEA822850ED8003582AD /* UnderLineTextField.swift */; };
 		79C9CEAB2285290F003582AD /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C9CEAA2285290F003582AD /* Toast.swift */; };
 		79C9CEAD2285486F003582AD /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C9CEAC2285486F003582AD /* QRCode.swift */; };
+		79D624AF22868AA9007A9F6C /* WebPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D624AD22868AA9007A9F6C /* WebPlayerViewController.swift */; };
+		79D624B022868AA9007A9F6C /* WebPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D624AE22868AA9007A9F6C /* WebPlayerViewController.xib */; };
 		79D927A422657854009C446E /* QueryOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927A222657854009C446E /* QueryOptionView.swift */; };
 		79D927A522657854009C446E /* QueryOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927A322657854009C446E /* QueryOptionView.xib */; };
 		79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927A62265931A009C446E /* NSButtonExtension.swift */; };
@@ -191,6 +193,8 @@
 		79C9CEA822850ED8003582AD /* UnderLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderLineTextField.swift; sourceTree = "<group>"; };
 		79C9CEAA2285290F003582AD /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		79C9CEAC2285486F003582AD /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
+		79D624AD22868AA9007A9F6C /* WebPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPlayerViewController.swift; sourceTree = "<group>"; };
+		79D624AE22868AA9007A9F6C /* WebPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebPlayerViewController.xib; sourceTree = "<group>"; };
 		79D927A222657854009C446E /* QueryOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionView.swift; sourceTree = "<group>"; };
 		79D927A322657854009C446E /* QueryOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryOptionView.xib; sourceTree = "<group>"; };
 		79D927A62265931A009C446E /* NSButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSButtonExtension.swift; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 				7974C77422830D8A00563263 /* BlueRayTabViewController.xib */,
 				7974C77722830EE000563263 /* BlueRayGridViewController.swift */,
 				7974C77822830EE000563263 /* BlueRayGridViewController.xib */,
+				79D624AD22868AA9007A9F6C /* WebPlayerViewController.swift */,
+				79D624AE22868AA9007A9F6C /* WebPlayerViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -549,6 +555,7 @@
 				79FD5BFE22647AC4009EDB9C /* Main.storyboard in Resources */,
 				799B96072264AD8A002C8FFA /* LatestGridViewController.xib in Resources */,
 				79E091122268474900219C87 /* SearchBarView.xib in Resources */,
+				79D624B022868AA9007A9F6C /* WebPlayerViewController.xib in Resources */,
 				7974C77A22830EE000563263 /* BlueRayGridViewController.xib in Resources */,
 				7974C77622830D8A00563263 /* BlueRayTabViewController.xib in Resources */,
 				79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */,
@@ -608,6 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79D624AF22868AA9007A9F6C /* WebPlayerViewController.swift in Sources */,
 				799B96232264AF7F002C8FFA /* Episode.swift in Sources */,
 				799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */,
 				799B96262264AF7F002C8FFA /* Ranking.swift in Sources */,
@@ -811,7 +819,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = dogeTV/dogeTV.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer: ZhiQuan Liu (DSY75NVPP5)";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 983GE8X6R9;
@@ -838,7 +846,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = dogeTV/dogeTV.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer: ZhiQuan Liu (DSY75NVPP5)";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 983GE8X6R9;

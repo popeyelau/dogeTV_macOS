@@ -54,7 +54,6 @@ class PlayerViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var avPlayer: AVPlayerView!
     @IBOutlet weak var toggleBtn: NSButton!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var titleView: NSView!
     @IBOutlet weak var downloadBtn: NSButton!
     @IBOutlet weak var actionStackView: NSStackView!
@@ -150,7 +149,6 @@ class PlayerViewController: NSViewController {
     }
 
     func getStreamURL(episode: Episode) {
-        indicatorView.show()
         if let id = episode.id,  episode.url.isEmpty {
             APIClient.fetchPumpkinEpisodes(id: id)
                 .done { episodes in
@@ -161,10 +159,10 @@ class PlayerViewController: NSViewController {
                     print(error)
                     self.showError(error)
                 }.finally {
-                    self.indicatorView?.dismiss()
             }
             return
         }
+
         APIClient.resolveUrl(url: episode.url)
             .done { (url) in
                 self.prepareToPlay(url: url)
@@ -172,7 +170,6 @@ class PlayerViewController: NSViewController {
                 print(error)
                 self.showError(error)
             }).finally {
-                self.indicatorView.dismiss()
         }
     }
 
@@ -191,7 +188,6 @@ class PlayerViewController: NSViewController {
     
     func updateSource(index: Int) {
         guard let id = videDetail?.info.id else { return }
-        indicatorView.show()
         _ = APIClient.fetchEpisodes(id: id, source: index).done { (episodes) in
             self.episodes = episodes
             }.catch({ (error) in
@@ -200,13 +196,11 @@ class PlayerViewController: NSViewController {
             }).finally {
                 self.updateDataSource()
                 self.updatePlayingEpisodeIfNeeded()
-                self.indicatorView.dismiss()
         }
     }
 
     func updateSeason(index: Int, sid: String) {
         guard let id = videDetail?.info.id else { return }
-        indicatorView.show()
         _ = APIClient.fetchPumpkinSeason(id: id, sid: sid).done { (detail) in
             guard let seasons = detail.seasons, let episodes = seasons[safe: index]?.episodes else {
                 return
@@ -221,7 +215,6 @@ class PlayerViewController: NSViewController {
             }).finally {
                 self.updateDataSource()
                 self.updatePlayingEpisodeIfNeeded()
-                self.indicatorView.dismiss()
         }
     }
     

@@ -12,7 +12,6 @@ import PromiseKit
 class LatestGridViewController: NSViewController {
     
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     var hots: [Hot] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +49,7 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
         let video = hots[indexPath.section].items[indexPath.item]
-        showVideo(video: video, indicatorView: indicatorView)
+        showVideo(video: video)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
@@ -61,7 +60,7 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
 
 extension LatestGridViewController {
     func refresh() {
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchLatest()
             }.done { hots in
@@ -71,7 +70,7 @@ extension LatestGridViewController {
                 self.showError(error)
             }.finally {
                 self.collectionView.reloadData()
-                self.indicatorView.dismiss()
+                self.removeSpinning()
         }
     }
 }

@@ -80,11 +80,11 @@ extension NSViewController {
         windowController.show(from:self.view.window)
     }
     
-    func showVideo(video: Video, indicatorView: NSProgressIndicator? = nil) {
-        indicatorView?.show()
-        
+    func showVideo(video: Video) {
+
         let id = video.id
         let source = video.sourceType
+        showSpinning()
 
         switch source{
         case .other:
@@ -97,7 +97,7 @@ extension NSViewController {
                     print(error)
                     self.showError(error)
                 }.finally {
-                    indicatorView?.dismiss()
+                    self.removeSpinning()
             }
         case .pumpkin:
             attempt(maximumRetryCount: 3) {
@@ -112,7 +112,7 @@ extension NSViewController {
                     print(error)
                     self.showError(error)
                 }.finally {
-                    indicatorView?.dismiss()
+                    self.removeSpinning()
             }
         case .blueray:
             attempt(maximumRetryCount: 3) {
@@ -127,7 +127,7 @@ extension NSViewController {
                     print(error)
                     self.showError(error)
                 }.finally {
-                    indicatorView?.dismiss()
+                    self.removeSpinning()
             }
         }
     }

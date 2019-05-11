@@ -8,7 +8,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SerieGridViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="wT6-QZ-5dz" id="XDt-F2-PcG"/>
-                <outlet property="indicatorView" destination="rgS-m1-cB0" id="GmC-tH-VI3"/>
                 <outlet property="scrollView" destination="PNx-JF-enq" id="Rff-yO-mEM"/>
                 <outlet property="view" destination="AT8-5k-d8R" id="MtQ-Ya-AEG"/>
             </connections>
@@ -50,15 +49,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="rgS-m1-cB0">
-                    <rect key="frame" x="444" y="373" width="16" height="16"/>
-                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="PNx-JF-enq" firstAttribute="top" secondItem="AT8-5k-d8R" secondAttribute="top" id="3UC-bS-m1F"/>
                 <constraint firstAttribute="trailing" secondItem="PNx-JF-enq" secondAttribute="trailing" id="5LZ-MA-8hJ"/>
-                <constraint firstItem="rgS-m1-cB0" firstAttribute="top" secondItem="AT8-5k-d8R" secondAttribute="top" constant="8" id="fhu-Zg-GbA"/>
-                <constraint firstAttribute="trailing" secondItem="rgS-m1-cB0" secondAttribute="trailing" constant="20" id="kf3-Wl-Kyk"/>
                 <constraint firstAttribute="bottom" secondItem="PNx-JF-enq" secondAttribute="bottom" id="nSo-QU-mbC"/>
                 <constraint firstItem="PNx-JF-enq" firstAttribute="leading" secondItem="AT8-5k-d8R" secondAttribute="leading" id="xds-Yu-bwj"/>
             </constraints>

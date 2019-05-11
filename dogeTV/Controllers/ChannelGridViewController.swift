@@ -13,9 +13,9 @@ let userAgent = ["User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) 
 
 class ChannelGridViewController: NSViewController{
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var searchTextField: NSTextField!
     @IBOutlet weak var toggleBtn: NSButton!
+
     var dataSource: [IPTVChannel] = []
     var channels: [IPTVChannel] = [] {
         didSet {
@@ -23,7 +23,6 @@ class ChannelGridViewController: NSViewController{
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
@@ -66,7 +65,6 @@ class ChannelGridViewController: NSViewController{
     @objc func onCategoryChanged(_ sender: NSMenuItem) {
         view.window?.makeFirstResponder(nil)
         guard let tid = sender.identifier?.rawValue else { return }
-        searchTextField.stringValue = ""
         refreshChannels(tid: tid)
         toggleBtn.title = sender.title
     }
@@ -115,7 +113,7 @@ extension ChannelGridViewController: NSCollectionViewDelegate, NSCollectionViewD
 
 extension ChannelGridViewController {
     func refreshChannels(tid: String) {
-        indicatorView.show()
+        showSpinning()
         _ = APIClient.fetchIPTV(tid: tid).done { (channels) in
             self.channels = channels
             }.catch({ (error) in
@@ -123,7 +121,7 @@ extension ChannelGridViewController {
                 self.showError(error)
             }).finally {
                 self.collectionView.reloadData()
-                self.indicatorView.dismiss()
+                self.removeSpinning()
         }
     }
     
@@ -134,25 +132,27 @@ extension ChannelGridViewController {
             let menuItem = NSMenuItem(title: $0.category, action: #selector(onCategoryChanged(_:)), keyEquivalent: "")
             menuItem.identifier = .init($0.id)
             menuItem.target = self
-            
             return menuItem
         }
         view.menu = menu
         let category = categories[0]
-        refreshChannels(tid: category.id)
         toggleBtn.title = category.category
     }
     
     func refresh() {
-        indicatorView.show()
-        APIClient.fetchIPTVCategories().done { (categories) in
-            self.configContentMenus(categories: categories)
+        showSpinning()
+        APIClient.fetchIPTVCategories()
+            .get(configContentMenus)
+            .compactMap { $0.first?.id }
+            .then(APIClient.fetchIPTV)
+            .done { (channels) in
+                self.channels = channels
             }.catch({ (error) in
                 print(error)
                 self.showError(error)
             }).finally {
                 self.collectionView.reloadData()
-                self.indicatorView.dismiss()
+                self.removeSpinning()
         }
     }
     
@@ -175,7 +175,7 @@ extension ChannelGridViewController {
             return
         }
         
-        indicatorView.show()
+        showSpinning()
         getHTMLBody(from: channelURL)
             .map { ($0, "<option+.*?</option>") }
             .then(extractURL)
@@ -188,7 +188,7 @@ extension ChannelGridViewController {
             }).catch { (err) in
                 print(err)
             }.finally {
-                self.indicatorView.dismiss()
+                self.removeSpinning()
         }
     }
     

@@ -12,16 +12,11 @@ import PromiseKit
 
 class BlueRayGridViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var scrollView: NSScrollView!
     var category: BlueRayTabViewController.TabItems = .film
     var pageIndex: Int = 1
     let pageSize: Int = 24
-    var videos: [Video] = []{
-        didSet {
-            isNoMoreData = videos.count < pageIndex * pageSize
-        }
-    }
+    var videos: [Video] = []
     var isLoading: Bool = false
     var isNoMoreData: Bool = false
 
@@ -108,7 +103,7 @@ extension BlueRayGridViewController {
     func refresh() {
         pageIndex = 1
         isLoading = true
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchBlueRays(category: self.category, page: self.pageIndex)}
             .done { (videos) in
@@ -117,7 +112,7 @@ extension BlueRayGridViewController {
                 print(error)
                 self.showError(error)
             }).finally {
-                self.indicatorView.dismiss()
+                self.removeSpinning()
                 self.isLoading = false
                 self.pageIndex = 1
                 self.collectionView.reloadData()
@@ -148,7 +143,7 @@ extension BlueRayGridViewController {
     }
 
     func fetchVideo(id: String) {
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchBlueVideo(id: id)}
             .done { (detail) in
@@ -157,7 +152,7 @@ extension BlueRayGridViewController {
                 print(error)
                 self.showError(error)
             }).finally {
-                self.indicatorView.dismiss()
+                self.removeSpinning()
         }
     }
 }

@@ -11,7 +11,6 @@ import PromiseKit
 
 class SerieGridViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var scrollView: NSScrollView!
     var id: String?
     var pageIndex: Int = 0
@@ -96,7 +95,7 @@ extension SerieGridViewController: NSCollectionViewDelegate, NSCollectionViewDat
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
         let video = videos[indexPath.item]
-        showVideo(video: video, indicatorView: indicatorView)
+        showVideo(video: video)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
@@ -113,7 +112,7 @@ extension SerieGridViewController {
         }
         pageIndex = 0
         isLoading = true
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchPumpkinserieVideos(id: id, page: self.pageIndex)}
             .done { (videos) in
@@ -122,7 +121,7 @@ extension SerieGridViewController {
                 print(error)
                 self.showError(error)
             }).finally {
-                self.indicatorView.dismiss()
+                self.removeSpinning()
                 self.isLoading = false
                 self.pageIndex = 0
                 self.collectionView.reloadData()

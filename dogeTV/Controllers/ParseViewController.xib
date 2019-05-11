@@ -9,8 +9,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ParseViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="backBtn" destination="QkV-3f-DoG" id="P9W-Ss-4ly"/>
+                <outlet property="channelBtn" destination="87Q-PE-6ga" id="7WQ-70-XZB"/>
                 <outlet property="forwardBtn" destination="5FP-FR-q63" id="qmV-ho-knw"/>
-                <outlet property="indicatorView" destination="Vat-Fe-fJe" id="iBG-xI-mpr"/>
                 <outlet property="progressBar" destination="z9G-Pj-zxm" id="D2i-6W-0pE"/>
                 <outlet property="segmentCtrl" destination="R8p-3u-dsU" id="EmP-Ln-TQO"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -79,9 +79,6 @@
                         <constraint firstAttribute="height" constant="1" id="J0L-qw-0jT"/>
                     </constraints>
                 </progressIndicator>
-                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Vat-Fe-fJe">
-                    <rect key="frame" x="444" y="241" width="16" height="16"/>
-                </progressIndicator>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="R8p-3u-dsU" customClass="CustomSegmentedControl" customModule="dogeTV" customModuleProvider="target">
                     <rect key="frame" x="88" y="234" width="200" height="30"/>
                     <constraints>
@@ -92,20 +89,30 @@
                         <action selector="segmentIndexChanged:" target="-2" id="RtO-Wo-Gsf"/>
                     </connections>
                 </customView>
+                <button toolTip="如无法解析，取消勾选重新尝试" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="87Q-PE-6ga">
+                    <rect key="frame" x="386" y="240" width="76" height="18"/>
+                    <buttonCell key="cell" type="check" title="高清线路" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Rww-M5-uhC">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="channelBtnAction:" target="-2" id="8y9-Fa-raZ"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="fFN-dw-B3s" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="1JN-1f-f2K"/>
+                <constraint firstAttribute="trailing" secondItem="87Q-PE-6ga" secondAttribute="trailing" constant="20" id="2FA-s1-eBV"/>
                 <constraint firstItem="lAj-Kk-5lA" firstAttribute="centerY" secondItem="R8p-3u-dsU" secondAttribute="centerY" id="2hE-Y3-VH3"/>
                 <constraint firstItem="z9G-Pj-zxm" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="-2" id="Djv-79-GDg"/>
                 <constraint firstItem="lAj-Kk-5lA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="JaS-Hg-tZV"/>
-                <constraint firstAttribute="trailing" secondItem="Vat-Fe-fJe" secondAttribute="trailing" constant="20" id="Qis-vV-hcJ"/>
                 <constraint firstItem="fFN-dw-B3s" firstAttribute="top" secondItem="R8p-3u-dsU" secondAttribute="bottom" constant="8" id="Tfz-Rv-B5k"/>
                 <constraint firstItem="R8p-3u-dsU" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="Vek-xA-tla"/>
                 <constraint firstItem="R8p-3u-dsU" firstAttribute="leading" secondItem="lAj-Kk-5lA" secondAttribute="trailing" constant="20" id="VvX-YC-maF"/>
                 <constraint firstAttribute="trailing" secondItem="fFN-dw-B3s" secondAttribute="trailing" id="btO-Pd-YyZ"/>
                 <constraint firstAttribute="bottom" secondItem="fFN-dw-B3s" secondAttribute="bottom" id="f5c-Ze-h41"/>
                 <constraint firstItem="z9G-Pj-zxm" firstAttribute="top" secondItem="fFN-dw-B3s" secondAttribute="top" id="fNQ-vW-0JH"/>
-                <constraint firstItem="Vat-Fe-fJe" firstAttribute="centerY" secondItem="R8p-3u-dsU" secondAttribute="centerY" id="yuS-Hk-lpl"/>
+                <constraint firstItem="87Q-PE-6ga" firstAttribute="centerY" secondItem="R8p-3u-dsU" secondAttribute="centerY" id="gqc-rn-ESt"/>
                 <constraint firstAttribute="trailing" secondItem="z9G-Pj-zxm" secondAttribute="trailing" constant="2" id="zc5-DE-rZc"/>
             </constraints>
         </customView>

@@ -23,6 +23,16 @@ extension NSViewController {
         let t = makeToast(message: message)
         handleToastForDisplay(toast: t)
     }
+
+    // This is a simple toast, containing only a message
+    public func showSpinning(message: String? = nil) {
+        let t = makeSpinningToast(message: message)
+        handleSpinningForDisplay(toast: t)
+    }
+
+    public func removeSpinning() {
+        currentToast?.removeFromSuperview()
+    }
 }
 
 
@@ -34,13 +44,16 @@ fileprivate extension NSViewController {
         // Deal with existing toast, if there is one
         if let t = currentToast { t.removeFromSuperview() }
         currentToast = toast
-        
         self.view.addSubview(toast)
-        
-        toast.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        toast.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        
+        toast.snp.makeConstraints { $0.center.equalToSuperview() }
         animateToastFade(toast)
+    }
+
+    func handleSpinningForDisplay(toast: NSView) {
+        if let t = currentToast { t.removeFromSuperview() }
+        currentToast = toast
+        self.view.addSubview(toast)
+        toast.snp.makeConstraints { $0.center.equalToSuperview() }
     }
     
     // Standard toast type, with message
@@ -57,18 +70,54 @@ fileprivate extension NSViewController {
         // Constrain the views
         m.translatesAutoresizingMaskIntoConstraints = false
         v.translatesAutoresizingMaskIntoConstraints = false
-        
-        let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "|-20-[m]-20-|", options: .alignAllTop, metrics: nil, views: ["m" : m])
-        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[m]-20-|", options: .alignAllTop, metrics: nil, views: ["m" : m])
-        let widthConstraints = NSLayoutConstraint.constraints(withVisualFormat: "[m(>=50,<=300)]", options: .alignAllTop, metrics: nil, views: ["m" : m])
-        let heightConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[m(>=17)]", options: .alignAllTop, metrics: nil, views: ["m" : m])
-        
-        NSLayoutConstraint.activate(hConstraints)
-        NSLayoutConstraint.activate(vConstraints)
-        NSLayoutConstraint.activate(widthConstraints)
-        NSLayoutConstraint.activate(heightConstraints)
-        
-        
+
+        m.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(20)
+            $0.width.greaterThanOrEqualTo(50)
+            $0.width.lessThanOrEqualTo(300)
+        }
+        return v
+    }
+
+    func makeSpinningToast(message: String? = nil) -> NSView {
+        let v = NSView()
+        // Styling
+        v.wantsLayer = true;
+        v.layer = styleToast()
+        v.layer?.opacity = 1
+        v.translatesAutoresizingMaskIntoConstraints = false
+
+        // Add message
+        let m = createSpinning()
+        m.translatesAutoresizingMaskIntoConstraints = false
+
+
+        if let msg = message, !msg.isEmpty {
+            let label = createTextLabel(message: msg)
+            let vStack = NSStackView()
+            vStack.orientation = .vertical
+            vStack.alignment = NSLayoutConstraint.Attribute.centerX
+            vStack.addArrangedSubview(m)
+            vStack.addArrangedSubview(label)
+            vStack.spacing = 8
+            v.addSubview(vStack)
+            label.snp.makeConstraints {
+                $0.width.lessThanOrEqualTo(300)
+                $0.width.greaterThanOrEqualTo(100)
+            }
+            vStack.snp.makeConstraints {
+                $0.edges.equalToSuperview().inset(20)
+            }
+
+        } else {
+            v.addSubview(m)
+            m.snp.makeConstraints {
+                $0.edges.equalToSuperview().inset(30)
+            }
+        }
+
+
+
         return v
     }
     
@@ -79,35 +128,43 @@ fileprivate extension NSViewController {
         v.wantsLayer = true;
         v.layer = styleToast()
         
-        // Add message
         let m = createTextLabel(message: message)
-        v.addSubview(m)
-        
-        // Add the title
         let t = createTextLabel(message: title, fontSize: 16)
-        v.addSubview(t)
-        
-        // Add an image
         image.size = NSSize(width: 50.0, height: 50.0)
+
         let i = NSImageView(image: image)
-        v.addSubview(i)
-        
+
         // Setting constraints
         m.translatesAutoresizingMaskIntoConstraints = false
         t.translatesAutoresizingMaskIntoConstraints = false
         i.translatesAutoresizingMaskIntoConstraints = false
         v.translatesAutoresizingMaskIntoConstraints = false
-        
-        let h1Constraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[i(50)]-5-[t(>=200,<=300)]-5-|", options: .alignAllTop, metrics: nil, views: ["t" : t, "i" : i])
-        let h2Constraints = NSLayoutConstraint.constraints(withVisualFormat: "H:[m(>=200,<=400)]", options: .alignAllTop, metrics: nil, views: ["m" : m])
-        let v1Constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-5-[t(17)]-1-[m(>=17)]-5-|", options: .alignAllLeft, metrics: nil, views: ["t" : t, "m" : m])
-        let v2Constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(>=5)-[i(50)]-(>=5)-|", options: .alignAllLeft, metrics: nil, views: ["i" : i])
-        
-        NSLayoutConstraint.activate(h1Constraints)
-        NSLayoutConstraint.activate(h2Constraints)
-        NSLayoutConstraint.activate(v1Constraints)
-        NSLayoutConstraint.activate(v2Constraints)
-        
+
+        let hStack = NSStackView()
+        hStack.orientation = .horizontal
+        hStack.alignment = NSLayoutConstraint.Attribute.centerY
+        hStack.distribution = .fill
+        hStack.addArrangedSubview(i)
+        i.snp.makeConstraints { $0.size.equalTo(36) }
+
+        let vStack = NSStackView()
+        vStack.orientation = .vertical
+        vStack.alignment = NSLayoutConstraint.Attribute.left
+        vStack.addArrangedSubview(t)
+        vStack.addArrangedSubview(m)
+        t.snp.makeConstraints {
+            $0.width.greaterThanOrEqualTo(100)
+            $0.width.lessThanOrEqualTo(300)
+        }
+        m.snp.makeConstraints {
+            $0.width.lessThanOrEqualTo(300)
+        }
+        hStack.addArrangedSubview(vStack)
+
+        v.addSubview(hStack)
+        hStack.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(20)
+        }
         return v
     }
     
@@ -119,6 +176,15 @@ fileprivate extension NSViewController {
         
         return stf
     }
+
+    func createSpinning() -> NSProgressIndicator {
+        let sp = NSProgressIndicator()
+        sp.style = .spinning
+        sp.startAnimation(nil)
+        return sp
+    }
+
+
     
     
     //////////////////////////////////////////////

@@ -8,7 +8,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="VideoGridViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="nTI-HK-AQK" id="v5A-Dj-jxG"/>
-                <outlet property="indicatorView" destination="wCy-Nr-iz4" id="IJI-7f-0TG"/>
                 <outlet property="queryPanel" destination="O3B-hc-3yh" id="h6h-9l-CX8"/>
                 <outlet property="queryStack" destination="Ukb-bH-Kap" id="lmp-jI-PAn"/>
                 <outlet property="scrollView" destination="HIk-PW-2de" id="7lq-5l-Fhg"/>
@@ -103,15 +102,10 @@
                         <constraint firstAttribute="bottom" secondItem="Ukb-bH-Kap" secondAttribute="bottom" id="nBu-eN-mpY"/>
                     </constraints>
                 </customView>
-                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="wCy-Nr-iz4">
-                    <rect key="frame" x="224" y="183" width="32" height="32"/>
-                </progressIndicator>
             </subviews>
             <constraints>
-                <constraint firstItem="wCy-Nr-iz4" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="1ne-bp-77o"/>
                 <constraint firstItem="HIk-PW-2de" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Fjb-5g-ouY"/>
                 <constraint firstItem="O3B-hc-3yh" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="SvH-hy-qv0"/>
-                <constraint firstItem="wCy-Nr-iz4" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Zi3-V5-ZLs"/>
                 <constraint firstAttribute="trailing" secondItem="O3B-hc-3yh" secondAttribute="trailing" id="coR-gF-vY9"/>
                 <constraint firstAttribute="trailing" secondItem="HIk-PW-2de" secondAttribute="trailing" id="hsg-c4-i49"/>
                 <constraint firstItem="HIk-PW-2de" firstAttribute="top" secondItem="O3B-hc-3yh" secondAttribute="bottom" id="m5n-Zg-hLs"/>

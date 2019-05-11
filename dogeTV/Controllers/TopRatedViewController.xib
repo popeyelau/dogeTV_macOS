@@ -7,7 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TopRatedViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
-                <outlet property="indicatorView" destination="lad-xK-rwz" id="smZ-gt-1Bm"/>
                 <outlet property="segmentCtrl" destination="4mT-GW-bEv" id="N3o-rA-b6f"/>
                 <outlet property="tableView" destination="lA3-yv-gp5" id="ZDT-Bp-MwC"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -252,9 +251,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lad-xK-rwz" userLabel="indicatorView">
-                    <rect key="frame" x="624" y="299" width="16" height="16"/>
-                </progressIndicator>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="4mT-GW-bEv" customClass="CustomSegmentedControl" customModule="dogeTV" customModuleProvider="target">
                     <rect key="frame" x="8" y="292" width="300" height="30"/>
                     <constraints>
@@ -267,11 +263,9 @@
                 </customView>
             </subviews>
             <constraints>
-                <constraint firstItem="lad-xK-rwz" firstAttribute="centerY" secondItem="4mT-GW-bEv" secondAttribute="centerY" id="1Lv-Br-oX4"/>
                 <constraint firstItem="4mT-GW-bEv" firstAttribute="leading" secondItem="0cG-fZ-Dxx" secondAttribute="leading" id="7XO-eO-6jA"/>
                 <constraint firstAttribute="bottom" secondItem="0cG-fZ-Dxx" secondAttribute="bottom" constant="16" id="EWg-H7-HQH"/>
                 <constraint firstAttribute="trailing" secondItem="0cG-fZ-Dxx" secondAttribute="trailing" constant="8" id="Huh-98-eYA"/>
-                <constraint firstAttribute="trailing" secondItem="lad-xK-rwz" secondAttribute="trailing" constant="20" id="Ruc-3J-eKJ"/>
                 <constraint firstItem="4mT-GW-bEv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="a2K-V6-GI0"/>
                 <constraint firstItem="0cG-fZ-Dxx" firstAttribute="top" secondItem="4mT-GW-bEv" secondAttribute="bottom" constant="8" id="ls8-Wi-K3d"/>
                 <constraint firstItem="0cG-fZ-Dxx" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="siv-Qa-KaL"/>

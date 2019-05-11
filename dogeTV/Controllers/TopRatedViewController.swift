@@ -24,7 +24,6 @@ class TopRatedViewController: NSViewController {
     var list: [Ranking] = []
     var category: Category = .film
     @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +43,7 @@ class TopRatedViewController: NSViewController {
     @objc func tableViewDoubleAction(_ sender: NSTableView) {
         guard tableView.clickedRow != -1 else { return }
         let selected = list[tableView.clickedRow]
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             when(fulfilled: APIClient.fetchVideo(id: selected.id),
                  APIClient.fetchEpisodes(id: selected.id))
@@ -54,7 +53,7 @@ class TopRatedViewController: NSViewController {
                 print(error)
                 self.showError(error)
             }.finally {
-                self.indicatorView?.dismiss()
+                self.removeSpinning()
         }
     }
     
@@ -100,7 +99,7 @@ extension TopRatedViewController: NSTableViewDataSource, NSTableViewDelegate {
 
 extension TopRatedViewController {
     func refresh() {
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchRankList(category: self.category)
             }.done { (list) in
@@ -110,7 +109,7 @@ extension TopRatedViewController {
                 self.showError(error)
             }).finally {
                 self.tableView.reloadData()
-                self.indicatorView.dismiss()
+                self.removeSpinning()
                 self.tableView.scrollToVisible(.zero)
         }
     }

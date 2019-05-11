@@ -13,7 +13,6 @@ class VideoGridViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var queryPanel: NSView!
     @IBOutlet weak var queryStack: NSStackView!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var scrollView: NSScrollView!
     
     private var scrollverObsrver: NSKeyValueObservation?
@@ -132,7 +131,7 @@ extension VideoGridViewController: NSCollectionViewDelegate, NSCollectionViewDat
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
         let video = videos[indexPath.item]
-        showVideo(video: video, indicatorView: indicatorView)
+        showVideo(video: video)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
@@ -166,7 +165,7 @@ extension VideoGridViewController {
         pageIndex = 1
         isLoading = true
         let query = selectedQuery
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchCategoryList(category: category, isDouban: self.isDouban, query: query)}
             .done { (category) in
@@ -175,11 +174,11 @@ extension VideoGridViewController {
                 print(error)
                 self.showError(error)
             }).finally {
-                self.indicatorView.dismiss()
+                self.removeSpinning()
                 self.isLoading = false
                 self.pageIndex = 1
                 self.collectionView.reloadData()
-                self.collectionView.animator().scroll(.zero)
+                self.collectionView.scroll(.zero)
         }
     }
     
@@ -191,7 +190,7 @@ extension VideoGridViewController {
         let query = selectedQuery
         pageIndex += 1
         isLoading = true
-        
+        showSpinning()
         APIClient.fetchCategoryList(category: category, page: pageIndex, isDouban: isDouban, query: query).done { category in
             if category.items.isEmpty {
                 return
@@ -202,6 +201,7 @@ extension VideoGridViewController {
                 print(err)
             }.finally {
                 self.isLoading = false
+                self.removeSpinning()
                 self.collectionView.reloadData()
         }
     }

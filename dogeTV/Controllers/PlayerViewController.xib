@@ -14,7 +14,6 @@
                 <outlet property="downloadBtn" destination="5o8-vn-f16" id="16A-Qa-jcJ"/>
                 <outlet property="episodePanel" destination="ort-Os-Zud" id="gcb-o1-3XI"/>
                 <outlet property="episodePanelWidth" destination="jpM-Wm-Z0e" id="FdJ-iq-UG9"/>
-                <outlet property="indicatorView" destination="h6a-Wb-6gi" id="euo-Ou-AUJ"/>
                 <outlet property="titleLabel" destination="coZ-Av-RIg" id="s4u-3Y-0Mc"/>
                 <outlet property="titleView" destination="bUp-vx-1e3" id="RAF-Rp-oRq"/>
                 <outlet property="toggleBtn" destination="rLP-zM-XID" id="aSO-KI-HFF"/>
@@ -143,17 +142,12 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
-                        <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="h6a-Wb-6gi">
-                            <rect key="frame" x="-16" y="229" width="32" height="32"/>
-                        </progressIndicator>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="h6a-Wb-6gi" firstAttribute="centerX" secondItem="S3x-IG-NhB" secondAttribute="centerX" id="Jwf-tD-JgV"/>
                         <constraint firstItem="S3x-IG-NhB" firstAttribute="leading" secondItem="ort-Os-Zud" secondAttribute="leading" id="Kte-9G-Vyn"/>
                         <constraint firstAttribute="bottom" secondItem="S3x-IG-NhB" secondAttribute="bottom" id="XLM-bK-W5c"/>
                         <constraint firstAttribute="trailing" secondItem="S3x-IG-NhB" secondAttribute="trailing" id="ZSb-cq-VGz"/>
                         <constraint firstAttribute="width" id="jpM-Wm-Z0e"/>
-                        <constraint firstItem="h6a-Wb-6gi" firstAttribute="centerY" secondItem="S3x-IG-NhB" secondAttribute="centerY" id="oeO-N1-AOk"/>
                     </constraints>
                 </customView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rLP-zM-XID">

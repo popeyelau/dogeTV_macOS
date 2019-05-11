@@ -19,7 +19,6 @@ class PumpkinViewController: NSViewController {
 
     
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     var hots: [Hot] = []
     var sourceType: SourceType = .home
 
@@ -73,7 +72,7 @@ extension PumpkinViewController: NSCollectionViewDelegate,  NSCollectionViewData
         let video = section.items[indexPath.item]
         
         if type == .normal {
-            showVideo(video: video, indicatorView: indicatorView)
+            showVideo(video: video)
             return
         }
         NSApplication.shared.rootViewController?.showSeries(id: video.id, title: video.name)
@@ -97,7 +96,7 @@ extension PumpkinViewController {
     }
 
     func refreshHome() {
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchHome()
             }.done { hots in
@@ -108,12 +107,12 @@ extension PumpkinViewController {
             }.finally {
                 self.collectionView.reloadData()
                 self.collectionView.scroll(.zero)
-                self.indicatorView.dismiss()
+                self.removeSpinning()
         }
     }
 
     func refreshCategory(category: String) {
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchPumpkinCategoryVideo(category: category)
             }.done { hots in
@@ -124,7 +123,7 @@ extension PumpkinViewController {
             }.finally {
                 self.collectionView.reloadData()
                 self.collectionView.scroll(.zero)
-                self.indicatorView.dismiss()
+                self.removeSpinning()
         }
     }
 }
