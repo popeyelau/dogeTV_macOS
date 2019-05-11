@@ -44,8 +44,9 @@ class RootViewController: NSViewController {
         }
         
         setupLeftMenus()
-        
-        let target = makeContentView(type: PumpkinViewController.self, key: Menus.recommended.rawValue)
+
+        let isUnlocked = NSApplication.shared.isUnlocked
+        let target: Initializable = isUnlocked ? makeContentView(type: PumpkinViewController.self, key: Menus.recommended.rawValue) : makeContentView(type: LatestGridViewController.self, key: Menus.latest.rawValue)
         activiedController = target
         contentView.addSubview(target.view)
         
@@ -161,6 +162,12 @@ class RootViewController: NSViewController {
 extension RootViewController {
     func onSearch(keywords: String) {
         if keywords.isEmpty { return }
+
+        if keywords == "五行缺脑" && !NSApplication.shared.isUnlocked {
+            NSApplication.shared.unlocked()
+            return
+        }
+
         let target = makeContentView(type: SearchViewController.self, key: "search")
         target.keywords = keywords
         target.isHD = searchBarView.isHD

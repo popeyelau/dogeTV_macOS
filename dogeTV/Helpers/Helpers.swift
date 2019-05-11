@@ -23,6 +23,8 @@ func attempt<T>(maximumRetryCount: Int = 3, delayBeforeRetry: DispatchTimeInterv
 }
 
 
+
+
 enum StaticURLs: String {
     case githubRepo
     case telegramBot

@@ -50,4 +50,21 @@ extension NSApplication {
     var rootViewController: RootViewController? {
        return appDelegate?.mainWindowController?.contentViewController as? RootViewController
     }
+
+    func unlocked() {
+        if isUnlocked {
+            return
+        }
+        UserDefaults.standard.set(true, forKey: "UNLOCKED")
+        let url = URL(fileURLWithPath: Bundle.main.resourcePath!)
+        let path = url.deletingLastPathComponent().deletingLastPathComponent().absoluteString
+        let task = Process()
+        task.launchPath = "/usr/bin/open"
+        task.arguments = [path]
+        task.launch()
+    }
+
+    var isUnlocked: Bool {
+        return UserDefaults.standard.bool(forKey: "UNLOCKED")
+    }
 }

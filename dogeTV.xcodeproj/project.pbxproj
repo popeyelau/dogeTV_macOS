@@ -40,10 +40,10 @@
 		7974C77A22830EE000563263 /* BlueRayGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7974C77822830EE000563263 /* BlueRayGridViewController.xib */; };
 		7980B96A227531AC00DD8336 /* ParseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980B968227531AC00DD8336 /* ParseViewController.swift */; };
 		7980B96B227531AC00DD8336 /* ParseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7980B969227531AC00DD8336 /* ParseViewController.xib */; };
-		79820F70226FF7FC00ADA103 /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79820F65226FF70600ADA103 /* GitHubUpdates.framework */; };
-		79820F71226FF7FD00ADA103 /* GitHubUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 79820F65226FF70600ADA103 /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		79820F742270093300ADA103 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79820F732270093300ADA103 /* MainWindowController.swift */; };
 		79820F762270097000ADA103 /* NSApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79820F752270097000ADA103 /* NSApplicationExtension.swift */; };
+		7987B2BA228726A6000B27DC /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 790FCC8A2287257100908F34 /* GitHubUpdates.framework */; };
+		7987B2BB228726A6000B27DC /* GitHubUpdates.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 790FCC8A2287257100908F34 /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7988F6B822689824002B5B9D /* AspectFitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7988F6B722689824002B5B9D /* AspectFitImageView.swift */; };
 		798E5B91227D568C005C6AA5 /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E5B90227D568C005C6AA5 /* ScrollingTextView.swift */; };
 		799B96032264AB54002C8FFA /* GridSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799B96022264AB54002C8FFA /* GridSectionHeader.swift */; };
@@ -110,14 +110,38 @@
 		79FD5C0F22648A27009EDB9C /* VideoCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FD5C0D22648A27009EDB9C /* VideoCardView.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		790FCC892287257100908F34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 790FCC842287257000908F34 /* GitHubUpdates.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 05F82B251EF32EA700EC8A93;
+			remoteInfo = GitHubUpdates;
+		};
+		790FCC8B2287257100908F34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 790FCC842287257000908F34 /* GitHubUpdates.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0555EBA01EF3DDA10016167F;
+			remoteInfo = Relauncher;
+		};
+		7987B2BC228726A6000B27DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 790FCC842287257000908F34 /* GitHubUpdates.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05F82B241EF32EA700EC8A93;
+			remoteInfo = GitHubUpdates;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		79820F72226FF7FD00ADA103 /* Embed Frameworks */ = {
+		7987B2BE228726A6000B27DC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				79820F71226FF7FD00ADA103 /* GitHubUpdates.framework in Embed Frameworks */,
+				7987B2BB228726A6000B27DC /* GitHubUpdates.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +154,7 @@
 		79076F3222812F42007499A3 /* SerieGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieGridViewController.xib; sourceTree = "<group>"; };
 		79076F50228172EB007499A3 /* TagGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagGridViewController.swift; sourceTree = "<group>"; };
 		79076F51228172EB007499A3 /* TagGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagGridViewController.xib; sourceTree = "<group>"; };
+		790FCC842287257000908F34 /* GitHubUpdates.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GitHubUpdates.xcodeproj; path = GitHubUpdates/GitHubUpdates.xcodeproj; sourceTree = "<group>"; };
 		79115815226995FB0034E551 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		7916EF112266BA1400FB6721 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7916EF122266BA1400FB6721 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -150,7 +175,6 @@
 		7943588A22801A36008E37B7 /* PumpkinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PumpkinViewController.xib; sourceTree = "<group>"; };
 		79463B322281D5AB003BE96D /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		794A8000226D5F0700941333 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
-		79614BBE226FE85B00F0E738 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitHubUpdates.framework; path = ../../../dogeTV/Frameworks/GitHubUpdates.framework; sourceTree = "<group>"; };
 		796C84492276E07000EC8FCF /* QueryOptionsKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionsKeyView.swift; sourceTree = "<group>"; };
 		796C844B2276E08100EC8FCF /* QueryOptionsKeyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryOptionsKeyView.xib; sourceTree = "<group>"; };
 		7974C77322830D8A00563263 /* BlueRayTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueRayTabViewController.swift; sourceTree = "<group>"; };
@@ -159,7 +183,6 @@
 		7974C77822830EE000563263 /* BlueRayGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlueRayGridViewController.xib; sourceTree = "<group>"; };
 		7980B968227531AC00DD8336 /* ParseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseViewController.swift; sourceTree = "<group>"; };
 		7980B969227531AC00DD8336 /* ParseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParseViewController.xib; sourceTree = "<group>"; };
-		79820F65226FF70600ADA103 /* GitHubUpdates.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GitHubUpdates.framework; sourceTree = "<group>"; };
 		79820F732270093300ADA103 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		79820F752270097000ADA103 /* NSApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSApplicationExtension.swift; sourceTree = "<group>"; };
 		7988F6B722689824002B5B9D /* AspectFitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFitImageView.swift; sourceTree = "<group>"; };
@@ -238,8 +261,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7987B2BA228726A6000B27DC /* GitHubUpdates.framework in Frameworks */,
 				79F0413D2275591D0005B006 /* WebKit.framework in Frameworks */,
-				79820F70226FF7FC00ADA103 /* GitHubUpdates.framework in Frameworks */,
 				79115816226995FC0034E551 /* AVKit.framework in Frameworks */,
 				59DBAE656258FC0986932945 /* Pods_dogeTV.framework in Frameworks */,
 			);
@@ -248,12 +271,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		79820F64226FF68800ADA103 /* Frameworks */ = {
+		790FCC852287257000908F34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				79820F65226FF70600ADA103 /* GitHubUpdates.framework */,
+				790FCC8A2287257100908F34 /* GitHubUpdates.framework */,
+				790FCC8C2287257100908F34 /* Relauncher */,
 			);
-			path = Frameworks;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		799B96082264AE4A002C8FFA /* Controllers */ = {
@@ -408,6 +432,7 @@
 		79FD5BEA22647AC3009EDB9C = {
 			isa = PBXGroup;
 			children = (
+				790FCC842287257000908F34 /* GitHubUpdates.xcodeproj */,
 				79FD5BF522647AC3009EDB9C /* dogeTV */,
 				79FD5BF422647AC3009EDB9C /* Products */,
 				FFA148131426C1C531A20EFC /* Pods */,
@@ -426,7 +451,6 @@
 		79FD5BF522647AC3009EDB9C /* dogeTV */ = {
 			isa = PBXGroup;
 			children = (
-				79820F64226FF68800ADA103 /* Frameworks */,
 				79D927A8226597F5009C446E /* Window */,
 				799B962B2264B076002C8FFA /* Extension */,
 				799B96132264AF7E002C8FFA /* Models */,
@@ -448,7 +472,6 @@
 			isa = PBXGroup;
 			children = (
 				79F0413C2275591D0005B006 /* WebKit.framework */,
-				79614BBE226FE85B00F0E738 /* GitHubUpdates.framework */,
 				79115815226995FB0034E551 /* AVKit.framework */,
 				F26910516B8FE6E0B0C9D258 /* Pods_dogeTV.framework */,
 			);
@@ -476,11 +499,12 @@
 				79FD5BF022647AC3009EDB9C /* Frameworks */,
 				79FD5BF122647AC3009EDB9C /* Resources */,
 				21629770B55EFCE27BCCA014 /* [CP] Embed Pods Frameworks */,
-				79820F72226FF7FD00ADA103 /* Embed Frameworks */,
+				7987B2BE228726A6000B27DC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7987B2BD228726A6000B27DC /* PBXTargetDependency */,
 			);
 			name = dogeTV;
 			productName = dogeTV;
@@ -521,12 +545,35 @@
 			mainGroup = 79FD5BEA22647AC3009EDB9C;
 			productRefGroup = 79FD5BF422647AC3009EDB9C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 790FCC852287257000908F34 /* Products */;
+					ProjectRef = 790FCC842287257000908F34 /* GitHubUpdates.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				79FD5BF222647AC3009EDB9C /* dogeTV */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		790FCC8A2287257100908F34 /* GitHubUpdates.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GitHubUpdates.framework;
+			remoteRef = 790FCC892287257100908F34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		790FCC8C2287257100908F34 /* Relauncher */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = Relauncher;
+			remoteRef = 790FCC8B2287257100908F34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		79FD5BF122647AC3009EDB9C /* Resources */ = {
@@ -686,6 +733,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7987B2BD228726A6000B27DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GitHubUpdates;
+			targetProxy = 7987B2BC228726A6000B27DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		79FD5BFC22647AC4009EDB9C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -819,7 +874,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = dogeTV/dogeTV.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: ZhiQuan Liu (DSY75NVPP5)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 983GE8X6R9;
@@ -846,7 +901,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = dogeTV/dogeTV.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer: ZhiQuan Liu (DSY75NVPP5)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 983GE8X6R9;
