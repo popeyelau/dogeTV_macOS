@@ -34,7 +34,9 @@ class BlueRayGridViewController: NSViewController {
         guard let episodes = result.seasons?.first?.episodes, !episodes.isEmpty else {
             return
         }
-        replacePlayerWindowIfNeeded(video: result, episodes: episodes)
+
+        let video = VideoDetail(info: result.info, recommends: result.recommends, seasons: nil)
+        replacePlayerWindowIfNeeded(video: video, episodes: episodes)
     }
 
     func registLoadMoreNotification() {

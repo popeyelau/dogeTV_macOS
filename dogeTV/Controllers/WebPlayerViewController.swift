@@ -8,6 +8,19 @@
 
 import Cocoa
 import WebKit
+import AVKit
+
+extension NSView {
+    var allSubViews : [NSView] {
+
+        var array = [self.subviews].flatMap {$0}
+
+        array.forEach { array.append(contentsOf: $0.allSubViews) }
+
+        return array
+    }
+
+}
 
 class WebPlayerViewController: NSViewController {
 
@@ -25,13 +38,17 @@ class WebPlayerViewController: NSViewController {
 
     var url: URL?
     var site: ParseViewController.Site?
+    var isPlaying = false
     
     var isParsed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.black.cgColor
+        view.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.75).cgColor
+
+        titleView.wantsLayer = true
+        titleView.layer?.backgroundColor = NSColor(red:0.05, green:0.05, blue:0.05, alpha:1.00).cgColor
         guard let url = url else {
             return
         }
@@ -42,7 +59,9 @@ class WebPlayerViewController: NSViewController {
         }
         showSpinning(message: "解析中, 请耐心等候...")
         sendRequest(url: url)
+        //NotificationCenter.default.addObserver(self, selector: #selector(startPlay(_:)), name: .webPlayerStartPlay, object: nil)
     }
+
     @IBAction func openMainWindow(_ sender: Any) {
         NSApplication.shared.openMainWindow()
     }
@@ -52,6 +71,10 @@ class WebPlayerViewController: NSViewController {
         let request = URLRequest(url: url)
         webView.customUserAgent = customAgent ? "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1" : nil
         webView.load(request)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -64,10 +87,11 @@ extension WebPlayerViewController: WKNavigationDelegate {
         var element = document.getElementById('\(elementId)');
         element.parentElement.removeChild(element);
 
-        var vidoes = document.getElementsByTagName('video')
+        var vidoes = document.getElementsByTagName('video');
         while (vidoes[0]) {
-        videos[0].muted = true
-        vidoes[0].parentNode.removeChild(vidoes[0])
+        videos[0].muted = 'muted';
+        videos[0].poster = '';
+        vidoes[0].parentNode.removeChild(vidoes[0]);
         }
         """
         webView.evaluateJavaScript(removeElementIdScript) { (response, error) in

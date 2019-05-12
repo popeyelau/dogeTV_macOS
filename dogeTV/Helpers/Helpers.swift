@@ -49,6 +49,7 @@ enum StaticURLs: String {
 
 extension NSNotification.Name {
     static let playStatusChanged = NSNotification.Name("PlayStatusChanged")
+    static let webPlayerStartPlay =  NSNotification.Name("AVOutputDeviceDiscoverySessionAvailableOutputDevicesDidChangeNotification")
 }
 
 extension NSStoryboard.Name {
@@ -65,6 +66,7 @@ extension NSUserInterfaceItemIdentifier {
     static let videoIntroView = NSUserInterfaceItemIdentifier(rawValue: "VideoIntroView")
     static let channelCardView = NSUserInterfaceItemIdentifier(rawValue: "ChannelCardView")
     static let topicCardView = NSUserInterfaceItemIdentifier(rawValue: "TopicCardView")
+
 
     
     

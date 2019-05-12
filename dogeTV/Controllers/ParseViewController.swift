@@ -105,6 +105,8 @@ class ParseViewController: NSViewController {
     
     func sendRequest(url: URL) {
         let request = URLRequest(url: url)
+        //
+        webView.backForwardList.perform(Selector(("_removeAllItems")))
         webView.load(request)
     }
 
@@ -149,8 +151,6 @@ extension ParseViewController: Initializable {
     func refresh() {
         sendRequest(url: selectedSite.url)
     }
-
-
 
     func parseHandle(url: URL) {
         if selectedSite == .letv {
