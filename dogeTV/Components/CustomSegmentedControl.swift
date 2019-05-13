@@ -41,10 +41,17 @@ class CustomSegmentedControl: NSControl {
 
     func setup() {
         addSubview(stackView)
+        wantsLayer = true
+        layer?.backgroundColor = NSColor.activedBackgroundColor.withAlphaComponent(0.4).cgColor
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         positionButtons()
+    }
+    
+    override func layout() {
+        super.layout()
+        layer?.cornerRadius = frame.height * 0.5
     }
 
     private func updateSelection() {

@@ -34,7 +34,7 @@ class QueryOptionView: NSCollectionViewItem {
             textField?.textColor = .primaryColor
             view.layer?.backgroundColor = NSColor.activedBackgroundColor.cgColor
         } else {
-            textField?.textColor = .labelColor
+            textField?.textColor = .secondaryLabelColor
             view.layer?.backgroundColor = NSColor.clear.cgColor
         }
     }

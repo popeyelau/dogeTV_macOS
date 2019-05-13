@@ -69,7 +69,7 @@ enum Router: APIConfiguration {
     case iptvCategory
     case iptvChannels(tid: String)
     case iptvStreamURL(url: String)
-    case blueRay(category: BlueRayTabViewController.TabItems, page: Int)
+    case blueRay(query: String)
     case blueRayVideo(id: String)
 
     var method: HTTPMethod {
@@ -150,8 +150,8 @@ enum Router: APIConfiguration {
             return ["p": page]
         case .pumpkinCategoryVideos(let category, let page):
             return ["category": category, "p": page]
-        case .blueRay(let category, let page):
-            return ["category": category.key, "p": page]
+        case .blueRay(let query):
+            return ["query": query]
         default:
             return nil
         }

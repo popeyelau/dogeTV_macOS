@@ -23,10 +23,10 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFN-dw-B3s">
+                <wkWebView wantsLayer="YES" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFN-dw-B3s">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
                     <wkWebViewConfiguration key="configuration">
-                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" audio="YES" video="YES"/>
                         <wkPreferences key="preferences"/>
                     </wkWebViewConfiguration>
                     <connections>

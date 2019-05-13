@@ -8,6 +8,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="BlueRayGridViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="1l9-hc-BTh" id="bFN-P3-4Hx"/>
+                <outlet property="queryPanel" destination="a1T-CR-kfa" id="YDI-2R-rIE"/>
+                <outlet property="queryStack" destination="PzU-39-JTg" id="qPx-iW-kWb"/>
                 <outlet property="scrollView" destination="cir-P7-30y" id="TfX-Zp-bUH"/>
                 <outlet property="view" destination="EbF-t4-Lhg" id="Jk3-wB-IQs"/>
             </connections>
@@ -48,14 +50,46 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="a1T-CR-kfa" userLabel="Query Panel">
+                    <rect key="frame" x="0.0" y="397" width="480" height="0.0"/>
+                    <subviews>
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PzU-39-JTg">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="0.0"/>
+                        </stackView>
+                        <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d86-qy-3Xw">
+                            <rect key="frame" x="407" y="-23" width="53" height="18"/>
+                            <buttonCell key="cell" type="bevel" title=" 更多" bezelStyle="rounded" image="filter" imagePosition="leading" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="eWA-q0-i2D">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="toggleAction:" target="-2" id="WqZ-bq-rR5"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="PzU-39-JTg" firstAttribute="top" secondItem="a1T-CR-kfa" secondAttribute="top" id="IEa-wE-T9h"/>
+                        <constraint firstAttribute="trailing" secondItem="PzU-39-JTg" secondAttribute="trailing" id="LID-Ms-qV6"/>
+                        <constraint firstAttribute="bottom" secondItem="PzU-39-JTg" secondAttribute="bottom" id="RfY-KC-pYs"/>
+                        <constraint firstItem="PzU-39-JTg" firstAttribute="leading" secondItem="a1T-CR-kfa" secondAttribute="leading" id="dhk-vG-Fpx"/>
+                        <constraint firstItem="d86-qy-3Xw" firstAttribute="top" secondItem="a1T-CR-kfa" secondAttribute="top" constant="5" id="jzH-bE-D19"/>
+                        <constraint firstAttribute="trailing" secondItem="d86-qy-3Xw" secondAttribute="trailing" constant="20" id="w3o-ek-xjx"/>
+                    </constraints>
+                </customView>
             </subviews>
             <constraints>
+                <constraint firstItem="cir-P7-30y" firstAttribute="top" secondItem="a1T-CR-kfa" secondAttribute="bottom" id="2wr-VF-TDV"/>
                 <constraint firstAttribute="bottom" secondItem="cir-P7-30y" secondAttribute="bottom" id="T1E-4h-cYA"/>
                 <constraint firstAttribute="trailing" secondItem="cir-P7-30y" secondAttribute="trailing" id="TO2-hu-1hW"/>
+                <constraint firstItem="a1T-CR-kfa" firstAttribute="leading" secondItem="EbF-t4-Lhg" secondAttribute="leading" id="X0U-uV-f7D"/>
                 <constraint firstItem="cir-P7-30y" firstAttribute="leading" secondItem="EbF-t4-Lhg" secondAttribute="leading" id="XO0-OV-Nq7"/>
-                <constraint firstItem="cir-P7-30y" firstAttribute="top" secondItem="EbF-t4-Lhg" secondAttribute="top" id="cLg-nc-ASY"/>
+                <constraint firstAttribute="trailing" secondItem="a1T-CR-kfa" secondAttribute="trailing" id="eVD-JT-xMv"/>
+                <constraint firstItem="a1T-CR-kfa" firstAttribute="top" secondItem="EbF-t4-Lhg" secondAttribute="top" id="uU0-hv-BOr"/>
             </constraints>
             <point key="canvasLocation" x="139" y="153.5"/>
         </customView>
     </objects>
+    <resources>
+        <image name="filter" width="18" height="18"/>
+    </resources>
 </document>

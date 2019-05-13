@@ -34,7 +34,7 @@ class CollectionViewLeftFlowLayout: NSCollectionViewFlowLayout {
         }
 
         var leftMargin = sectionInset.left
-        var lastYPosition = attributes[0].frame.maxY
+        var lastYPosition = copied[0].frame.maxY
 
         for itemAttributes in copied {
             if itemAttributes.representedElementKind == NSCollectionView.elementKindSectionHeader {

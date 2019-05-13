@@ -13,7 +13,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSn-pe-mRu">
-                    <rect key="frame" x="16" y="43" width="44" height="22"/>
+                    <rect key="frame" x="20" y="43" width="44" height="22"/>
                     <subviews>
                         <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gjw-Hq-AMz">
                             <rect key="frame" x="0.0" y="-8" width="30" height="30"/>
@@ -60,7 +60,7 @@
                 <constraint firstItem="mSJ-aA-ICw" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="0t2-SH-O6D"/>
                 <constraint firstItem="DSn-pe-mRu" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="A6q-SR-NdO"/>
                 <constraint firstAttribute="trailing" secondItem="mSJ-aA-ICw" secondAttribute="trailing" constant="20" id="FZ8-ae-EaD"/>
-                <constraint firstItem="DSn-pe-mRu" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="QSO-jF-cuf"/>
+                <constraint firstItem="DSn-pe-mRu" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="QSO-jF-cuf"/>
             </constraints>
             <connections>
                 <outlet property="backBtn" destination="Gjw-Hq-AMz" id="UK1-wK-gLi"/>

@@ -24,11 +24,10 @@ class ChannelCardView: NSCollectionViewItem {
     }
     
     override func mouseEntered(with event: NSEvent) {
-        view.layer?.borderWidth = 2
+        view.layer?.borderColor = NSColor.white.withAlphaComponent(0.2).cgColor
     }
     
     override func mouseExited(with event: NSEvent) {
         view.layer?.borderColor = NSColor.white.withAlphaComponent(0.1).cgColor
-        view.layer?.borderWidth = 1
     }
 }

@@ -25,16 +25,16 @@ enum Menus: String, Equatable {
     static var allCases: [Menus] {
         if NSApplication.shared.isUnlocked {
             return [
-                .recommended,.tag,.latest,.topic,.film,
+                .recommended,.tag,.blueray,.latest,.topic,.film,
                 .drama,.variety,.cartoon,.documentary,
-                .parse,.blueray,.live
+                .parse,.live
             ]
         }
 
         return [
-            .latest,.topic,.film,
+            .blueray,.latest,.topic,.film,
             .drama,.variety,.cartoon,.documentary,
-            .parse,.blueray,.live
+            .parse,.live
         ]
     }
     
@@ -42,13 +42,13 @@ enum Menus: String, Equatable {
         switch self {
         case .recommended: return "推荐"
         case .latest: return "最新"
+        case .blueray: return "高清"
         case .tag: return "分类"
         case .topic: return "专题"
         case .film: return "电影"
         case .drama: return "电视剧"
         case .variety: return "综艺"
         case .cartoon: return "动漫"
-        case .blueray: return "高清专区"
         case .documentary: return "纪录片"
         case .parse: return "云解析"
         case .live: return "电视直播"

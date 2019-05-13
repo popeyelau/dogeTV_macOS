@@ -13,12 +13,27 @@ import PromiseKit
 class BlueRayGridViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var scrollView: NSScrollView!
+    
+    @IBOutlet weak var queryPanel: NSView!
+    @IBOutlet weak var queryStack: NSStackView!
+    
     var category: BlueRayTabViewController.TabItems = .film
     var pageIndex: Int = 1
     let pageSize: Int = 24
     var videos: [Video] = []
+    var queryOptions: [OptionSet]?
     var isLoading: Bool = false
     var isNoMoreData: Bool = false
+    
+    lazy var queryOptionsView: QueryOptionsView = {
+        let queryView = QueryOptionsView()
+        queryView.onQueryChanged = { [weak self]  in
+            self?.refresh()
+        }
+        return queryView
+    }()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +43,35 @@ class BlueRayGridViewController: NSViewController {
         registLoadMoreNotification()
         refresh()
     }
+    
+    @IBAction func toggleSource(_ sender: NSButton) {
+        pageIndex = 1
+        refresh()
+    }
 
+    func refreshData(_ data: VideoCategory) {
+        self.isNoMoreData = data.items.isEmpty
+
+        if pageIndex == 1 {
+            videos.removeAll()
+        }
+        
+        videos.append(contentsOf: data.items)
+        
+        if let query = data.query, queryStack.arrangedSubviews.isEmpty {
+            queryStack.addArrangedSubview(queryOptionsView)
+            queryOptionsView.snp.remakeConstraints {
+                $0.edges.equalToSuperview()
+            }
+            query.forEach { $0.options.first?.isSelected = true }
+            queryOptions = query
+            queryOptionsView.optionsSet = query
+        }
+    }
+    
+    @IBAction func toggleAction(_ sender: NSButton) {
+        queryOptionsView.toggle()
+    }
 
     func showPlayer(with result: VideoDetail) {
         guard let episodes = result.seasons?.first?.episodes, !episodes.isEmpty else {
@@ -52,14 +95,28 @@ class BlueRayGridViewController: NSViewController {
     }
     
     @objc func collectionViewDidScroll() {
-        
+        if(queryOptionsView.isExpanded) {
+            queryOptionsView.toggle()
+        }
         guard !isNoMoreData, !isLoading else { return }
         guard let value = scrollView.verticalScroller?.floatValue,  value >= 0.9 else {
             return
         }
-        
         loadMore()
     }
+    
+    var selectedQuery: String {
+        guard let queryOptions = queryOptions else {
+            return "/whole/\(category.key)_______0_hits__1.html"
+        }
+        let sort = queryOptions.first { $0.title == "排序" }?.options.first { $0.isSelected}?.key ?? "hits"
+        let tag = queryOptions.first { $0.title == "类型" }?.options.first { $0.isSelected && $0.key != "全部" }?.key ?? ""
+        let year = queryOptions.first { $0.title == "年份" }?.options.first { $0.isSelected && $0.key != "全部"}?.key ?? ""
+        let area = queryOptions.first { $0.title == "地区" }?.options.first { $0.isSelected && $0.key != "全部"}?.key ?? ""
+        let key = "/whole/\(category.key)_\(area)_\(tag)__\(year)___0_\(sort)_\(pageIndex).html"
+        return key
+    }
+
 }
 
 extension BlueRayGridViewController: NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
@@ -107,9 +164,9 @@ extension BlueRayGridViewController {
         isLoading = true
         showSpinning()
         attempt(maximumRetryCount: 3) {
-            APIClient.fetchBlueRays(category: self.category, page: self.pageIndex)}
-            .done { (videos) in
-                self.videos = videos
+            APIClient.fetchBlueRays(query: self.selectedQuery)}
+            .done { (category) in
+                self.refreshData(category)
             }.catch({ (error) in
                 print(error)
                 self.showError(error)
@@ -122,6 +179,7 @@ extension BlueRayGridViewController {
         }
     }
 
+
     func loadMore() {
         guard !isNoMoreData else {
             return
@@ -129,11 +187,8 @@ extension BlueRayGridViewController {
 
         pageIndex += 1
         isLoading = true
-        APIClient.fetchBlueRays(category: category, page: pageIndex).done { videos in
-            if videos.isEmpty {
-                self.isNoMoreData = true
-            }
-            self.videos.append(contentsOf: videos)
+        APIClient.fetchBlueRays(query: selectedQuery).done { category in
+            self.refreshData(category)
             }.catch{ (err) in
                 self.isNoMoreData = true
                 self.pageIndex = max(1, self.pageIndex-1)

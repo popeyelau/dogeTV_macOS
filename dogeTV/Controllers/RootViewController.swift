@@ -162,9 +162,13 @@ class RootViewController: NSViewController {
 extension RootViewController {
     func onSearch(keywords: String) {
         if keywords.isEmpty { return }
-
-        if keywords == "五行缺脑" && !NSApplication.shared.isUnlocked {
+        if keywords == "解锁" && !NSApplication.shared.isUnlocked {
             NSApplication.shared.unlocked()
+            dialogOKCancel(question: "解锁成功", text: "点击「确定」开启隐藏功能") { (ok) in
+                if(ok){
+                   NSApplication.shared.relaunch()
+                }
+            }
             return
         }
 

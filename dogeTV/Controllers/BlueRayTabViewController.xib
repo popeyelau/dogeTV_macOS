@@ -54,10 +54,10 @@
                 </customView>
             </subviews>
             <constraints>
-                <constraint firstItem="rlF-O8-f3G" firstAttribute="leading" secondItem="Fv0-sW-CL1" secondAttribute="leading" constant="15" id="6wv-HM-i5a"/>
                 <constraint firstAttribute="bottom" secondItem="M1c-AD-lch" secondAttribute="bottom" id="Kf4-Xx-kXv"/>
                 <constraint firstItem="M1c-AD-lch" firstAttribute="leading" secondItem="Fv0-sW-CL1" secondAttribute="leading" id="Yyl-bF-L6c"/>
                 <constraint firstItem="rlF-O8-f3G" firstAttribute="top" secondItem="Fv0-sW-CL1" secondAttribute="top" constant="8" id="c6l-G5-uXh"/>
+                <constraint firstItem="rlF-O8-f3G" firstAttribute="leading" secondItem="Fv0-sW-CL1" secondAttribute="leading" constant="15" id="nEv-np-OD6"/>
                 <constraint firstItem="M1c-AD-lch" firstAttribute="top" secondItem="rlF-O8-f3G" secondAttribute="bottom" constant="8" id="tcU-Rg-jTC"/>
                 <constraint firstAttribute="trailing" secondItem="M1c-AD-lch" secondAttribute="trailing" id="xrn-Eq-uB6"/>
             </constraints>

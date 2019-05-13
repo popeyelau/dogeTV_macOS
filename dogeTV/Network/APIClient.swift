@@ -222,10 +222,10 @@ struct APIClient {
             .map { $0.data }
     }
 
-    static func fetchBlueRays(category: BlueRayTabViewController.TabItems, page: Int = 1) -> Promise<[Video]>  {
-        return AlamofireManager.shared.request(Router.blueRay(category: category, page: page))
+    static func fetchBlueRays(query: String) -> Promise<VideoCategory>  {
+        return AlamofireManager.shared.request(Router.blueRay(query: query))
             .validate(validate)
-            .responseDecodable(Response<[Video]>.self)
+            .responseDecodable(Response<VideoCategory>.self)
             .map { $0.data }
     }
 
