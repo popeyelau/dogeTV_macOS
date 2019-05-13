@@ -103,6 +103,10 @@ extension NSViewController {
             attempt(maximumRetryCount: 3) {
                 APIClient.fetchPumpkin(id: id)
                 }.done { detail in
+                    if detail.info.id.isEmpty || detail.info.id == "0" {
+                        self.fetchPumpkinStreamURL(video: video, recommends: detail.recommends)
+                        return
+                    }
                     guard let episodes = detail.seasons?.first?.episodes else {
                         self.fetchPumpkinStreamURL(video: detail)
                         return
@@ -137,6 +141,23 @@ extension NSViewController {
             APIClient.fetchPumpkinEpisodes(id: video.info.id)
             }.done { episodes in
                 self.preparePlayerWindow(video: video, episodes: episodes)
+            }.catch{ error in
+                print(error)
+                self.showError(error)
+            }.finally {
+        }
+    }
+
+    //已下架电影
+    private func fetchPumpkinStreamURL(video: Video, recommends: [Video]? = nil) {
+        attempt(maximumRetryCount: 3) {
+            APIClient.fetchPumpkinEpisodes(id: video.id)
+            }.done { episodes in
+                guard !episodes.isEmpty else {
+                    return
+                }
+                let detail = VideoDetail(info: video, recommends: recommends, seasons: nil)
+                self.preparePlayerWindow(video: detail, episodes: episodes)
             }.catch{ error in
                 print(error)
                 self.showError(error)
