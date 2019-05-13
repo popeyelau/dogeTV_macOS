@@ -2,7 +2,6 @@
 
 <div>
   <a href="https://github.com/popeyelau/dogeTV_macOS/releases">
-    <a href="https://github.com/popeyelau/dogeTV_macOS/releases">
     <img src="https://img.shields.io/github/release/popeyelau/dogeTV_macOS.svg?style=flat-square" />
   </a>
     <a href="https://github.com/popeyelau/dogeTV_macOS/issues">
