@@ -80,7 +80,7 @@
                     </constraints>
                 </progressIndicator>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="R8p-3u-dsU" customClass="CustomSegmentedControl" customModule="dogeTV" customModuleProvider="target">
-                    <rect key="frame" x="88" y="234" width="292" height="30"/>
+                    <rect key="frame" x="100" y="234" width="280" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" placeholder="YES" id="e7F-Tg-NES"/>
                     </constraints>
@@ -103,12 +103,12 @@
                 <constraint firstItem="fFN-dw-B3s" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="1JN-1f-f2K"/>
                 <constraint firstAttribute="trailing" secondItem="87Q-PE-6ga" secondAttribute="trailing" constant="20" id="2FA-s1-eBV"/>
                 <constraint firstItem="lAj-Kk-5lA" firstAttribute="centerY" secondItem="R8p-3u-dsU" secondAttribute="centerY" id="2hE-Y3-VH3"/>
+                <constraint firstItem="R8p-3u-dsU" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="9PL-dW-uKa"/>
                 <constraint firstItem="87Q-PE-6ga" firstAttribute="leading" secondItem="R8p-3u-dsU" secondAttribute="trailing" constant="8" placeholder="YES" id="DHu-l2-DkP"/>
                 <constraint firstItem="z9G-Pj-zxm" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="-2" id="Djv-79-GDg"/>
                 <constraint firstItem="lAj-Kk-5lA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="JaS-Hg-tZV"/>
                 <constraint firstItem="fFN-dw-B3s" firstAttribute="top" secondItem="R8p-3u-dsU" secondAttribute="bottom" constant="8" id="Tfz-Rv-B5k"/>
                 <constraint firstItem="R8p-3u-dsU" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="Vek-xA-tla"/>
-                <constraint firstItem="R8p-3u-dsU" firstAttribute="leading" secondItem="lAj-Kk-5lA" secondAttribute="trailing" constant="20" id="VvX-YC-maF"/>
                 <constraint firstAttribute="trailing" secondItem="fFN-dw-B3s" secondAttribute="trailing" id="btO-Pd-YyZ"/>
                 <constraint firstAttribute="bottom" secondItem="fFN-dw-B3s" secondAttribute="bottom" id="f5c-Ze-h41"/>
                 <constraint firstItem="z9G-Pj-zxm" firstAttribute="top" secondItem="fFN-dw-B3s" secondAttribute="top" id="fNQ-vW-0JH"/>

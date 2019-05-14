@@ -64,5 +64,6 @@ class SearchBarView: NSView, LoadableNib {
         let attr = NSAttributedString(string: "搜索电影/电视剧/综艺/影人", attributes: [.foregroundColor: NSColor.lightGray, .font: textField.font!])
         textField.placeholderAttributedString = attr
         searchBtn.contentTintColor = .primaryColor
+        hdBtn.state = Preferences.shared.searchHD ? .on : .off
     }
 }

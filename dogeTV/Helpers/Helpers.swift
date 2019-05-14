@@ -55,6 +55,7 @@ extension NSNotification.Name {
 extension NSStoryboard.Name {
     static let main = "Main"
     static let about = "AboutWindow"
+    static let preferences = "Preferences"
 }
 
 extension NSUserInterfaceItemIdentifier {

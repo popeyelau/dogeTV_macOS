@@ -249,6 +249,7 @@ extension ParseViewController {
         guard !result.episodes.isEmpty else {
            return
         }
+        
         replacePlayerWindowIfNeeded(video: nil, episodes: result.episodes, title: result.title)
     }
 }

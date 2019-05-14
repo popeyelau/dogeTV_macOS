@@ -1,8 +1,8 @@
 //
-//  PlayerViewController.swift
+//  VideoSheetViewController.swift
 //  dogeTV
 //
-//  Created by Popeye Lau on 2019/4/16.
+//  Created by Popeye Lau on 2019/5/14.
 //  Copyright © 2019 Popeye Lau. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Cocoa
 import AVKit
 import PromiseKit
 
-class PlayerViewController: NSViewController {
+class VideoSheetViewController: NSViewController {
     
     enum Section {
         case episodes([Episode])
@@ -18,7 +18,7 @@ class PlayerViewController: NSViewController {
         case video(Video)
         case recommends([Video])
         case seasons([Seasons])
-
+        
         var title: String {
             switch self {
             case .episodes:
@@ -34,90 +34,54 @@ class PlayerViewController: NSViewController {
             }
         }
     }
-
+    
     var videDetail: VideoDetail?
     var episodes: [Episode]?
-
+    
     var episodeIndex: Int = 0
     var playingEpisode: Episode?
     var sourceIndex: Int = 0
     var seasonIndex: Int = 0
     var dataSource: [Section] = []
-
-
+    
+    @IBOutlet weak var bottomView: NSView!
     @IBOutlet weak var titleLabel: NSTextField!
-    @IBOutlet weak var episodePanel: NSView!
-    @IBOutlet weak var episodePanelWidth: NSLayoutConstraint!
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet weak var avPlayer: AVPlayerView!
-    @IBOutlet weak var toggleBtn: NSButton!
-    @IBOutlet weak var titleView: NSView!
     @IBOutlet weak var downloadBtn: NSButton!
     @IBOutlet weak var actionStackView: NSStackView!
-    @IBOutlet weak var toggleMenuBtn: NSButton!
     var hideToggleBtn = true
     var titleText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        episodePanel.wantsLayer = true
-        episodePanel.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.activedBackgroundColor.cgColor
         collectionView.backgroundColors = [.backgroundColor]
-
-        titleView.wantsLayer = true
-        titleView.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.75).cgColor
-        
-        titleLabel.stringValue = titleText ?? ""
         updateDataSource()
-        playing()
-
         downloadBtn.isHidden = !NSApplication.shared.isDownieInstalled
-        hideToggleBtn = videDetail == nil && episodes?.count == 1
-        toggleMenuBtn.isHidden = hideToggleBtn
-        toggleBtn.isHidden = hideToggleBtn
-
-        if(!hideToggleBtn) {
-            let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
-            view.addTrackingArea(trackingArea)
-        }
+        titleLabel.stringValue = titleText ?? (videDetail?.info.name ?? "")
         
-        /*
-        if Preferences.shared.usingIINA {
-           toggleEpisodePanel(toggleBtn)
-           avPlayer.isHidden = true
-        }*/
+        if episodes?.count == 1 {
+           playing()
+        }
     }
-
+    
+    @IBAction func dismissBtn(_ sender: NSButton) {
+        dismiss(sender)
+    }
+    
     func playing() {
         if let playing = episodes?[safe: episodeIndex] {
             play(episode: playing)
         }
     }
-
-    override func mouseEntered(with event: NSEvent) {
-        guard !hideToggleBtn else { return }
-        toggleBtn.isHidden = false
-    }
-
-    override func mouseExited(with event: NSEvent) {
-        guard !hideToggleBtn else { return }
-        toggleBtn.isHidden = true
-    }
-
-    @IBAction func toggleEpisodePanel(_ sender: NSButton) {
-        if episodePanelWidth.constant == 0 {
-            episodePanelWidth.constant = 350
-            toggleBtn.image = NSImage(named: "toggle_off")
-        } else {
-            episodePanelWidth.constant = 0
-            toggleBtn.image = NSImage(named: "toggle_on")
-        }
-    }
     
+
+
     @IBAction func openMainWindowAction(_ sender: NSButton) {
         NSApplication.shared.appDelegate?.mainWindowController?.window?.makeKeyAndOrderFront(nil)
     }
-
+    
     @IBAction func shareAction(_ sender: NSButton) {
         guard let playing = playingEpisode, playing.canPlay else {
             return
@@ -127,30 +91,25 @@ class PlayerViewController: NSViewController {
         }
         NSWorkspace.shared.open(saved)
     }
-
+    
     @IBAction func downloadAction(_ sender: NSButton) {
         guard NSApplication.shared.isDownieInstalled else { return }
         guard let playing = playingEpisode, playing.canPlay else { return }
-
+        
         let url = URL(string: "downie://XUOpenLink?url=\(playing.url)")!
         NSWorkspace.shared.open(url)
     }
-
+    
     func play(episode: Episode) {
         playingEpisode = episode
-        if videDetail == nil {
-            titleLabel.stringValue = "\(titleText ?? "") - \(episode.title)"
-        } else {
-            titleLabel.stringValue = "\(videDetail?.info.name ?? "") - \(episode.title)"
-        }
         if episode.canPlay {
             self.prepareToPlay(url: episode.url)
             return
         }
-
+        
         getStreamURL(episode: episode)
     }
-
+    
     func getStreamURL(episode: Episode) {
         if let id = episode.id,  episode.url.isEmpty {
             APIClient.fetchPumpkinEpisodes(id: id)
@@ -165,7 +124,7 @@ class PlayerViewController: NSViewController {
             }
             return
         }
-
+        
         APIClient.resolveUrl(url: episode.url)
             .done { (url) in
                 self.prepareToPlay(url: url)
@@ -175,24 +134,12 @@ class PlayerViewController: NSViewController {
             }).finally {
         }
     }
-
+    
     func prepareToPlay(url: String) {
-        let status =  PlayStatus.playing(title: self.titleLabel.stringValue, isLive: false)
         if Preferences.shared.usingIINA {
             NSApplication.shared.launchIINA(withURL: url)
-            NotificationCenter.default.post(name: .playStatusChanged, object: status)
             return
         }
-        
-        if avPlayer.player == nil {
-            avPlayer.player = AVPlayer(url: URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!)
-        } else {
-            avPlayer.player?.replaceCurrentItem(with: nil)
-            avPlayer.player?.replaceCurrentItem(with: AVPlayerItem(url: URL(string: url)!))
-        }
-        NotificationCenter.default.post(name: .playStatusChanged, object: status)
-        playingEpisode?.url = url
-        avPlayer.player?.play()
     }
     
     func updateSource(index: Int) {
@@ -207,7 +154,7 @@ class PlayerViewController: NSViewController {
                 self.updatePlayingEpisodeIfNeeded()
         }
     }
-
+    
     func updateSeason(index: Int, sid: String) {
         guard let id = videDetail?.info.id else { return }
         _ = APIClient.fetchPumpkinSeason(id: id, sid: sid).done { (detail) in
@@ -245,19 +192,19 @@ class PlayerViewController: NSViewController {
                 dataSource.append(.source(Array((0..<min(video.source,5)))))
             }
         }
-
+        
         if let seasons = videDetail?.seasons, !seasons.isEmpty {
             dataSource.append(.seasons(seasons))
         }
-
+        
         if let eipsodes = episodes, !eipsodes.isEmpty {
             dataSource.append(.episodes(eipsodes))
         }
-
+        
         if let recommends = videDetail?.recommends, !recommends.isEmpty {
             dataSource.append(.recommends(recommends))
         }
-
+        
         collectionView.reloadData()
         collectionView.scrollToVisible(.zero)
     }
@@ -265,14 +212,14 @@ class PlayerViewController: NSViewController {
     func replace(video: Video) {
         showVideo(video: video)
     }
-
+    
     deinit {
         print("deinit")
     }
 }
 
 
-extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout {
+extension VideoSheetViewController: NSCollectionViewDataSource, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return dataSource.count
     }
@@ -354,7 +301,6 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             let episode = episodes[indexPath.item]
             episodeIndex = indexPath.item
             collectionView.reloadSections([indexPath.section])
-            avPlayer.player?.pause()
             play(episode: episode)
             return
         case .source(let sources):
@@ -367,7 +313,6 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             break
         case .recommends(let videos):
             let video = videos[indexPath.item]
-            avPlayer.player?.pause()
             replace(video: video)
         case .seasons(let seasons):
             let index = indexPath.item
@@ -396,26 +341,4 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
         }
     }
     
-}
-
-extension PlayerViewController: NSWindowDelegate {
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        view.window?.delegate = self
-    }
-    
-    func windowShouldClose(_ sender: NSWindow) -> Bool {
-        avPlayer.player?.replaceCurrentItem(with: nil)
-        return true
-    }
-
-    func windowWillClose(_ notification: Notification) {
-        let status =  PlayStatus.idle
-        NotificationCenter.default.post(name: .playStatusChanged, object: status)
-        NSApplication.shared.openMainWindow()
-    }
-}
-
-
-extension PlayerViewController {
 }

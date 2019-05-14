@@ -26,6 +26,7 @@ extension NSViewController {
         alert.beginSheetModal(for: view.window!) { (returnCode) in
             handler(returnCode == .alertFirstButtonReturn)
         }
+        
     }
 
     func openURL(with sender: NSButton) {
@@ -39,6 +40,14 @@ extension NSViewController {
 // video handle
 extension NSViewController {
     func preparePlayerWindow(video: VideoDetail, episodes: [Episode]) {
+        if Preferences.shared.usingIINA {
+            let controller = VideoSheetViewController()
+            controller.videDetail = video
+            controller.episodes = episodes
+            presentAsSheet(controller)
+            return
+        }
+        
         NSApplication.shared.closePlayerWindow()
         //NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
         let windowController = AppWindowController(windowNibName: "AppWindowController")
@@ -54,6 +63,22 @@ extension NSViewController {
         guard !episodes.isEmpty else {
             return
         }
+       
+        if Preferences.shared.usingIINA {
+            let controller = VideoSheetViewController()
+            controller.episodes = episodes
+            controller.episodeIndex = episodeIndex
+            controller.titleText = title ?? video?.info.name
+            controller.videDetail = nil
+            if let info = video?.info {
+                controller.videDetail = VideoDetail(info: info, recommends: video?.recommends , seasons: nil)
+            }
+            presentAsSheet(controller)
+            return
+        }
+        
+        
+        
         NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
         let window = NSApplication.shared.windows.first {
             $0.contentViewController?.isKind(of:PlayerViewController.self) == true

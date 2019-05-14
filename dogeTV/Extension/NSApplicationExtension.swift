@@ -67,8 +67,24 @@ extension NSApplication {
         self.terminate(nil)
         exit(0)
     }
+    
+    func launchIINA(withURL url: String) {
+        guard let escapedURL = url.addingPercentEncoding(withAllowedCharacters: .alphanumerics),
+            let url = URL(string: "iina://weblink?url=\(escapedURL)") else {
+                return
+        }
+        NSWorkspace.shared.open(url)
+    }
 
     var isUnlocked: Bool {
         return UserDefaults.standard.bool(forKey: "UNLOCKED")
+    }
+    
+    var isDownieInstalled: Bool {
+        return NSWorkspace.shared.fullPath(forApplication: "Downie 3") != nil
+    }
+    
+    var isIINAInstalled: Bool {
+        return NSWorkspace.shared.fullPath(forApplication: "IINA") != nil
     }
 }

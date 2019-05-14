@@ -41,6 +41,12 @@ class ChannelGridViewController: NSViewController{
     }
     
     func preparePlay(channel: IPTVChannel) {
+        
+        if Preferences.shared.usingIINA {
+            NSApplication.shared.launchIINA(withURL: channel.url)
+            return
+        }
+        
         NSApplication.shared.appDelegate?.mainWindowController?.window?.performMiniaturize(nil)
         let playerWindow = NSApplication.shared.windows.first {
             $0.contentViewController?.isKind(of: LivePlayerViewController.self) == true

@@ -22,6 +22,9 @@
 		7916EF1E2266EF3600FB6721 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF1D2266EF3600FB6721 /* NSColorExtension.swift */; };
 		7916EF202267012000FB6721 /* QueryOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF1F2267012000FB6721 /* QueryOptionsView.swift */; };
 		7916EF24226704AB00FB6721 /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916EF23226704AB00FB6721 /* NSViewExtension.swift */; };
+		79324FF0228AAFE7002FB287 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79324FEF228AAFE7002FB287 /* SettingsViewController.swift */; };
+		79324FF4228AB5BA002FB287 /* VideoSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79324FF2228AB5BA002FB287 /* VideoSheetViewController.swift */; };
+		79324FF5228AB5BA002FB287 /* VideoSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79324FF3228AB5BA002FB287 /* VideoSheetViewController.xib */; };
 		7932E6442280748400224F47 /* TopicCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7932E6422280748400224F47 /* TopicCardView.swift */; };
 		7932E6452280748400224F47 /* TopicCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7932E6432280748400224F47 /* TopicCardView.xib */; };
 		7939584222674F90001FE58A /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7939584122674F90001FE58A /* SearchBarView.swift */; };
@@ -77,6 +80,8 @@
 		79C9CEAD2285486F003582AD /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C9CEAC2285486F003582AD /* QRCode.swift */; };
 		79D624AF22868AA9007A9F6C /* WebPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D624AD22868AA9007A9F6C /* WebPlayerViewController.swift */; };
 		79D624B022868AA9007A9F6C /* WebPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D624AE22868AA9007A9F6C /* WebPlayerViewController.xib */; };
+		79D7E27A228AA8F000457BCF /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79D7E279228AA8F000457BCF /* Preferences.storyboard */; };
+		79D7E27C228AAA8A00457BCF /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D7E27B228AAA8A00457BCF /* PreferencesWindowController.swift */; };
 		79D927A422657854009C446E /* QueryOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927A222657854009C446E /* QueryOptionView.swift */; };
 		79D927A522657854009C446E /* QueryOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D927A322657854009C446E /* QueryOptionView.xib */; };
 		79D927A72265931A009C446E /* NSButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D927A62265931A009C446E /* NSButtonExtension.swift */; };
@@ -165,6 +170,9 @@
 		7916EF1D2266EF3600FB6721 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		7916EF1F2267012000FB6721 /* QueryOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionsView.swift; sourceTree = "<group>"; };
 		7916EF23226704AB00FB6721 /* NSViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewExtension.swift; sourceTree = "<group>"; };
+		79324FEF228AAFE7002FB287 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		79324FF2228AB5BA002FB287 /* VideoSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSheetViewController.swift; sourceTree = "<group>"; };
+		79324FF3228AB5BA002FB287 /* VideoSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoSheetViewController.xib; sourceTree = "<group>"; };
 		7932E6422280748400224F47 /* TopicCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCardView.swift; sourceTree = "<group>"; };
 		7932E6432280748400224F47 /* TopicCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicCardView.xib; sourceTree = "<group>"; };
 		7939584122674F90001FE58A /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
@@ -218,6 +226,8 @@
 		79C9CEAC2285486F003582AD /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		79D624AD22868AA9007A9F6C /* WebPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPlayerViewController.swift; sourceTree = "<group>"; };
 		79D624AE22868AA9007A9F6C /* WebPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebPlayerViewController.xib; sourceTree = "<group>"; };
+		79D7E279228AA8F000457BCF /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		79D7E27B228AAA8A00457BCF /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		79D927A222657854009C446E /* QueryOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionView.swift; sourceTree = "<group>"; };
 		79D927A322657854009C446E /* QueryOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueryOptionView.xib; sourceTree = "<group>"; };
 		79D927A62265931A009C446E /* NSButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSButtonExtension.swift; sourceTree = "<group>"; };
@@ -314,6 +324,8 @@
 				7974C77822830EE000563263 /* BlueRayGridViewController.xib */,
 				79D624AD22868AA9007A9F6C /* WebPlayerViewController.swift */,
 				79D624AE22868AA9007A9F6C /* WebPlayerViewController.xib */,
+				79324FF2228AB5BA002FB287 /* VideoSheetViewController.swift */,
+				79324FF3228AB5BA002FB287 /* VideoSheetViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -416,6 +428,16 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		79D7E278228AA8D000457BCF /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				79D7E279228AA8F000457BCF /* Preferences.storyboard */,
+				79D7E27B228AAA8A00457BCF /* PreferencesWindowController.swift */,
+				79324FEF228AAFE7002FB287 /* SettingsViewController.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 		79D927A8226597F5009C446E /* Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +473,7 @@
 		79FD5BF522647AC3009EDB9C /* dogeTV */ = {
 			isa = PBXGroup;
 			children = (
+				79D7E278228AA8D000457BCF /* Preferences */,
 				79D927A8226597F5009C446E /* Window */,
 				799B962B2264B076002C8FFA /* Extension */,
 				799B96132264AF7E002C8FFA /* Models */,
@@ -603,10 +626,12 @@
 				799B96072264AD8A002C8FFA /* LatestGridViewController.xib in Resources */,
 				79E091122268474900219C87 /* SearchBarView.xib in Resources */,
 				79D624B022868AA9007A9F6C /* WebPlayerViewController.xib in Resources */,
+				79D7E27A228AA8F000457BCF /* Preferences.storyboard in Resources */,
 				7974C77A22830EE000563263 /* BlueRayGridViewController.xib in Resources */,
 				7974C77622830D8A00563263 /* BlueRayTabViewController.xib in Resources */,
 				79395848226764D8001FE58A /* LivePlayerViewController.xib in Resources */,
 				79B7AD15226AE38000600282 /* AboutWindow.storyboard in Resources */,
+				79324FF5228AB5BA002FB287 /* VideoSheetViewController.xib in Resources */,
 				79E09108226835B000219C87 /* TopRatedViewController.xib in Resources */,
 				79D927BC2265B97F009C446E /* VideoIntroView.xib in Resources */,
 				79D927B82265A73B009C446E /* EpisodeItemView.xib in Resources */,
@@ -699,6 +724,7 @@
 				7916EF24226704AB00FB6721 /* NSViewExtension.swift in Sources */,
 				79FD5C0722648353009EDB9C /* LatestGridViewController.swift in Sources */,
 				79820F742270093300ADA103 /* MainWindowController.swift in Sources */,
+				79324FF0228AAFE7002FB287 /* SettingsViewController.swift in Sources */,
 				79395847226764D8001FE58A /* LivePlayerViewController.swift in Sources */,
 				799B96212264AF7F002C8FFA /* CloudParse.swift in Sources */,
 				79E0911922686AB200219C87 /* TopicsViewController.swift in Sources */,
@@ -724,9 +750,11 @@
 				799B962D2264B080002C8FFA /* StringExtension.swift in Sources */,
 				79E091042268013000219C87 /* ContainerView.swift in Sources */,
 				799B962F2264B357002C8FFA /* NSImageViewExtension.swift in Sources */,
+				79D7E27C228AAA8A00457BCF /* PreferencesWindowController.swift in Sources */,
 				799B96282264AF7F002C8FFA /* Topic.swift in Sources */,
 				799B96292264AF7F002C8FFA /* APIClient.swift in Sources */,
 				7916EF132266BA1400FB6721 /* SearchViewController.swift in Sources */,
+				79324FF4228AB5BA002FB287 /* VideoSheetViewController.swift in Sources */,
 				7916EF202267012000FB6721 /* QueryOptionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

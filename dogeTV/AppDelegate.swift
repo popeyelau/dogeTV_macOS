@@ -43,6 +43,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func help(_ sender: Any) {
         NSWorkspace.shared.open(StaticURLs.github.url)
     }
+    
+    @IBAction func preferences(_ sender: Any) {
+        let storyboard = NSStoryboard(name: .preferences, bundle:nil)
+        guard let controller = storyboard.instantiateInitialController() as? NSWindowController else {
+            fatalError("加载失败")
+        }
+        controller.window?.makeKeyAndOrderFront(self)
+    }
 
 
 }

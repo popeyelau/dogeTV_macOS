@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="VideoSheetViewController" customModule="dogeTV" customModuleProvider="target">
+            <connections>
+                <outlet property="actionStackView" destination="21r-na-mU7" id="Zfb-Zm-5YI"/>
+                <outlet property="bottomView" destination="ji5-Ch-Y1w" id="JrZ-1b-6Bl"/>
+                <outlet property="collectionView" destination="Qhg-7h-SnS" id="Vf7-1c-lyJ"/>
+                <outlet property="downloadBtn" destination="yes-4J-jWp" id="pTT-xt-6re"/>
+                <outlet property="titleLabel" destination="G3R-JQ-83j" id="Dzn-8b-4Qn"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="500"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="P8C-Ms-Tzz">
+                    <rect key="frame" x="0.0" y="40" width="480" height="460"/>
+                    <subviews>
+                        <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znm-Kc-OyS">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="421"/>
+                            <clipView key="contentView" copiesOnScroll="NO" id="PEV-1i-wAH">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="421"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <collectionView selectable="YES" id="Qhg-7h-SnS">
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="489"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="5" minimumLineSpacing="5" sectionHeadersPinToVisibleBounds="YES" id="0Dv-qg-5ik">
+                                            <size key="itemSize" width="90" height="30"/>
+                                            <size key="headerReferenceSize" width="0.0" height="40"/>
+                                            <edgeInsets key="sectionInset" left="20" right="20" top="5" bottom="5"/>
+                                        </collectionViewFlowLayout>
+                                        <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="-2" id="SCV-Tg-nFM"/>
+                                            <outlet property="delegate" destination="-2" id="sgt-sv-bf0"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="0.2218706355" colorSpace="custom" customColorSpace="sRGB"/>
+                            </clipView>
+                            <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="lsc-XO-7dC">
+                                <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                            <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="eld-TC-b7P">
+                                <rect key="frame" x="464" y="0.0" width="16" height="421"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </scroller>
+                        </scrollView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G3R-JQ-83j">
+                            <rect key="frame" x="218" y="431" width="44" height="19"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="lFS-f9-xgO">
+                                <font key="font" metaFont="system" size="16"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="znm-Kc-OyS" firstAttribute="leading" secondItem="P8C-Ms-Tzz" secondAttribute="leading" id="78J-pa-g7t"/>
+                        <constraint firstItem="G3R-JQ-83j" firstAttribute="top" secondItem="P8C-Ms-Tzz" secondAttribute="top" constant="10" id="cUc-2p-jNG"/>
+                        <constraint firstItem="znm-Kc-OyS" firstAttribute="top" secondItem="G3R-JQ-83j" secondAttribute="bottom" constant="10" id="fHR-5H-hZy"/>
+                        <constraint firstAttribute="bottom" secondItem="znm-Kc-OyS" secondAttribute="bottom" id="hMD-QX-gAq"/>
+                        <constraint firstItem="G3R-JQ-83j" firstAttribute="centerX" secondItem="P8C-Ms-Tzz" secondAttribute="centerX" id="sA9-7o-6xm"/>
+                        <constraint firstAttribute="trailing" secondItem="znm-Kc-OyS" secondAttribute="trailing" id="xJl-75-49V"/>
+                    </constraints>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="ji5-Ch-Y1w">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="40"/>
+                    <subviews>
+                        <stackView hidden="YES" distribution="fill" orientation="horizontal" alignment="centerY" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21r-na-mU7">
+                            <rect key="frame" x="20" y="5" width="50" height="30"/>
+                            <subviews>
+                                <button toolTip="生成二维码" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dgg-db-Nne">
+                                    <rect key="frame" x="0.0" y="7" width="16" height="16"/>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="qrcode" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="toa-Bg-BWA">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                </button>
+                                <button toolTip="使用 Downie 下载" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yes-4J-jWp">
+                                    <rect key="frame" x="32" y="0.0" width="18" height="30"/>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTouchBarDownloadTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="eqf-tv-Wal">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                </button>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K6N-Sj-bMX">
+                            <rect key="frame" x="419" y="3" width="59" height="32"/>
+                            <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" inset="2" id="4Yl-IZ-Wro">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                            </buttonCell>
+                            <connections>
+                                <action selector="dismissBtn:" target="-2" id="1BV-mW-9Qb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="21r-na-mU7" firstAttribute="centerY" secondItem="ji5-Ch-Y1w" secondAttribute="centerY" id="2dB-sc-lcf"/>
+                        <constraint firstAttribute="height" constant="40" id="SXn-Pa-JXv"/>
+                        <constraint firstItem="K6N-Sj-bMX" firstAttribute="centerY" secondItem="ji5-Ch-Y1w" secondAttribute="centerY" id="at5-wA-sws"/>
+                        <constraint firstItem="21r-na-mU7" firstAttribute="leading" secondItem="ji5-Ch-Y1w" secondAttribute="leading" constant="20" id="gS7-UL-OBB"/>
+                        <constraint firstAttribute="trailing" secondItem="K6N-Sj-bMX" secondAttribute="trailing" constant="8" id="yXD-ig-4t3"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="P8C-Ms-Tzz" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="8pW-ap-6SM"/>
+                <constraint firstItem="ji5-Ch-Y1w" firstAttribute="top" secondItem="P8C-Ms-Tzz" secondAttribute="bottom" id="9C5-v9-QTp"/>
+                <constraint firstAttribute="trailing" secondItem="ji5-Ch-Y1w" secondAttribute="trailing" id="YNF-ww-Q1o"/>
+                <constraint firstAttribute="trailing" secondItem="P8C-Ms-Tzz" secondAttribute="trailing" id="adX-Tn-Ofj"/>
+                <constraint firstAttribute="bottom" secondItem="ji5-Ch-Y1w" secondAttribute="bottom" id="cUh-cF-6Pj"/>
+                <constraint firstItem="ji5-Ch-Y1w" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="cko-bD-f4k"/>
+                <constraint firstItem="P8C-Ms-Tzz" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="vi8-KU-HH6"/>
+            </constraints>
+            <point key="canvasLocation" x="168" y="154"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSTouchBarDownloadTemplate" width="18" height="30"/>
+        <image name="qrcode" width="16" height="16"/>
+    </resources>
+</document>
