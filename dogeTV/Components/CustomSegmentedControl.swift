@@ -16,17 +16,26 @@ class CustomSegmentedControl: NSControl {
         let stackView = NSStackView()
         stackView.orientation = .horizontal
         stackView.alignment = .centerY
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 2
+//        stackView.distribution = .fill
         return stackView
     }()
 
-    var titles: [String] = []
+    var titles: [String] = [] {
+        didSet {
+            positionButtons()
+            updateSelection()
+        }
+    }
 
     var selectedIndex: Int? = nil {
         didSet {
             updateSelection()
         }
+    }
+    
+    var selectedIdentifier: NSUserInterfaceItemIdentifier? {
+        guard let index = selectedIndex else { return nil }
+        return buttons[index].identifier
     }
 
     override init(frame frameRect: NSRect) {
@@ -44,7 +53,7 @@ class CustomSegmentedControl: NSControl {
         wantsLayer = true
         layer?.backgroundColor = NSColor.activedBackgroundColor.withAlphaComponent(0.4).cgColor
         stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalToSuperview().inset(3)
         }
         positionButtons()
     }
@@ -80,26 +89,31 @@ class CustomSegmentedControl: NSControl {
     func setTitle(title: String, ofSegment segment: Int) {
         buttons[segment].title = title
     }
+    
+    func setIdentifier(_ identifier: NSUserInterfaceItemIdentifier, ofSegment segment: Int) {
+        buttons[segment].identifier = identifier
+    }
 
     private func positionButtons() {
         buttons.forEach { $0.removeFromSuperview() }
         buttons.removeAll()
-
-        for title in titles {
+        
+        titles.enumerated().forEach { (index, title) in
             let btn: NSButton = NSButton(title: title, target: self, action: #selector(CustomSegmentedControl.handleSegmentPress(_:)))
             btn.setButtonType(.toggle)
             btn.bezelStyle = .regularSquare
             btn.isBordered = false
             btn.wantsLayer = true
             btn.layer?.cornerRadius = 15
-            btn.font = NSFont.systemFont(ofSize: 15)
+            btn.font = NSFont.systemFont(ofSize: 14)
             buttons.append(btn)
             stackView.addArrangedSubview(btn)
             btn.snp.makeConstraints {
-                $0.width.greaterThanOrEqualTo(60)
+                $0.width.greaterThanOrEqualTo(70)
                 $0.height.equalTo(30)
             }
         }
+
         updateSelection()
     }
 

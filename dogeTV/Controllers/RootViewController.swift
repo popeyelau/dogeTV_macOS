@@ -97,6 +97,8 @@ class RootViewController: NSViewController {
         
         if let selectedBtn = btnStack.arrangedSubviews.first as? PPButton {
             selectedBtn.isSelected = true
+            selectedBtn.keyEquivalent = "1"
+            selectedBtn.keyEquivalentModifierMask = .command
         }
     }
     

@@ -33,10 +33,9 @@ class TopRatedViewController: NSViewController {
         tableView.target = self
         tableView.doubleAction = #selector(tableViewDoubleAction(_:))
 
-        Category.allCases.enumerated().forEach { index, element in
-            segmentCtrl.addSegment(withTitle: element.title)
-        }
+        segmentCtrl.titles = Category.allCases.map { $0.title }
         segmentCtrl.selectedIndex = category.rawValue
+        
         refresh()
     }
 

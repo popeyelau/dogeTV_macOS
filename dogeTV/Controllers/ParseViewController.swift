@@ -82,9 +82,7 @@ class ParseViewController: NSViewController {
 
         channelBtn.setAttributedString("高清线路", color: .secondaryLabelColor)
 
-        Site.allCases.enumerated().forEach { index, element in
-            segmentCtrl.addSegment(withTitle: element.title)
-        }
+        segmentCtrl.titles = Site.allCases.map { $0.title }
         segmentCtrl.selectedIndex = selectedSite.rawValue
         sendRequest(url: selectedSite.url)
 

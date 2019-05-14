@@ -43,10 +43,9 @@
                     </tabViewItems>
                 </tabView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="rlF-O8-f3G" customClass="CustomSegmentedControl" customModule="dogeTV" customModuleProvider="target">
-                    <rect key="frame" x="15" y="234" width="300" height="30"/>
+                    <rect key="frame" x="15" y="234" width="450" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" placeholder="YES" id="4Df-Bh-Psp"/>
-                        <constraint firstAttribute="width" constant="300" placeholder="YES" id="mRF-nJ-tJy"/>
                     </constraints>
                     <connections>
                         <action selector="segmentIndexChanged:" target="-2" id="H4Q-3O-v20"/>
@@ -54,6 +53,7 @@
                 </customView>
             </subviews>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="rlF-O8-f3G" secondAttribute="trailing" constant="15" id="9p7-j4-hfE"/>
                 <constraint firstAttribute="bottom" secondItem="M1c-AD-lch" secondAttribute="bottom" id="Kf4-Xx-kXv"/>
                 <constraint firstItem="M1c-AD-lch" firstAttribute="leading" secondItem="Fv0-sW-CL1" secondAttribute="leading" id="Yyl-bF-L6c"/>
                 <constraint firstItem="rlF-O8-f3G" firstAttribute="top" secondItem="Fv0-sW-CL1" secondAttribute="top" constant="8" id="c6l-G5-uXh"/>

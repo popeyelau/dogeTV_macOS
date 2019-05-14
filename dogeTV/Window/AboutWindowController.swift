@@ -22,8 +22,9 @@ class AboutWindowController: NSWindowController {
         super.windowDidLoad()
         window?.isMovableByWindowBackground = true
         window?.appearance = NSAppearance(named: .darkAqua)
+        /*
         window?.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        window?.standardWindowButton(.zoomButton)?.isHidden = true
+        window?.standardWindowButton(.zoomButton)?.isHidden = true*/
     }
 
 }

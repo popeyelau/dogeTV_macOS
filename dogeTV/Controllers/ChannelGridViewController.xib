@@ -54,6 +54,8 @@
                     <buttonCell key="cell" type="bevel" bezelStyle="circular" image="menu" imagePosition="trailing" alignment="center" imageScaling="proportionallyDown" inset="2" id="0FG-aV-boT">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent">g</string>
+                        <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                     </buttonCell>
                     <connections>
                         <action selector="toggleAction:" target="-2" id="lXF-3L-uau"/>
@@ -64,7 +66,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="yIC-rz-IAg"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" placeholderString="频道名称" usesSingleLineMode="YES" id="jpa-jA-C1q">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" placeholderString="搜索频道 (⌘+F)" usesSingleLineMode="YES" id="jpa-jA-C1q">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -78,6 +80,8 @@
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="buttonCell:Oij-Fn-Oj6:image" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Oij-Fn-Oj6">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent">f</string>
+                        <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                     </buttonCell>
                     <connections>
                         <action selector="searchBtnAction:" target="-2" id="4Zn-lt-Xl5"/>

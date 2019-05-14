@@ -29,9 +29,7 @@ class TagGridViewController: NSViewController {
             return item
         }
         
-        TabItems.allCases.enumerated().forEach { index, element in
-            segmentCtrl.addSegment(withTitle: element.title)
-        }
+        segmentCtrl.titles = TabItems.allCases.map { $0.title }
         segmentCtrl.selectedIndex = selectedCategory.rawValue
     }
     
