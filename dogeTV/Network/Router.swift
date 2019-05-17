@@ -48,7 +48,7 @@ protocol APIConfiguration: URLRequestConvertible {
 
 
 enum Router: APIConfiguration {
-    case recommended
+    case recommended(page: Int)
     case pumpkin(id: String)
     case pumpkinSeason(id: String, sid: String)
     case pumpkinStream(id: String)
@@ -94,9 +94,9 @@ enum Router: APIConfiguration {
         case .pumpkinSerieVideos(let id, _):
             return "/pumpkin/video/\(id)/list"
         case .pumpkinCategoryVideos:
-            return "pumpkin/category"
+            return "/pumpkin/category"
         case .pumpkinSearch(let keywords):
-            return "pumpkin/search/\(keywords)"
+            return "/pumpkin/search/\(keywords)"
         case .latest:
             return "/videos"
         case .topics:
@@ -152,6 +152,8 @@ enum Router: APIConfiguration {
             return ["category": category, "p": page]
         case .blueRay(let query):
             return ["query": query]
+        case .recommended(let page):
+            return ["p": page]
         default:
             return nil
         }

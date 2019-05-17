@@ -10,8 +10,6 @@ import Cocoa
 import PromiseKit
 
 extension NSViewController {
-
-  
     func showError(_ error: Error) {
         //toast(message: error.localizedDescription)
     }

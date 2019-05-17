@@ -17,17 +17,47 @@ class PumpkinViewController: NSViewController {
         case category(category: String)
     }
 
-    
     @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var scrollView: NSScrollView!
     var hots: [Hot] = []
     var sourceType: SourceType = .home
+    var pageIndex: Int = 0
+    let pageSize: Int = 20
+    var isLoading: Bool = false
+    var isNoMoreData: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
         collectionView.backgroundColors = [.backgroundColor]
+        registLoadMoreNotification()
         refresh()
+    }
+    
+    func registLoadMoreNotification() {
+        guard let clipView = collectionView.superview,
+            let scrollView = clipView.superview as? NSScrollView else {
+                return
+        }
+        scrollView.contentView.postsBoundsChangedNotifications = true
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(collectionViewDidScroll),
+                                               name: NSView.boundsDidChangeNotification,
+                                               object: clipView)
+    }
+    
+    @objc func collectionViewDidScroll() {
+        guard !isNoMoreData, !isLoading else { return }
+        guard let value = scrollView.verticalScroller?.floatValue,  value >= 0.9 else {
+            return
+        }
+        switch sourceType {
+        case .home:
+            loadMoreHome()
+        case .category:
+            loadMoreCategory()
+        }
     }
 }
 
@@ -87,6 +117,7 @@ extension PumpkinViewController: NSCollectionViewDelegate,  NSCollectionViewData
 
 extension PumpkinViewController {
     func refresh() {
+        pageIndex = 0
         switch sourceType {
         case .home:
             refreshHome()
@@ -110,6 +141,27 @@ extension PumpkinViewController {
                 self.removeSpinning()
         }
     }
+    
+    func loadMoreHome() {
+        guard !isNoMoreData else {
+            return
+        }
+        pageIndex += 1
+        isLoading = true
+         APIClient.fetchHome(page: pageIndex).done { hots in
+            if hots.isEmpty {
+                self.isNoMoreData = true
+            }
+            self.hots.append(contentsOf: hots)
+            }.catch{ (err) in
+                self.isNoMoreData = true
+                self.pageIndex = max(0, self.pageIndex-1)
+                print(err)
+            }.finally {
+                self.isLoading = false
+                self.collectionView.reloadData()
+        }
+    }
 
     func refreshCategory(category: String) {
         showSpinning()
@@ -124,6 +176,28 @@ extension PumpkinViewController {
                 self.collectionView.reloadData()
                 self.collectionView.scroll(.zero)
                 self.removeSpinning()
+        }
+    }
+    
+    func loadMoreCategory() {
+        guard !isNoMoreData, case let SourceType.category(category) = sourceType else {
+            return
+        }
+       
+        pageIndex += 1
+        isLoading = true
+        APIClient.fetchPumpkinCategoryVideo(category: category, page: pageIndex).done { hots in
+            if hots.isEmpty {
+                self.isNoMoreData = true
+            }
+            self.hots.append(contentsOf: hots)
+            }.catch{ (err) in
+                self.isNoMoreData = true
+                self.pageIndex = max(0, self.pageIndex-1)
+                print(err)
+            }.finally {
+                self.isLoading = false
+                self.collectionView.reloadData()
         }
     }
 }

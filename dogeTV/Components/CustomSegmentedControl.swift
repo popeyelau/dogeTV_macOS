@@ -16,7 +16,6 @@ class CustomSegmentedControl: NSControl {
         let stackView = NSStackView()
         stackView.orientation = .horizontal
         stackView.alignment = .centerY
-//        stackView.distribution = .fill
         return stackView
     }()
 

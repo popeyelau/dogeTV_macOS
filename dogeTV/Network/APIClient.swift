@@ -71,8 +71,8 @@ struct APIClient {
             .map { $0.data }
     }
     
-    static func fetchHome() -> Promise<[Hot]>  {
-        return AlamofireManager.shared.request(Router.recommended)
+    static func fetchHome(page: Int = 0) -> Promise<[Hot]>  {
+        return AlamofireManager.shared.request(Router.recommended(page: page))
             .validate(validate)
             .responseDecodable(Response<[Hot]>.self)
             .map { $0.data }

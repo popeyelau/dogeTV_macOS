@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PumpkinViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Mbs-Ie-81J" id="nLN-6K-O9f"/>
+                <outlet property="scrollView" destination="xMU-NU-2Xt" id="FKh-ZL-L8R"/>
                 <outlet property="view" destination="5vk-xp-Gvp" id="fdb-eh-eFm"/>
             </connections>
         </customObject>
@@ -26,7 +27,7 @@
                             <collectionView selectable="YES" id="Mbs-Ie-81J">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" sectionHeadersPinToVisibleBounds="YES" id="JUa-7Y-mgT" customClass="CollectionViewLeftFlowLayout" customModule="dogeTV" customModuleProvider="target">
+                                <collectionViewFlowLayout key="collectionViewLayout" sectionHeadersPinToVisibleBounds="YES" id="JUa-7Y-mgT" customClass="CollectionViewLeftFlowLayout" customModule="dogeTV" customModuleProvider="target">
                                     <size key="headerReferenceSize" width="0.0" height="44"/>
                                     <edgeInsets key="sectionInset" left="20" right="20" top="20" bottom="20"/>
                                 </collectionViewFlowLayout>

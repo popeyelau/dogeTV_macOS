@@ -28,6 +28,9 @@ struct Video: Decodable, Equatable {
     let state: String
     let source: Int
     
+    static func ==(lhs: Video, rhs: Video) -> Bool {
+        return lhs.id == rhs.id && lhs.name == rhs.name
+    }
     
     var sourceType: VideoSource {
         if cover.contains("vcinema") {

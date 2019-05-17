@@ -62,6 +62,7 @@ extension NSUserInterfaceItemIdentifier {
     static let queryOptionView = NSUserInterfaceItemIdentifier(rawValue: "QueryOptionView")
     static let queryOptionsKeyView = NSUserInterfaceItemIdentifier(rawValue: "QueryOptionsKeyView")
     static let videoCardView = NSUserInterfaceItemIdentifier(rawValue: "VideoCardView")
+    static let horizontalSectionView = NSUserInterfaceItemIdentifier(rawValue: "HorizontalSectionView")
     static let gridSectionHeader = NSUserInterfaceItemIdentifier(rawValue: "GridSectionHeader")
     static let episodeItemView = NSUserInterfaceItemIdentifier(rawValue: "EpisodeItemView")
     static let videoIntroView = NSUserInterfaceItemIdentifier(rawValue: "VideoIntroView")

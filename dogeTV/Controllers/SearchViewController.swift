@@ -131,7 +131,7 @@ extension SearchViewController {
         showSpinning()
         _ = APIClient.fetchPumpkinSearchResults(keywords: keywords)
             .done { (items) in
-                self.results = items
+                self.results = items.uniqueElements
             }.catch({ (error) in
                 print(error)
                 self.showError(error)
