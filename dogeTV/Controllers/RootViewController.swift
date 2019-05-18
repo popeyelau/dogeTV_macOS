@@ -25,7 +25,7 @@ class RootViewController: NSViewController {
     
     var mapping: [String: Initializable] = [:]
     var activiedController: Initializable?
-    var prevController: Initializable?
+    var fromController: Initializable?
     
    
     override func viewDidLoad() {
@@ -44,27 +44,23 @@ class RootViewController: NSViewController {
         }
         
         setupLeftMenus()
-
-        let isUnlocked = NSApplication.shared.isUnlocked
-        let target: Initializable = isUnlocked ? makeContentView(type: PumpkinViewController.self, key: Menus.recommended.rawValue) : makeContentView(type: LatestGridViewController.self, key: Menus.latest.rawValue)
-        activiedController = target
-        contentView.addSubview(target.view)
-        
-        searchBarView.onTopRatedAction = { [weak self] in
-            self?.showTopRated()
-        }
-        searchBarView.onSearchAction = { [weak self] keywords in
-            self?.onSearch(keywords: keywords)
-        }
-        
-        view.window?.makeFirstResponder(nil)
+        setupRootView()
+        registerActions()
         registerNotification()
         
         let trackingArea = NSTrackingArea(rect: refreshBtn.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
         refreshBtn.addTrackingArea(trackingArea)
+        
+        view.window?.makeFirstResponder(nil)
+    }
+    
+    func setupRootView() {
+        let isUnlocked = NSApplication.shared.isUnlocked
+        let target: Initializable = isUnlocked ? makeContentView(type: PumpkinViewController.self, key: Menus.recommended.rawValue) : makeContentView(type: LatestGridViewController.self, key: Menus.latest.rawValue)
+        activiedController = target
+        contentView.addSubview(target.view)
     }
 
-    
     override func mouseEntered(with event: NSEvent) {
         refreshBtn.rotate360Degrees()
     }
@@ -75,6 +71,15 @@ class RootViewController: NSViewController {
                 return
             }
             self?.playingStatusBar.status = status
+        }
+    }
+    
+    func registerActions() {
+        searchBarView.onTopRatedAction = { [weak self] in
+            self?.showTopRated()
+        }
+        searchBarView.onSearchAction = { [weak self] keywords in
+            self?.onSearch(keywords: keywords)
         }
     }
     
@@ -96,6 +101,7 @@ class RootViewController: NSViewController {
         }
         
         if let selectedBtn = btnStack.arrangedSubviews.first as? PPButton {
+            //CMD+1 to root view.
             selectedBtn.isSelected = true
             selectedBtn.keyEquivalent = "1"
             selectedBtn.keyEquivalentModifierMask = .command
@@ -122,9 +128,8 @@ class RootViewController: NSViewController {
         case .latest:
             let target = makeContentView(type: LatestGridViewController.self, key: identifier)
             makeTransition(to: target)
-        case .film, .drama, .variety, .cartoon, .documentary:
-            let target = makeContentView(type: VideoGridViewController.self, key: identifier)
-            target.category = .fromCategoryKey(identifier)
+        case .library:
+            let target = makeContentView(type: LibraryViewController.self, key: identifier)
             makeTransition(to: target)
         case .live:
             let target = makeContentView(type: ChannelGridViewController.self, key: identifier)
@@ -196,10 +201,10 @@ extension RootViewController {
     }
     
     func back() {
-        guard let prev = prevController else {
+        guard let from = fromController else {
             return
         }
-        makeTransition(to: prev)
+        makeTransition(to: from)
     }
 
     func resetButtons() {
@@ -223,7 +228,7 @@ extension RootViewController {
     func makeTransition(to: Initializable, options: TransitionOptions = .crossfade) {
         guard let from = activiedController else { return }
         transition(from: from, to: to, options: options) {
-            self.prevController = from
+            self.fromController = from
             self.activiedController = to
         }
     }

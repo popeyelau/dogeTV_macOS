@@ -52,10 +52,7 @@ extension NSApplication {
     }
 
     func unlocked() {
-        if isUnlocked {
-            return
-        }
-        UserDefaults.standard.set(true, forKey: "UNLOCKED")
+        Preferences.shared.unlocked = true
     }
     
     func relaunch(afterDelay seconds: TimeInterval = 0.5) -> Never {
@@ -63,7 +60,6 @@ extension NSApplication {
         task.launchPath = "/bin/sh"
         task.arguments = ["-c", "sleep \(seconds); open \"\(Bundle.main.bundlePath)\""]
         task.launch()
-        
         self.terminate(nil)
         exit(0)
     }
@@ -77,7 +73,7 @@ extension NSApplication {
     }
 
     var isUnlocked: Bool {
-        return UserDefaults.standard.bool(forKey: "UNLOCKED")
+        return Preferences.shared.unlocked
     }
     
     var isDownieInstalled: Bool {

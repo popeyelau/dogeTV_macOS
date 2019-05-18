@@ -79,7 +79,7 @@ class VideoSheetViewController: NSViewController {
 
 
     @IBAction func openMainWindowAction(_ sender: NSButton) {
-        NSApplication.shared.appDelegate?.mainWindowController?.window?.makeKeyAndOrderFront(nil)
+        NSApplication.shared.openMainWindow()
     }
     
     @IBAction func shareAction(_ sender: NSButton) {
@@ -302,7 +302,6 @@ extension VideoSheetViewController: NSCollectionViewDataSource, NSCollectionView
             episodeIndex = indexPath.item
             collectionView.reloadSections([indexPath.section])
             play(episode: episode)
-            return
         case .source(let sources):
             if sourceIndex == indexPath.item { return }
             let source = sources[indexPath.item]
@@ -327,7 +326,7 @@ extension VideoSheetViewController: NSCollectionViewDataSource, NSCollectionView
         let section = dataSource[indexPath.section]
         switch section {
         case .source:
-            return NSSize(width: 70, height: 30)
+            return EpisodeItemView.itemSize
         case .episodes(let episodes):
             let title = episodes[indexPath.item].title
             let width = title.widthOfString(usingFont: .systemFont(ofSize: 14)) + 20
@@ -337,7 +336,7 @@ extension VideoSheetViewController: NSCollectionViewDataSource, NSCollectionView
         case .recommends:
             return VideoCardView.smallSize
         case .seasons:
-            return NSSize(width: 70, height: 30)
+            return EpisodeItemView.itemSize
         }
     }
     

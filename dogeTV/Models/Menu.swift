@@ -13,11 +13,15 @@ enum Menus: String, Equatable {
     case tag
     case latest
     case topic
+    case library
+    
+    /*
     case film
     case drama
     case variety
     case cartoon
-    case documentary
+    case documentary*/
+    
     case parse
     case blueray
     case live
@@ -25,15 +29,13 @@ enum Menus: String, Equatable {
     static var allCases: [Menus] {
         if NSApplication.shared.isUnlocked {
             return [
-                .recommended,.tag,.blueray,.latest,.topic,.film,
-                .drama,.variety,.cartoon,.documentary,
+                .recommended,.tag,.blueray,.latest,.topic,.library,
                 .parse,.live
             ]
         }
 
         return [
-            .blueray,.latest,.topic,.film,
-            .drama,.variety,.cartoon,.documentary,
+            .blueray,.latest,.topic,.library,
             .parse,.live
         ]
     }
@@ -45,11 +47,13 @@ enum Menus: String, Equatable {
         case .blueray: return "高清"
         case .tag: return "分类"
         case .topic: return "专题"
+        case .library: return "影视库"
+        /*
         case .film: return "电影"
         case .drama: return "电视剧"
         case .variety: return "综艺"
         case .cartoon: return "动漫"
-        case .documentary: return "纪录片"
+        case .documentary: return "纪录片" */
         case .parse: return "云解析"
         case .live: return "电视直播"
         }
