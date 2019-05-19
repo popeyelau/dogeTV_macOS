@@ -9,10 +9,14 @@
 import Cocoa
 
 class SettingsViewController: NSViewController {
+
     @IBOutlet weak var iinaBtn: NSButton!
     @IBOutlet weak var hdBtn: NSButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+
         iinaBtn.state = Preferences.shared.usingIINA ? .on : .off
         hdBtn.state = Preferences.shared.searchHD ? .on : .off
         iinaBtn.isEnabled = NSApplication.shared.isIINAInstalled
@@ -34,33 +38,39 @@ class SettingsViewController: NSViewController {
 
 
 
-class Preferences {
+class Preferences: NSObject {
     static let shared = Preferences()
-
+    
+    private override init() {
+    }
+    
+    let prefs = UserDefaults.standard
+    let keys = PreferenceKeys.self
+    
     var usingIINA: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: PreferenceKeys.usingIINA.rawValue)
+            return prefs.bool(forKey: PreferenceKeys.usingIINA.rawValue)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: PreferenceKeys.usingIINA.rawValue)
+            prefs.set(newValue, forKey: PreferenceKeys.usingIINA.rawValue)
         }
     }
     
     var searchHD: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: PreferenceKeys.searchHD.rawValue)
+            return prefs.bool(forKey: PreferenceKeys.searchHD.rawValue)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: PreferenceKeys.searchHD.rawValue)
+            prefs.set(newValue, forKey: PreferenceKeys.searchHD.rawValue)
         }
     }
-    
+
     var unlocked: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: PreferenceKeys.unlocked.rawValue)
+            return prefs.bool(forKey: PreferenceKeys.unlocked.rawValue)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: PreferenceKeys.unlocked.rawValue)
+            prefs.set(newValue, forKey: PreferenceKeys.unlocked.rawValue)
         }
     }
 }

@@ -128,8 +128,9 @@ class RootViewController: NSViewController {
         case .latest:
             let target = makeContentView(type: LatestGridViewController.self, key: identifier)
             makeTransition(to: target)
-        case .library:
-            let target = makeContentView(type: LibraryViewController.self, key: identifier)
+        case .film,.drama,.cartoon,.variety,.documentary:
+            let target = makeContentView(type: VideoGridViewController.self, key: identifier)
+            target.category = Category.fromCategoryKey(identifier)
             makeTransition(to: target)
         case .live:
             let target = makeContentView(type: ChannelGridViewController.self, key: identifier)

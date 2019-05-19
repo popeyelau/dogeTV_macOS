@@ -8,7 +8,9 @@
         <customObject id="-2" userLabel="File's Owner" customClass="HorizontalSectionView" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="itemsCollectionView" destination="QlB-t6-LT9" id="m09-dz-eRR"/>
+                <outlet property="nextBtn" destination="Blh-Ms-F07" id="Ygb-zn-xLu"/>
                 <outlet property="pageLabel" destination="Ubh-cM-lsu" id="dNf-2N-Ldd"/>
+                <outlet property="prevBtn" destination="cXv-MB-v7H" id="O1X-RS-YeV"/>
                 <outlet property="scrollView" destination="AzA-jE-705" id="ade-xh-Sl9"/>
                 <outlet property="titleLabel" destination="tHF-Ua-HcN" id="U6s-1e-fvg"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -26,10 +28,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="228"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView id="QlB-t6-LT9">
+                            <collectionView selectable="YES" id="QlB-t6-LT9">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="158"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="LXr-qD-9NC">
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" scrollDirection="horizontal" id="LXr-qD-9NC" customClass="CollectionViewLeftFlowLayout" customModule="dogeTV" customModuleProvider="target">
                                     <size key="itemSize" width="50" height="50"/>
                                 </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -52,38 +54,48 @@
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="SlT-6n-Bph">
                     <rect key="frame" x="0.0" y="228" width="480" height="44"/>
                     <subviews>
-                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1g-qb-l0r">
-                            <rect key="frame" x="372" y="7" width="88" height="30"/>
+                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1g-qb-l0r">
+                            <rect key="frame" x="396" y="12" width="84" height="20"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cXv-MB-v7H">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="30"/>
-                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTouchBarGoBackTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="prv-ta-S01">
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="drf-Tn-74o"/>
+                                        <constraint firstAttribute="width" constant="30" id="t2o-TW-rW6"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTouchBarGoBackTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="prv-ta-S01">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
+                                    <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <connections>
-                                        <action selector="prevAction:" target="-2" id="qyq-lc-L1G"/>
+                                        <action selector="prevAction:" target="x7K-Uh-FCO" id="Dj5-r0-xkZ"/>
                                     </connections>
                                 </button>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ubh-cM-lsu">
-                                    <rect key="frame" x="28" y="7" width="32" height="17"/>
+                                    <rect key="frame" x="28" y="3" width="28" height="15"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="0 / 0" id="AKf-cz-DpL">
-                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <font key="font" size="12" name="Helvetica"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Blh-Ms-F07">
-                                    <rect key="frame" x="78" y="0.0" width="10" height="30"/>
-                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTouchBarGoForwardTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="8gt-hf-ba7">
+                                    <rect key="frame" x="54" y="0.0" width="30" height="20"/>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTouchBarGoForwardTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="8gt-hf-ba7">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
+                                    <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <connections>
-                                        <action selector="nextAction:" target="-2" id="R0c-M9-oL9"/>
+                                        <action selector="nextAction:" target="x7K-Uh-FCO" id="8XD-zZ-G45"/>
                                     </connections>
                                 </button>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="Blh-Ms-F07" firstAttribute="height" secondItem="cXv-MB-v7H" secondAttribute="height" id="KCU-cv-mVp"/>
+                                <constraint firstItem="Blh-Ms-F07" firstAttribute="width" secondItem="cXv-MB-v7H" secondAttribute="width" id="TBP-mO-jMW"/>
+                            </constraints>
                             <visibilityPriorities>
                                 <integer value="1000"/>
                                 <integer value="1000"/>
@@ -96,20 +108,20 @@
                             </customSpacing>
                         </stackView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tHF-Ua-HcN">
-                            <rect key="frame" x="8" y="13" width="44" height="19"/>
+                            <rect key="frame" x="-2" y="11" width="48" height="22"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Jiq-5Y-wsi">
-                                <font key="font" metaFont="system" size="16"/>
+                                <font key="font" metaFont="system" size="18"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="tHF-Ua-HcN" firstAttribute="leading" secondItem="SlT-6n-Bph" secondAttribute="leading" id="4di-ec-TGh"/>
                         <constraint firstItem="tHF-Ua-HcN" firstAttribute="centerY" secondItem="SlT-6n-Bph" secondAttribute="centerY" id="AHf-5S-dNl"/>
                         <constraint firstItem="f1g-qb-l0r" firstAttribute="centerY" secondItem="SlT-6n-Bph" secondAttribute="centerY" id="Ikw-F5-aQf"/>
-                        <constraint firstAttribute="trailing" secondItem="f1g-qb-l0r" secondAttribute="trailing" constant="20" id="KoD-lo-13v"/>
+                        <constraint firstAttribute="trailing" secondItem="f1g-qb-l0r" secondAttribute="trailing" id="KoD-lo-13v"/>
                         <constraint firstAttribute="height" constant="44" id="b4X-YS-vzW"/>
-                        <constraint firstItem="tHF-Ua-HcN" firstAttribute="leading" secondItem="SlT-6n-Bph" secondAttribute="leading" constant="10" id="gVo-Gu-VBA"/>
                     </constraints>
                 </customView>
             </subviews>
@@ -126,7 +138,9 @@
         <customObject id="x7K-Uh-FCO" customClass="HorizontalSectionView" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="itemsCollectionView" destination="QlB-t6-LT9" id="Cgk-SJ-wnd"/>
+                <outlet property="nextBtn" destination="Blh-Ms-F07" id="c5f-n7-jCo"/>
                 <outlet property="pageLabel" destination="Ubh-cM-lsu" id="laM-ws-vrf"/>
+                <outlet property="prevBtn" destination="cXv-MB-v7H" id="j7J-Mv-9b8"/>
                 <outlet property="scrollView" destination="AzA-jE-705" id="ibb-W0-p0N"/>
                 <outlet property="titleLabel" destination="tHF-Ua-HcN" id="3Sf-nO-clZ"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="AB6-WK-ysa"/>

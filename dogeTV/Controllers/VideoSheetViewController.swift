@@ -10,6 +10,7 @@ import Cocoa
 import AVKit
 import PromiseKit
 
+
 class VideoSheetViewController: NSViewController {
     
     enum Section {
@@ -44,26 +45,24 @@ class VideoSheetViewController: NSViewController {
     var seasonIndex: Int = 0
     var dataSource: [Section] = []
     
-    @IBOutlet weak var bottomView: NSView!
+    @IBOutlet weak var topView: GradientView!
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet weak var downloadBtn: NSButton!
-    @IBOutlet weak var actionStackView: NSStackView!
     var hideToggleBtn = true
     var titleText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.activedBackgroundColor.cgColor
-        collectionView.backgroundColors = [.backgroundColor]
+        (view as? GradientView)?.colors = NSColor.titleBarGradientColors.reversed()
+        topView.colors = NSColor.titleBarGradientColors
+        collectionView.backgroundColors = [.clear]
         updateDataSource()
-        downloadBtn.isHidden = !NSApplication.shared.isDownieInstalled
         titleLabel.stringValue = titleText ?? (videDetail?.info.name ?? "")
-        
-        if episodes?.count == 1 {
-           playing()
-        }
+    }
+
+
+    override func cancelOperation(_ sender: Any?) {
+        dismiss(sender)
     }
     
     @IBAction func dismissBtn(_ sender: NSButton) {
@@ -111,6 +110,7 @@ class VideoSheetViewController: NSViewController {
     }
     
     func getStreamURL(episode: Episode) {
+        showSpinning()
         if let id = episode.id,  episode.url.isEmpty {
             APIClient.fetchPumpkinEpisodes(id: id)
                 .done { episodes in
@@ -121,6 +121,7 @@ class VideoSheetViewController: NSViewController {
                     print(error)
                     self.showError(error)
                 }.finally {
+                    self.removeSpinning()
             }
             return
         }
@@ -132,6 +133,7 @@ class VideoSheetViewController: NSViewController {
                 print(error)
                 self.showError(error)
             }).finally {
+                self.removeSpinning()
         }
     }
     
@@ -143,6 +145,7 @@ class VideoSheetViewController: NSViewController {
     }
     
     func updateSource(index: Int) {
+        showSpinning()
         guard let id = videDetail?.info.id else { return }
         _ = APIClient.fetchEpisodes(id: id, source: index).done { (episodes) in
             self.episodes = episodes
@@ -152,10 +155,12 @@ class VideoSheetViewController: NSViewController {
             }).finally {
                 self.updateDataSource()
                 self.updatePlayingEpisodeIfNeeded()
+                self.removeSpinning()
         }
     }
     
     func updateSeason(index: Int, sid: String) {
+        showSpinning()
         guard let id = videDetail?.info.id else { return }
         _ = APIClient.fetchPumpkinSeason(id: id, sid: sid).done { (detail) in
             guard let seasons = detail.seasons, let episodes = seasons[safe: index]?.episodes else {
@@ -171,6 +176,7 @@ class VideoSheetViewController: NSViewController {
             }).finally {
                 self.updateDataSource()
                 self.updatePlayingEpisodeIfNeeded()
+                self.removeSpinning()
         }
     }
     
@@ -202,7 +208,7 @@ class VideoSheetViewController: NSViewController {
         }
         
         if let recommends = videDetail?.recommends, !recommends.isEmpty {
-            dataSource.append(.recommends(recommends))
+            dataSource.append(.recommends(Array(recommends.prefix(10))))
         }
         
         collectionView.reloadData()
@@ -259,6 +265,7 @@ extension VideoSheetViewController: NSCollectionViewDataSource, NSCollectionView
             return item
         case .video(let video):
             let item = collectionView.makeItem(withIdentifier: .videoIntroView, for: indexPath) as! VideoIntroView
+            item.view.layer?.backgroundColor = NSColor.clear.cgColor
             item.textField?.stringValue =  "导演: \(video.director)\n主演: \(video.actor))\n国家/地区: \(video.area)\n上映: \(video.year )\n类型: \(video.tag)\n\(video.state)"
             item.imageView?.setResourceImage(with: video.cover)
             return item
@@ -284,8 +291,9 @@ extension VideoSheetViewController: NSCollectionViewDataSource, NSCollectionView
         header.subTitleLabel.isHidden = true
         if case Section.episodes(_) = section {
             header.subTitleLabel.isHidden = false
-            header.subTitleLabel.stringValue = "无法播放? 尝试切换路线"
+            header.subTitleLabel.stringValue = "点击打开 IINA 播放"
         }
+        header.layer?.backgroundColor = NSColor.clear.cgColor
         header.titleLabel.font = NSFont.systemFont(ofSize: 14)
         return header
     }

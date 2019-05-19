@@ -13,21 +13,23 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="327" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="143" height="72"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W0E-uA-bge">
-                    <rect key="frame" x="0.0" y="0.0" width="327" height="272"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W0E-uA-bge" customClass="AspectFitImageView" customModule="dogeTV" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="143" height="72"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="PX2-LO-pP5"/>
                 </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="W0E-uA-bge" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="AAI-qP-pRb"/>
-                <constraint firstAttribute="bottom" secondItem="W0E-uA-bge" secondAttribute="bottom" id="Xm3-rN-X3k"/>
-                <constraint firstAttribute="trailing" secondItem="W0E-uA-bge" secondAttribute="trailing" id="xCs-Y2-Qet"/>
-                <constraint firstItem="W0E-uA-bge" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="zvv-rH-Z1p"/>
+                <constraint firstAttribute="trailing" secondItem="W0E-uA-bge" secondAttribute="trailing" id="9rh-hg-cuR"/>
+                <constraint firstItem="W0E-uA-bge" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Pai-32-Ihn"/>
+                <constraint firstItem="W0E-uA-bge" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Ru1-Gt-UpE"/>
+                <constraint firstAttribute="bottom" secondItem="W0E-uA-bge" secondAttribute="bottom" id="cfy-SI-4re"/>
+                <constraint firstItem="W0E-uA-bge" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="jtB-wp-YB8"/>
+                <constraint firstItem="W0E-uA-bge" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="zAw-Gx-6jx"/>
             </constraints>
-            <point key="canvasLocation" x="215.5" y="154"/>
+            <point key="canvasLocation" x="215.5" y="89.5"/>
         </customView>
         <customObject id="18W-Ro-zqZ" customClass="TopicCardView" customModule="dogeTV" customModuleProvider="target">
             <connections>

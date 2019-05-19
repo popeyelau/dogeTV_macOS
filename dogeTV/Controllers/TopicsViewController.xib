@@ -8,7 +8,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TopicsViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="6Qk-tI-qqN" id="qdg-HT-7MD"/>
-                <outlet property="indicatorView" destination="PrE-o3-4N2" id="cZI-va-Ne1"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -49,15 +48,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="PrE-o3-4N2">
-                    <rect key="frame" x="444" y="248" width="16" height="16"/>
-                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="bsa-Ft-aoA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="UKl-bd-JCc"/>
-                <constraint firstAttribute="trailing" secondItem="PrE-o3-4N2" secondAttribute="trailing" constant="20" id="XFO-tW-CQq"/>
                 <constraint firstAttribute="bottom" secondItem="bsa-Ft-aoA" secondAttribute="bottom" id="XaN-zd-I2f"/>
-                <constraint firstItem="PrE-o3-4N2" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="oci-90-xM7"/>
                 <constraint firstAttribute="trailing" secondItem="bsa-Ft-aoA" secondAttribute="trailing" id="qaO-bL-cTK"/>
                 <constraint firstItem="bsa-Ft-aoA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="wsw-58-FA8"/>
             </constraints>

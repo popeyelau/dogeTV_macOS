@@ -14,46 +14,44 @@ class HorizontalSectionView: NSCollectionViewItem {
             if let data = data {
                 titleLabel.stringValue = data.title
                 itemsCollectionView.reloadData()
-                pageLabel.stringValue = "\(pageIndex + 1) / \(numberOfPage)"
+                numberOfPage = (data.items.count / data.numberOfColumn) + ((data.items.count % data.numberOfColumn) > 0 ? 1 : 0)
+                pageIndex = 1
+                updatePageLabel()
             }
         }
     }
+    @IBOutlet weak var prevBtn: NSButton!
+    @IBOutlet weak var nextBtn: NSButton!
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var scrollView: DisablableScrollView!
     @IBOutlet weak var itemsCollectionView: NSCollectionView!
     @IBOutlet weak var pageLabel: NSTextField!
 
-    var pageIndex = 0
+    var pageIndex = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        scrollView.isEnabled = false
-        
+        scrollView.isEnabled = false
+        itemsCollectionView.backgroundColors = [.backgroundColor]
     }
-    
-    
-    
+
     @IBAction func prevAction(_ sender: NSButton) {
-        pageIndex = max(pageIndex - 1, 0)
-        let x = max(width * CGFloat(pageIndex), 0)
-        scrollView.documentView?.scroll(NSPoint(x: x, y: 0))
-        pageLabel.stringValue = "\(pageIndex + 1) / \(numberOfPage)"
+        pageIndex = pageIndex - 1 <= 0 ? numberOfPage : pageIndex - 1
+        updatePageLabel()
+        itemsCollectionView.reloadData()
         
     }
     @IBAction func nextAction(_ sender: NSButton) {
-        pageIndex = min(pageIndex + 1, numberOfPage)
-        let x = min(width * CGFloat(pageIndex), contentSize.width)
-        if x >= contentSize.width {
-            return
-        }
-        scrollView.documentView?.scroll(NSPoint(x: x, y: 0))
-        pageLabel.stringValue = "\(pageIndex + 1) / \(numberOfPage)"
+        pageIndex = pageIndex + 1 > numberOfPage ? 1 : pageIndex + 1
+        updatePageLabel()
+        itemsCollectionView.reloadData()
+    }
+
+    func updatePageLabel() {
+        pageLabel.stringValue = "\(pageIndex) / \(numberOfPage)"
     }
     
-    var numberOfPage: Int {
-        let pages =  Int(ceil(contentSize.width / view.bounds.width))
-        return pages
-    }
+    var numberOfPage: Int = 1
     
     var width: CGFloat {
         return view.bounds.width - 40
@@ -64,7 +62,7 @@ class HorizontalSectionView: NSCollectionViewItem {
     }
     override func viewDidLayout() {
         super.viewDidLayout()
-        pageLabel.stringValue = "\(pageIndex + 1) / \(numberOfPage)"
+
     }
 }
 
@@ -74,7 +72,7 @@ extension HorizontalSectionView: NSCollectionViewDelegate,  NSCollectionViewData
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data?.items.count ?? 0
+        return min(data.items[data.numberOfColumn * (pageIndex - 1)..<data.items.count].count, data.numberOfColumn)
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -82,13 +80,13 @@ extension HorizontalSectionView: NSCollectionViewDelegate,  NSCollectionViewData
         switch type {
         case .normal:
             let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
-            let video = data.items[indexPath.item]
+            let video = data.items[data.numberOfColumn * (pageIndex - 1) + indexPath.item]
             item.shadowView.isHidden = true
             item.data = video
             return item
         case .series, .topic:
             let item = collectionView.makeItem(withIdentifier: .topicCardView, for: indexPath) as! TopicCardView
-            let video = data.items[indexPath.item]
+            let video = data.items[data.numberOfColumn * (pageIndex - 1) + indexPath.item]
             item.imageView?.setResourceImage(with: video.cover, placeholder: NSImage(named: "404_series"))
             return item
         }
@@ -98,7 +96,7 @@ extension HorizontalSectionView: NSCollectionViewDelegate,  NSCollectionViewData
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
         let type = data.type ?? .normal
-        let video = data.items[indexPath.item]
+        let video = data.items[data.numberOfColumn * (pageIndex - 1) + indexPath.item]
         
         if type == .normal {
             showVideo(video: video)

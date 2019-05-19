@@ -67,24 +67,14 @@ extension PumpkinViewController: NSCollectionViewDelegate,  NSCollectionViewData
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return hots[section].items.count
+        return 1
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let type = hots[indexPath.section].type ?? .normal
-        switch type {
-        case .normal:
-            let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
-            let video = hots[indexPath.section].items[indexPath.item]
-            item.shadowView.isHidden = true
-            item.data = video
-            return item
-        case .series, .topic:
-            let item = collectionView.makeItem(withIdentifier: .topicCardView, for: indexPath) as! TopicCardView
-            let video = hots[indexPath.section].items[indexPath.item]
-            item.imageView?.setResourceImage(with: video.cover, placeholder: NSImage(named: "404_series"))
-            return item
-        }
+        let item = collectionView.makeItem(withIdentifier: .horizontalSectionView, for: indexPath) as! HorizontalSectionView
+        let data = hots[indexPath.section]
+        item.data = data
+        return item
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
@@ -93,26 +83,13 @@ extension PumpkinViewController: NSCollectionViewDelegate,  NSCollectionViewData
         header.titleLabel.stringValue = section.title
         return header
     }
-    
-    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        collectionView.deselectItems(at: indexPaths)
-        guard let indexPath = indexPaths.first else { return }
-        let section = hots[indexPath.section]
-        let type = section.type ?? .normal
-        let video = section.items[indexPath.item]
-        
-        if type == .normal {
-            showVideo(video: video)
-            return
-        }
-        NSApplication.shared.rootViewController?.showSeries(id: video.id, title: video.name)
-    }
-    
+
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         let type = hots[indexPath.section].type ?? .normal
-        return type.itemSize
+        let width = collectionView.bounds.width - 40
+        let height = type.itemSize.height
+        return NSSize(width: width, height: height + 44)
     }
-    
 }
 
 extension PumpkinViewController {

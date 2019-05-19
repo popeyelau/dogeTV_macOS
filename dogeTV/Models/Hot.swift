@@ -18,9 +18,10 @@ enum ContentItemType: String, Decodable {
         case .normal, .topic:
             return VideoCardView.itemSize
         case .series:
-            return NSSize(width: 200, height: 100)
+            return NSSize(width: 213, height: 113)
         }
     }
+
 }
 
 struct Hot: Decodable {
@@ -29,4 +30,18 @@ struct Hot: Decodable {
     let height: CGFloat
     let type: ContentItemType?
     let items: [Video]
+
+    var numberOfColumn: Int {
+        guard let type = type else {
+            return 6
+        }
+        switch type {
+        case .normal:
+            return 6
+        case .topic:
+            return 6
+        case .series:
+            return 4
+        }
+    }
 }
