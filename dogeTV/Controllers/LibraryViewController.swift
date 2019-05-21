@@ -43,10 +43,10 @@ class LibraryViewController: NSViewController {
 }
 
 
-extension LibraryViewController: Initializable {
+extension LibraryViewController: Refreshable {
     func refresh() {
         guard let index = segmentCtrl.selectedIndex else { return }
-        guard let controller = tabView.tabViewItems[safe: index]?.viewController as? Initializable else { return }
+        guard let controller = tabView.tabViewItems[safe: index]?.viewController as? Refreshable else { return }
         controller.refresh()
     }
 }

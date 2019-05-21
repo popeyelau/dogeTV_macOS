@@ -145,7 +145,7 @@ class ParseViewController: NSViewController {
 }
 
 
-extension ParseViewController: Initializable {
+extension ParseViewController: Refreshable {
     func refresh() {
         sendRequest(url: selectedSite.url)
     }

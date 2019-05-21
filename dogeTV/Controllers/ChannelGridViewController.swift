@@ -239,4 +239,4 @@ extension ChannelGridViewController: NSTextFieldDelegate {
 }
 
 
-extension ChannelGridViewController: Initializable {}
+extension ChannelGridViewController: Refreshable {}

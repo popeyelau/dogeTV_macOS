@@ -152,4 +152,4 @@ extension SerieGridViewController {
     }
 }
 
-extension SerieGridViewController: Initializable {}
+extension SerieGridViewController: Refreshable {}

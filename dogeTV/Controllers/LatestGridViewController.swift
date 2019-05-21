@@ -76,4 +76,4 @@ extension LatestGridViewController {
 }
 
 
-extension LatestGridViewController: Initializable {}
+extension LatestGridViewController: Refreshable {}

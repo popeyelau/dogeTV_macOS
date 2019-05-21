@@ -180,7 +180,7 @@ extension PumpkinViewController {
 }
 
 
-extension PumpkinViewController: Initializable {}
+extension PumpkinViewController: Refreshable {}
 
 
 

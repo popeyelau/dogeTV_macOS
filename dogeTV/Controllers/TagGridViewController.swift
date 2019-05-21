@@ -41,10 +41,10 @@ class TagGridViewController: NSViewController {
 }
 
 
-extension TagGridViewController: Initializable {
+extension TagGridViewController: Refreshable {
     func refresh() {
         guard let index = segmentCtrl.selectedIndex else { return }
-        guard let controller = tabView.tabViewItems[safe: index]?.viewController as? Initializable else { return }
+        guard let controller = tabView.tabViewItems[safe: index]?.viewController as? Refreshable else { return }
         controller.refresh()
     }
 

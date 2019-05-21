@@ -158,7 +158,7 @@ extension SearchViewController {
     }
 }
 
-extension SearchViewController: Initializable {
+extension SearchViewController: Refreshable {
     func refresh() {
         guard let keywords = keywords, !keywords.isEmpty else { return }
         startSearch(keywords: keywords)

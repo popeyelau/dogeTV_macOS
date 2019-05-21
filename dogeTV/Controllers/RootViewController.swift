@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol Initializable where Self: NSViewController {
+protocol Refreshable where Self: NSViewController {
     func refresh()
 }
 
@@ -23,9 +23,9 @@ class RootViewController: NSViewController {
     @IBOutlet weak var playingStatusBar: PlayStatusView!
     @IBOutlet weak var refreshBtn: NSButton!
     
-    var mapping: [String: Initializable] = [:]
-    var activiedController: Initializable?
-    var fromController: Initializable?
+    var mapping: [String: Refreshable] = [:]
+    var activiedController: Refreshable?
+    var fromController: Refreshable?
     
    
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class RootViewController: NSViewController {
     
     func setupRootView() {
         let isUnlocked = NSApplication.shared.isUnlocked
-        let target: Initializable = isUnlocked ? makeContentView(type: PumpkinViewController.self, key: Menus.recommended.rawValue) : makeContentView(type: LatestGridViewController.self, key: Menus.latest.rawValue)
+        let target: Refreshable = isUnlocked ? makeContentView(type: PumpkinViewController.self, key: Menus.recommended.rawValue) : makeContentView(type: LatestGridViewController.self, key: Menus.latest.rawValue)
         activiedController = target
         contentView.addSubview(target.view)
     }
@@ -216,7 +216,7 @@ extension RootViewController {
         }
     }
     
-    func makeContentView<T>(type:T.Type, key: String) -> T where T: Initializable {
+    func makeContentView<T>(type:T.Type, key: String) -> T where T: Refreshable {
         if let target = mapping[key] as? T {
             return target
         }
@@ -226,7 +226,7 @@ extension RootViewController {
         return target
     }
     
-    func makeTransition(to: Initializable, options: TransitionOptions = .crossfade) {
+    func makeTransition(to: Refreshable, options: TransitionOptions = .crossfade) {
         guard let from = activiedController else { return }
         transition(from: from, to: to, options: options) {
             self.fromController = from

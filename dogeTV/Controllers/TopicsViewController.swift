@@ -9,7 +9,7 @@
 import Cocoa
 import PromiseKit
 
-class TopicsViewController: NSViewController, Initializable {
+class TopicsViewController: NSViewController, Refreshable {
 
     var topics: [TopicDetail] = []
     @IBOutlet weak var collectionView: NSCollectionView!

@@ -214,4 +214,4 @@ extension BlueRayGridViewController {
     }
 }
 
-extension BlueRayGridViewController: Initializable {}
+extension BlueRayGridViewController: Refreshable {}

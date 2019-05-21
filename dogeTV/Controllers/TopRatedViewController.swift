@@ -114,4 +114,4 @@ extension TopRatedViewController {
     }
 }
 
-extension TopRatedViewController: Initializable {}
+extension TopRatedViewController: Refreshable {}

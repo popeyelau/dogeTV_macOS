@@ -80,12 +80,6 @@ class PlayerViewController: NSViewController {
             let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
             view.addTrackingArea(trackingArea)
         }
-        
-        /*
-        if Preferences.shared.usingIINA {
-           toggleEpisodePanel(toggleBtn)
-           avPlayer.isHidden = true
-        }*/
     }
 
     func playing() {

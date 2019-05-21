@@ -207,4 +207,4 @@ extension VideoGridViewController {
     }
 }
 
-extension VideoGridViewController: Initializable {}
+extension VideoGridViewController: Refreshable {}

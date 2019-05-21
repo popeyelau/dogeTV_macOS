@@ -40,10 +40,10 @@ class BlueRayTabViewController: NSViewController {
 }
 
 
-extension BlueRayTabViewController: Initializable {
+extension BlueRayTabViewController: Refreshable {
     func refresh() {
         guard let index = segmentCtrl.selectedIndex else { return }
-        guard let controller = tabView.tabViewItems[safe: index]?.viewController as? Initializable else { return }
+        guard let controller = tabView.tabViewItems[safe: index]?.viewController as? Refreshable else { return }
         controller.refresh()
     }
 
