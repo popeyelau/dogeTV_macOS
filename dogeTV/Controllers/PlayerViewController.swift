@@ -17,17 +17,20 @@ class PlayerViewController: NSViewController {
         case source([Int])
         case video(Video)
         case recommends([Video])
+        case seasons([Seasons])
 
         var title: String {
             switch self {
             case .episodes:
-                return "分集"
+                return "选集"
             case .source:
                 return "线路"
             case .video:
                 return "简介"
             case .recommends:
                 return "猜你喜欢"
+            case .seasons:
+                return "分季"
             }
         }
     }
@@ -35,40 +38,31 @@ class PlayerViewController: NSViewController {
     var videDetail: VideoDetail?
     var episodes: [Episode]?
 
-    var history: History? {
-        didSet {
-            if let history = history {
-                episodeIndex = history.episode
-                sourceIndex = history.source
-                duration = history.currentTime
-            }
-        }
-    }
-
     var episodeIndex: Int = 0
     var playingEpisode: Episode?
     var sourceIndex: Int = 0
-    var duration: Double = 0
+    var seasonIndex: Int = 0
     var dataSource: [Section] = []
 
-    private var playerItemContext = 0
-    var playStatusObserver: NSKeyValueObservation?
 
-    
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var episodePanel: NSView!
     @IBOutlet weak var episodePanelWidth: NSLayoutConstraint!
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var avPlayer: AVPlayerView!
     @IBOutlet weak var toggleBtn: NSButton!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var titleView: NSView!
+    @IBOutlet weak var downloadBtn: NSButton!
+    @IBOutlet weak var actionStackView: NSStackView!
+    @IBOutlet weak var toggleMenuBtn: NSButton!
+    var hideToggleBtn = true
     var titleText: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         episodePanel.wantsLayer = true
         episodePanel.layer?.backgroundColor = NSColor.backgroundColor.cgColor
-        collectionView.backgroundColors = [.clear]
+        collectionView.backgroundColors = [.backgroundColor]
 
         titleView.wantsLayer = true
         titleView.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.75).cgColor
@@ -76,8 +70,16 @@ class PlayerViewController: NSViewController {
         titleLabel.stringValue = titleText ?? ""
         updateDataSource()
         playing()
-        let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
-        view.addTrackingArea(trackingArea)
+
+        downloadBtn.isHidden = !NSApplication.shared.isDownieInstalled
+        hideToggleBtn = videDetail == nil && episodes?.count == 1
+        toggleMenuBtn.isHidden = hideToggleBtn
+        toggleBtn.isHidden = hideToggleBtn
+
+        if(!hideToggleBtn) {
+            let trackingArea = NSTrackingArea(rect: view.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
+            view.addTrackingArea(trackingArea)
+        }
     }
 
     func playing() {
@@ -87,10 +89,12 @@ class PlayerViewController: NSViewController {
     }
 
     override func mouseEntered(with event: NSEvent) {
+        guard !hideToggleBtn else { return }
         toggleBtn.isHidden = false
     }
 
     override func mouseExited(with event: NSEvent) {
+        guard !hideToggleBtn else { return }
         toggleBtn.isHidden = true
     }
 
@@ -118,6 +122,14 @@ class PlayerViewController: NSViewController {
         NSWorkspace.shared.open(saved)
     }
 
+    @IBAction func downloadAction(_ sender: NSButton) {
+        guard NSApplication.shared.isDownieInstalled else { return }
+        guard let playing = playingEpisode, playing.canPlay else { return }
+
+        let url = URL(string: "downie://XUOpenLink?url=\(playing.url)")!
+        NSWorkspace.shared.open(url)
+    }
+
     func play(episode: Episode) {
         playingEpisode = episode
         if videDetail == nil {
@@ -130,37 +142,48 @@ class PlayerViewController: NSViewController {
             return
         }
 
-        indicatorView.show()
-        _ = APIClient.resolveUrl(url: episode.url)
+        getStreamURL(episode: episode)
+    }
+
+    func getStreamURL(episode: Episode) {
+        if let id = episode.id,  episode.url.isEmpty {
+            APIClient.fetchPumpkinEpisodes(id: id)
+                .done { episodes in
+                    if let url = episodes.last?.url {
+                        self.prepareToPlay(url: url)
+                    }
+                }.catch{ error in
+                    print(error)
+                    self.showError(error)
+                }.finally {
+            }
+            return
+        }
+
+        APIClient.resolveUrl(url: episode.url)
             .done { (url) in
                 self.prepareToPlay(url: url)
             }.catch({ (error) in
                 print(error)
                 self.showError(error)
             }).finally {
-                self.indicatorView.dismiss()
         }
     }
 
-
     func prepareToPlay(url: String) {
+        let status =  PlayStatus.playing(title: self.titleLabel.stringValue, isLive: false)
+        if Preferences.shared.usingIINA {
+            NSApplication.shared.launchIINA(withURL: url)
+            NotificationCenter.default.post(name: .playStatusChanged, object: status)
+            return
+        }
+        
         if avPlayer.player == nil {
-            avPlayer.player = AVPlayer(url: URL(string: url)!)
-            playStatusObserver = avPlayer.player?.observe(\AVPlayer.status, options: [.new], changeHandler: { (player, changed) in
-                if player.status == .readyToPlay {
-                    //播放历史 && 时长 > 0 监听播放器状态，当成功加载时，跳转到历史播放时间点
-                    if let history = self.history, history.currentTime > 0, self.episodeIndex == history.episode  {
-                        let seekTo = CMTimeMakeWithSeconds(history.currentTime, preferredTimescale: 1000)
-                        self.avPlayer.player?.seek(to: seekTo)
-                        self.history = nil
-                    }
-                }
-            })
+            avPlayer.player = AVPlayer(url: URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!)
         } else {
             avPlayer.player?.replaceCurrentItem(with: nil)
             avPlayer.player?.replaceCurrentItem(with: AVPlayerItem(url: URL(string: url)!))
         }
-        let status =  PlayStatus.playing(title: self.titleLabel.stringValue, isLive: false)
         NotificationCenter.default.post(name: .playStatusChanged, object: status)
         playingEpisode?.url = url
         avPlayer.player?.play()
@@ -168,7 +191,6 @@ class PlayerViewController: NSViewController {
     
     func updateSource(index: Int) {
         guard let id = videDetail?.info.id else { return }
-        indicatorView.show()
         _ = APIClient.fetchEpisodes(id: id, source: index).done { (episodes) in
             self.episodes = episodes
             }.catch({ (error) in
@@ -177,7 +199,25 @@ class PlayerViewController: NSViewController {
             }).finally {
                 self.updateDataSource()
                 self.updatePlayingEpisodeIfNeeded()
-                self.indicatorView.dismiss()
+        }
+    }
+
+    func updateSeason(index: Int, sid: String) {
+        guard let id = videDetail?.info.id else { return }
+        _ = APIClient.fetchPumpkinSeason(id: id, sid: sid).done { (detail) in
+            guard let seasons = detail.seasons, let episodes = seasons[safe: index]?.episodes else {
+                return
+            }
+            self.episodeIndex = 0
+            self.seasonIndex = index
+            self.videDetail = detail
+            self.episodes = episodes
+            }.catch({ (error) in
+                print(error)
+                self.showError(error)
+            }).finally {
+                self.updateDataSource()
+                self.updatePlayingEpisodeIfNeeded()
         }
     }
     
@@ -193,63 +233,32 @@ class PlayerViewController: NSViewController {
     
     func updateDataSource() {
         dataSource.removeAll()
-        if let eipsodes = episodes {
+        if let video = videDetail?.info {
+            dataSource.insert(.video(video), at: 0)
+            if video.source > 0 {
+                dataSource.append(.source(Array((0..<min(video.source,5)))))
+            }
+        }
+
+        if let seasons = videDetail?.seasons, !seasons.isEmpty {
+            dataSource.append(.seasons(seasons))
+        }
+
+        if let eipsodes = episodes, !eipsodes.isEmpty {
             dataSource.append(.episodes(eipsodes))
         }
-        if let video = videDetail?.info {
-            dataSource.insert(.source(Array((0..<min(video.source,5)))), at: 0)
-            dataSource.insert(.video(video), at: 0)
-        }
-        if let recommends = videDetail?.recommends {
+
+        if let recommends = videDetail?.recommends, !recommends.isEmpty {
             dataSource.append(.recommends(recommends))
         }
+
         collectionView.reloadData()
         collectionView.scrollToVisible(.zero)
     }
     
-    func replace(id: String) {
-        history = nil
-        avPlayer.player?.replaceCurrentItem(with: nil)
-        indicatorView?.isHidden = false
-        indicatorView?.startAnimation(nil)
-        attempt(maximumRetryCount: 3) {
-            when(fulfilled: APIClient.fetchVideo(id: id),
-                 APIClient.fetchEpisodes(id: id))
-            }.done { detail, episodes in
-                self.videDetail = detail
-                self.episodes = episodes
-            }.catch{ error in
-                print(error)
-                self.showError(error)
-            }.finally {
-                self.sourceIndex = 0
-                self.episodeIndex = 0
-                self.indicatorView?.stopAnimation(nil)
-                self.indicatorView?.isHidden = true
-                self.updateDataSource()
-                self.playing()
-        }
+    func replace(video: Video) {
+        showVideo(video: video)
     }
-
-    func addRecord() {
-        guard let video = videDetail?.info, let episode = episodes?[safe: episodeIndex] else { return }
-        let history = History()
-        history.primaryKey = video.id
-        history.videoId = video.id
-        history.name = video.name
-        history.episode = episodeIndex
-        history.episodeName = episode.title
-        history.source = sourceIndex
-        history.currentTime = avPlayer.player?.currentItem?.currentTime().seconds ?? 0
-        history.duration = 0
-        if let duration = avPlayer.player?.currentItem?.asset.duration {
-            history.duration = CMTimeGetSeconds(duration)
-        }
-        history.cover = video.cover
-        Repository.insertOrReplace(table: history)
-        NotificationCenter.default.post(name: .historyUpdated, object: nil)
-    }
-    
 
     deinit {
         print("deinit")
@@ -273,6 +282,8 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             return 1
         case .recommends(let videos):
             return videos.count
+        case .seasons(let seasons):
+            return seasons.count
         }
     }
     
@@ -280,34 +291,41 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
         let section = dataSource[indexPath.section]
         switch section {
         case .episodes(let episodes):
-            let item = collectionView.makeItem(withIdentifier: .init("EpisodeItemView"), for: indexPath) as! EpisodeItemView
+            let item = collectionView.makeItem(withIdentifier: .episodeItemView, for: indexPath) as! EpisodeItemView
             let episode = episodes[indexPath.item]
             item.textField?.stringValue = episode.title
             item.textField?.alignment = .center
             item.isSelected = episodeIndex == indexPath.item
             return item
         case .source(let sources):
-            let item = collectionView.makeItem(withIdentifier: .init("EpisodeItemView"), for: indexPath) as! EpisodeItemView
+            let item = collectionView.makeItem(withIdentifier: .episodeItemView, for: indexPath) as! EpisodeItemView
             let source = sources[indexPath.item]
             item.textField?.stringValue = source == 0 ? "默认线路" : "线路\(source)"
             item.textField?.alignment = .center
             item.isSelected = sourceIndex == indexPath.item
             return item
         case .video(let video):
-            let item = collectionView.makeItem(withIdentifier: .init("VideoIntroView"), for: indexPath) as! VideoIntroView
+            let item = collectionView.makeItem(withIdentifier: .videoIntroView, for: indexPath) as! VideoIntroView
             item.textField?.stringValue =  "导演: \(video.director)\n主演: \(video.actor))\n国家/地区: \(video.area)\n上映: \(video.year )\n类型: \(video.tag)\n\(video.state)"
             item.imageView?.setResourceImage(with: video.cover)
             return item
         case .recommends(let videos):
-            let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+            let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
             let video = videos[indexPath.item]
             item.data = video
+            return item
+        case .seasons(let seasons):
+            let item = collectionView.makeItem(withIdentifier: .episodeItemView, for: indexPath) as! EpisodeItemView
+            let season = seasons[indexPath.item]
+            item.textField?.stringValue = season.name
+            item.textField?.alignment = .center
+            item.isSelected = seasonIndex == indexPath.item
             return item
         }
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .gridSectionHeader, for: indexPath) as! GridSectionHeader
         let section = dataSource[indexPath.section]
         header.titleLabel.stringValue = section.title
         header.subTitleLabel.isHidden = true
@@ -344,12 +362,18 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
         case .recommends(let videos):
             let video = videos[indexPath.item]
             avPlayer.player?.pause()
-            replace(id: video.id)
+            replace(video: video)
+        case .seasons(let seasons):
+            let index = indexPath.item
+            let sid = seasons[index].id
+            updateSeason(index: index, sid: sid)
+            break
         }
+        
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-          let section = dataSource[indexPath.section]
+        let section = dataSource[indexPath.section]
         switch section {
         case .source:
             return NSSize(width: 70, height: 30)
@@ -361,6 +385,8 @@ extension PlayerViewController: NSCollectionViewDataSource, NSCollectionViewDele
             return NSSize(width: collectionView.bounds.width - 40, height: 200)
         case .recommends:
             return VideoCardView.smallSize
+        case .seasons:
+            return NSSize(width: 70, height: 30)
         }
     }
     
@@ -373,18 +399,17 @@ extension PlayerViewController: NSWindowDelegate {
     }
     
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-        if avPlayer.player?.status == AVPlayer.Status.readyToPlay {
-            addRecord()
-            avPlayer.player?.replaceCurrentItem(with: nil)
-        }
+        avPlayer.player?.replaceCurrentItem(with: nil)
         return true
     }
 
     func windowWillClose(_ notification: Notification) {
         let status =  PlayStatus.idle
         NotificationCenter.default.post(name: .playStatusChanged, object: status)
-        playStatusObserver = nil
         NSApplication.shared.openMainWindow()
     }
 }
 
+
+extension PlayerViewController {
+}

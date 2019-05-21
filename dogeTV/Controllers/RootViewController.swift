@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol Initializable where Self: NSViewController {
+protocol Refreshable where Self: NSViewController {
     func refresh()
 }
 
@@ -21,9 +21,11 @@ class RootViewController: NSViewController {
     @IBOutlet weak var searchBarView: SearchBarView!
     @IBOutlet weak var iconImageView: AspectFitImageView!
     @IBOutlet weak var playingStatusBar: PlayStatusView!
-
-    var mapping: [String: Initializable] = [:]
-    var activiedController: Initializable?
+    @IBOutlet weak var refreshBtn: NSButton!
+    
+    var mapping: [String: Refreshable] = [:]
+    var activiedController: Refreshable?
+    var fromController: Refreshable?
     
    
     override func viewDidLoad() {
@@ -42,22 +44,26 @@ class RootViewController: NSViewController {
         }
         
         setupLeftMenus()
+        setupRootView()
+        registerActions()
+        registerNotification()
         
-        let target = makeContentView(type: LatestGridViewController.self, key: "latest")
-        activiedController = target
-        contentView.addSubview(target.view)
-        
-        searchBarView.onTopRatedAction = { [weak self] in
-            self?.showTopRated()
-        }
-        searchBarView.onSearchAction = { [weak self] keywords in
-            self?.onSearch(keywords: keywords)
-        }
+        let trackingArea = NSTrackingArea(rect: refreshBtn.bounds, options: [.mouseEnteredAndExited, .activeInKeyWindow, .inVisibleRect, .assumeInside], owner: self, userInfo: nil)
+        refreshBtn.addTrackingArea(trackingArea)
         
         view.window?.makeFirstResponder(nil)
-        registerNotification()
+    }
+    
+    func setupRootView() {
+        let isUnlocked = NSApplication.shared.isUnlocked
+        let target: Refreshable = isUnlocked ? makeContentView(type: PumpkinViewController.self, key: Menus.recommended.rawValue) : makeContentView(type: LatestGridViewController.self, key: Menus.latest.rawValue)
+        activiedController = target
+        contentView.addSubview(target.view)
     }
 
+    override func mouseEntered(with event: NSEvent) {
+        refreshBtn.rotate360Degrees()
+    }
 
     func registerNotification()  {
         NotificationCenter.default.addObserver(forName: .playStatusChanged, object: nil, queue: .main) { [weak self] (notify) in
@@ -65,6 +71,15 @@ class RootViewController: NSViewController {
                 return
             }
             self?.playingStatusBar.status = status
+        }
+    }
+    
+    func registerActions() {
+        searchBarView.onTopRatedAction = { [weak self] in
+            self?.showTopRated()
+        }
+        searchBarView.onSearchAction = { [weak self] keywords in
+            self?.onSearch(keywords: keywords)
         }
     }
     
@@ -80,18 +95,22 @@ class RootViewController: NSViewController {
                 $0.width.equalToSuperview()
                 $0.height.equalTo(30)
             }
+            if $0 == .blueray {
+                btn.toolTip = "可能需要通过代理访问"
+            }
         }
         
         if let selectedBtn = btnStack.arrangedSubviews.first as? PPButton {
+            //CMD+1 to root view.
             selectedBtn.isSelected = true
+            selectedBtn.keyEquivalent = "1"
+            selectedBtn.keyEquivalentModifierMask = .command
         }
     }
     
 
-    @IBAction func userAction(_ sender: NSButton) {
-        resetButtons()
-        let target = makeContentView(type: UserViewController.self, key: "history")
-        makeTransition(to: target)
+    @IBAction func feedbackAction(_ sender: NSButton) {
+        openURL(with: sender)
     }
 
     
@@ -103,12 +122,15 @@ class RootViewController: NSViewController {
         sender.isSelected = true
 
         switch menu {
+        case .recommended:
+            let target = makeContentView(type: PumpkinViewController.self, key: identifier)
+            makeTransition(to: target)
         case .latest:
             let target = makeContentView(type: LatestGridViewController.self, key: identifier)
             makeTransition(to: target)
-        case .film, .drama, .variety, .cartoon, .documentary:
+        case .film,.drama,.cartoon,.variety,.documentary:
             let target = makeContentView(type: VideoGridViewController.self, key: identifier)
-            target.category = .fromCategoryKey(identifier)
+            target.category = Category.fromCategoryKey(identifier)
             makeTransition(to: target)
         case .live:
             let target = makeContentView(type: ChannelGridViewController.self, key: identifier)
@@ -118,6 +140,12 @@ class RootViewController: NSViewController {
             makeTransition(to: target)
         case .parse:
             let target = makeContentView(type: ParseViewController.self, key: identifier)
+            makeTransition(to: target)
+        case .tag:
+            let target = makeContentView(type: TagGridViewController.self, key: identifier)
+            makeTransition(to: target)
+        case .blueray:
+            let target = makeContentView(type: BlueRayTabViewController.self, key: identifier)
             makeTransition(to: target)
         }
     }
@@ -142,8 +170,19 @@ class RootViewController: NSViewController {
 extension RootViewController {
     func onSearch(keywords: String) {
         if keywords.isEmpty { return }
+        if keywords == "解锁" && !NSApplication.shared.isUnlocked {
+            NSApplication.shared.unlocked()
+            dialogOKCancel(question: "解锁成功", text: "点击「确定」开启隐藏功能") { (ok) in
+                if(ok){
+                   NSApplication.shared.relaunch()
+                }
+            }
+            return
+        }
+
         let target = makeContentView(type: SearchViewController.self, key: "search")
         target.keywords = keywords
+        target.isHD = searchBarView.isHD
         target.startSearch(keywords: keywords)
         makeTransition(to: target)
         resetButtons()
@@ -155,6 +194,20 @@ extension RootViewController {
         makeTransition(to: target)
     }
     
+    func showSeries(id: String, title: String? = nil) {
+        let target = makeContentView(type: SerieGridViewController.self, key: "series")
+        target.title = title
+        target.id = id
+        makeTransition(to: target)
+    }
+    
+    func back() {
+        guard let from = fromController else {
+            return
+        }
+        makeTransition(to: from)
+    }
+
     func resetButtons() {
         for view in btnStack.subviews {
             if let btn = view as? PPButton {
@@ -163,7 +216,7 @@ extension RootViewController {
         }
     }
     
-    func makeContentView<T>(type:T.Type, key: String) -> T where T: Initializable {
+    func makeContentView<T>(type:T.Type, key: String) -> T where T: Refreshable {
         if let target = mapping[key] as? T {
             return target
         }
@@ -173,12 +226,14 @@ extension RootViewController {
         return target
     }
     
-    func makeTransition(to: Initializable) {
+    func makeTransition(to: Refreshable, options: TransitionOptions = .crossfade) {
         guard let from = activiedController else { return }
-        transition(from: from, to: to, options: .crossfade) {
+        transition(from: from, to: to, options: options) {
+            self.fromController = from
             self.activiedController = to
         }
     }
 }
+
 
 

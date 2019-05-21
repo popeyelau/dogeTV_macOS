@@ -34,7 +34,7 @@ class CollectionViewLeftFlowLayout: NSCollectionViewFlowLayout {
         }
 
         var leftMargin = sectionInset.left
-        var lastYPosition = attributes[0].frame.maxY
+        var lastYPosition = copied[0].frame.maxY
 
         for itemAttributes in copied {
             if itemAttributes.representedElementKind == NSCollectionView.elementKindSectionHeader {
@@ -69,7 +69,7 @@ class QueryOptionsFlowLayout: NSCollectionViewFlowLayout {
     func setup() {
         minimumLineSpacing = 5
         minimumInteritemSpacing = 5
-        sectionInset = NSEdgeInsets(top: 10, left: 60, bottom: 10, right: 100)
+        sectionInset = NSEdgeInsets(top: 5, left: 60, bottom: 10, right: 100)
         headerReferenceSize = CGSize(width: 60, height: 0.01)
         itemSize = NSSize(width: 70, height: 24)
     }

@@ -48,7 +48,14 @@ protocol APIConfiguration: URLRequestConvertible {
 
 
 enum Router: APIConfiguration {
-    case home
+    case recommended(page: Int)
+    case pumpkin(id: String)
+    case pumpkinSeason(id: String, sid: String)
+    case pumpkinStream(id: String)
+    case pumpkinSerieVideos(id: String, page: Int)
+    case pumpkinCategoryVideos(category: String, page: Int)
+    case pumpkinSearch(keywords: String)
+    case latest
     case topics
     case category(category: Category, page: Int, isDouban: Bool, query: String)
     case rank(category: Category)
@@ -62,6 +69,8 @@ enum Router: APIConfiguration {
     case iptvCategory
     case iptvChannels(tid: String)
     case iptvStreamURL(url: String)
+    case blueRay(query: String)
+    case blueRayVideo(id: String)
 
     var method: HTTPMethod {
         switch self {
@@ -74,7 +83,21 @@ enum Router: APIConfiguration {
     
     var path: String {
         switch self {
-        case .home:
+        case .recommended:
+            return "/pumpkin"
+        case .pumpkin(let id):
+            return "/pumpkin/video/\(id)"
+        case .pumpkinSeason(let id, _):
+            return "/pumpkin/video/\(id)"
+        case .pumpkinStream(let id):
+            return "/pumpkin/video/\(id)/stream"
+        case .pumpkinSerieVideos(let id, _):
+            return "/pumpkin/video/\(id)/list"
+        case .pumpkinCategoryVideos:
+            return "/pumpkin/category"
+        case .pumpkinSearch(let keywords):
+            return "/pumpkin/search/\(keywords)"
+        case .latest:
             return "/videos"
         case .topics:
             return "/topics"
@@ -98,6 +121,10 @@ enum Router: APIConfiguration {
             return "/parse"
         case .iptvCategory, .iptvChannels, .iptvStreamURL:
             return "/iptv"
+        case .blueRay:
+            return "/4k"
+        case .blueRayVideo(let id):
+            return "/4k/detail/\(id)"
         }
     }
 
@@ -117,10 +144,19 @@ enum Router: APIConfiguration {
             return ["tid": tid]
         case .iptvStreamURL(let url):
             return ["url": url.base64String]
+        case .pumpkinSeason(_, let sid):
+            return ["sid": sid]
+        case .pumpkinSerieVideos(_, let page):
+            return ["p": page]
+        case .pumpkinCategoryVideos(let category, let page):
+            return ["category": category, "p": page]
+        case .blueRay(let query):
+            return ["query": query]
+        case .recommended(let page):
+            return ["p": page]
         default:
             return nil
         }
-
     }
     
     var encoding: ParameterEncoding {
@@ -130,7 +166,6 @@ enum Router: APIConfiguration {
     func asURLRequest() throws -> URLRequest {
         let url = try ENV.host.asURL()
         var request = URLRequest(url: url.appendingPathComponent(path))
-        
         request.httpMethod = method.rawValue
         return try encoding.encode(request, with: parameters)
     }

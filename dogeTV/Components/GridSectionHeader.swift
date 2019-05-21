@@ -11,6 +11,7 @@ import Cocoa
 class GridSectionHeader: NSView {
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var subTitleLabel: NSTextField!
+    @IBOutlet weak var backBtn: NSButton!
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -20,6 +21,11 @@ class GridSectionHeader: NSView {
     override func awakeFromNib() {
         super.awakeFromNib()
         wantsLayer = true
+        backBtn.isHidden = true
         layer?.backgroundColor = NSColor.backgroundColor.cgColor
+    }
+    
+    @IBAction func backAction(_ sender: NSButton) {
+        NSApplication.shared.rootViewController?.back()
     }
 }

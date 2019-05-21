@@ -12,11 +12,12 @@ import PromiseKit
 class LatestGridViewController: NSViewController {
     
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     var hots: [Hot] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColors = [.clear]
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        collectionView.backgroundColors = [.backgroundColor]
         refresh()
     }
 }
@@ -31,14 +32,14 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+        let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
         let video = hots[indexPath.section].items[indexPath.item]
         item.data = video
         return item
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .gridSectionHeader, for: indexPath) as! GridSectionHeader
         let section = hots[indexPath.section]
         header.titleLabel.stringValue = section.title
         return header
@@ -48,7 +49,7 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
         let video = hots[indexPath.section].items[indexPath.item]
-        showVideo(id: video.id, indicatorView: indicatorView)
+        showVideo(video: video)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
@@ -59,21 +60,20 @@ extension LatestGridViewController: NSCollectionViewDelegate,  NSCollectionViewD
 
 extension LatestGridViewController {
     func refresh() {
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
-            when(fulfilled: APIClient.fetchTopics(),
-                 APIClient.fetchHome())
-            }.done { _, hots in
+            APIClient.fetchLatest()
+            }.done { hots in
                 self.hots = hots
             }.catch{ error in
                 print(error)
                 self.showError(error)
             }.finally {
                 self.collectionView.reloadData()
-                self.indicatorView.dismiss()
+                self.removeSpinning()
         }
     }
 }
 
 
-extension LatestGridViewController: Initializable {}
+extension LatestGridViewController: Refreshable {}

@@ -13,8 +13,10 @@ class VideoGridViewController: NSViewController {
     @IBOutlet weak var collectionView: NSCollectionView!
     @IBOutlet weak var queryPanel: NSView!
     @IBOutlet weak var queryStack: NSStackView!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
-
+    @IBOutlet weak var scrollView: NSScrollView!
+    
+    private var scrollverObsrver: NSKeyValueObservation?
+    
     var category: Category? = .film
     var isDouban: Bool = false
     var pageIndex: Int = 1
@@ -42,17 +44,10 @@ class VideoGridViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColors = [.clear]
-        
-        if let clipView = collectionView.superview, let scrollView = clipView.superview as? NSScrollView{
-            let contentView = scrollView.contentView
-            contentView.postsBoundsChangedNotifications = true
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(collectionViewDidScroll),
-                                                   name: NSView.boundsDidChangeNotification,
-                                                   object: clipView)
-        }
-        
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        collectionView.backgroundColors = [.backgroundColor]
+        registLoadMoreNotification()
         refresh()
     }
 
@@ -63,10 +58,29 @@ class VideoGridViewController: NSViewController {
         refresh()
     }
     
+    func registLoadMoreNotification() {
+        guard let clipView = collectionView.superview,
+            let scrollView = clipView.superview as? NSScrollView else {
+            return
+        }
+        scrollView.contentView.postsBoundsChangedNotifications = true
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(collectionViewDidScroll),
+                                               name: NSView.boundsDidChangeNotification,
+                                               object: clipView)
+    }
+    
     @objc func collectionViewDidScroll() {
         if(queryOptionsView.isExpanded) {
             queryOptionsView.toggle()
         }
+        
+        guard !isNoMoreData, !isLoading else { return }
+        guard let value = scrollView.verticalScroller?.floatValue,  value >= 0.9 else {
+            return
+        }
+        
+        loadMore()
     }
     
     deinit {
@@ -107,23 +121,17 @@ extension VideoGridViewController: NSCollectionViewDelegate, NSCollectionViewDat
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+        let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
         let video = videos[indexPath.item]
         item.data = video
         return item
     }
 
-    func collectionView(_ collectionView: NSCollectionView, willDisplay item: NSCollectionViewItem, forRepresentedObjectAt indexPath: IndexPath) {
-        if indexPath.item == videos.count - 1 {
-            loadMore()
-        }
-    }
-    
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         collectionView.deselectItems(at: indexPaths)
         guard let indexPath = indexPaths.first else { return }
         let video = videos[indexPath.item]
-        showVideo(id: video.id, indicatorView: indicatorView)
+        showVideo(video: video)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
@@ -157,7 +165,7 @@ extension VideoGridViewController {
         pageIndex = 1
         isLoading = true
         let query = selectedQuery
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchCategoryList(category: category, isDouban: self.isDouban, query: query)}
             .done { (category) in
@@ -166,11 +174,11 @@ extension VideoGridViewController {
                 print(error)
                 self.showError(error)
             }).finally {
-                self.indicatorView.dismiss()
+                self.removeSpinning()
                 self.isLoading = false
                 self.pageIndex = 1
                 self.collectionView.reloadData()
-                self.collectionView.animator().scroll(.zero)
+                self.collectionView.scroll(.zero)
         }
     }
     
@@ -182,7 +190,7 @@ extension VideoGridViewController {
         let query = selectedQuery
         pageIndex += 1
         isLoading = true
-        
+        showSpinning()
         APIClient.fetchCategoryList(category: category, page: pageIndex, isDouban: isDouban, query: query).done { category in
             if category.items.isEmpty {
                 return
@@ -193,9 +201,10 @@ extension VideoGridViewController {
                 print(err)
             }.finally {
                 self.isLoading = false
+                self.removeSpinning()
                 self.collectionView.reloadData()
         }
     }
 }
 
-extension VideoGridViewController: Initializable {}
+extension VideoGridViewController: Refreshable {}

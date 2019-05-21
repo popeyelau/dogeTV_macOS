@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum VideoSource: Int, Codable {
+    case other = 0
+    case pumpkin
+    case blueray
+}
+
 struct Video: Decodable, Equatable {
     let id: String
     let name: String
@@ -21,11 +27,33 @@ struct Video: Decodable, Equatable {
     let score: String
     let state: String
     let source: Int
+    
+    static func ==(lhs: Video, rhs: Video) -> Bool {
+        return lhs.id == rhs.id && lhs.name == rhs.name
+    }
+    
+    var sourceType: VideoSource {
+        if cover.contains("vcinema") {
+            return .pumpkin
+        } else if cover.contains("4kdy") {
+            return .blueray
+        } else {
+            return .other
+        }
+    }
+
 }
 
 struct VideoDetail: Decodable {
     let info: Video
     let recommends: [Video]?
+    let seasons: [Seasons]?
+}
+
+struct Seasons: Decodable {
+    let id: String
+    let name: String
+    let episodes: [Episode]?
 }
 
 

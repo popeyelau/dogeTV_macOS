@@ -64,8 +64,15 @@ struct APIClient {
             .responseDecodable(Response<T>.self)
     }
 
-    static func fetchHome() -> Promise<[Hot]>  {
-        return AlamofireManager.shared.request(Router.home)
+    static func fetchLatest() -> Promise<[Hot]>  {
+        return AlamofireManager.shared.request(Router.latest)
+            .validate(validate)
+            .responseDecodable(Response<[Hot]>.self)
+            .map { $0.data }
+    }
+    
+    static func fetchHome(page: Int = 0) -> Promise<[Hot]>  {
+        return AlamofireManager.shared.request(Router.recommended(page: page))
             .validate(validate)
             .responseDecodable(Response<[Hot]>.self)
             .map { $0.data }
@@ -170,6 +177,62 @@ struct APIClient {
         return AlamofireManager.shared.request(Router.parse(url: url))
             .validate(validate)
             .responseDecodable(Response<CloudParse>.self)
+            .map { $0.data }
+    }
+    
+    static func fetchPumpkinEpisodes(id: String) -> Promise<[Episode]> {
+        return AlamofireManager.shared.request(Router.pumpkinStream(id: id))
+            .validate(validate)
+            .responseDecodable(Response<[Episode]>.self)
+            .map { $0.data }
+    }
+    
+    static func fetchPumpkin(id: String) -> Promise<VideoDetail> {
+        return AlamofireManager.shared.request(Router.pumpkin(id: id))
+            .validate(validate)
+            .responseDecodable(Response<VideoDetail>.self)
+            .map { $0.data }
+    }
+
+    static func fetchPumpkinSeason(id: String, sid: String) -> Promise<VideoDetail> {
+        return AlamofireManager.shared.request(Router.pumpkinSeason(id: id, sid: sid))
+            .validate(validate)
+            .responseDecodable(Response<VideoDetail>.self)
+            .map { $0.data }
+    }
+    
+    static func fetchPumpkinserieVideos(id: String, page: Int = 0) -> Promise<[Video]> {
+        return AlamofireManager.shared.request(Router.pumpkinSerieVideos(id: id, page: page))
+            .validate(validate)
+            .responseDecodable(Response<[Video]>.self)
+            .map { $0.data }
+    }
+
+    static func fetchPumpkinCategoryVideo(category: String, page: Int = 0) -> Promise<[Hot]>  {
+        return AlamofireManager.shared.request(Router.pumpkinCategoryVideos(category: category, page: page))
+            .validate(validate)
+            .responseDecodable(Response<[Hot]>.self)
+            .map { $0.data }
+    }
+    
+    static func fetchPumpkinSearchResults(keywords: String) -> Promise<[Video]>  {
+        return AlamofireManager.shared.request(Router.pumpkinSearch(keywords: keywords))
+            .validate(validate)
+            .responseDecodable(Response<[Video]>.self)
+            .map { $0.data }
+    }
+
+    static func fetchBlueRays(query: String) -> Promise<VideoCategory>  {
+        return AlamofireManager.shared.request(Router.blueRay(query: query))
+            .validate(validate)
+            .responseDecodable(Response<VideoCategory>.self)
+            .map { $0.data }
+    }
+
+    static func fetchBlueVideo(id: String) -> Promise<VideoDetail>  {
+        return AlamofireManager.shared.request(Router.blueRayVideo(id: id))
+            .validate(validate)
+            .responseDecodable(Response<VideoDetail>.self)
             .map { $0.data }
     }
 }

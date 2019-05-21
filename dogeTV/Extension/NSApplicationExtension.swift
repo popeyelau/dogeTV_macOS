@@ -46,4 +46,41 @@ extension NSApplication {
     var appFolder: String {
        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! + "/.dogeTV"
     }
+    
+    var rootViewController: RootViewController? {
+       return appDelegate?.mainWindowController?.contentViewController as? RootViewController
+    }
+
+    func unlocked() {
+        Preferences.shared.unlocked = true
+    }
+    
+    func relaunch(afterDelay seconds: TimeInterval = 0.5) -> Never {
+        let task = Process()
+        task.launchPath = "/bin/sh"
+        task.arguments = ["-c", "sleep \(seconds); open \"\(Bundle.main.bundlePath)\""]
+        task.launch()
+        self.terminate(nil)
+        exit(0)
+    }
+    
+    func launchIINA(withURL url: String) {
+        guard let escapedURL = url.addingPercentEncoding(withAllowedCharacters: .alphanumerics),
+            let url = URL(string: "iina://weblink?url=\(escapedURL)") else {
+                return
+        }
+        NSWorkspace.shared.open(url)
+    }
+
+    var isUnlocked: Bool {
+        return Preferences.shared.unlocked
+    }
+    
+    var isDownieInstalled: Bool {
+        return NSWorkspace.shared.fullPath(forApplication: "Downie 3") != nil
+    }
+    
+    var isIINAInstalled: Bool {
+        return NSWorkspace.shared.fullPath(forApplication: "IINA") != nil
+    }
 }

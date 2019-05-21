@@ -34,33 +34,34 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fTc-lK-xba">
-                                <rect key="frame" x="196" y="133" width="89" height="19"/>
+                                <rect key="frame" x="191" y="150" width="98" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="App Name" id="5ey-7T-wH1">
-                                    <font key="font" metaFont="systemBold" size="16"/>
+                                    <font key="font" metaFont="systemBold" size="18"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNV-M5-VV8">
-                                <rect key="frame" x="216" y="109" width="49" height="16"/>
+                                <rect key="frame" x="214" y="125" width="52" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version" id="LsC-18-du9">
-                                    <font key="font" metaFont="cellTitle"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Ja-Sm-jiU">
-                                <rect key="frame" x="48" y="63" width="384" height="30"/>
-                                <textFieldCell key="cell" alignment="center" id="M3Y-Vl-W1I">
-                                    <font key="font" size="12" name=".PingFangSC-Regular"/>
-                                    <string key="title">所有影视资源均从互联网采集而来 请勿作为商业用途
-其导致一切后果与本人无关 不承担任何责任</string>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ja-Sm-jiU">
+                                <rect key="frame" x="48" y="58" width="384" height="51"/>
+                                <textFieldCell key="cell" enabled="NO" allowsUndo="NO" alignment="center" id="M3Y-Vl-W1I">
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <string key="title">所有影视资源均从互联网采集而来，请勿作为商业用途。
+其导致一切后果与本人无关，不承担任何责任。
+如果侵犯了你的权益，请通知我删除侵权内容，谢谢。</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button identifier="githubRepo" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eEc-pK-fe6">
-                                <rect key="frame" x="190" y="160" width="100" height="100"/>
+                                <rect key="frame" x="190" y="180" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="2bZ-Yx-gXm"/>
                                     <constraint firstAttribute="height" constant="100" id="v6H-es-VpN"/>
@@ -74,7 +75,7 @@
                                 </connections>
                             </button>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MX6-yH-3In">
-                                <rect key="frame" x="76" y="31" width="329" height="16"/>
+                                <rect key="frame" x="78" y="26" width="324" height="16"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r18-4x-jeh">
                                         <rect key="frame" x="-2" y="0.0" width="80" height="16"/>
@@ -95,15 +96,15 @@
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wyw-05-FWv">
-                                        <rect key="frame" x="174" y="0.0" width="65" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Developer:" id="xLx-ta-bVs">
+                                        <rect key="frame" x="174" y="0.0" width="60" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Telegram:" id="xLx-ta-bVs">
                                             <font key="font" metaFont="cellTitle"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button identifier="github" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wLH-vC-sD2">
-                                        <rect key="frame" x="245" y="-1" width="84" height="17"/>
+                                    <button identifier="telegram" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wLH-vC-sD2">
+                                        <rect key="frame" x="240" y="-1" width="84" height="17"/>
                                         <buttonCell key="cell" type="inline" title="@PopeyeLau" bezelStyle="inline" image="buttonCell:6wV-mB-i8O:image" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="6wV-mB-i8O">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
@@ -128,7 +129,7 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="eEc-pK-fe6" firstAttribute="top" secondItem="LUd-8Q-UVJ" secondAttribute="top" constant="20" id="8E8-B4-ZBq"/>
+                            <constraint firstItem="eEc-pK-fe6" firstAttribute="top" secondItem="LUd-8Q-UVJ" secondAttribute="top" id="8E8-B4-ZBq"/>
                             <constraint firstItem="fTc-lK-xba" firstAttribute="centerX" secondItem="LUd-8Q-UVJ" secondAttribute="centerX" id="Cje-wl-ern"/>
                             <constraint firstItem="5Ja-Sm-jiU" firstAttribute="top" secondItem="yNV-M5-VV8" secondAttribute="bottom" constant="16" id="Cs8-vj-Kd0"/>
                             <constraint firstItem="MX6-yH-3In" firstAttribute="centerX" secondItem="LUd-8Q-UVJ" secondAttribute="centerX" id="dRZ-ge-t5m"/>

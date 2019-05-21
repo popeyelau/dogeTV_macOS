@@ -7,8 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TopRatedViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
-                <outlet property="indicatorView" destination="lad-xK-rwz" id="smZ-gt-1Bm"/>
-                <outlet property="segmentCtrl" destination="PWQ-Oi-K0W" id="Lfn-P1-Pjp"/>
+                <outlet property="segmentCtrl" destination="4mT-GW-bEv" id="N3o-rA-b6f"/>
                 <outlet property="tableView" destination="lA3-yv-gp5" id="ZDT-Bp-MwC"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -19,14 +18,14 @@
             <rect key="frame" x="0.0" y="0.0" width="660" height="330"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cG-fZ-Dxx">
-                    <rect key="frame" x="8" y="16" width="644" height="277"/>
+                <scrollView toolTip="双击观看" borderType="none" autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cG-fZ-Dxx">
+                    <rect key="frame" x="8" y="16" width="644" height="268"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="cK0-gM-1wu">
-                        <rect key="frame" x="0.0" y="0.0" width="644" height="277"/>
+                        <rect key="frame" x="0.0" y="0.0" width="644" height="268"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="36" rowSizeStyle="large" headerView="Zf3-uD-a9P" viewBased="YES" id="lA3-yv-gp5">
-                                <rect key="frame" x="0.0" y="0.0" width="840" height="252"/>
+                                <rect key="frame" x="0.0" y="0.0" width="840" height="243"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="10" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -252,34 +251,23 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <segmentedControl focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PWQ-Oi-K0W">
-                    <rect key="frame" x="244" y="307" width="172" height="24"/>
-                    <segmentedCell key="cell" borderStyle="border" focusRingType="none" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="IhD-N8-4mQ">
-                        <font key="font" metaFont="system"/>
-                        <segments>
-                            <segment width="100"/>
-                            <segment width="32" selected="YES" tag="1"/>
-                            <segment width="32">
-                                <nil key="label"/>
-                            </segment>
-                        </segments>
-                    </segmentedCell>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="4mT-GW-bEv" customClass="CustomSegmentedControl" customModule="dogeTV" customModuleProvider="target">
+                    <rect key="frame" x="8" y="292" width="644" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" placeholder="YES" id="cWR-HN-E8u"/>
+                    </constraints>
                     <connections>
-                        <action selector="segmentIndexChanged:" target="-2" id="QG0-Dm-L5Q"/>
+                        <action selector="segmentIndexChanged:" target="-2" id="JN3-b7-gFl"/>
                     </connections>
-                </segmentedControl>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lad-xK-rwz" userLabel="indicatorView">
-                    <rect key="frame" x="608" y="298" width="32" height="32"/>
-                </progressIndicator>
+                </customView>
             </subviews>
             <constraints>
+                <constraint firstItem="4mT-GW-bEv" firstAttribute="leading" secondItem="0cG-fZ-Dxx" secondAttribute="leading" id="7XO-eO-6jA"/>
                 <constraint firstAttribute="bottom" secondItem="0cG-fZ-Dxx" secondAttribute="bottom" constant="16" id="EWg-H7-HQH"/>
                 <constraint firstAttribute="trailing" secondItem="0cG-fZ-Dxx" secondAttribute="trailing" constant="8" id="Huh-98-eYA"/>
-                <constraint firstAttribute="trailing" secondItem="lad-xK-rwz" secondAttribute="trailing" constant="20" id="Ruc-3J-eKJ"/>
-                <constraint firstItem="PWQ-Oi-K0W" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="YN2-vt-ML8"/>
-                <constraint firstItem="PWQ-Oi-K0W" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="kWZ-Ve-F4W"/>
-                <constraint firstItem="0cG-fZ-Dxx" firstAttribute="top" secondItem="PWQ-Oi-K0W" secondAttribute="bottom" constant="16" id="kwk-dL-XwL"/>
-                <constraint firstItem="lad-xK-rwz" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="rCK-xX-ueD"/>
+                <constraint firstItem="4mT-GW-bEv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="a2K-V6-GI0"/>
+                <constraint firstItem="4mT-GW-bEv" firstAttribute="trailing" secondItem="0cG-fZ-Dxx" secondAttribute="trailing" id="kxm-SB-25w"/>
+                <constraint firstItem="0cG-fZ-Dxx" firstAttribute="top" secondItem="4mT-GW-bEv" secondAttribute="bottom" constant="8" id="ls8-Wi-K3d"/>
                 <constraint firstItem="0cG-fZ-Dxx" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="siv-Qa-KaL"/>
             </constraints>
             <point key="canvasLocation" x="208" y="183"/>

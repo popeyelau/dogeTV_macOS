@@ -16,6 +16,7 @@ class AboutViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        appIconButton.focusRingType = .none
         appIconButton.image = NSApp.applicationIconImage
         if let infoDictionary = Bundle.main.infoDictionary {
             if let name = infoDictionary["CFBundleName"] as? String {
@@ -26,15 +27,16 @@ class AboutViewController: NSViewController {
             }
         }
 
-        let trackingArea = NSTrackingArea(rect: appIconButton.bounds, options: [.mouseEnteredAndExited, .activeAlways], owner: self, userInfo: nil)
-        appIconButton.addTrackingArea(trackingArea)
     }
-
-    override func mouseEntered(with event: NSEvent) {
-        appIconButton.rotate360Degrees()
-    }
-
+    
     @IBAction func openURL(_ sender: NSButton) {
         openURL(with: sender)
+    }
+}
+
+
+extension NSCollectionView {
+    open override var mouseDownCanMoveWindow: Bool {
+        return true
     }
 }

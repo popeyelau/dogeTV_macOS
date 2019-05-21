@@ -37,6 +37,12 @@ extension String {
         }
         return urls
     }
+
+    var encodedURI: String {
+        var characterSet = CharacterSet.alphanumerics
+        characterSet.insert(charactersIn: "-_.!~*'()")
+        return self.addingPercentEncoding(withAllowedCharacters: characterSet) ?? self
+    }
     
 }
 
@@ -44,5 +50,16 @@ extension String {
 extension Collection {
     subscript (safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
+    }
+}
+
+extension Sequence where Element: Equatable {
+    var uniqueElements: [Element] {
+        return self.reduce(into: []) {
+            uniqueElements, element in
+            if !uniqueElements.contains(element) {
+                uniqueElements.append(element)
+            }
+        }
     }
 }

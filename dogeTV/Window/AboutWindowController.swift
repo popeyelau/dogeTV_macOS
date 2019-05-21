@@ -11,7 +11,7 @@ import Cocoa
 class AboutWindowController: NSWindowController {
 
     static let defaultController: AboutWindowController = {
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("AboutWindow"), bundle:nil)
+        let storyboard = NSStoryboard(name: .about, bundle:nil)
         guard let windowController = storyboard.instantiateInitialController() as? AboutWindowController else {
             fatalError("Storyboard inconsistency")
         }
@@ -22,8 +22,6 @@ class AboutWindowController: NSWindowController {
         super.windowDidLoad()
         window?.isMovableByWindowBackground = true
         window?.appearance = NSAppearance(named: .darkAqua)
-        window?.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        window?.standardWindowButton(.zoomButton)?.isHidden = true
     }
 
 }

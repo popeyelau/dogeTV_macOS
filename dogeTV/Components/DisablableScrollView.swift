@@ -12,12 +12,27 @@ class DisablableScrollView: NSScrollView {
     var isEnabled: Bool = true
     
     override func scrollWheel(with event: NSEvent) {
+        
+//        if event.phase == .none {
+//            nextResponder?.scrollWheel(with: event)
+//            return
+//        }
+//        // Not horizontal
+//        if abs(event.scrollingDeltaX) <= abs(event.scrollingDeltaY) {
+//            nextResponder?.scrollWheel(with: event)
+//            return
+//        }
+//
         if isEnabled {
             super.scrollWheel(with: event)
         }
         else {
             nextResponder?.scrollWheel(with: event)
         }
+    }
+    
+    override func wantsScrollEventsForSwipeTracking(on axis: NSEvent.GestureAxis) -> Bool {
+        return axis == .horizontal
     }
 }
 
@@ -43,7 +58,7 @@ class InvisibleScroller: NSScroller {
     }
 
     func setup() {
-        scrollerStyle = .overlay
+        scrollerStyle = .overlay    
         alphaValue = 0
     }
 }

@@ -8,7 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SearchViewController" customModule="dogeTV" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Dos-oL-Lgc" id="vK0-3q-JgU"/>
-                <outlet property="indicatorView" destination="rjr-Ml-IKO" id="z6U-F6-BX2"/>
+                <outlet property="emptyView" destination="em1-XK-qRf" id="ZOm-Co-A0L"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -49,17 +49,19 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="rjr-Ml-IKO">
-                    <rect key="frame" x="224" y="120" width="32" height="32"/>
-                </progressIndicator>
+                <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="em1-XK-qRf" customClass="EmptyView" customModule="dogeTV" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                </customView>
             </subviews>
             <constraints>
+                <constraint firstItem="em1-XK-qRf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="4cI-oY-OjG"/>
                 <constraint firstAttribute="trailing" secondItem="iqX-Pp-BB4" secondAttribute="trailing" id="FwK-6y-OPA"/>
                 <constraint firstAttribute="bottom" secondItem="iqX-Pp-BB4" secondAttribute="bottom" id="H3b-ah-xYl"/>
+                <constraint firstAttribute="bottom" secondItem="em1-XK-qRf" secondAttribute="bottom" id="SAo-gC-cri"/>
                 <constraint firstItem="iqX-Pp-BB4" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="YpJ-BH-n2W"/>
                 <constraint firstItem="iqX-Pp-BB4" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="c2d-CW-TLf"/>
-                <constraint firstItem="rjr-Ml-IKO" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="qvm-Fs-4aJ"/>
-                <constraint firstItem="rjr-Ml-IKO" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="vcG-sF-lcX"/>
+                <constraint firstItem="em1-XK-qRf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="dhN-dY-zHI"/>
+                <constraint firstAttribute="trailing" secondItem="em1-XK-qRf" secondAttribute="trailing" id="x3h-CJ-Zyl"/>
             </constraints>
         </customView>
     </objects>

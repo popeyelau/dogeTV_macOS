@@ -9,15 +9,16 @@
 import Cocoa
 import PromiseKit
 
-class TopicsViewController: NSViewController, Initializable {
+class TopicsViewController: NSViewController, Refreshable {
 
     var topics: [TopicDetail] = []
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     @IBOutlet weak var collectionView: NSCollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         refresh()
-        collectionView.backgroundColors = [.clear]
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        collectionView.backgroundColors = [.backgroundColor]
         // Do view setup here.
     }
 }
@@ -33,14 +34,14 @@ extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataS
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: .init("VideoCardView"), for: indexPath) as! VideoCardView
+        let item = collectionView.makeItem(withIdentifier: .videoCardView, for: indexPath) as! VideoCardView
         let video = topics[indexPath.section].items[indexPath.item]
         item.data = video
         return item
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .init("GridSectionHeader"), for: indexPath) as! GridSectionHeader
+        let header = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: .gridSectionHeader, for: indexPath) as! GridSectionHeader
         header.titleLabel.stringValue = topics[indexPath.section].topic.title
         header.subTitleLabel.isHidden = true
         return header
@@ -50,7 +51,7 @@ extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataS
         guard let indexPath = indexPaths.first else { return }
         collectionView.deselectItems(at: indexPaths)
         let video = topics[indexPath.section].items[indexPath.item]
-        showVideo(id: video.id, indicatorView: indicatorView)
+        showVideo(video: video)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
@@ -61,23 +62,19 @@ extension TopicsViewController: NSCollectionViewDelegate,  NSCollectionViewDataS
 
 extension TopicsViewController {
     func refresh() {
-        _ = APIClient.fetchTopics().done { (topics) in
-            topics.forEach {
-                self.refreshTopicVideos(id: $0.id)
-            }
-            }.catch({ (error) in
-                print(error)
-                self.showError(error)
-            }).finally {
-        }
-    }
-    
-    func refreshTopicVideos(id: String) {
-        APIClient.fetchTopic(id: id).done { (topic) in
-            self.topics.append(topic)
+        showSpinning()
+        _ = APIClient.fetchTopics()
+            .thenMap(refreshTopicVideos)
+            .done { (topics) in
+                self.topics.append(contentsOf: topics)
             }.catch{ (error) in
             }.finally {
                 self.collectionView.reloadData()
+                self.removeSpinning()
         }
+    }
+    
+    func refreshTopicVideos(topic: Topic) -> Promise<TopicDetail> {
+        return APIClient.fetchTopic(id: topic.id)
     }
 }

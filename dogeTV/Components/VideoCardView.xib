@@ -16,7 +16,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView wantsLayer="YES" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="175" height="265"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ACX-wc-4CJ">
                     <rect key="frame" x="6" y="8" width="163" height="20"/>
@@ -69,7 +69,7 @@
                 <constraint firstItem="ACX-wc-4CJ" firstAttribute="top" secondItem="AG0-rb-bcz" secondAttribute="bottom" constant="8" id="yA4-ub-5ep"/>
                 <constraint firstItem="AG0-rb-bcz" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="zaO-93-Hip"/>
             </constraints>
-            <point key="canvasLocation" x="-234" y="310"/>
+            <point key="canvasLocation" x="-234.5" y="309.5"/>
         </customView>
         <customObject id="lyi-HI-1m0" customClass="VideoCardView" customModule="dogeTV" customModuleProvider="target">
             <connections>

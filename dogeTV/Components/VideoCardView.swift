@@ -18,6 +18,7 @@ class VideoCardView: NSCollectionViewItem {
             textField?.stringValue = video.name
             imageView?.setResourceImage(with: video.cover)
             updatedLabel?.stringValue = video.state
+            shadowView?.isHidden = video.state.isEmpty
         }
     }
 
@@ -25,6 +26,7 @@ class VideoCardView: NSCollectionViewItem {
     @IBOutlet weak var updatedLabel: NSTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         shadowView.wantsLayer = true
         shadowView.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.35).cgColor
         shadowView.layer?.cornerRadius = 6
@@ -45,5 +47,4 @@ class VideoCardView: NSCollectionViewItem {
         textField?.textColor = .labelColor
     }
 
-    
 }

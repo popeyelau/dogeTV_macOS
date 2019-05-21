@@ -11,7 +11,7 @@ import PromiseKit
 
 class TopRatedViewController: NSViewController {
     
-    @IBOutlet weak var segmentCtrl: NSSegmentedControl!
+    @IBOutlet weak var segmentCtrl: CustomSegmentedControl!
     enum Columns: String, CaseIterable {
         case index
         case name
@@ -24,30 +24,41 @@ class TopRatedViewController: NSViewController {
     var list: [Ranking] = []
     var category: Category = .film
     @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet weak var indicatorView: NSProgressIndicator!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
+        
         tableView.target = self
         tableView.doubleAction = #selector(tableViewDoubleAction(_:))
-        segmentCtrl.selectedSegment = category.rawValue
-        segmentCtrl.segmentCount = Category.allCases.count
-        Category.allCases.enumerated().forEach { index, element in
-            segmentCtrl.setWidth(100, forSegment: index)
-            segmentCtrl.setLabel(element.title, forSegment: index)
-        }
-        segmentCtrl.selectedSegmentBezelColor = .primaryColor
+
+        segmentCtrl.titles = Category.allCases.map { $0.title }
+        segmentCtrl.selectedIndex = category.rawValue
         
         refresh()
     }
-    
+
     @objc func tableViewDoubleAction(_ sender: NSTableView) {
         guard tableView.clickedRow != -1 else { return }
         let selected = list[tableView.clickedRow]
-        showVideo(id: selected.id, indicatorView: indicatorView)
+        showSpinning()
+        attempt(maximumRetryCount: 3) {
+            when(fulfilled: APIClient.fetchVideo(id: selected.id),
+                 APIClient.fetchEpisodes(id: selected.id))
+            }.done { detail, episodes in
+                self.preparePlayerWindow(video: detail, episodes: episodes)
+            }.catch{ error in
+                print(error)
+                self.showError(error)
+            }.finally {
+                self.removeSpinning()
+        }
     }
-    @IBAction func segmentIndexChanged(_ sender: NSSegmentedControl) {
-        category = Category(rawValue: sender.selectedSegment) ?? .film
+    
+    @IBAction func segmentIndexChanged(_ sender: CustomSegmentedControl) {
+        guard let index = sender.selectedIndex else { return }
+        category = Category(rawValue: index) ?? .film
         refresh()
     }
 
@@ -87,7 +98,7 @@ extension TopRatedViewController: NSTableViewDataSource, NSTableViewDelegate {
 
 extension TopRatedViewController {
     func refresh() {
-        indicatorView.show()
+        showSpinning()
         attempt(maximumRetryCount: 3) {
             APIClient.fetchRankList(category: self.category)
             }.done { (list) in
@@ -97,10 +108,10 @@ extension TopRatedViewController {
                 self.showError(error)
             }).finally {
                 self.tableView.reloadData()
-                self.indicatorView.dismiss()
+                self.removeSpinning()
                 self.tableView.scrollToVisible(.zero)
         }
     }
 }
 
-extension TopRatedViewController: Initializable {}
+extension TopRatedViewController: Refreshable {}

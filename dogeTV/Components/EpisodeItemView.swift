@@ -10,6 +10,9 @@ import Cocoa
 
 class EpisodeItemView: NSCollectionViewItem {
 
+    
+    static let itemSize = NSSize(width: 70, height: 30)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

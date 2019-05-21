@@ -13,21 +13,22 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="271" height="108"/>
+            <rect key="frame" x="0.0" y="0.0" width="271" height="186"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hec-Ap-WgR">
-                    <rect key="frame" x="0.0" y="16" width="271" height="76"/>
+                    <rect key="frame" x="0.0" y="16" width="271" height="154"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTG-DH-bpV">
-                            <rect key="frame" x="111" y="26" width="50" height="50"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="flc-Rw-2W3"/>
+                            <rect key="frame" x="120" y="26" width="32" height="128"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="tv" id="flc-Rw-2W3"/>
+                            <color key="contentTintColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kqj-wK-frw">
                             <rect key="frame" x="3" y="0.0" width="265" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="Label" usesSingleLineMode="YES" id="kMV-vq-eU4">
-                                <font key="font" metaFont="system" size="12"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <font key="font" metaFont="cellTitle"/>
+                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
@@ -62,4 +63,7 @@
             </connections>
         </customObject>
     </objects>
+    <resources>
+        <image name="tv" width="32" height="32"/>
+    </resources>
 </document>

@@ -13,8 +13,8 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vgv-vj-RE0">
-                    <rect key="frame" x="-2" y="10" width="118" height="17"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="o2N-Xn-abQ">
+                    <rect key="frame" x="18" y="10" width="98" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Label" id="o2N-Xn-abQ">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -22,7 +22,7 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="Vgv-vj-RE0" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="6Hl-pq-Klc"/>
+                <constraint firstItem="Vgv-vj-RE0" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="6Hl-pq-Klc"/>
                 <constraint firstItem="Vgv-vj-RE0" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="8HC-a3-v0c"/>
                 <constraint firstAttribute="trailing" secondItem="Vgv-vj-RE0" secondAttribute="trailing" id="jlJ-W3-CAF"/>
             </constraints>

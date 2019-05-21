@@ -19,7 +19,7 @@ class AspectFitImageView: NSImageView {
     override var image: NSImage? {
         set {
             self.layer = CALayer()
-            self.layer?.contentsGravity = CALayerContentsGravity.resizeAspectFill
+            self.layer?.contentsGravity = .resizeAspectFill
             self.layer?.contents = newValue
             self.layer?.cornerRadius = 6
             self.layer?.masksToBounds = true

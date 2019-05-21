@@ -17,12 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var mainWindowController: MainWindowController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
-        Repository.createTables()
     }
-
-
-
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
@@ -30,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         NSApp.activate(ignoringOtherApps: false)
         if mainWindowController == nil {
-            let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle:nil)
+            let storyboard = NSStoryboard(name: .main, bundle:nil)
             guard let controller = storyboard.instantiateInitialController() as? MainWindowController else {
                 fatalError("加载失败")
             }
@@ -45,7 +41,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func help(_ sender: Any) {
-        NSWorkspace.shared.open(URL(string: "https://github.com/popeyelau/dogeTV_macOS")!)
+        NSWorkspace.shared.open(StaticURLs.github.url)
+    }
+    
+    @IBAction func preferences(_ sender: Any) {
+        let storyboard = NSStoryboard(name: .preferences, bundle:nil)
+        guard let controller = storyboard.instantiateInitialController() as? NSWindowController else {
+            fatalError("加载失败")
+        }
+        controller.window?.makeKeyAndOrderFront(self)
     }
 
 

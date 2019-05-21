@@ -6,9 +6,11 @@
 //  Copyright © 2019 Popeye Lau. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
-enum Menus: String, CaseIterable {
+enum Menus: String, Equatable {
+    case recommended
+    case tag
     case latest
     case topic
     case film
@@ -17,12 +19,30 @@ enum Menus: String, CaseIterable {
     case cartoon
     case documentary
     case parse
+    case blueray
     case live
+
+    static var allCases: [Menus] {
+        if NSApplication.shared.isUnlocked {
+            return [
+                .recommended,.tag,.blueray,.latest,.topic,.film,.drama,.variety,.cartoon,.documentary,
+                .parse,.live
+            ]
+        }
+
+        return [
+            .blueray,.latest,.topic,.film,.drama,.variety,.cartoon,.documentary,
+            .parse,.live
+        ]
+    }
     
     var title: String {
         switch self {
+        case .recommended: return "推荐"
         case .latest: return "最新"
-        case .topic: return "精选"
+        case .blueray: return "高清"
+        case .tag: return "分类"
+        case .topic: return "专题"
         case .film: return "电影"
         case .drama: return "电视剧"
         case .variety: return "综艺"
