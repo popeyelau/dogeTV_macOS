@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		59DBAE656258FC0986932945 /* Pods_dogeTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26910516B8FE6E0B0C9D258 /* Pods_dogeTV.framework */; };
+		790389692297792F005C78DD /* ChannelGuidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790389672297792F005C78DD /* ChannelGuidesViewController.swift */; };
+		7903896A2297792F005C78DD /* ChannelGuidesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 790389682297792F005C78DD /* ChannelGuidesViewController.xib */; };
 		79076F3322812F42007499A3 /* SerieGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79076F3122812F42007499A3 /* SerieGridViewController.swift */; };
 		79076F3422812F42007499A3 /* SerieGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79076F3222812F42007499A3 /* SerieGridViewController.xib */; };
 		79076F52228172EB007499A3 /* TagGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79076F50228172EB007499A3 /* TagGridViewController.swift */; };
@@ -160,6 +162,8 @@
 
 /* Begin PBXFileReference section */
 		0762FFF90A53923C70174323 /* Pods-dogeTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dogeTV.debug.xcconfig"; path = "Target Support Files/Pods-dogeTV/Pods-dogeTV.debug.xcconfig"; sourceTree = "<group>"; };
+		790389672297792F005C78DD /* ChannelGuidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelGuidesViewController.swift; sourceTree = "<group>"; };
+		790389682297792F005C78DD /* ChannelGuidesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelGuidesViewController.xib; sourceTree = "<group>"; };
 		79076F3122812F42007499A3 /* SerieGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieGridViewController.swift; sourceTree = "<group>"; };
 		79076F3222812F42007499A3 /* SerieGridViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieGridViewController.xib; sourceTree = "<group>"; };
 		79076F50228172EB007499A3 /* TagGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagGridViewController.swift; sourceTree = "<group>"; };
@@ -346,6 +350,8 @@
 				79324FF3228AB5BA002FB287 /* VideoSheetViewController.xib */,
 				7944994A228E835500F0B69E /* LibraryViewController.swift */,
 				7944994B228E835500F0B69E /* LibraryViewController.xib */,
+				790389672297792F005C78DD /* ChannelGuidesViewController.swift */,
+				790389682297792F005C78DD /* ChannelGuidesViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -639,6 +645,7 @@
 				79D927B022659890009C446E /* AppWindowController.xib in Resources */,
 				79B7AD0F226AD37000600282 /* EmptyView.xib in Resources */,
 				79076F3422812F42007499A3 /* SerieGridViewController.xib in Resources */,
+				7903896A2297792F005C78DD /* ChannelGuidesViewController.xib in Resources */,
 				799B96052264AB61002C8FFA /* GridSectionHeader.xib in Resources */,
 				79076F53228172EB007499A3 /* TagGridViewController.xib in Resources */,
 				7932E6452280748400224F47 /* TopicCardView.xib in Resources */,
@@ -744,6 +751,7 @@
 				794A8001226D5F0700941333 /* NSImageExtension.swift in Sources */,
 				798E5B91227D568C005C6AA5 /* ScrollingTextView.swift in Sources */,
 				79D927AF22659890009C446E /* AppWindowController.swift in Sources */,
+				790389692297792F005C78DD /* ChannelGuidesViewController.swift in Sources */,
 				79D927BB2265B97F009C446E /* VideoIntroView.swift in Sources */,
 				7916EF1E2266EF3600FB6721 /* NSColorExtension.swift in Sources */,
 				7988F6B822689824002B5B9D /* AspectFitImageView.swift in Sources */,

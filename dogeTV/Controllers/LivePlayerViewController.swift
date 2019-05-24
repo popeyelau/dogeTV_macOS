@@ -15,6 +15,8 @@ class LivePlayerViewController: NSViewController {
     @IBOutlet weak var avPlayer: AVPlayerView!
     @IBOutlet weak var titleView: NSView!
 
+    @IBOutlet weak var guidesBtn: NSButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.window?.delegate = self
@@ -32,6 +34,7 @@ class LivePlayerViewController: NSViewController {
             avPlayer.player?.replaceCurrentItem(with: nil)
             avPlayer.player?.replaceCurrentItem(with: AVPlayerItem(url: url))
         }
+        guidesBtn.isHidden = channel.schedule?.isEmpty == true
         avPlayer.player?.play()
         let status = PlayStatus.playing(title: channel.name, isLive: true)
         NotificationCenter.default.post(name: .playStatusChanged, object: status)
@@ -39,6 +42,14 @@ class LivePlayerViewController: NSViewController {
 
     @IBAction func openMainWindowAction(_ sender: NSButton) {
         NSApplication.shared.openMainWindow()
+    }
+    
+    @IBAction func guidesBtnActon(_ sender: NSButton) {
+        guard let guides = channel?.schedule, !guides.isEmpty else {
+            return
+        }
+        let target = ChannelGuidesViewController(guides: guides)
+        present(target, asPopoverRelativeTo: sender.bounds, of: sender, preferredEdge: .maxY, behavior: .transient)
     }
 }
 
