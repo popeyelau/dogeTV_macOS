@@ -26,7 +26,6 @@
 
 ### Preview
 
-![](https://ae01.alicdn.com/kf/HTB1WJmsaaSs3KVjSZPi763siVXag.png)
 ![](https://ae01.alicdn.com/kf/HTB1nEOjaoGF3KVjSZFm762qPXXar.png)
 ![](https://ae01.alicdn.com/kf/HTB1Y6WpalCw3KVjSZR0762cUpXaa.png)
 ![](https://ae01.alicdn.com/kf/HTB1kJKkak9E3KVjSZFr7610UVXa8.png)
