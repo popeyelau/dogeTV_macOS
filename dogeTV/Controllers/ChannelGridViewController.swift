@@ -41,7 +41,6 @@ class ChannelGridViewController: NSViewController{
     }
     
     func preparePlay(channel: IPTVChannel) {
-        
         if Preferences.shared.usingIINA {
             NSApplication.shared.launchIINA(withURL: channel.url)
             return
@@ -162,35 +161,25 @@ extension ChannelGridViewController {
         }
     }
     
-    /*
-    func getStreamURL(_ url: String) {
-        indicatorView.show()
-        _ = APIClient.fetchIPTVStreamURL(url).done { (channel) in
-            self.preparePlay(channel: channel)
-            }.catch({ (error) in
-                print(error)
-                self.showError(error)
-            }).finally {
-                self.collectionView.reloadData()
-                self.indicatorView.dismiss()
-        }
-    }*/
-    
     func getStreamURL(channel: IPTVChannel) {
         guard let channelURL = URL(string: channel.url) else {
             return
         }
-        
+
+        var result: IPTVChannel = channel
         showSpinning()
-        getHTMLBody(from: channelURL)
+        APIClient.fetchIPTVStreamURL(channelURL.absoluteString)
+            .get { result.schedule = $0.schedule }
+            .map { _ in channelURL }
+            .then(getHTMLBody)
             .map { ($0, "<option+.*?</option>") }
             .then(extractURL)
             .then(getHTMLBody)
             .map { ($0, "url: '(.*?)'") }
             .then(extractURL)
             .done({ (url) in
-                let channel = IPTVChannel(name: channel.name, url: url.absoluteString, schedule: channel.schedule)
-                self.preparePlay(channel: channel)
+                result.url = url.absoluteString
+                self.preparePlay(channel: result)
             }).catch { (err) in
                 print(err)
             }.finally {

@@ -15,6 +15,6 @@ struct IPTV: Decodable {
 
 struct IPTVChannel: Decodable {
     let name: String
-    let url: String
-    let schedule: [String]?
+    var url: String
+    var schedule: [String]?
 }
