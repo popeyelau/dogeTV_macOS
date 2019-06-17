@@ -9,11 +9,6 @@
 import Cocoa
 
 struct ENV {
-    static let host = "https://tv.popeye.vip"
+    static let host = "http://tv.popeye.vip"
     static let iconPath = NSApplication.shared.appFolder + "/logo.png"
-    
-    
 }
-
-
-

@@ -23,7 +23,7 @@ enum Menus: String, Equatable {
     case live
 
     static var allCases: [Menus] {
-        if NSApplication.shared.isUnlocked {
+        if Preferences.shared.get(key: .unlocked, default: false) {
             return [
                 .recommended,.tag,.blueray,.latest,.topic,.film,.drama,.variety,.cartoon,.documentary,
                 .parse,.live

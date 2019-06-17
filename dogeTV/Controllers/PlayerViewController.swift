@@ -172,7 +172,7 @@ class PlayerViewController: NSViewController {
 
     func prepareToPlay(url: String) {
         let status =  PlayStatus.playing(title: self.titleLabel.stringValue, isLive: false)
-        if Preferences.shared.usingIINA {
+        if Preferences.shared.get(key: .usingIINA, default: false) {
             NSApplication.shared.launchIINA(withURL: url)
             NotificationCenter.default.post(name: .playStatusChanged, object: status)
             return
