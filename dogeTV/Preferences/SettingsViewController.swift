@@ -17,17 +17,17 @@ class SettingsViewController: NSViewController {
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.backgroundColor.cgColor
 
-        iinaBtn.state = Preferences.shared.usingIINA ? .on : .off
-        hdBtn.state = Preferences.shared.searchHD ? .on : .off
+        iinaBtn.state = Preferences.shared.get(key: .usingIINA, default: false) ? .on : .off
+        hdBtn.state = Preferences.shared.get(key: .searchHD, default: false) ? .on : .off
         iinaBtn.isEnabled = NSApplication.shared.isIINAInstalled
     }
     
     @IBAction func iinaBtnAction(_ sender: NSButton) {
-       Preferences.shared.usingIINA = sender.state == .on
+       Preferences.shared.set(sender.state == .on, for: .usingIINA)
     }
     
     @IBAction func hdBtnAction(_ sender: NSButton) {
-        Preferences.shared.searchHD = sender.state == .on
+        Preferences.shared.set(sender.state == .on, for: .searchHD)
     }
     
     @IBAction func iinaHelpAction(_ sender: NSButton) {
@@ -47,32 +47,43 @@ class Preferences: NSObject {
     let prefs = UserDefaults.standard
     let keys = PreferenceKeys.self
     
+    
+    func get<T>(key: PreferenceKeys, default: T) -> T {
+        return prefs.value(forKey: key.rawValue) as? T ?? `default`
+    }
+    
+    func set<T>(_ value: T, for key: PreferenceKeys) {
+        prefs.setValue(value, forKey: key.rawValue)
+        prefs.synchronize()
+    }
+    
+    /*
     var usingIINA: Bool {
         get {
-            return prefs.bool(forKey: PreferenceKeys.usingIINA.rawValue)
+            return get(key: .usingIINA, default: false)
         }
         set {
-            prefs.set(newValue, forKey: PreferenceKeys.usingIINA.rawValue)
+            set(newValue, for: .usingIINA)
         }
     }
     
     var searchHD: Bool {
         get {
-            return prefs.bool(forKey: PreferenceKeys.searchHD.rawValue)
+            return get(key: .searchHD, default: false)
         }
         set {
-            prefs.set(newValue, forKey: PreferenceKeys.searchHD.rawValue)
+            set(newValue, for: .searchHD)
         }
     }
 
     var unlocked: Bool {
         get {
-            return prefs.bool(forKey: PreferenceKeys.unlocked.rawValue)
+            return get(key: .unlocked, default: false)
         }
         set {
-            prefs.set(newValue, forKey: PreferenceKeys.unlocked.rawValue)
+            set(newValue, for: .unlocked)
         }
-    }
+    }*/
 }
 
 

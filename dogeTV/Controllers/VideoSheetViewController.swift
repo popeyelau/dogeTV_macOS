@@ -138,7 +138,7 @@ class VideoSheetViewController: NSViewController {
     }
     
     func prepareToPlay(url: String) {
-        if Preferences.shared.usingIINA {
+        if Preferences.shared.get(key: .usingIINA, default: false) {
             NSApplication.shared.launchIINA(withURL: url)
             return
         }

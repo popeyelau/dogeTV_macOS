@@ -55,7 +55,7 @@ class RootViewController: NSViewController {
     }
     
     func setupRootView() {
-        let isUnlocked = NSApplication.shared.isUnlocked
+        let isUnlocked = Preferences.shared.get(key: .unlocked, default: false)
         let target: Refreshable = isUnlocked ? makeContentView(type: PumpkinViewController.self, key: Menus.recommended.rawValue) : makeContentView(type: LatestGridViewController.self, key: Menus.latest.rawValue)
         activiedController = target
         contentView.addSubview(target.view)
@@ -170,7 +170,7 @@ class RootViewController: NSViewController {
 extension RootViewController {
     func onSearch(keywords: String) {
         if keywords.isEmpty { return }
-        if keywords == "解锁" && !NSApplication.shared.isUnlocked {
+        if keywords == "解锁" && !Preferences.shared.get(key: .unlocked, default: false) {
             NSApplication.shared.unlocked()
             dialogOKCancel(question: "解锁成功", text: "点击「确定」开启隐藏功能") { (ok) in
                 if(ok){

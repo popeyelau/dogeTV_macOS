@@ -38,7 +38,7 @@ extension NSViewController {
 // video handle
 extension NSViewController {
     func preparePlayerWindow(video: VideoDetail, episodes: [Episode]) {
-        if Preferences.shared.usingIINA {
+        if Preferences.shared.get(key: .usingIINA, default: false) {
             let controller = VideoSheetViewController()
             controller.videDetail = video
             controller.episodes = episodes
@@ -62,7 +62,7 @@ extension NSViewController {
             return
         }
        
-        if Preferences.shared.usingIINA {
+        if Preferences.shared.get(key: .usingIINA, default: false) {
             let controller = VideoSheetViewController()
             controller.episodes = episodes
             controller.episodeIndex = episodeIndex

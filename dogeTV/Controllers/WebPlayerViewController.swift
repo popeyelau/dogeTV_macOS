@@ -59,7 +59,6 @@ class WebPlayerViewController: NSViewController {
         }
         showSpinning(message: "解析中, 请耐心等候...")
         sendRequest(url: url)
-        //NotificationCenter.default.addObserver(self, selector: #selector(startPlay(_:)), name: .webPlayerStartPlay, object: nil)
     }
 
     @IBAction func openMainWindow(_ sender: Any) {

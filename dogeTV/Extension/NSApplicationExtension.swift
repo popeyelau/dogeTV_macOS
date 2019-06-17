@@ -52,7 +52,7 @@ extension NSApplication {
     }
 
     func unlocked() {
-        Preferences.shared.unlocked = true
+        Preferences.shared.set(true, for: .unlocked)
     }
     
     func relaunch(afterDelay seconds: TimeInterval = 0.5) -> Never {
@@ -72,10 +72,6 @@ extension NSApplication {
         NSWorkspace.shared.open(url)
     }
 
-    var isUnlocked: Bool {
-        return Preferences.shared.unlocked
-    }
-    
     var isDownieInstalled: Bool {
         return NSWorkspace.shared.fullPath(forApplication: "Downie 3") != nil
     }

@@ -41,7 +41,7 @@ class ChannelGridViewController: NSViewController{
     }
     
     func preparePlay(channel: IPTVChannel) {
-        if Preferences.shared.usingIINA {
+        if Preferences.shared.get(key: .usingIINA, default: false) {
             NSApplication.shared.launchIINA(withURL: channel.url)
             return
         }
