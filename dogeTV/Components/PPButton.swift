@@ -24,7 +24,6 @@ class PPButton: NSButton {
         isBordered = false
         setButtonType(.momentaryChange)
         focusRingType = .none
-        font = NSFont.systemFont(ofSize: 15)
     }
     
     override func draw(_ dirtyRect: NSRect) {

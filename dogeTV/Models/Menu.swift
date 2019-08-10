@@ -19,19 +19,18 @@ enum Menus: String, Equatable {
     case cartoon
     case documentary
     case parse
-    case blueray
     case live
 
     static var allCases: [Menus] {
         if Preferences.shared.get(key: .unlocked, default: false) {
             return [
-                .recommended,.tag,.blueray,.latest,.topic,.film,.drama,.variety,.cartoon,.documentary,
+                .recommended,.tag,.latest,.topic,.film,.drama,.variety,.cartoon,.documentary,
                 .parse,.live
             ]
         }
 
         return [
-            .blueray,.latest,.topic,.film,.drama,.variety,.cartoon,.documentary,
+            .latest,.topic,.film,.drama,.variety,.cartoon,.documentary,
             .parse,.live
         ]
     }
@@ -40,7 +39,6 @@ enum Menus: String, Equatable {
         switch self {
         case .recommended: return "推荐"
         case .latest: return "最新"
-        case .blueray: return "高清"
         case .tag: return "分类"
         case .topic: return "专题"
         case .film: return "电影"

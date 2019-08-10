@@ -30,6 +30,11 @@ enum StaticURLs: String {
     case telegramBot
     case github
     case telegram
+    case ddrk
+    case iketv
+    case nfmovies
+    case gimy
+    case wiki
     
     var url: URL {
         switch self {
@@ -41,6 +46,16 @@ enum StaticURLs: String {
             return URL(string: "https://github.com/popeyelau")!
         case .telegram:
             return URL(string: "https://t.me/popeyelau")!
+        case .ddrk:
+            return URL(string: "http://ddrk.me/")!
+        case .iketv:
+            return URL(string: "https://www.ike.tv/")!
+        case .nfmovies:
+            return URL(string: "https://www.nfmovies.com")!
+        case .gimy:
+            return URL(string: "https://v.gimy.tv/")!
+        case .wiki:
+            return URL(string: "https://github.com/popeyelau/dogeTV_macOS/wiki")!
         }
     }
 }

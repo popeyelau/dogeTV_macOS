@@ -242,9 +242,9 @@
                 <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="dogeTV" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="dogeTV" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" appearanceType="darkAqua" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
-                        <rect key="contentRect" x="196" y="425" width="1100" height="720"/>
+                        <rect key="contentRect" x="196" y="425" width="1120" height="720"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="1100" height="720"/>
+                        <value key="minSize" type="size" width="1120" height="720"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -262,7 +262,7 @@
             <objects>
                 <viewController title="dogeTV" id="XfG-lQ-9wD" customClass="RootViewController" customModule="dogeTV" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="1100" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1120" height="720"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TR0-Y5-V84" customClass="GradientView" customModule="dogeTV" customModuleProvider="target">
@@ -299,10 +299,10 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="bg2-O3-Nhl" customClass="GradientView" customModule="dogeTV" customModuleProvider="target">
-                                <rect key="frame" x="140" y="658" width="960" height="62"/>
+                                <rect key="frame" x="140" y="658" width="980" height="62"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-Kh-V35">
-                                        <rect key="frame" x="881" y="15" width="59" height="24"/>
+                                        <rect key="frame" x="862" y="15" width="98" height="24"/>
                                         <subviews>
                                             <button toolTip="刷新" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zas-hi-Adg">
                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -323,21 +323,35 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="feedbackAction:" target="XfG-lQ-9wD" id="ia3-AZ-BD9"/>
+                                                    <action selector="openUrlAction:" target="XfG-lQ-9wD" id="20B-w5-jEA"/>
+                                                </connections>
+                                            </button>
+                                            <button identifier="wiki" toolTip="帮助" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d8S-CT-yGa">
+                                                <rect key="frame" x="74" y="0.0" width="24" height="24"/>
+                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="help" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="1CS-t5-b55">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="keyEquivalent">r</string>
+                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="openUrlAction:" target="XfG-lQ-9wD" id="4dT-O8-fuL"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="jQL-F1-Mbx" customClass="SearchBarView" customModule="dogeTV" customModuleProvider="target">
-                                        <rect key="frame" x="561" y="12" width="300" height="30"/>
+                                        <rect key="frame" x="542" y="12" width="300" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Yyk-T0-2dg"/>
                                             <constraint firstAttribute="width" constant="300" id="wS4-Zu-x7c"/>
@@ -362,19 +376,79 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TYq-7v-Uo4" userLabel="Content View" customClass="ContainerView" customModule="dogeTV" customModuleProvider="target">
-                                <rect key="frame" x="140" y="0.0" width="960" height="658"/>
+                                <rect key="frame" x="140" y="40" width="980" height="618"/>
                             </customView>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZY7-YC-4U7">
+                                <rect key="frame" x="794" y="9" width="310" height="23"/>
+                                <subviews>
+                                    <button identifier="ddrk" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CLE-KC-Cus" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="3" width="69" height="17"/>
+                                        <buttonCell key="cell" type="bevel" title="• 低端影视" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="mzY-3z-Rxy">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openUrlAction:" target="XfG-lQ-9wD" id="N20-GQ-Eoe"/>
+                                        </connections>
+                                    </button>
+                                    <button identifier="iketv" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pmh-EZ-4ca" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
+                                        <rect key="frame" x="77" y="3" width="53" height="17"/>
+                                        <buttonCell key="cell" type="bevel" title="• IKE.TV" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="aP2-ZA-0mU">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openUrlAction:" target="XfG-lQ-9wD" id="fLF-3e-scX"/>
+                                        </connections>
+                                    </button>
+                                    <button identifier="nfmovies" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QHe-gg-vwU" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
+                                        <rect key="frame" x="138" y="3" width="69" height="17"/>
+                                        <buttonCell key="cell" type="bevel" title="• 奈菲影视" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="T9g-YD-Nrc">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openUrlAction:" target="XfG-lQ-9wD" id="Ja3-Gt-j9d"/>
+                                        </connections>
+                                    </button>
+                                    <button identifier="gimy" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vpQ-gn-s2H" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
+                                        <rect key="frame" x="215" y="3" width="95" height="17"/>
+                                        <buttonCell key="cell" type="bevel" title="• Gimy TV 劇迷" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="I9n-ze-Bhw">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openUrlAction:" target="XfG-lQ-9wD" id="I5G-LT-SYh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="bg2-O3-Nhl" firstAttribute="leading" secondItem="TR0-Y5-V84" secondAttribute="trailing" id="1CO-Tf-HIL"/>
+                            <constraint firstAttribute="bottom" secondItem="ZY7-YC-4U7" secondAttribute="bottom" constant="9" id="8sZ-Yi-pqE"/>
+                            <constraint firstAttribute="trailing" secondItem="ZY7-YC-4U7" secondAttribute="trailing" constant="16" id="Awy-nI-cWi"/>
                             <constraint firstItem="TR0-Y5-V84" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="DKm-qJ-QLK"/>
                             <constraint firstItem="TR0-Y5-V84" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="GHN-X0-rp0"/>
                             <constraint firstAttribute="bottom" secondItem="TR0-Y5-V84" secondAttribute="bottom" id="LV8-am-27q"/>
+                            <constraint firstItem="ZY7-YC-4U7" firstAttribute="top" secondItem="TYq-7v-Uo4" secondAttribute="bottom" constant="8" id="P71-Sz-neH"/>
                             <constraint firstAttribute="trailing" secondItem="bg2-O3-Nhl" secondAttribute="trailing" id="Xta-N4-z5j"/>
                             <constraint firstItem="TYq-7v-Uo4" firstAttribute="top" secondItem="bg2-O3-Nhl" secondAttribute="bottom" id="ZX1-wt-Bhy"/>
                             <constraint firstItem="TYq-7v-Uo4" firstAttribute="leading" secondItem="TR0-Y5-V84" secondAttribute="trailing" id="Zit-oQ-bQz"/>
                             <constraint firstItem="bg2-O3-Nhl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="bib-h2-TGx"/>
-                            <constraint firstAttribute="bottom" secondItem="TYq-7v-Uo4" secondAttribute="bottom" id="ctr-Qb-c4f"/>
+                            <constraint firstAttribute="bottom" secondItem="TYq-7v-Uo4" secondAttribute="bottom" constant="40" id="ctr-Qb-c4f"/>
                             <constraint firstAttribute="trailing" secondItem="TYq-7v-Uo4" secondAttribute="trailing" id="iUU-Uv-SZh"/>
                         </constraints>
                     </view>
@@ -397,6 +471,7 @@
     <resources>
         <image name="bug" width="20" height="20"/>
         <image name="doge" width="100" height="100"/>
+        <image name="help" width="24" height="24"/>
         <image name="refresh" width="24" height="24"/>
     </resources>
 </document>

@@ -89,14 +89,12 @@ class RootViewController: NSViewController {
             let btn = PPButton()
             btn.title = $0.title
             btn.identifier = .init($0.rawValue)
+            btn.font = .systemFont(ofSize: 15)
             btnStack.addArrangedSubview(btn)
             btn.action = #selector(menuBtnClicked(_:))
             btn.snp.makeConstraints {
                 $0.width.equalToSuperview()
                 $0.height.equalTo(30)
-            }
-            if $0 == .blueray {
-                btn.toolTip = "可能需要通过代理访问"
             }
         }
         
@@ -109,10 +107,9 @@ class RootViewController: NSViewController {
     }
     
 
-    @IBAction func feedbackAction(_ sender: NSButton) {
+    @IBAction func openUrlAction(_ sender: NSButton) {
         openURL(with: sender)
     }
-
     
 
      @objc func menuBtnClicked(_ sender: PPButton) {
@@ -143,9 +140,6 @@ class RootViewController: NSViewController {
             makeTransition(to: target)
         case .tag:
             let target = makeContentView(type: TagGridViewController.self, key: identifier)
-            makeTransition(to: target)
-        case .blueray:
-            let target = makeContentView(type: BlueRayTabViewController.self, key: identifier)
             makeTransition(to: target)
         }
     }

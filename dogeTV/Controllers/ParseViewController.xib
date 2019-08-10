@@ -90,7 +90,7 @@
                 </customView>
                 <button toolTip="如无法解析，取消勾选重新尝试" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="87Q-PE-6ga">
                     <rect key="frame" x="386" y="240" width="76" height="18"/>
-                    <buttonCell key="cell" type="check" title="高清线路" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Rww-M5-uhC">
+                    <buttonCell key="cell" type="check" title="高清线路" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Rww-M5-uhC">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>

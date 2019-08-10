@@ -55,7 +55,7 @@
                     <rect key="frame" x="0.0" y="228" width="480" height="44"/>
                     <subviews>
                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1g-qb-l0r">
-                            <rect key="frame" x="396" y="12" width="84" height="20"/>
+                            <rect key="frame" x="376" y="12" width="84" height="20"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cXv-MB-v7H">
                                     <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
@@ -120,7 +120,7 @@
                         <constraint firstItem="tHF-Ua-HcN" firstAttribute="leading" secondItem="SlT-6n-Bph" secondAttribute="leading" id="4di-ec-TGh"/>
                         <constraint firstItem="tHF-Ua-HcN" firstAttribute="centerY" secondItem="SlT-6n-Bph" secondAttribute="centerY" id="AHf-5S-dNl"/>
                         <constraint firstItem="f1g-qb-l0r" firstAttribute="centerY" secondItem="SlT-6n-Bph" secondAttribute="centerY" id="Ikw-F5-aQf"/>
-                        <constraint firstAttribute="trailing" secondItem="f1g-qb-l0r" secondAttribute="trailing" id="KoD-lo-13v"/>
+                        <constraint firstAttribute="trailing" secondItem="f1g-qb-l0r" secondAttribute="trailing" constant="20" id="KoD-lo-13v"/>
                         <constraint firstAttribute="height" constant="44" id="b4X-YS-vzW"/>
                     </constraints>
                 </customView>
