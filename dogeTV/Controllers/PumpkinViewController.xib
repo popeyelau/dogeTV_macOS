@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" sectionHeadersPinToVisibleBounds="YES" id="JUa-7Y-mgT" customClass="CollectionViewLeftFlowLayout" customModule="dogeTV" customModuleProvider="target">
-                                    <edgeInsets key="sectionInset" left="20" right="20" top="0.0" bottom="20"/>
+                                    <edgeInsets key="sectionInset" left="10" right="10" top="0.0" bottom="20"/>
                                 </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
