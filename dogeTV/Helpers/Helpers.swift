@@ -33,7 +33,6 @@ enum StaticURLs: String {
     case ddrk
     case iketv
     case nfmovies
-    case gimy
     case wiki
     
     var url: URL {
@@ -52,8 +51,6 @@ enum StaticURLs: String {
             return URL(string: "https://www.ike.tv/")!
         case .nfmovies:
             return URL(string: "https://www.nfmovies.com")!
-        case .gimy:
-            return URL(string: "https://v.gimy.tv/")!
         case .wiki:
             return URL(string: "https://github.com/popeyelau/dogeTV_macOS/wiki")!
         }

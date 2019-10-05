@@ -379,7 +379,7 @@
                                 <rect key="frame" x="140" y="40" width="980" height="618"/>
                             </customView>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZY7-YC-4U7">
-                                <rect key="frame" x="794" y="9" width="310" height="23"/>
+                                <rect key="frame" x="897" y="9" width="207" height="23"/>
                                 <subviews>
                                     <button identifier="ddrk" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CLE-KC-Cus" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="3" width="69" height="17"/>
@@ -411,25 +411,13 @@
                                             <action selector="openUrlAction:" target="XfG-lQ-9wD" id="Ja3-Gt-j9d"/>
                                         </connections>
                                     </button>
-                                    <button identifier="gimy" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vpQ-gn-s2H" customClass="PPButton" customModule="dogeTV" customModuleProvider="target">
-                                        <rect key="frame" x="215" y="3" width="95" height="17"/>
-                                        <buttonCell key="cell" type="bevel" title="• Gimy TV 劇迷" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="I9n-ze-Bhw">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="openUrlAction:" target="XfG-lQ-9wD" id="I5G-LT-SYh"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
-                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
